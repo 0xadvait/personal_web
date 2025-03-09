@@ -83,7 +83,7 @@ export default function IntroContent() {
         <section style={containerStyle}>
             <h1 style={dynamicStyles.mainHeader}>Intro</h1>
             <p style={dynamicStyles.regularText}>
-                Hi, I'm Advait. I'm based in London but frequently traveling for work and research.
+                Hi, I'm Advait. I'm based in London.
             </p>
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
