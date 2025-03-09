@@ -5,22 +5,22 @@ const containerStyle = {
     width: '90vw',
     maxWidth: '650px',
     margin: '0 auto',
-    padding: '2rem',
-    fontSize: 'clamp(0.8rem, 1vw, 1rem)',
-    lineHeight: 1.6,
+    padding: '1.5rem',
+    fontSize: 'clamp(0.8rem, 1vw, 0.95rem)',
+    lineHeight: 1.5,
 };
 
 const mainHeader = {
     color: '#fff',
-    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-    marginBottom: '1rem',
+    fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+    marginBottom: '0.8rem',
     fontWeight: 600,
 };
 
 const regularText = {
     color: '#ddd',
-    fontSize: '1rem',
-    lineHeight: '1.6',
+    fontSize: '0.95rem',
+    lineHeight: '1.5',
 };
 
 const linkStyle = {
@@ -67,15 +67,15 @@ export default function IntroContent() {
     const dynamicStyles = {
         mainHeader: {
             ...mainHeader,
-            fontSize: `${getFontSize(2)}rem`,
+            fontSize: `${getFontSize(1.5)}rem`,
         },
         regularText: {
             ...regularText,
-            fontSize: `${getFontSize(1)}rem`,
+            fontSize: `${getFontSize(0.95)}rem`,
         },
         emphasisText: {
             ...emphasisText,
-            fontSize: `${getFontSize(0.95)}rem`,
+            fontSize: `${getFontSize(0.9)}rem`,
         }
     };
 
@@ -86,16 +86,16 @@ export default function IntroContent() {
                 Hi, I'm Advait. I'm based in London but frequently traveling for work and research.
             </p>
 
-            <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
                 <strong>Work:</strong> Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
                 Previously, I authored 57+ publications on AI at O'Reilly Media, lectured at University College London,
                 and pursued a PhD at London Business School.
             </p>
 
-            <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem', marginBottom: '0.8rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem', marginBottom: '0.6rem' }}>
                 <em style={dynamicStyles.emphasisText}>Selected Publications & Talks:</em>
             </p>
-            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem' }}>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
                 <li>
                     Report on <strong>The AiFi Thesis</strong>:{' '}
                     <a
@@ -108,7 +108,7 @@ export default function IntroContent() {
                         PDF
                     </a>
                 </li>
-                <li style={{ marginTop: '0.6rem' }}>
+                <li style={{ marginTop: '0.5rem' }}>
                     Report on <strong>State of Edge AI</strong>:{' '}
                     <a
                         href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
@@ -120,7 +120,7 @@ export default function IntroContent() {
                         PDF
                     </a>
                 </li>
-                <li style={{ marginTop: '0.6rem' }}>
+                <li style={{ marginTop: '0.5rem' }}>
                     Talk on <strong>Using FHE For Consensus in AI Models</strong>:{' '}
                     <a
                         href="https://www.youtube.com/watch?v=4s_IhcMoOks"
@@ -132,7 +132,7 @@ export default function IntroContent() {
                         Video
                     </a>
                 </li>
-                <li style={{ marginTop: '0.6rem' }}>
+                <li style={{ marginTop: '0.5rem' }}>
                     Talk on <strong>The Economics of Wash Trading</strong>:{' '}
                     <a
                         href="https://www.youtube.com/watch?v=ITuKRdlAdGA"
@@ -144,7 +144,7 @@ export default function IntroContent() {
                         Video
                     </a>
                 </li>
-                <li style={{ marginTop: '0.6rem' }}>
+                <li style={{ marginTop: '0.5rem' }}>
                     Paper on <strong>The Economics of Wash Trading</strong>:{' '}
                     <a
                         href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162"
@@ -158,7 +158,7 @@ export default function IntroContent() {
                 </li>
             </ul>
 
-            <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem', display: 'flex', alignItems: 'center' }}>
                 <strong>Contact:</strong>&nbsp;
                 <a href="mailto:aj@perilabs.net" style={linkStyle} aria-label="Email Advait">
                     aj@perilabs.net

@@ -35,29 +35,29 @@ export default function ResumeContent() {
     const dynamicStyles = {
         mainHeader: {
             color: '#fff',
-            fontSize: `${getFontSize(2)}rem`,
-            marginBottom: '1.2rem',
+            fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+            marginBottom: '1rem',
         },
         subHeader: {
             color: '#fff',
-            fontSize: `${getFontSize(1.4)}rem`,
-            margin: '1.2rem 0 0.6rem',
+            fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
+            margin: '1rem 0 0.5rem',
             borderBottom: '1px solid rgba(255,255,255,0.2)',
             paddingBottom: '0.3rem',
         },
         subHeaderMinor: {
             color: '#eee',
             marginBottom: '0.2rem',
-            fontSize: `${getFontSize(1.1)}rem`,
+            fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
             fontWeight: 600,
         },
         regularText: {
             color: '#ddd',
-            fontSize: `${getFontSize(1)}rem`,
+            fontSize: 'clamp(0.85rem, 1.4vw, 0.95rem)',
             lineHeight: '1.6',
         },
         nameStyle: {
-            fontSize: `${getFontSize(1.3)}rem`,
+            fontSize: 'clamp(0.95rem, 1.6vw, 1.1rem)',
             color: '#fff',
         }
     };

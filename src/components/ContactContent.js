@@ -33,20 +33,20 @@ export default function ContactContent() {
     const dynamicStyles = {
         mainHeader: {
             color: '#fff',
-            fontSize: `${getFontSize(2.2)}rem`,
-            marginBottom: '1.5rem',
+            fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+            marginBottom: '1rem',
             fontWeight: '600',
         },
         regularText: {
             color: '#ddd',
-            fontSize: `${getFontSize(1.1)}rem`,
-            lineHeight: '1.7',
+            fontSize: 'clamp(0.85rem, 1.4vw, 0.95rem)',
+            lineHeight: '1.6',
         },
         linkText: {
             color: '#58a6ff',
             textDecoration: 'underline',
             transition: 'color 0.2s ease',
-            fontSize: `${getFontSize(1.1)}rem`,
+            fontSize: 'clamp(0.85rem, 1.4vw, 0.95rem)',
         }
     };
 
@@ -54,7 +54,7 @@ export default function ContactContent() {
         <section style={containerStyle}>
             <h1 style={dynamicStyles.mainHeader}>Contact</h1>
             
-            <p style={{ ...dynamicStyles.regularText, marginBottom: '1.5rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginBottom: '1rem' }}>
                 For discussions on AI, blockchain, research collaborations, or new opportunities, feel free to reach out:
             </p>
             
@@ -101,7 +101,7 @@ export default function ContactContent() {
                 </a>
             </div>
             
-            <p style={{ ...dynamicStyles.regularText, marginTop: '2rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem' }}>
                 Based in London, but available for virtual meetings across time zones.
             </p>
         </section>
@@ -112,7 +112,7 @@ const containerStyle = {
     width: '90vw',
     maxWidth: '650px',
     margin: '0 auto',
-    padding: '3rem 2rem',
+    padding: '2rem',
 };
 
 const linkStyle = {
@@ -128,9 +128,9 @@ const linkStyle = {
 const contactItemStyle = {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: '1.2rem',
+    marginBottom: '1rem',
     color: '#ddd',
-    fontSize: 'inherit',
+    fontSize: 'clamp(0.85rem, 1.4vw, 0.95rem)',
 };
 
 const contactLabelStyle = {

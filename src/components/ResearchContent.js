@@ -33,18 +33,18 @@ export default function ResearchContent() {
     const dynamicStyles = {
         mainHeader: {
             color: '#fff',
-            fontSize: `${getFontSize(2)}rem`,
-            marginBottom: '1.2rem',
+            fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+            marginBottom: '1rem',
         },
         regularText: {
             color: '#ddd',
-            fontSize: `${getFontSize(1)}rem`,
+            fontSize: 'clamp(0.85rem, 1.4vw, 0.95rem)',
             lineHeight: '1.6',
         },
         emphasisText: {
             color: '#aaa',
             fontStyle: 'normal',
-            fontSize: `${getFontSize(0.95)}rem`,
+            fontSize: 'clamp(0.8rem, 1.3vw, 0.9rem)',
         }
     };
 
