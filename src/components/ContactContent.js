@@ -1,11 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ContactContent() {
+    // Screen size state
+    const [screenSize, setScreenSize] = useState({
+        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+        height: typeof window !== 'undefined' ? window.innerHeight : 800
+    });
+
+    // Handle window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
+    // Responsive font sizes based on screen width
+    const getFontSize = (baseSize) => {
+        if (screenSize.width < 400) return baseSize * 0.8;
+        if (screenSize.width < 600) return baseSize * 0.9;
+        return baseSize;
+    };
+
+    // Dynamic styles based on screen size
+    const dynamicStyles = {
+        mainHeader: {
+            color: '#fff',
+            fontSize: `${getFontSize(2.2)}rem`,
+            marginBottom: '1.5rem',
+            fontWeight: '600',
+        },
+        regularText: {
+            color: '#ddd',
+            fontSize: `${getFontSize(1.1)}rem`,
+            lineHeight: '1.7',
+        },
+        linkText: {
+            color: '#58a6ff',
+            textDecoration: 'underline',
+            transition: 'color 0.2s ease',
+            fontSize: `${getFontSize(1.1)}rem`,
+        }
+    };
+
     return (
         <section style={containerStyle}>
-            <h1 style={mainHeader}>Contact</h1>
+            <h1 style={dynamicStyles.mainHeader}>Contact</h1>
             
-            <p style={{ ...regularText, marginBottom: '1.5rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginBottom: '1.5rem' }}>
                 For discussions on AI, blockchain, research collaborations, or new opportunities, feel free to reach out:
             </p>
             
@@ -52,7 +101,7 @@ export default function ContactContent() {
                 </a>
             </div>
             
-            <p style={{ ...regularText, marginTop: '2rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '2rem' }}>
                 Based in London, but available for virtual meetings across time zones.
             </p>
         </section>
@@ -66,24 +115,11 @@ const containerStyle = {
     padding: '3rem 2rem',
 };
 
-const mainHeader = {
-    color: '#fff',
-    fontSize: '2.2rem',
-    marginBottom: '1.5rem',
-    fontWeight: '600',
-};
-
-const regularText = {
-    color: '#ddd',
-    fontSize: '1.1rem',
-    lineHeight: '1.7',
-};
-
 const linkStyle = {
     color: '#58a6ff',
     textDecoration: 'underline',
     transition: 'color 0.2s ease',
-    fontSize: '1.1rem',
+    fontSize: 'inherit',
     ':hover': {
         color: '#8cb4ff'
     }
@@ -94,7 +130,7 @@ const contactItemStyle = {
     alignItems: 'center',
     marginBottom: '1.2rem',
     color: '#ddd',
-    fontSize: '1.1rem',
+    fontSize: 'inherit',
 };
 
 const contactLabelStyle = {

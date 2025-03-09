@@ -1,5 +1,5 @@
 // IntroContent.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const containerStyle = {
     width: '90vw',
@@ -35,23 +35,67 @@ const emphasisText = {
 };
 
 export default function IntroContent() {
+    // Screen size state
+    const [screenSize, setScreenSize] = useState({
+        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+        height: typeof window !== 'undefined' ? window.innerHeight : 800
+    });
+
+    // Handle window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
+    // Responsive font sizes based on screen width
+    const getFontSize = (baseSize) => {
+        if (screenSize.width < 400) return baseSize * 0.8;
+        if (screenSize.width < 600) return baseSize * 0.9;
+        return baseSize;
+    };
+
+    // Dynamic styles based on screen size
+    const dynamicStyles = {
+        mainHeader: {
+            ...mainHeader,
+            fontSize: `${getFontSize(2)}rem`,
+        },
+        regularText: {
+            ...regularText,
+            fontSize: `${getFontSize(1)}rem`,
+        },
+        emphasisText: {
+            ...emphasisText,
+            fontSize: `${getFontSize(0.95)}rem`,
+        }
+    };
+
     return (
         <section style={containerStyle}>
-            <h1 style={mainHeader}>Intro</h1>
-            <p style={regularText}>
+            <h1 style={dynamicStyles.mainHeader}>Intro</h1>
+            <p style={dynamicStyles.regularText}>
                 Hi, I'm Advait. I'm based in London but frequently traveling for work and research.
             </p>
 
-            <p style={{ ...regularText, marginTop: '1.2rem' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem' }}>
                 <strong>Work:</strong> Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
                 Previously, I authored 57+ publications on AI at O'Reilly Media, lectured at University College London,
                 and pursued a PhD at London Business School.
             </p>
 
-            <p style={{ ...regularText, marginTop: '1.5rem', marginBottom: '0.8rem' }}>
-                <em style={emphasisText}>Selected Publications & Talks:</em>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem', marginBottom: '0.8rem' }}>
+                <em style={dynamicStyles.emphasisText}>Selected Publications & Talks:</em>
             </p>
-            <ul style={{ ...regularText, marginLeft: '1.2rem' }}>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem' }}>
                 <li>
                     Report on <strong>The AiFi Thesis</strong>:{' '}
                     <a
@@ -114,7 +158,7 @@ export default function IntroContent() {
                 </li>
             </ul>
 
-            <p style={{ ...regularText, marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
                 <strong>Contact:</strong>&nbsp;
                 <a href="mailto:aj@perilabs.net" style={linkStyle} aria-label="Email Advait">
                     aj@perilabs.net
