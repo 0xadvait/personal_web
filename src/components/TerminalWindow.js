@@ -18,47 +18,92 @@ export default function TerminalWindow({
     // If server‐side, return null so Next can complete SSR/Static Build
     if (!isBrowser) return null;
 
-    // ------------------ State ------------------
-    const [isDragging, setIsDragging] = useState(false);
-    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+    // ------------------ Screen Size & Font ------------------
+    const [screenSize, setScreenSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
 
-    // We'll initialize position after mount using useEffect to avoid referencing `window` on the server
+    // Handle window resize for responsive text
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // A helper to scale our base font size up/down
+    // (Similar logic to your ResumeContent.js).
+    const getFontSize = (baseRem) => {
+        if (screenSize.width < 400) return baseRem * 0.8;
+        if (screenSize.width < 600) return baseRem * 0.9;
+        return baseRem; // default
+    };
+
+    // We'll define some dynamic styles so the terminal text
+    // matches the sizing approach from ResumeContent.js
+    const dynamicStyles = {
+        terminalText: {
+            color: '#ddd',
+            fontSize: `${getFontSize(1)}rem`, // 1rem base, scaled
+            lineHeight: 1.5,
+        },
+        linkText: {
+            color: '#58a6ff',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+            display: 'block',
+            margin: '0.3rem 0',
+        },
+        commandOutput: {
+            whiteSpace: 'pre-wrap',
+            marginBottom: '0.5rem',
+        },
+        commandPrompt: {
+            marginTop: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        promptText: {
+            marginRight: '0.5rem',
+            color: '#bbb',
+        },
+    };
+
+    // ------------------ Position & Size ------------------
     const [pos, setPos] = useState({ x: 0, y: 0 });
     const [width, setWidth] = useState(700);
     const [height, setHeight] = useState(500);
 
-    const minWidth = 300,
-        minHeight = 200;
+    const minWidth = 300;
+    const minHeight = 200;
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
     const [isResizing, setIsResizing] = useState(null);
     const [maximized, setMaximized] = useState(isMaximized);
 
     const windowRef = useRef(null);
-    const inputRef = useRef(null);
     const terminalBodyRef = useRef(null);
+    const inputRef = useRef(null);
 
-    // Terminal lines
+    // ------------------ Terminal State ------------------
     const [lines, setLines] = useState([]);
     const [inputVal, setInputVal] = useState('');
-
-    // Screen size state
-    const [screenSize, setScreenSize] = useState({
-        width: isBrowser ? window.innerWidth : 1200,
-        height: isBrowser ? window.innerHeight : 800,
-    });
-
-    // ------------------ Effects ------------------
 
     // Update `maximized` if prop changes
     useEffect(() => {
         setMaximized(isMaximized);
     }, [isMaximized]);
 
-    // Initialize position (center on screen) after mount
+    // Center the terminal on first mount + adjust size
     useEffect(() => {
         const updateWindowSize = () => {
-            // Adjust window size based on screen size
-            let newWidth = 910; // 30% larger than 700
-            let newHeight = 650; // 30% larger than 500
+            let newWidth = 910;
+            let newHeight = 650;
 
             if (screenSize.width < 600) {
                 newWidth = Math.min(screenSize.width * 0.95, 700);
@@ -74,7 +119,6 @@ export default function TerminalWindow({
             setWidth(newWidth);
             setHeight(newHeight);
 
-            // Center the window
             const centerX = screenSize.width / 2 - newWidth / 2;
             const centerY = screenSize.height / 2 - newHeight / 2;
             setPos({ x: centerX, y: centerY });
@@ -83,48 +127,14 @@ export default function TerminalWindow({
         updateWindowSize();
     }, [screenSize]);
 
-    // Handle window resize
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // On mount => print cat
-    useEffect(() => {
-        pushLine('text', '\n');
-        pushLine(
-            'text',
-            `      
-      /) /)
-     ( • ༝•)
-     /づ  づ
-`
-        );
-    }, []);
-
-    // Scroll to top for small screens on mount
-    useEffect(() => {
-        if (isSmallScreen && terminalBodyRef.current) {
-            terminalBodyRef.current.scrollTop = 0;
-        }
-    }, [screenSize.width]);
-
-    // Mousemove & Mouseup – only needed in the browser
+    // Set up dragging and resizing
     useEffect(() => {
         const onMouseMove = (e) => {
             e.preventDefault();
-
             if (isDragging && !maximized) {
                 const left = e.clientX - dragOffset.x;
                 const top = e.clientY - dragOffset.y;
-                const maxBottom = window.innerHeight - 100; // keep above the dock
+                const maxBottom = window.innerHeight - 100; // keep above any dock
 
                 let newX = Math.min(Math.max(left, 0), window.innerWidth - width);
                 let newY = Math.min(Math.max(top, 0), maxBottom - height);
@@ -156,7 +166,6 @@ export default function TerminalWindow({
                     newY = pos.y + dy;
                 }
 
-                // clamp
                 if (newW < minWidth) newW = minWidth;
                 if (newH < minHeight) newH = minHeight;
                 if (newX < 0) newX = 0;
@@ -190,34 +199,30 @@ export default function TerminalWindow({
         };
     }, [isDragging, isResizing, pos, width, height, dragOffset, maximized]);
 
-    // ------------------ Handlers ------------------
+    // ------------------ Terminal Setup ------------------
+    // Show cat on mount
+    useEffect(() => {
+        pushLine('text', '\n');
+        pushLine(
+            'text',
+            `      
+      /) /)
+     ( • ༝•)
+     /づ  づ
+`
+        );
+    }, []);
 
-    const handleMouseDownTitle = (e) => {
-        if (maximized) return;
-        setIsDragging(true);
-        const rect = windowRef.current.getBoundingClientRect();
-        setDragOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        // Prevent focusing input when dragging from title bar
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
-    const handleMouseDownResizer = (e, edge) => {
-        e.stopPropagation();
-        e.preventDefault();
-        if (maximized) return;
-        setIsResizing(edge);
-    };
-
+    // Push text or HTML lines
     const pushLine = (type, content) => {
         setLines((prev) => [...prev, { type, content }]);
     };
 
+    // Execute a command
     const handleCommand = (cmd) => {
         pushLine('text', `guest@advait.tech:~ $ ${cmd}`);
         const c = cmd.trim().toLowerCase();
 
-        // Get the current number of lines to scroll to after command execution
         const currentLineCount = lines.length;
 
         switch (c) {
@@ -236,29 +241,24 @@ export default function TerminalWindow({
 `
                 );
                 break;
-
             case 'print(intro)':
                 pushLine('html', ReactDOMServer.renderToStaticMarkup(<IntroContent />));
                 break;
-
             case 'print(resume)':
                 pushLine('html', ReactDOMServer.renderToStaticMarkup(<ResumeContent />));
                 break;
-
             case 'print(research)':
                 pushLine(
                     'html',
                     ReactDOMServer.renderToStaticMarkup(<ResearchContent />)
                 );
                 break;
-
             case 'print(contact)':
                 pushLine(
                     'html',
                     ReactDOMServer.renderToStaticMarkup(<ContactContent />)
                 );
                 break;
-
             case 'connect(x)':
                 window.open(
                     'https://x.com/intent/follow?screen_name=advait_peri',
@@ -269,7 +269,6 @@ export default function TerminalWindow({
                     'Attempting to open X profile: @advait_peri in a new tab...'
                 );
                 break;
-
             case 'connect(linkedin)':
                 window.open(
                     'https://www.linkedin.com/in/advait-jayant-21b465bb/',
@@ -277,16 +276,14 @@ export default function TerminalWindow({
                 );
                 pushLine('text', 'Attempting to open LinkedIn in a new tab...');
                 break;
-
             case 'clear':
                 setLines([]);
                 break;
-
             default:
                 pushLine('text', `Unrecognized command: ${cmd}`);
         }
 
-        // Scroll to the command line after a short delay to ensure DOM is updated
+        // Scroll to newly added line after a short delay
         setTimeout(() => {
             if (terminalBodyRef.current) {
                 const lineElements = terminalBodyRef.current.querySelectorAll('div');
@@ -300,6 +297,7 @@ export default function TerminalWindow({
         }, 100);
     };
 
+    // Pressing Enter in input
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
             if (inputVal.trim()) handleCommand(inputVal);
@@ -307,23 +305,33 @@ export default function TerminalWindow({
         }
     };
 
+    // Clicking the terminal background
     const handleTerminalClick = (e) => {
-        // Don't focus input if clicking on a command or a button
-        if (e.target.tagName === 'SPAN' && e.target.style.textDecoration === 'underline') return;
-        if (e.target.className && e.target.className.includes('dot')) return;
-
-        // Don't focus input if clicking on the title bar
-        if (e.target.className && e.target.className === styles.titleBar) return;
-        if (e.target.parentElement && e.target.parentElement.className === styles.dotContainer) return;
-
-        // Focus the input for typing
-        if (inputRef.current) {
+        // If you want the user to be able to type commands when clicking empty space:
+        if (e.target === terminalBodyRef.current && inputRef.current) {
             inputRef.current.focus();
         }
     };
 
-    // This list is shown at the top
-    // For all screens, display commands vertically
+    // Title bar drag
+    const handleMouseDownTitle = (e) => {
+        if (maximized) return;
+        setIsDragging(true);
+        const rect = windowRef.current.getBoundingClientRect();
+        setDragOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+    // Resizers
+    const handleMouseDownResizer = (e, edge) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if (maximized) return;
+        setIsResizing(edge);
+    };
+
+    // Command list
     const isSmallScreen = screenSize.width < 600;
     const commandsList = isSmallScreen
         ? [
@@ -345,31 +353,17 @@ export default function TerminalWindow({
             { desc: 'Clear terminal', cmd: 'clear' },
         ];
 
-    const commandStyle = {
-        cursor: 'pointer',
-        display: 'block', // Always display vertically
-        margin: '0.3rem 0',
-        textDecoration: 'underline',
-    };
-
+    // Build container classes
     let containerClass = styles.windowContainer;
     if (maximized) containerClass += ' ' + styles.maximized;
-    containerClass += ' ' + styles.commandListVertical; // Always use vertical command list
+    containerClass += ' ' + styles.commandListVertical; // vertical layout
 
-    // Calculate font size based on window size
-    const getFontSize = () => {
-        // iOS will zoom inputs < 16px, so ensure at least 16px
-        // We can clamp it so that it's still responsive
-        if (width < 400) return 'clamp(16px, 4vw, 20px)';
-        if (width < 600) return 'clamp(16px, 3vw, 20px)';
-        return 'clamp(16px, 2vw, 22px)';
-    };
-
-    // If not maximized, use inline styles for pos and size
+    // If not maximized, inline styles for position
     const containerStyle = maximized
         ? {
-            backgroundColor: 'rgba(0,0,0,0.9)', // Darker background
-            fontSize: '16px', // ensure base is 16
+            backgroundColor: 'rgba(0,0,0,0.9)',
+            // Base font at least 16px to prevent iOS zoom
+            fontSize: '16px',
         }
         : {
             left: `${pos.x}px`,
@@ -377,23 +371,23 @@ export default function TerminalWindow({
             width: `${width}px`,
             height: `${height}px`,
             transform: 'none',
-            fontSize: getFontSize(),
             backgroundColor: 'rgba(0,0,0,0.9)',
+            // Use dynamic scaling for the entire terminal
+            fontSize: `${Math.max(getFontSize(1) * 16, 16)}px`,
         };
 
-    // ------------------ Render ------------------
     return (
         <>
-            {/* This style helps disable auto text-size adjust on iOS */}
+            {/* Disable iOS text-size adjust globally */}
             <style jsx global>{`
-        html,
-        body {
-          -webkit-text-size-adjust: none;
-          -moz-text-size-adjust: none;
-          -ms-text-size-adjust: none;
-          text-size-adjust: none;
-        }
-      `}</style>
+                html,
+                body {
+                    -webkit-text-size-adjust: none;
+                    -moz-text-size-adjust: none;
+                    -ms-text-size-adjust: none;
+                    text-size-adjust: none;
+                }
+            `}</style>
 
             <div
                 ref={windowRef}
@@ -428,31 +422,31 @@ export default function TerminalWindow({
                     </div>
                 </div>
 
-                {/* Body */}
+                {/* Terminal Body */}
                 <div
                     ref={terminalBodyRef}
                     className={styles.windowBody}
-                    style={{ overflowY: 'auto' }}
+                    style={{
+                        overflowY: 'auto',
+                        ...dynamicStyles.terminalText, // font & color
+                    }}
                 >
-                    {/* Command list */}
+                    {/* Command list (clickable) */}
                     <div
-                        style={{ marginBottom: '1rem', color: '#58a6ff' }}
                         className={styles.commandListVertical}
+                        style={{ marginBottom: '1rem', color: '#58a6ff' }}
                     >
                         {commandsList.map((item, idx) => (
                             <span
                                 key={idx}
-                                style={commandStyle}
-                                onClick={() => handleCommand(item.cmd)}
+                                style={dynamicStyles.linkText}
+                                onClick={(e) => {
+                                    e.stopPropagation(); // don't focus input
+                                    handleCommand(item.cmd);
+                                }}
                             >
                 {item.desc}:{' '}
-                                <span
-                                    style={{
-                                        color: '#bbb',
-                                        textDecoration: 'none',
-                                        fontSize: '0.85em',
-                                    }}
-                                >
+                                <span style={{ color: '#bbb', textDecoration: 'none' }}>
                   {item.cmd}
                 </span>
               </span>
@@ -464,7 +458,10 @@ export default function TerminalWindow({
                         Use the{' '}
                         <span
                             style={{ color: '#58a6ff', cursor: 'pointer' }}
-                            onClick={() => handleCommand('help')}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleCommand('help');
+                            }}
                         >
               help
             </span>{' '}
@@ -474,26 +471,21 @@ export default function TerminalWindow({
                     {/* Terminal lines */}
                     {lines.map((line, i) =>
                         line.type === 'text' ? (
-                            <div
-                                key={i}
-                                style={{ whiteSpace: 'pre-wrap', marginBottom: '0.5rem' }}
-                            >
+                            <div key={i} style={dynamicStyles.commandOutput}>
                                 {line.content}
                             </div>
                         ) : (
                             <div
                                 key={i}
-                                dangerouslySetInnerHTML={{ __html: line.content }}
                                 style={{ marginBottom: '1rem', whiteSpace: 'pre-wrap' }}
+                                dangerouslySetInnerHTML={{ __html: line.content }}
                             />
                         )
                     )}
 
-                    {/* Prompt */}
-                    <div style={{ marginTop: '1rem', display: 'flex' }}>
-            <span style={{ marginRight: '0.5rem', color: '#bbb' }}>
-              guest@advait.tech:~ $
-            </span>
+                    {/* Prompt row */}
+                    <div style={dynamicStyles.commandPrompt}>
+                        <span style={dynamicStyles.promptText}>guest@advait.tech:~ $</span>
                         <input
                             ref={inputRef}
                             type="text"
@@ -503,7 +495,7 @@ export default function TerminalWindow({
                                 color: '#bbb',
                                 flex: 1,
                                 outline: 'none',
-                                // IMPORTANT: Ensure a minimum fontSize >= 16px to prevent iOS zoom
+                                // Force minimum 16px to prevent iOS zoom
                                 fontSize: '16px',
                             }}
                             placeholder="Type a command..."
