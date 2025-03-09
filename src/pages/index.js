@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 // import DesktopIcon from '../components/DesktopIcon';
 
 import Dock from '../components/Dock';
@@ -7,7 +8,7 @@ import BlogWindow from '../components/BlogWindow';
 import BrowserWindow from '../components/BrowserWindow';
 import { Analytics } from "@vercel/analytics/react";
 // Import SpeedInsights directly without next
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
     // Terminal states
@@ -51,13 +52,6 @@ export default function Home() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    // // Desktop icon => top-left
-    // const handleDesktopIcon = () => {
-    //     // Reopen the terminal
-    //     setTerminalOpen(true);
-    //     setTerminalMinimized(false);
-    // };
 
     // Terminal actions
     const closeTerminal = () => {
@@ -111,10 +105,21 @@ export default function Home() {
 
     return (
         <>
-            {/*/!* Desktop icon top-left for "Advait's Terminal" *!/*/}
-            {/*<DesktopIcon onClick={handleDesktopIcon} />*/}
+            <Head>
+                {/*
+                  The viewport meta tag below forces:
+                  - width=device-width: sets the page width to match device width
+                  - initial-scale=1.0: starts at 100% zoom
+                  - minimum-scale=1.0 and maximum-scale=1.0: disallow zooming in or out
+                  - user-scalable=no: prevents users from manually zooming
+                */}
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+                />
+            </Head>
 
-            {/* Dock at the bottom: Terminal, Blog, Website */}
+            {/* Dock at the bottom */}
             <Dock
                 onOpenTerminal={() => {
                     setTerminalOpen(true);
