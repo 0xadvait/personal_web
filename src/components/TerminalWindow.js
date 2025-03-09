@@ -321,16 +321,26 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     if (maximized) containerClass += ' ' + styles.maximized;
     containerClass += ' ' + styles.commandListVertical; // Always use vertical command list
 
+    // Calculate font size based on window size
+    const getFontSize = () => {
+        if (width < 400) return 'clamp(0.75rem, 1.8vw, 0.85rem)';
+        if (width < 600) return 'clamp(0.8rem, 1.9vw, 0.9rem)';
+        return 'clamp(0.85rem, 2vw, 0.95rem)';
+    };
+
     // If not maximized, use inline styles for pos and size
     const containerStyle = maximized
-        ? { backgroundColor: 'rgba(0,0,0,0.8)' }  // Increased opacity and darker background
+        ? { 
+            backgroundColor: 'rgba(0,0,0,0.8)',  // Increased opacity and darker background
+            fontSize: '0.95rem'
+        }
         : {
             left: `${pos.x}px`,
             top: `${pos.y}px`,
             width: `${width}px`,
             height: `${height}px`,
             transform: 'none',
-            fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+            fontSize: getFontSize(),
             backgroundColor: 'rgba(0,0,0,0.8)'  // Increased opacity and darker background
         };
 
