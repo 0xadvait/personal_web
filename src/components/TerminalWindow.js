@@ -331,7 +331,7 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     // If not maximized, use inline styles for pos and size
     const containerStyle = maximized
         ? { 
-            backgroundColor: 'rgba(0,0,0,0.8)',  // Increased opacity and darker background
+            backgroundColor: 'rgba(0,0,0,0.9)',  // Darker background (changed from 0.8 to 0.9)
             fontSize: '0.95rem'
         }
         : {
@@ -341,7 +341,7 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             height: `${height}px`,
             transform: 'none',
             fontSize: getFontSize(),
-            backgroundColor: 'rgba(0,0,0,0.8)'  // Increased opacity and darker background
+            backgroundColor: 'rgba(0,0,0,0.9)'  // Darker background (changed from 0.8 to 0.9)
         };
 
     // ------------------ Render ------------------

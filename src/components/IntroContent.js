@@ -6,7 +6,7 @@ const containerStyle = {
     maxWidth: '650px',
     margin: '0 auto',
     padding: '2rem',
-    fontSize: 'clamp(0.8rem, 1vw, 1rem)',  // example
+    fontSize: 'clamp(0.8rem, 1vw, 1rem)',
     lineHeight: 1.6,
 };
 
@@ -14,6 +14,7 @@ const mainHeader = {
     color: '#fff',
     fontSize: 'clamp(1.5rem, 3vw, 2rem)',
     marginBottom: '1rem',
+    fontWeight: 600,
 };
 
 const regularText = {
@@ -25,6 +26,12 @@ const regularText = {
 const linkStyle = {
     color: '#58a6ff',
     textDecoration: 'underline',
+    transition: 'color 0.2s ease',
+};
+
+const emphasisText = {
+    color: '#bbb',
+    fontStyle: 'italic',
 };
 
 export default function IntroContent() {
@@ -32,18 +39,17 @@ export default function IntroContent() {
         <section style={containerStyle}>
             <h1 style={mainHeader}>Intro</h1>
             <p style={regularText}>
-                Hi, I'm Advait. Usually in London, but I'm trying to move more.
+                Hi, I'm Advait. I'm based in London but frequently traveling for work and research.
             </p>
 
             <p style={{ ...regularText, marginTop: '1.2rem' }}>
-                <strong>Work:</strong> Founder and CEO @ Peri Labs. At Peri, we turn idle hardware into sustainable revenue.
-
-                Previously, I published 57x on AI at O'Reilly Media, lectured at UCL,
-                and pursued a PhD at LBS.
+                <strong>Work:</strong> Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
+                Previously, I authored 57+ publications on AI at O'Reilly Media, lectured at University College London,
+                and pursued a PhD at London Business School.
             </p>
 
-            <p style={{ ...regularText, marginTop: '1.2rem' }}>
-                <em>Select Content:</em>
+            <p style={{ ...regularText, marginTop: '1.5rem', marginBottom: '0.8rem' }}>
+                <em style={emphasisText}>Selected Publications & Talks:</em>
             </p>
             <ul style={{ ...regularText, marginLeft: '1.2rem' }}>
                 <li>
@@ -53,8 +59,9 @@ export default function IntroContent() {
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Download The AiFi Thesis PDF"
                     >
-                        Link
+                        PDF
                     </a>
                 </li>
                 <li style={{ marginTop: '0.6rem' }}>
@@ -64,17 +71,19 @@ export default function IntroContent() {
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Download State of Edge AI PDF"
                     >
-                        Link
+                        PDF
                     </a>
                 </li>
                 <li style={{ marginTop: '0.6rem' }}>
-                    Talk on <strong>Using FHE For Consensus for AI Models</strong>:{' '}
+                    Talk on <strong>Using FHE For Consensus in AI Models</strong>:{' '}
                     <a
                         href="https://www.youtube.com/watch?v=4s_IhcMoOks"
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Watch FHE for Consensus in AI Models video"
                     >
                         Video
                     </a>
@@ -86,6 +95,7 @@ export default function IntroContent() {
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Watch Economics of Wash Trading video"
                     >
                         Video
                     </a>
@@ -97,14 +107,18 @@ export default function IntroContent() {
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Read Economics of Wash Trading paper"
                     >
                         Paper
                     </a>
                 </li>
             </ul>
 
-            <p style={{ ...regularText, marginTop: '1.2rem' }}>
-                <strong>Contact:</strong> aj (at) perilabs (dot) net
+            <p style={{ ...regularText, marginTop: '1.5rem', display: 'flex', alignItems: 'center' }}>
+                <strong>Contact:</strong>&nbsp;
+                <a href="mailto:aj@perilabs.net" style={linkStyle} aria-label="Email Advait">
+                    aj@perilabs.net
+                </a>
             </p>
         </section>
     );

@@ -6,11 +6,11 @@ export default function ResearchContent() {
             <h1 style={mainHeader}>Research</h1>
 
             <p style={regularText}>
-                At <strong>Peri Labs</strong>, I explore advanced AI &amp; blockchain. Recent works:
+                At <strong>Peri Labs</strong>, I explore the intersection of advanced AI &amp; blockchain technologies. Select recent publications:
             </p>
 
-            <ul style={{ ...regularText, marginLeft: '1.2rem', marginTop: '1rem', marginBottom: '1rem', lineHeight: '1.7' }}>
-                <li style={{ marginBottom: '1rem' }}>
+            <ul style={{ ...regularText, marginLeft: '1.2rem', marginTop: '1rem', marginBottom: '1.2rem', lineHeight: '1.7' }}>
+                <li style={{ marginBottom: '1.2rem' }}>
                     <strong>The State of Edge AI</strong> –
                     <a
                         href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
@@ -22,11 +22,11 @@ export default function ResearchContent() {
                     </a>
                     <br />
                     <em style={emphasisText}>
-                        Real-time data analysis &amp; privacy for large AI models.
+                        Exploring real-time data analysis, privacy preservation techniques, and deployment strategies for large AI models at the edge.
                     </em>
                 </li>
 
-                <li style={{ marginBottom: '1rem' }}>
+                <li style={{ marginBottom: '1.2rem' }}>
                     <strong>The AiFi Thesis</strong> –
                     <a
                         href="https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf"
@@ -38,14 +38,17 @@ export default function ResearchContent() {
                     </a>
                     <br />
                     <em style={emphasisText}>
-                        Combining AI &amp; DeFi to tokenize compute, data, and ML models.
+                        A comprehensive framework for combining AI &amp; DeFi to tokenize computational resources, training data, and machine learning models.
                     </em>
                 </li>
             </ul>
 
             <p style={regularText}>
-                My aim is to build decentralized, scalable AI solutions that shape the future
-                of machine intelligence.
+                My research aims to build decentralized, scalable AI infrastructure that democratizes access to machine intelligence while preserving privacy and security.
+            </p>
+
+            <p style={{ ...regularText, marginTop: '1rem' }}>
+                I'm currently focused on developing novel consensus mechanisms for distributed AI training and inference across heterogeneous hardware.
             </p>
         </section>
     );
@@ -62,7 +65,7 @@ const containerStyle = {
 const mainHeader = {
     color: '#fff',
     fontSize: '2rem',
-    marginBottom: '1rem',
+    marginBottom: '1.2rem',
 };
 
 const regularText = {
@@ -74,9 +77,11 @@ const regularText = {
 const linkStyle = {
     color: '#58a6ff',
     textDecoration: 'underline',
+    transition: 'color 0.2s ease',
 };
 
 const emphasisText = {
     color: '#aaa',
-    fontStyle: 'normal', // keep or remove if you prefer <em> default
+    fontStyle: 'normal',
+    fontSize: '0.95rem',
 };

@@ -59,7 +59,7 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
     };
 
     const dockStyle = {
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         backdropFilter: 'blur(12px)',
         borderRadius: '40px',
         padding: dockSize.padding,
