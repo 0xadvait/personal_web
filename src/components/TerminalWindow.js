@@ -6,7 +6,13 @@ import ContactContent from './ContactContent';
 import IntroContent from './IntroContent';
 import styles from '../styles/Window.module.css';
 
-export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaximized, position }) {
+export default function TerminalWindow({
+                                           onClose,
+                                           onMinimize,
+                                           onMaximize,
+                                           isMaximized,
+                                           position,
+                                       }) {
     // 1) Detect if we're in a browser
     const isBrowser = typeof window !== 'undefined';
     // If server‐side, return null so Next can complete SSR/Static Build
@@ -21,7 +27,8 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     const [width, setWidth] = useState(700);
     const [height, setHeight] = useState(500);
 
-    const minWidth = 300, minHeight = 200;
+    const minWidth = 300,
+        minHeight = 200;
     const [isResizing, setIsResizing] = useState(null);
     const [maximized, setMaximized] = useState(isMaximized);
 
@@ -32,11 +39,11 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     // Terminal lines
     const [lines, setLines] = useState([]);
     const [inputVal, setInputVal] = useState('');
-    
+
     // Screen size state
     const [screenSize, setScreenSize] = useState({
         width: isBrowser ? window.innerWidth : 1200,
-        height: isBrowser ? window.innerHeight : 800
+        height: isBrowser ? window.innerHeight : 800,
     });
 
     // ------------------ Effects ------------------
@@ -52,7 +59,7 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             // Adjust window size based on screen size
             let newWidth = 910; // 30% larger than 700
             let newHeight = 650; // 30% larger than 500
-            
+
             if (screenSize.width < 600) {
                 newWidth = Math.min(screenSize.width * 0.95, 700);
                 newHeight = Math.min(screenSize.height * 0.7, 500);
@@ -63,16 +70,16 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                 newWidth = Math.min(screenSize.width * 0.6, 910);
                 newHeight = Math.min(screenSize.height * 0.6, 650);
             }
-            
+
             setWidth(newWidth);
             setHeight(newHeight);
-            
+
             // Center the window
             const centerX = screenSize.width / 2 - newWidth / 2;
             const centerY = screenSize.height / 2 - newHeight / 2;
             setPos({ x: centerX, y: centerY });
         };
-        
+
         updateWindowSize();
     }, [screenSize]);
 
@@ -81,7 +88,7 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
         const handleResize = () => {
             setScreenSize({
                 width: window.innerWidth,
-                height: window.innerHeight
+                height: window.innerHeight,
             });
         };
 
@@ -92,11 +99,14 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     // On mount => print cat
     useEffect(() => {
         pushLine('text', '\n');
-        pushLine('text', `      
+        pushLine(
+            'text',
+            `      
       /) /)
      ( • ༝•)
      /づ  づ
-`);
+`
+        );
     }, []);
 
     // Scroll to top for small screens on mount
@@ -126,8 +136,10 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                 const dx = e.clientX - (pos.x + width);
                 const dy = e.clientY - (pos.y + height);
 
-                let newW = width, newH = height;
-                let newX = pos.x, newY = pos.y;
+                let newW = width,
+                    newH = height;
+                let newX = pos.x,
+                    newY = pos.y;
 
                 if (isResizing.includes('r')) {
                     newW = width + dx;
@@ -210,7 +222,9 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
 
         switch (c) {
             case 'help':
-                pushLine('text', `Recognized commands:
+                pushLine(
+                    'text',
+                    `Recognized commands:
   print(intro)
   print(resume)
   print(research)
@@ -219,7 +233,8 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
   connect(linkedin)
   help
   clear
-`);
+`
+                );
                 break;
 
             case 'print(intro)':
@@ -231,20 +246,35 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                 break;
 
             case 'print(research)':
-                pushLine('html', ReactDOMServer.renderToStaticMarkup(<ResearchContent />));
+                pushLine(
+                    'html',
+                    ReactDOMServer.renderToStaticMarkup(<ResearchContent />)
+                );
                 break;
 
             case 'print(contact)':
-                pushLine('html', ReactDOMServer.renderToStaticMarkup(<ContactContent />));
+                pushLine(
+                    'html',
+                    ReactDOMServer.renderToStaticMarkup(<ContactContent />)
+                );
                 break;
 
             case 'connect(x)':
-                window.open('https://x.com/intent/follow?screen_name=advait_peri','_blank');
-                pushLine('text', 'Attempting to open X profile: @advait_peri in a new tab...');
+                window.open(
+                    'https://x.com/intent/follow?screen_name=advait_peri',
+                    '_blank'
+                );
+                pushLine(
+                    'text',
+                    'Attempting to open X profile: @advait_peri in a new tab...'
+                );
                 break;
 
             case 'connect(linkedin)':
-                window.open('https://www.linkedin.com/in/advait-jayant-21b465bb/','_blank');
+                window.open(
+                    'https://www.linkedin.com/in/advait-jayant-21b465bb/',
+                    '_blank'
+                );
                 pushLine('text', 'Attempting to open LinkedIn in a new tab...');
                 break;
 
@@ -261,7 +291,10 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             if (terminalBodyRef.current) {
                 const lineElements = terminalBodyRef.current.querySelectorAll('div');
                 if (lineElements.length > currentLineCount) {
-                    lineElements[currentLineCount].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    lineElements[currentLineCount].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    });
                 }
             }
         }, 100);
@@ -278,11 +311,11 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
         // Don't focus input if clicking on a command or a button
         if (e.target.tagName === 'SPAN' && e.target.style.textDecoration === 'underline') return;
         if (e.target.className && e.target.className.includes('dot')) return;
-        
+
         // Don't focus input if clicking on the title bar
         if (e.target.className && e.target.className === styles.titleBar) return;
         if (e.target.parentElement && e.target.parentElement.className === styles.dotContainer) return;
-        
+
         // Focus the input for typing
         if (inputRef.current) {
             inputRef.current.focus();
@@ -292,23 +325,25 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     // This list is shown at the top
     // For all screens, display commands vertically
     const isSmallScreen = screenSize.width < 600;
-    const commandsList = isSmallScreen ? [
-        { desc: 'About Me', cmd: 'print(intro)' },
-        { desc: 'Research', cmd: 'print(research)' },
-        { desc: 'Contact Me', cmd: 'print(contact)' },
-        { desc: 'Connect on X', cmd: 'connect(x)' },
-        { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
-        { desc: 'Clear terminal', cmd: 'clear' },
-    ] : [
-        { desc: 'About Me', cmd: 'print(intro)' },
-        { desc: 'Resume', cmd: 'print(resume)' },
-        { desc: 'Research', cmd: 'print(research)' },
-        { desc: 'Contact Me', cmd: 'print(contact)' },
-        { desc: 'Connect on X', cmd: 'connect(x)' },
-        { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
-        { desc: 'Show commands', cmd: 'help' },
-        { desc: 'Clear terminal', cmd: 'clear' },
-    ];
+    const commandsList = isSmallScreen
+        ? [
+            { desc: 'About Me', cmd: 'print(intro)' },
+            { desc: 'Research', cmd: 'print(research)' },
+            { desc: 'Contact Me', cmd: 'print(contact)' },
+            { desc: 'Connect on X', cmd: 'connect(x)' },
+            { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
+            { desc: 'Clear terminal', cmd: 'clear' },
+        ]
+        : [
+            { desc: 'About Me', cmd: 'print(intro)' },
+            { desc: 'Resume', cmd: 'print(resume)' },
+            { desc: 'Research', cmd: 'print(research)' },
+            { desc: 'Contact Me', cmd: 'print(contact)' },
+            { desc: 'Connect on X', cmd: 'connect(x)' },
+            { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
+            { desc: 'Show commands', cmd: 'help' },
+            { desc: 'Clear terminal', cmd: 'clear' },
+        ];
 
     const commandStyle = {
         cursor: 'pointer',
@@ -323,16 +358,18 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
 
     // Calculate font size based on window size
     const getFontSize = () => {
-        if (width < 400) return 'clamp(0.75rem, 1.8vw, 0.85rem)';
-        if (width < 600) return 'clamp(0.8rem, 1.9vw, 0.9rem)';
-        return 'clamp(0.85rem, 2vw, 0.95rem)';
+        // iOS will zoom inputs < 16px, so ensure at least 16px
+        // We can clamp it so that it's still responsive
+        if (width < 400) return 'clamp(16px, 4vw, 20px)';
+        if (width < 600) return 'clamp(16px, 3vw, 20px)';
+        return 'clamp(16px, 2vw, 22px)';
     };
 
     // If not maximized, use inline styles for pos and size
     const containerStyle = maximized
-        ? { 
-            backgroundColor: 'rgba(0,0,0,0.9)',  // Darker background (changed from 0.8 to 0.9)
-            fontSize: '0.95rem'
+        ? {
+            backgroundColor: 'rgba(0,0,0,0.9)', // Darker background
+            fontSize: '16px', // ensure base is 16
         }
         : {
             left: `${pos.x}px`,
@@ -341,135 +378,176 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             height: `${height}px`,
             transform: 'none',
             fontSize: getFontSize(),
-            backgroundColor: 'rgba(0,0,0,0.9)'  // Darker background (changed from 0.8 to 0.9)
+            backgroundColor: 'rgba(0,0,0,0.9)',
         };
 
     // ------------------ Render ------------------
     return (
-        <div ref={windowRef} className={containerClass} style={containerStyle} onClick={handleTerminalClick}>
-            {/* Title Bar */}
-            <div className={styles.titleBar} onMouseDown={handleMouseDownTitle}>
-                <div className={styles.dotContainer}>
-                    <span
-                        className={`${styles.dot} ${styles.closeDot}`}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onClose();
-                        }}
-                    />
-                    <span
-                        className={`${styles.dot} ${styles.minDot}`}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onMinimize();
-                        }}
-                    />
-                    <span
-                        className={`${styles.dot} ${styles.maxDot}`}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onMaximize();
-                        }}
-                    />
-                </div>
-            </div>
+        <>
+            {/* This style helps disable auto text-size adjust on iOS */}
+            <style jsx global>{`
+        html,
+        body {
+          -webkit-text-size-adjust: none;
+          -moz-text-size-adjust: none;
+          -ms-text-size-adjust: none;
+          text-size-adjust: none;
+        }
+      `}</style>
 
-            {/* Body */}
             <div
-                ref={terminalBodyRef}
-                className={styles.windowBody}
-                style={{ overflowY: 'auto' }}
+                ref={windowRef}
+                className={containerClass}
+                style={containerStyle}
+                onClick={handleTerminalClick}
             >
-                {/* Command list */}
-                <div style={{ marginBottom: '1rem', color: '#58a6ff' }} className={styles.commandListVertical}>
-                    {commandsList.map((item, idx) => (
+                {/* Title Bar */}
+                <div className={styles.titleBar} onMouseDown={handleMouseDownTitle}>
+                    <div className={styles.dotContainer}>
+            <span
+                className={`${styles.dot} ${styles.closeDot}`}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onClose();
+                }}
+            />
                         <span
-                            key={idx}
-                            style={commandStyle}
-                            onClick={() => handleCommand(item.cmd)}
-                        >
-                            {item.desc}: <span style={{ color: '#bbb', textDecoration: 'none', fontSize: '0.85em' }}>{item.cmd}</span>
-                        </span>
-                    ))}
-                </div>
-                
-                {/* Help message */}
-                <div style={{ marginBottom: '1rem', color: '#bbb' }}>
-                    Use the <span style={{ color: '#58a6ff', cursor: 'pointer' }} onClick={() => handleCommand('help')}>help</span> command for help. All the above commands are clickable.
-                </div>
-
-                {/* Terminal lines */}
-                {lines.map((line, i) =>
-                    line.type === 'text' ? (
-                        <div key={i} style={{ whiteSpace: 'pre-wrap', marginBottom: '0.5rem' }}>
-                            {line.content}
-                        </div>
-                    ) : (
-                        <div
-                            key={i}
-                            dangerouslySetInnerHTML={{ __html: line.content }}
-                            style={{ marginBottom: '1rem', whiteSpace: 'pre-wrap' }}
+                            className={`${styles.dot} ${styles.minDot}`}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onMinimize();
+                            }}
                         />
-                    )
-                )}
-
-                {/* Prompt */}
-                <div style={{ marginTop: '1rem', display: 'flex' }}>
-                    <span style={{ marginRight: '0.5rem', color: '#bbb' }}>
-                        guest@advait.tech:~ $
-                    </span>
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        style={{
-                            border: 'none',
-                            background: 'transparent',
-                            color: '#bbb',
-                            flex: 1,
-                            outline: 'none',
-                            fontSize: 'inherit',
-                        }}
-                        placeholder="Type a command..."
-                        value={inputVal}
-                        onChange={(e) => setInputVal(e.target.value)}
-                        onKeyDown={onKeyDown}
-                    />
+                        <span
+                            className={`${styles.dot} ${styles.maxDot}`}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onMaximize();
+                            }}
+                        />
+                    </div>
                 </div>
-            </div>
 
-            {/* Resizers */}
-            <div
-                className={`${styles.resizer} ${styles['resizer-tl']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'tl')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-tr']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'tr')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-bl']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'bl')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-br']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'br')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-l']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'l')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-r']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'r')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-t']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 't')}
-            />
-            <div
-                className={`${styles.resizer} ${styles['resizer-b']}`}
-                onMouseDown={(e) => handleMouseDownResizer(e, 'b')}
-            />
-        </div>
+                {/* Body */}
+                <div
+                    ref={terminalBodyRef}
+                    className={styles.windowBody}
+                    style={{ overflowY: 'auto' }}
+                >
+                    {/* Command list */}
+                    <div
+                        style={{ marginBottom: '1rem', color: '#58a6ff' }}
+                        className={styles.commandListVertical}
+                    >
+                        {commandsList.map((item, idx) => (
+                            <span
+                                key={idx}
+                                style={commandStyle}
+                                onClick={() => handleCommand(item.cmd)}
+                            >
+                {item.desc}:{' '}
+                                <span
+                                    style={{
+                                        color: '#bbb',
+                                        textDecoration: 'none',
+                                        fontSize: '0.85em',
+                                    }}
+                                >
+                  {item.cmd}
+                </span>
+              </span>
+                        ))}
+                    </div>
+
+                    {/* Help message */}
+                    <div style={{ marginBottom: '1rem', color: '#bbb' }}>
+                        Use the{' '}
+                        <span
+                            style={{ color: '#58a6ff', cursor: 'pointer' }}
+                            onClick={() => handleCommand('help')}
+                        >
+              help
+            </span>{' '}
+                        command for help. All the above commands are clickable.
+                    </div>
+
+                    {/* Terminal lines */}
+                    {lines.map((line, i) =>
+                        line.type === 'text' ? (
+                            <div
+                                key={i}
+                                style={{ whiteSpace: 'pre-wrap', marginBottom: '0.5rem' }}
+                            >
+                                {line.content}
+                            </div>
+                        ) : (
+                            <div
+                                key={i}
+                                dangerouslySetInnerHTML={{ __html: line.content }}
+                                style={{ marginBottom: '1rem', whiteSpace: 'pre-wrap' }}
+                            />
+                        )
+                    )}
+
+                    {/* Prompt */}
+                    <div style={{ marginTop: '1rem', display: 'flex' }}>
+            <span style={{ marginRight: '0.5rem', color: '#bbb' }}>
+              guest@advait.tech:~ $
+            </span>
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            style={{
+                                border: 'none',
+                                background: 'transparent',
+                                color: '#bbb',
+                                flex: 1,
+                                outline: 'none',
+                                // IMPORTANT: Ensure a minimum fontSize >= 16px to prevent iOS zoom
+                                fontSize: '16px',
+                            }}
+                            placeholder="Type a command..."
+                            value={inputVal}
+                            onChange={(e) => setInputVal(e.target.value)}
+                            onKeyDown={onKeyDown}
+                        />
+                    </div>
+                </div>
+
+                {/* Resizers */}
+                <div
+                    className={`${styles.resizer} ${styles['resizer-tl']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'tl')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-tr']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'tr')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-bl']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'bl')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-br']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'br')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-l']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'l')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-r']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'r')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-t']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 't')}
+                />
+                <div
+                    className={`${styles.resizer} ${styles['resizer-b']}`}
+                    onMouseDown={(e) => handleMouseDownResizer(e, 'b')}
+                />
+            </div>
+        </>
     );
 }
