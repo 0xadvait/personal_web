@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Dock from '../components/Dock';
 import TerminalWindow from '../components/TerminalWindow';
 import BlogWindow from '../components/BlogWindow';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import BrowserWindow from '../components/BrowserWindow';
 
 export default function Home() {

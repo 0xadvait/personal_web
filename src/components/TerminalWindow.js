@@ -50,8 +50,8 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     useEffect(() => {
         const updateWindowSize = () => {
             // Adjust window size based on screen size
-            let newWidth = 700;
-            let newHeight = 500;
+            let newWidth = 910; // 30% larger than 700
+            let newHeight = 650; // 30% larger than 500
             
             if (screenSize.width < 600) {
                 newWidth = Math.min(screenSize.width * 0.95, 700);
@@ -60,8 +60,8 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                 newWidth = Math.min(screenSize.width * 0.8, 700);
                 newHeight = Math.min(screenSize.height * 0.7, 500);
             } else {
-                newWidth = Math.min(screenSize.width * 0.6, 700);
-                newHeight = Math.min(screenSize.height * 0.6, 500);
+                newWidth = Math.min(screenSize.width * 0.6, 910);
+                newHeight = Math.min(screenSize.height * 0.6, 650);
             }
             
             setWidth(newWidth);
@@ -270,7 +270,16 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     };
 
     // This list is shown at the top
-    const commandsList = [
+    // For small screens, remove 'help' and 'print(resume)' commands
+    const isSmallScreen = screenSize.width < 600;
+    const commandsList = isSmallScreen ? [
+        'print(intro)',
+        'print(research)',
+        'print(contact)',
+        'connect(x)',
+        'connect(linkedin)',
+        'clear',
+    ] : [
         'print(intro)',
         'print(resume)',
         'print(research)',
@@ -281,8 +290,6 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
         'clear',
     ];
 
-    // For small screens => vertical layout
-    const isSmallScreen = screenSize.width < 600;
     const commandStyle = {
         cursor: 'pointer',
         display: isSmallScreen ? 'block' : 'inline-block',
@@ -345,7 +352,6 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             >
                 {/* Command list */}
                 <div style={{ marginBottom: '1rem', color: '#58a6ff' }} className={isSmallScreen ? styles.commandListVertical : ''}>
-                    [
                     {commandsList.map((c, idx) => (
                         <span
                             key={idx}
@@ -355,7 +361,11 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                             {c}
                         </span>
                     ))}
-                    ]
+                </div>
+                
+                {/* Help message */}
+                <div style={{ marginBottom: '1rem', color: '#bbb' }}>
+                    Use the <span style={{ color: '#58a6ff', cursor: 'pointer' }} onClick={() => handleCommand('help')}>help</span> command for help
                 </div>
 
                 {/* Terminal lines */}

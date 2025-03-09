@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
-    const [collapsed, setCollapsed] = useState(false);
+    const [screenSize, setScreenSize] = useState({
+        width: typeof window !== 'undefined' ? window.innerWidth : 1200
+    });
 
-    // Check screen size on mount and when window resizes
+    // Update screen size when window resizes
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 600) {
-                setCollapsed(true);
-            }
+            setScreenSize({
+                width: window.innerWidth
+            });
         };
 
         // Initial check
@@ -21,6 +23,31 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Calculate dock size based on screen width
+    const getDockSize = () => {
+        if (screenSize.width < 600) {
+            return {
+                iconSize: 35,
+                padding: '0.3rem 0.7rem',
+                gap: '0.5rem'
+            };
+        } else if (screenSize.width < 900) {
+            return {
+                iconSize: 45,
+                padding: '0.4rem 0.9rem',
+                gap: '0.8rem'
+            };
+        } else {
+            return {
+                iconSize: 50,
+                padding: '0.5rem 1rem',
+                gap: '1rem'
+            };
+        }
+    };
+
+    const dockSize = getDockSize();
+
     const dockContainer = {
         position: 'fixed',
         bottom: '20px',
@@ -30,34 +57,20 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
         zIndex: 99,
     };
 
-    const toggleButtonStyle = {
-        position: 'fixed',
-        bottom: '0px',
-        right: '50%',
-        transform: 'translateX(50%)',
-        padding: '4px 8px',
-        borderRadius: '6px 6px 0 0',
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        color: '#fff',
-        cursor: 'pointer',
-        zIndex: 999,
-        display: collapsed ? 'block' : 'none',
-    };
-
     const dockStyle = {
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         backdropFilter: 'blur(12px)',
         borderRadius: '40px',
-        padding: '0.5rem 1rem',
-        display: collapsed ? 'none' : 'flex',
-        gap: '1rem',
+        padding: dockSize.padding,
+        display: 'flex',
+        gap: dockSize.gap,
         alignItems: 'center',
-        transition: 'opacity 0.3s',
+        transition: 'all 0.3s',
     };
 
     const iconStyle = {
-        width: '50px',
-        height: '50px',
+        width: `${dockSize.iconSize}px`,
+        height: `${dockSize.iconSize}px`,
         cursor: 'pointer',
         objectFit: 'contain',
         transition: 'transform 0.2s',
@@ -103,14 +116,6 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
                         onClick={onOpenBrowser}
                     />
                 </div>
-            </div>
-
-            {/* Only show the "Show Dock" button when collapsed */}
-            <div
-                style={toggleButtonStyle}
-                onClick={() => setCollapsed(false)}
-            >
-                ▲ Show Dock ▲
             </div>
         </>
     );
