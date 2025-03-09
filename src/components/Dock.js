@@ -4,6 +4,7 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
     const [screenSize, setScreenSize] = useState({
         width: typeof window !== 'undefined' ? window.innerWidth : 1200
     });
+    const [activeTooltip, setActiveTooltip] = useState(null);
 
     // Update screen size when window resizes
     useEffect(() => {
@@ -76,12 +77,31 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
         transition: 'transform 0.2s',
     };
 
-    // Shared hover effect
-    const handleMouseEnter = (e) => {
-        e.currentTarget.style.transform = 'scale(1.2)';
+    const tooltipStyle = {
+        position: 'absolute',
+        top: '-35px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        color: 'white',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        fontSize: '14px',
+        whiteSpace: 'nowrap',
+        pointerEvents: 'none',
+        opacity: 1,
+        transition: 'opacity 0.2s',
     };
+
+    // Shared hover effect
+    const handleMouseEnter = (e, tooltipName) => {
+        e.currentTarget.style.transform = 'scale(1.2)';
+        setActiveTooltip(tooltipName);
+    };
+    
     const handleMouseLeave = (e) => {
         e.currentTarget.style.transform = 'scale(1)';
+        setActiveTooltip(null);
     };
 
     return (
@@ -89,32 +109,49 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
             <div style={dockContainer}>
                 <div style={dockStyle}>
                     {/* Terminal */}
-                    <img
-                        src="/images/icon_image.png"
-                        alt="Terminal"
-                        style={iconStyle}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={onOpenTerminal}
-                    />
+                    <div style={{ position: 'relative' }}>
+                        <img
+                            src="/images/icon_image.png"
+                            alt="Terminal"
+                            style={iconStyle}
+                            onMouseEnter={(e) => handleMouseEnter(e, 'terminal')}
+                            onMouseLeave={handleMouseLeave}
+                            onClick={onOpenTerminal}
+                        />
+                        {activeTooltip === 'terminal' && (
+                            <div style={tooltipStyle}>Terminal</div>
+                        )}
+                    </div>
+                    
                     {/* Blog */}
-                    <img
-                        src="/images/blog_icon.png"
-                        alt="Blog"
-                        style={iconStyle}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={onOpenBlog}
-                    />
+                    <div style={{ position: 'relative' }}>
+                        <img
+                            src="/images/blog_icon.png"
+                            alt="Blog"
+                            style={iconStyle}
+                            onMouseEnter={(e) => handleMouseEnter(e, 'blog')}
+                            onMouseLeave={handleMouseLeave}
+                            onClick={onOpenBlog}
+                        />
+                        {activeTooltip === 'blog' && (
+                            <div style={tooltipStyle}>Chaos Theory (Blog)</div>
+                        )}
+                    </div>
+                    
                     {/* Website */}
-                    <img
-                        src="/images/website_icon.png"
-                        alt="Website"
-                        style={iconStyle}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={onOpenBrowser}
-                    />
+                    <div style={{ position: 'relative' }}>
+                        <img
+                            src="/images/website_icon.png"
+                            alt="Website"
+                            style={iconStyle}
+                            onMouseEnter={(e) => handleMouseEnter(e, 'website')}
+                            onMouseLeave={handleMouseLeave}
+                            onClick={onOpenBrowser}
+                        />
+                        {activeTooltip === 'website' && (
+                            <div style={tooltipStyle}>Peri Labs (Website)</div>
+                        )}
+                    </div>
                 </div>
             </div>
         </>

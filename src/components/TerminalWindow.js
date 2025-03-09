@@ -185,6 +185,9 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
         setIsDragging(true);
         const rect = windowRef.current.getBoundingClientRect();
         setDragOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        // Prevent focusing input when dragging from title bar
+        e.preventDefault();
+        e.stopPropagation();
     };
 
     const handleMouseDownResizer = (e, edge) => {
@@ -201,6 +204,9 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     const handleCommand = (cmd) => {
         pushLine('text', `guest@advait.tech:~ $ ${cmd}`);
         const c = cmd.trim().toLowerCase();
+
+        // Get the current number of lines to scroll to after command execution
+        const currentLineCount = lines.length;
 
         switch (c) {
             case 'help':
@@ -249,6 +255,16 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
             default:
                 pushLine('text', `Unrecognized command: ${cmd}`);
         }
+
+        // Scroll to the command line after a short delay to ensure DOM is updated
+        setTimeout(() => {
+            if (terminalBodyRef.current) {
+                const lineElements = terminalBodyRef.current.querySelectorAll('div');
+                if (lineElements.length > currentLineCount) {
+                    lineElements[currentLineCount].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }, 100);
     };
 
     const onKeyDown = (e) => {
@@ -263,6 +279,10 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
         if (e.target.tagName === 'SPAN' && e.target.style.textDecoration === 'underline') return;
         if (e.target.className && e.target.className.includes('dot')) return;
         
+        // Don't focus input if clicking on the title bar
+        if (e.target.className && e.target.className === styles.titleBar) return;
+        if (e.target.parentElement && e.target.parentElement.className === styles.dotContainer) return;
+        
         // Focus the input for typing
         if (inputRef.current) {
             inputRef.current.focus();
@@ -270,36 +290,36 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     };
 
     // This list is shown at the top
-    // For small screens, remove 'help' and 'print(resume)' commands
+    // For all screens, display commands vertically
     const isSmallScreen = screenSize.width < 600;
     const commandsList = isSmallScreen ? [
-        'print(intro)',
-        'print(research)',
-        'print(contact)',
-        'connect(x)',
-        'connect(linkedin)',
-        'clear',
+        { cmd: 'print(intro)', desc: 'About me' },
+        { cmd: 'print(research)', desc: 'Research' },
+        { cmd: 'print(contact)', desc: 'Contact Me' },
+        { cmd: 'connect(x)', desc: 'Connect on X' },
+        { cmd: 'connect(linkedin)', desc: 'Connect on LinkedIn' },
+        { cmd: 'clear', desc: 'Clear terminal' },
     ] : [
-        'print(intro)',
-        'print(resume)',
-        'print(research)',
-        'print(contact)',
-        'connect(x)',
-        'connect(linkedin)',
-        'help',
-        'clear',
+        { cmd: 'print(intro)', desc: 'About me' },
+        { cmd: 'print(resume)', desc: 'Resume' },
+        { cmd: 'print(research)', desc: 'Research' },
+        { cmd: 'print(contact)', desc: 'Contact Me' },
+        { cmd: 'connect(x)', desc: 'Connect on X' },
+        { cmd: 'connect(linkedin)', desc: 'Connect on LinkedIn' },
+        { cmd: 'help', desc: 'Show commands' },
+        { cmd: 'clear', desc: 'Clear terminal' },
     ];
 
     const commandStyle = {
         cursor: 'pointer',
-        display: isSmallScreen ? 'block' : 'inline-block',
-        margin: isSmallScreen ? '0.3rem 0' : '0 0.5rem',
+        display: 'block', // Always display vertically
+        margin: '0.3rem 0',
         textDecoration: 'underline',
     };
 
     let containerClass = styles.windowContainer;
     if (maximized) containerClass += ' ' + styles.maximized;
-    if (isSmallScreen) containerClass += ' ' + styles.commandListVertical;
+    containerClass += ' ' + styles.commandListVertical; // Always use vertical command list
 
     // If not maximized, use inline styles for pos and size
     const containerStyle = maximized
@@ -351,21 +371,21 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                 style={{ overflowY: 'auto' }}
             >
                 {/* Command list */}
-                <div style={{ marginBottom: '1rem', color: '#58a6ff' }} className={isSmallScreen ? styles.commandListVertical : ''}>
-                    {commandsList.map((c, idx) => (
+                <div style={{ marginBottom: '1rem', color: '#58a6ff' }} className={styles.commandListVertical}>
+                    {commandsList.map((item, idx) => (
                         <span
                             key={idx}
                             style={commandStyle}
-                            onClick={() => handleCommand(c)}
+                            onClick={() => handleCommand(item.cmd)}
                         >
-                            {c}
+                            {item.cmd} <span style={{ color: '#bbb', textDecoration: 'none', fontSize: '0.85em' }}>- {item.desc}</span>
                         </span>
                     ))}
                 </div>
                 
                 {/* Help message */}
                 <div style={{ marginBottom: '1rem', color: '#bbb' }}>
-                    Use the <span style={{ color: '#58a6ff', cursor: 'pointer' }} onClick={() => handleCommand('help')}>help</span> command for help
+                    Use the <span style={{ color: '#58a6ff', cursor: 'pointer' }} onClick={() => handleCommand('help')}>help</span> command for help. All the above commands are clickable.
                 </div>
 
                 {/* Terminal lines */}

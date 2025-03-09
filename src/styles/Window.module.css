@@ -114,29 +114,29 @@
 .resizer-l {
     width: 8px;
     left: 0;
-    top: 0;
-    bottom: 0;
+    top: 20px; /* Avoid overlap with corner */
+    bottom: 20px; /* Avoid overlap with corner */
     cursor: w-resize;
 }
 .resizer-r {
     width: 8px;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 20px; /* Avoid overlap with corner */
+    bottom: 20px; /* Avoid overlap with corner */
     cursor: e-resize;
 }
 .resizer-t {
     height: 8px;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 20px; /* Avoid overlap with corner */
+    right: 20px; /* Avoid overlap with corner */
     cursor: n-resize;
 }
 .resizer-b {
     height: 8px;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 20px; /* Avoid overlap with corner */
+    right: 20px; /* Avoid overlap with corner */
     cursor: s-resize;
 }
 
