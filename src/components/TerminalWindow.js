@@ -293,21 +293,21 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
     // For all screens, display commands vertically
     const isSmallScreen = screenSize.width < 600;
     const commandsList = isSmallScreen ? [
-        { cmd: 'print(intro)', desc: 'About me' },
-        { cmd: 'print(research)', desc: 'Research' },
-        { cmd: 'print(contact)', desc: 'Contact Me' },
-        { cmd: 'connect(x)', desc: 'Connect on X' },
-        { cmd: 'connect(linkedin)', desc: 'Connect on LinkedIn' },
-        { cmd: 'clear', desc: 'Clear terminal' },
+        { desc: 'About Me', cmd: 'print(intro)' },
+        { desc: 'Research', cmd: 'print(research)' },
+        { desc: 'Contact Me', cmd: 'print(contact)' },
+        { desc: 'Connect on X', cmd: 'connect(x)' },
+        { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
+        { desc: 'Clear terminal', cmd: 'clear' },
     ] : [
-        { cmd: 'print(intro)', desc: 'About me' },
-        { cmd: 'print(resume)', desc: 'Resume' },
-        { cmd: 'print(research)', desc: 'Research' },
-        { cmd: 'print(contact)', desc: 'Contact Me' },
-        { cmd: 'connect(x)', desc: 'Connect on X' },
-        { cmd: 'connect(linkedin)', desc: 'Connect on LinkedIn' },
-        { cmd: 'help', desc: 'Show commands' },
-        { cmd: 'clear', desc: 'Clear terminal' },
+        { desc: 'About Me', cmd: 'print(intro)' },
+        { desc: 'Resume', cmd: 'print(resume)' },
+        { desc: 'Research', cmd: 'print(research)' },
+        { desc: 'Contact Me', cmd: 'print(contact)' },
+        { desc: 'Connect on X', cmd: 'connect(x)' },
+        { desc: 'Connect on LinkedIn', cmd: 'connect(linkedin)' },
+        { desc: 'Show commands', cmd: 'help' },
+        { desc: 'Clear terminal', cmd: 'clear' },
     ];
 
     const commandStyle = {
@@ -388,7 +388,7 @@ export default function TerminalWindow({ onClose, onMinimize, onMaximize, isMaxi
                             style={commandStyle}
                             onClick={() => handleCommand(item.cmd)}
                         >
-                            {item.cmd} <span style={{ color: '#bbb', textDecoration: 'none', fontSize: '0.85em' }}>- {item.desc}</span>
+                            {item.desc}: <span style={{ color: '#bbb', textDecoration: 'none', fontSize: '0.85em' }}>{item.cmd}</span>
                         </span>
                     ))}
                 </div>
