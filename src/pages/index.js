@@ -7,7 +7,7 @@ import BlogWindow from '../components/BlogWindow';
 import BrowserWindow from '../components/BrowserWindow';
 import { Analytics } from "@vercel/analytics/react";
 // Import SpeedInsights directly without next
-import { SpeedInsights } from "@vercel/speed-insights/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
     // Terminal states
