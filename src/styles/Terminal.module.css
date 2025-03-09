@@ -1,0 +1,103 @@
+.terminalWindow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 75vw;
+    height: 75vh;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4); /* More transparent */
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Maximize full screen */
+.maximized {
+    width: 100vw !important;
+    height: 100vh !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+/* Title bar for mac style */
+.titleBar {
+    background-color: #333;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    user-select: none;
+    cursor: move; /* we'll override the dots to pointer, see below */
+}
+
+/* Dots container */
+.dotContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+
+    /* On hover => pointer instead of move */
+    cursor: pointer;
+}
+.closeDot {
+    background-color: #ff5f56;
+}
+.minDot {
+    background-color: #ffbd2e;
+}
+.maxDot {
+    background-color: #27c93f;
+}
+
+/* The terminal body is scrollable */
+.terminalBody {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 1rem;
+    color: #ddd;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+/* command links */
+.commandLinks {
+    margin: 1rem 0;
+}
+.commandLink {
+    cursor: pointer;
+    color: #58a6ff;
+    margin: 0 0.5rem;
+}
+.commandLink:hover {
+    text-decoration: underline;
+}
+
+/* input line/prompt */
+.promptLine {
+    display: flex;
+    margin-top: 1rem;
+}
+.prompt {
+    color: #bbb;
+    margin-right: 0.5rem;
+}
+.inputArea {
+    border: none;
+    background: transparent;
+    color: #ddd;
+    outline: none;
+    flex: 1;
+}
+

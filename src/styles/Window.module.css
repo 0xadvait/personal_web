@@ -1,0 +1,173 @@
+.windowContainer {
+    position: absolute;
+    /* By default, let's store the width/height in inline style from JS. Remove the fixed 70vw, 60vh. */
+    /* width: 70vw; */
+    /* height: 60vh; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    overflow: hidden;
+    transition: width 0.3s, height 0.3s, left 0.3s, top 0.3s;
+    max-width: 90vw;
+    max-height: 85vh;
+
+    /* Stop user from dragging windows behind the dock - 100px from bottom */
+    /* We'll clamp the container so it can't go below bottom: */
+    /* But we rely on JS bounding checks to be robust. This is a basic approach. */
+}
+
+.maximized {
+    width: 100vw !important;
+    height: 100vh !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+.titleBar {
+    background-color: #333;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    user-select: none;
+    cursor: move;
+}
+
+/* Mac traffic-lights */
+.dotContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+.closeDot {
+    background-color: #ff5f56;
+}
+.minDot {
+    background-color: #ffbd2e;
+}
+.maxDot {
+    background-color: #27c93f;
+}
+
+.windowBody {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+    color: #ddd;
+}
+
+/* --- Resizing corners & edges --- */
+.resizer {
+    position: absolute;
+    background: transparent;
+    z-index: 20;
+}
+.resizer:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* corners: bottom-right, bottom-left, top-right, top-left */
+.resizer-br {
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+}
+.resizer-bl {
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
+}
+.resizer-tr {
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+}
+.resizer-tl {
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+}
+
+/* edges: left, right, top, bottom */
+.resizer-l {
+    width: 8px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    cursor: w-resize;
+}
+.resizer-r {
+    width: 8px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: e-resize;
+}
+.resizer-t {
+    height: 8px;
+    top: 0;
+    left: 0;
+    right: 0;
+    cursor: n-resize;
+}
+.resizer-b {
+    height: 8px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: s-resize;
+}
+
+/* We'll just place corners & edges absolutely. We'll handle the logic in JS. */
+
+/* For screens under 600px, let's stack terminal commands vertically */
+@media (max-width: 600px) {
+    .commandListVertical {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .windowContainer {
+        max-width: 95vw;
+        max-height: 80vh;
+        width: 95vw !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .windowContainer {
+        max-width: 90vw;
+        max-height: 85vh;
+    }
+}
+
+@media (min-width: 901px) {
+    .windowContainer {
+        max-width: 80vw;
+        max-height: 80vh;
+    }
+}
