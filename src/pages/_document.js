@@ -6,8 +6,8 @@ export default function Document() {
             <Head>
                 {/* Keep meta description or other shared meta here */}
                 <meta
-                    name="description"
-                    content="macOS desktop with wallpaper"
+                    name="Advait Jayant"
+                    content="Advait's Intro Page"
                 />
             </Head>
             <body>
