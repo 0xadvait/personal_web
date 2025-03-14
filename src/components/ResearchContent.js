@@ -95,7 +95,7 @@ export default function ResearchContent() {
             </p>
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
-                I'm currently focused on developing novel consensus mechanisms for distributed AI training and inference across heterogeneous hardware.
+                I'm currently focused on finding yield opportunities in the AiFi landscape. At Peri Labs, we have a thesis that credit-based money markets can solve the growing needs of AI and DePIN protocols. I am excited to find profitable yield opportunities on the intersection of DePIN and DeFi.
             </p>
         </section>
     );
