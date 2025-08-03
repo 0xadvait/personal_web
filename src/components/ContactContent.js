@@ -60,8 +60,8 @@ export default function ContactContent() {
             
             <div style={contactItemStyle}>
                 <span style={contactLabelStyle}>Email:</span>
-                <a href="mailto:aj@perilabs.net" style={linkStyle}>
-                    aj@perilabs.net
+                <a href="mailto:advait@vannalabs.ai" style={linkStyle}>
+                    advait@vannalabs.ai
                 </a>
             </div>
             
@@ -79,25 +79,13 @@ export default function ContactContent() {
             
             <div style={contactItemStyle}>
                 <span style={contactLabelStyle}>Twitter:</span>
-                <a 
-                    href="https://twitter.com/advait_peri" 
-                    style={linkStyle}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    @advait_peri
-                </a>
-            </div>
-            
-            <div style={contactItemStyle}>
-                <span style={contactLabelStyle}>Peri Labs:</span>
                 <a
-                    href="https://www.perilabs.net"
+                    href="https://x.com/advait_jayant"
                     style={linkStyle}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    perilabs.net
+                    @advait_jayant
                 </a>
             </div>
             

@@ -25,6 +25,7 @@ export default function Home() {
     const [browserOpen, setBrowserOpen] = useState(false);
     const [browserMinimized, setBrowserMinimized] = useState(false);
     const [browserMaximized, setBrowserMaximized] = useState(false);
+    const [browserUrl, setBrowserUrl] = useState('');
 
     // Window positioning state
     const [windowPosition, setWindowPosition] = useState({
@@ -86,7 +87,8 @@ export default function Home() {
     };
 
     // Browser actions
-    const openBrowser = () => {
+    const openBrowser = (url) => {
+        setBrowserUrl(url);
         setBrowserOpen(true);
         setBrowserMinimized(false);
     };
@@ -159,6 +161,7 @@ export default function Home() {
                     onMaximize={maximizeBrowser}
                     isMaximized={browserMaximized}
                     position={!browserMaximized ? windowPosition : undefined}
+                    url={browserUrl}
                 />
             )}
 

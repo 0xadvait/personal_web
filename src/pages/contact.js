@@ -8,18 +8,10 @@ export default function Contact() {
                 For discussions on AI, blockchain, or new opportunities, feel free to reach out:
             </p>
             <p style={regularText}>
-                Email: <a href="mailto:aj@perilabs.net" style={linkStyle}>aj@perilabs.net</a>
+                Email: <a href="mailto:advait@vannalabs.ai" style={linkStyle}>advait@vannalabs.ai</a>
             </p>
-            <p style={{ ...regularText, marginTop: '1rem' }}>
-                More about <strong>Peri Labs</strong>:
-                <a
-                    href="https://www.perilabs.net"
-                    style={linkStyle}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    &nbsp;perilabs.net
-                </a>
+            <p style={regularText}>
+                Twitter: <a href="https://x.com/advait_jayant" style={linkStyle} target="_blank" rel="noopener noreferrer">@advait_jayant</a>
             </p>
         </section>
     );

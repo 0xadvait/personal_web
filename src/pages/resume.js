@@ -7,7 +7,7 @@ export default function Resume() {
             <div>
                 <p style={regularText}>
                     <strong>Advait Jayant</strong><br />
-                    Email: <a href="mailto:aj@perilabs.net" style={linkStyle}>aj@perilabs.net</a><br />
+                    Email: <a href="mailto:advait@vannalabs.ai" style={linkStyle}>advait@vannalabs.ai</a><br />
                     Phone: +44 7843 440 997
                 </p>
                 <br />

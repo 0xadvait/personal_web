@@ -70,9 +70,9 @@ export default function ResumeContent() {
             <div style={dynamicStyles.regularText}>
                 <strong style={dynamicStyles.nameStyle}>Advait Jayant</strong>
                 <br />
-                Email:{' '}
-                <a href="mailto:aj@perilabs.net" style={linkStyle}>
-                    aj@perilabs.net
+                Email{' '}
+                <a href="mailto:advait@vannalabs.ai" style={linkStyle}>
+                    advait@vannalabs.ai
                 </a>
             </div>
 
@@ -96,10 +96,67 @@ export default function ResumeContent() {
             {/* Professional Experience */}
             <h2 style={dynamicStyles.subHeader}>Professional Experience</h2>
 
+            {/* Aivos Labs */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>
+                    2025 – Present |{' '}
+                    <a
+                        href="https://www.aivoslabs.com/"
+                        style={linkStyle}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Aivos Labs
+                    </a>
+                </h3>
+                <div style={positionStyle}>Cofounder &amp; Director (CTO)</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>Developing privacy-preserving deployment rails for frontier AI models.</li>
+            </ul>
+
+            {/* Vanna Labs */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>
+                    2025 – Present |{' '}
+                    <a
+                        href="https://www.vannalabs.ai/"
+                        style={linkStyle}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Vanna Labs Inc. (BVI)
+                    </a>
+                </h3>
+                <div style={positionStyle}>Chief Strategy Officer</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>Redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
+            </ul>
+
+            {/* OpenGradient */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>
+                    2025 – Present |{' '}
+                    <a
+                        href="https://www.opengradient.ai/"
+                        style={linkStyle}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        OpenGradient
+                    </a>
+                </h3>
+                <div style={positionStyle}>Strategic Advisor</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>Part-time, remote from London; no U.S. payroll or on-site duties.</li>
+            </ul>
+
             {/* Peri Labs */}
             <div style={experienceHeader}>
                 <h3 style={dynamicStyles.subHeaderMinor}>
-                    2024 – Present |{' '}
+                    2024 – 2025 |{' '}
                     <a
                         href="https://www.perilabs.net/"
                         style={linkStyle}
