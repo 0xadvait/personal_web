@@ -87,13 +87,31 @@ export default function IntroContent() {
             </p>
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
-                <strong>Work:</strong> Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
+                Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
                 Previously, I authored 57+ publications on AI at O'Reilly Media, lectured at University College London,
                 and pursued a PhD at London Business School.
             </p>
 
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1rem', marginBottom: '0.3rem' }}>
+                <strong>Work</strong>
+            </p>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
+                <li>Cofounder &amp; Director (CTO), Aivos Labs – developing privacy-preserving deployment rails for frontier AI models.</li>
+                <li>Chief Strategy Officer, Vanna Labs Inc. (BVI) – redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
+                <li>Strategic Advisor, OpenGradient (US) – part-time, remote from London; no U.S. payroll or on-site duties.</li>
+            </ul>
+
+            <p style={{ ...dynamicStyles.regularText, marginTop: '1rem', marginBottom: '0.3rem' }}>
+                <strong>Previously</strong>
+            </p>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
+                <li>Founded SuperSight (200 k + users, $1.3 M raised) and Peri Labs (Imperial College spin-out, Edge-AI &amp; AiFi research)</li>
+                <li>Authored 50 + AI publications with O&rsquo;Reilly, lectured at UCL, and guest-lectured at LBS.</li>
+                <li>Recognised as UK Exceptional Talent (Tech Nation).</li>
+            </ul>
+
             <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem', marginBottom: '0.6rem' }}>
-                <em style={dynamicStyles.emphasisText}>Selected Publications & Talks:</em>
+                <em style={dynamicStyles.emphasisText}>Selected Publications &amp; Talks:</em>
             </p>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
                 <li>
@@ -160,8 +178,8 @@ export default function IntroContent() {
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem', display: 'flex', alignItems: 'center' }}>
                 <strong>Contact:</strong>&nbsp;
-                <a href="mailto:aj@perilabs.net" style={linkStyle} aria-label="Email Advait">
-                    aj@perilabs.net
+                <a href="mailto:advait@vannalabs.ai" style={linkStyle} aria-label="Email Advait">
+                    advait@vannalabs.ai
                 </a>
             </p>
         </section>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/Window.module.css';
 
-export default function BrowserWindow({ onClose, onMinimize, onMaximize, isMaximized, position }) {
+export default function BrowserWindow({ onClose, onMinimize, onMaximize, isMaximized, position, url }) {
     // 1) Detect if we're in a browser
     const isBrowser = typeof window !== 'undefined';
     // If server‐side, return null so Next can complete SSR/Static Build
@@ -211,9 +211,9 @@ export default function BrowserWindow({ onClose, onMinimize, onMaximize, isMaxim
             </div>
             <div className={styles.windowBody}>
                 <iframe
-                    src="https://www.perilabs.net"
+                    src={url}
                     style={{ width: '100%', height: '100%', border: 'none' }}
-                    title="PeriLabs"
+                    title="External Site"
                 />
             </div>
             

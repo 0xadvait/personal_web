@@ -138,18 +138,33 @@ export default function Dock({ onOpenTerminal, onOpenBlog, onOpenBrowser }) {
                         )}
                     </div>
                     
-                    {/* Website */}
+                    {/* OpenGradient */}
                     <div style={{ position: 'relative' }}>
                         <img
                             src="/images/website_icon.png"
-                            alt="Website"
+                            alt="OpenGradient"
                             style={iconStyle}
-                            onMouseEnter={(e) => handleMouseEnter(e, 'website')}
+                            onMouseEnter={(e) => handleMouseEnter(e, 'opengradient')}
                             onMouseLeave={handleMouseLeave}
-                            onClick={onOpenBrowser}
+                            onClick={() => onOpenBrowser('https://www.opengradient.ai/')}
                         />
-                        {activeTooltip === 'website' && (
-                            <div style={tooltipStyle}>Peri Labs (Website)</div>
+                        {activeTooltip === 'opengradient' && (
+                            <div style={tooltipStyle}>OpenGradient (Website)</div>
+                        )}
+                    </div>
+
+                    {/* Aivos Labs */}
+                    <div style={{ position: 'relative' }}>
+                        <img
+                            src="/images/website_icon.png"
+                            alt="Aivos Labs"
+                            style={iconStyle}
+                            onMouseEnter={(e) => handleMouseEnter(e, 'aivos')}
+                            onMouseLeave={handleMouseLeave}
+                            onClick={() => onOpenBrowser('https://www.aivoslabs.com/')}
+                        />
+                        {activeTooltip === 'aivos' && (
+                            <div style={tooltipStyle}>Aivos Labs (Website)</div>
                         )}
                     </div>
                 </div>

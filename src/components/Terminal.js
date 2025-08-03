@@ -96,8 +96,8 @@ export default function Terminal() {
             }
             case 'print(contact)':
                 pushLine('text', `CONTACT:
-  Email: aj@perilabs.net
-  Website: https://www.perilabs.net
+  Email: advait@vannalabs.ai
+  Twitter: https://x.com/advait_jayant
         `);
                 break;
             case 'clear':

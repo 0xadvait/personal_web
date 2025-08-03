@@ -234,12 +234,12 @@ export default function TerminalWindow({
                 break;
             case 'connect(x)':
                 window.open(
-                    'https://x.com/intent/follow?screen_name=advait_peri',
+                    'https://x.com/intent/follow?screen_name=advait_jayant',
                     '_blank'
                 );
                 pushLine(
                     'text',
-                    'Attempting to open X profile: @advait_peri in a new tab...'
+                    'Attempting to open X profile: @advait_jayant in a new tab...'
                 );
                 break;
             case 'connect(linkedin)':
