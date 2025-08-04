@@ -89,7 +89,7 @@ export default function IntroContent() {
                 <strong>Work</strong>
             </p>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
-                <li>Cofounder &amp; Director (CTO), Aivos Labs – developing privacy-preserving deployment rails for frontier AI models.</li>
+                <li>Cofounder, Aivos Labs – developing privacy-preserving deployment rails for frontier AI models.</li>
                 <li>Chief Strategy Officer, Vanna Labs Inc. (a BVI company, raised $9.5M from a16z) – redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
                 <li>Strategic Advisor, OpenGradient (US) – part-time, remote from London; no U.S. payroll or on-site duties.</li>
             </ul>
