@@ -85,19 +85,12 @@ export default function IntroContent() {
             <p style={dynamicStyles.regularText}>
                 Hi, I'm Advait. I'm based in London.
             </p>
-
-            <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
-                Founder and CEO @ Peri Labs, where we transform idle hardware into sustainable revenue streams.
-                Previously, I authored 57+ publications on AI at O'Reilly Media, lectured at University College London,
-                and pursued a PhD at London Business School.
-            </p>
-
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem', marginBottom: '0.3rem' }}>
                 <strong>Work</strong>
             </p>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
                 <li>Cofounder &amp; Director (CTO), Aivos Labs – developing privacy-preserving deployment rails for frontier AI models.</li>
-                <li>Chief Strategy Officer, Vanna Labs Inc. (BVI) – redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
+                <li>Chief Strategy Officer, Vanna Labs Inc. (a BVI company, raised $9.5M from a16z) – redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
                 <li>Strategic Advisor, OpenGradient (US) – part-time, remote from London; no U.S. payroll or on-site duties.</li>
             </ul>
 
