@@ -60,15 +60,15 @@ export default function ContactContent() {
             
             <div style={contactItemStyle}>
                 <span style={contactLabelStyle}>Email:</span>
-                <a href="mailto:advait@vannalabs.ai" style={linkStyle}>
-                    advait@vannalabs.ai
+                <a href="mailto:advait@opengradient.ai" style={linkStyle}>
+                    advait@opengradient.ai
                 </a>
             </div>
-            
+
             <div style={contactItemStyle}>
                 <span style={contactLabelStyle}>LinkedIn:</span>
-                <a 
-                    href="https://www.linkedin.com/in/advait-jayant-21b465bb/" 
+                <a
+                    href="https://www.linkedin.com/in/advaitjayant-21b465bb/"
                     style={linkStyle}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -76,7 +76,7 @@ export default function ContactContent() {
                     Advait Jayant
                 </a>
             </div>
-            
+
             <div style={contactItemStyle}>
                 <span style={contactLabelStyle}>Twitter:</span>
                 <a
@@ -88,9 +88,21 @@ export default function ContactContent() {
                     @advait_jayant
                 </a>
             </div>
-            
+
+            <div style={contactItemStyle}>
+                <span style={contactLabelStyle}>OpenGradient:</span>
+                <a
+                    href="https://opengradient.ai"
+                    style={linkStyle}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    opengradient.ai
+                </a>
+            </div>
+
             <p style={{ ...dynamicStyles.regularText, marginTop: '1.5rem' }}>
-                Based in London, but available for virtual meetings across time zones.
+                Based in London and New York.
             </p>
         </section>
     );

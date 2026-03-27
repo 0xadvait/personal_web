@@ -83,15 +83,19 @@ export default function IntroContent() {
         <section style={containerStyle}>
             <h1 style={dynamicStyles.mainHeader}>Intro</h1>
             <p style={dynamicStyles.regularText}>
-                Hi, I'm Advait. I'm based in London.
+                Hi, I'm Advait. I'm based in London and New York.
             </p>
+
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem', marginBottom: '0.3rem' }}>
                 <strong>Work</strong>
             </p>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1rem' }}>
-                <li>Cofounder, Aivos Labs – developing privacy-preserving deployment rails for frontier AI models.</li>
-                <li>Chief Strategy Officer, Vanna Labs Inc. (a BVI company, raised $9.5M from a16z) – redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
-                <li>Strategic Advisor, OpenGradient (US) – part-time, remote from London; no U.S. payroll or on-site duties.</li>
+                <li>Chief Strategy Officer at{' '}
+                    <a href="https://opengradient.ai" style={linkStyle} target="_blank" rel="noopener noreferrer">OpenGradient</a>
+                    {' '}– the network for open intelligence. $10M seed led by a16z crypto, with participation from Coinbase Ventures, SALT, and SVA.</li>
+                <li>Cofounder,{' '}
+                    <a href="https://aivoslabs.com" style={linkStyle} target="_blank" rel="noopener noreferrer">Aivos Labs</a>
+                    {' '}– developing privacy-preserving deployment rails for frontier AI models.</li>
             </ul>
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem', marginBottom: '0.3rem' }}>
@@ -171,8 +175,8 @@ export default function IntroContent() {
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1.2rem', display: 'flex', alignItems: 'center' }}>
                 <strong>Contact:</strong>&nbsp;
-                <a href="mailto:advait@vannalabs.ai" style={linkStyle} aria-label="Email Advait">
-                    advait@vannalabs.ai
+                <a href="mailto:advait@opengradient.ai" style={linkStyle} aria-label="Email Advait">
+                    advait@opengradient.ai
                 </a>
             </p>
         </section>

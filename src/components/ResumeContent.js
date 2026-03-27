@@ -70,9 +70,9 @@ export default function ResumeContent() {
             <div style={dynamicStyles.regularText}>
                 <strong style={dynamicStyles.nameStyle}>Advait Jayant</strong>
                 <br />
-                Email{' '}
-                <a href="mailto:advait@vannalabs.ai" style={linkStyle}>
-                    advait@vannalabs.ai
+                Email:{' '}
+                <a href="mailto:advait@opengradient.ai" style={linkStyle}>
+                    advait@opengradient.ai
                 </a>
             </div>
 
@@ -82,9 +82,11 @@ export default function ResumeContent() {
                 <li>
                     <strong>London Business School (England)</strong>
                     <br />
-                    PhD in Accounting with Blockchain specialization (Full Scholarship)
+                    PhD candidate (on leave) — Capital Markets
                     <br />
-                    Masters in Analytics &amp; Management
+                    MRes in Capital Markets
+                    <br />
+                    MSc in Analytics &amp; Management
                 </li>
                 <li style={{ marginTop: '0.8rem' }}>
                     <strong>BITS Pilani (India)</strong>
@@ -96,50 +98,12 @@ export default function ResumeContent() {
             {/* Professional Experience */}
             <h2 style={dynamicStyles.subHeader}>Professional Experience</h2>
 
-            {/* Aivos Labs */}
-            <div style={experienceHeader}>
-                <h3 style={dynamicStyles.subHeaderMinor}>
-                    2025 – Present |{' '}
-                    <a
-                        href="https://www.aivoslabs.com/"
-                        style={linkStyle}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Aivos Labs
-                    </a>
-                </h3>
-                <div style={positionStyle}>Cofounder &amp; Director (CTO)</div>
-            </div>
-            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>Developing privacy-preserving deployment rails for frontier AI models.</li>
-            </ul>
-
-            {/* Vanna Labs */}
-            <div style={experienceHeader}>
-                <h3 style={dynamicStyles.subHeaderMinor}>
-                    2025 – Present |{' '}
-                    <a
-                        href="https://www.vannalabs.ai/"
-                        style={linkStyle}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Vanna Labs Inc. (BVI)
-                    </a>
-                </h3>
-                <div style={positionStyle}>Chief Strategy Officer</div>
-            </div>
-            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>Redesigning long-term memory for LLMs: user-owned, encrypted, persistent.</li>
-            </ul>
-
             {/* OpenGradient */}
             <div style={experienceHeader}>
                 <h3 style={dynamicStyles.subHeaderMinor}>
                     2025 – Present |{' '}
                     <a
-                        href="https://www.opengradient.ai/"
+                        href="https://opengradient.ai"
                         style={linkStyle}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -147,44 +111,18 @@ export default function ResumeContent() {
                         OpenGradient
                     </a>
                 </h3>
-                <div style={positionStyle}>Strategic Advisor</div>
+                <div style={positionStyle}>Chief Strategy Officer</div>
             </div>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>Part-time, remote from London; no U.S. payroll or on-site duties.</li>
-            </ul>
-
-            {/* Peri Labs */}
-            <div style={experienceHeader}>
-                <h3 style={dynamicStyles.subHeaderMinor}>
-                    2024 – 2025 |{' '}
-                    <a
-                        href="https://www.perilabs.net/"
-                        style={linkStyle}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Peri Labs
-                    </a>
-                </h3>
-                <div style={positionStyle}>Founder &amp; CEO</div>
-            </div>
-            <p style={{ ...dynamicStyles.regularText, fontStyle: 'italic', marginBottom: '0.5rem' }}>
-                Transform Idle Resources into High Yield-Bearing Assets
-            </p>
-            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
                 <li>
-                    Raised $X in venture funding from top-tier investors (currently in stealth mode).
-                </li>
-                <li>
-                    Built an elite technical team including researchers from Apple, engineering managers from NVIDIA, 
-                    and quantitative analysts from leading financial institutions.
+                    The network for open intelligence. $10M seed led by a16z crypto, with participation from Coinbase Ventures, SALT, and SVA.
                 </li>
             </ul>
 
             {/* SuperSight */}
             <div style={experienceHeader}>
                 <h3 style={dynamicStyles.subHeaderMinor}>
-                    2023 – 2024 |{' '}
+                    2022 – 2024 |{' '}
                     <a
                         href="https://supersight.xyz"
                         style={linkStyle}
@@ -197,47 +135,71 @@ export default function ResumeContent() {
                 <div style={positionStyle}>Founder &amp; CEO</div>
             </div>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>
-                    Designed and deployed specialized crypto LLMs achieving 97% inference reliability for domain-specific queries.
-                </li>
-                <li>
-                    Scaled platform to 200,000 total users with 70,000 monthly active users.
-                </li>
-                <li>
-                    Successfully raised $1.27M in venture capital during challenging market conditions (BTC at $16k).
-                </li>
+                <li>$1.5M raised. 200k+ users. AI copilot for onchain + offchain data. IP acquired.</li>
+            </ul>
+
+            {/* Aivos Labs */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>
+                    2025 – Present |{' '}
+                    <a
+                        href="https://aivoslabs.com"
+                        style={linkStyle}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Aivos Labs
+                    </a>
+                </h3>
+                <div style={positionStyle}>Cofounder</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>Developing privacy-preserving deployment rails for frontier AI models.</li>
+            </ul>
+
+            {/* Peri Labs */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>2024 – 2025 | Peri Labs</h3>
+                <div style={positionStyle}>Founder &amp; CEO</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>AI research lab anchored into Imperial College London. Received term sheets for $3M round. IP acquired.</li>
+            </ul>
+
+            {/* Fabric Ventures */}
+            <div style={experienceHeader}>
+                <h3 style={dynamicStyles.subHeaderMinor}>2021 – 2022 | Fabric Ventures</h3>
+                <div style={positionStyle}>Research Partner</div>
+            </div>
+            <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
+                <li>Head of Research at a UK-based VC fund ($140M AUM).</li>
             </ul>
 
             {/* UCL */}
             <div style={experienceHeader}>
-                <h3 style={dynamicStyles.subHeaderMinor}>2021 – 2022 | University College London (UCL)</h3>
-                <div style={positionStyle}>Lecturer (Portfolio Management, Crypto/Venture Capital)</div>
+                <h3 style={dynamicStyles.subHeaderMinor}>2022 – 2023 | University College London (UCL)</h3>
+                <div style={positionStyle}>Lecturer</div>
             </div>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>
-                    Pioneered CEGE0115, an innovative course integrating traditional portfolio management with 
-                    crypto investments, attracting 80+ students.
-                </li>
+                <li>CEGE0115: Portfolio Management.</li>
             </ul>
 
             {/* O'Reilly */}
             <div style={experienceHeader}>
-                <h3 style={dynamicStyles.subHeaderMinor}>2019 – 2021 | O&rsquo;Reilly Publications (USA)</h3>
-                <div style={positionStyle}>Author &amp; Course Instructor</div>
+                <h3 style={dynamicStyles.subHeaderMinor}>2019 – 2022 | O&rsquo;Reilly Media</h3>
+                <div style={positionStyle}>Author, Artificial Intelligence</div>
             </div>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1.2rem' }}>
-                <li>
-                    Created 50+ technical works on ML, NLP, Big Data, and Data Science,
-                    reaching over 100,000 learners on O&rsquo;Reilly Safari.
-                </li>
+                <li>50+ publications on AI, reaching 100,000+ learners.</li>
             </ul>
 
             {/* Publications & Awards */}
             <h2 style={dynamicStyles.subHeader}>Publications &amp; Awards</h2>
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginBottom: '1rem' }}>
+                <li>UK Tech Nation Exceptional Talent</li>
                 <li>MakerDAO Recognized Delegate</li>
-                <li>London Business School Full PhD Scholarship (£46k/year)</li>
-                <li>Global LBS Case Competition Winner</li>
+                <li>London Business School Full PhD Scholarship</li>
+                <li>Guest Speaker, London Business School (Digital Investing)</li>
             </ul>
         </section>
     );

@@ -53,7 +53,7 @@ export default function ResearchContent() {
             <h1 style={dynamicStyles.mainHeader}>Research</h1>
 
             <p style={dynamicStyles.regularText}>
-                At <strong>Peri Labs</strong>, I explore the intersection of advanced AI &amp; blockchain technologies. Select recent publications:
+                At <strong>OpenGradient</strong>, I work at the intersection of AI &amp; blockchain infrastructure. Select recent publications:
             </p>
 
             <ul style={{ ...dynamicStyles.regularText, marginLeft: '1.2rem', marginTop: '1rem', marginBottom: '1.2rem', lineHeight: '1.7' }}>
@@ -95,7 +95,7 @@ export default function ResearchContent() {
             </p>
 
             <p style={{ ...dynamicStyles.regularText, marginTop: '1rem' }}>
-                I'm currently focused on finding yield opportunities in the AiFi landscape. At Peri Labs, we have a thesis that credit-based money markets can solve the growing needs of AI and DePIN protocols. I am excited to find profitable yield opportunities on the intersection of DePIN and DeFi.
+                At OpenGradient, we're building the network for open intelligence — decentralized AI infrastructure backed by a16z crypto, Coinbase Ventures, and others.
             </p>
         </section>
     );
