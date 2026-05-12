@@ -1,5 +1,6 @@
 'use client';
 
+import { useReducedMotion } from 'motion/react';
 import Reveal from './Reveal';
 
 const layers = [
@@ -11,9 +12,11 @@ const layers = [
 ];
 
 export default function StackDiagram() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
-      aria-label="Verifiable inference stack diagram"
+      aria-labelledby="stack-heading"
       className="relative py-16 sm:py-24 md:py-32 border-t border-border"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -21,14 +24,16 @@ export default function StackDiagram() {
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10 md:mb-12">
             <span>FIG_001</span>
             <span className="h-px w-10 bg-accent/40" />
-            <span className="text-fg-dim">Verifiable inference stack</span>
+            <h2 id="stack-heading" className="text-fg-dim">
+              Verifiable inference stack
+            </h2>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="diag relative w-full">
-            <MobileStack />
-            <DesktopStack />
+            <MobileStack shouldReduceMotion={shouldReduceMotion} />
+            <DesktopStack shouldReduceMotion={shouldReduceMotion} />
           </div>
         </Reveal>
 
@@ -146,7 +151,7 @@ function Glyph({ id, x, y }) {
 }
 
 /* ─────────────── MOBILE — simple portrait stack with mini-glyphs ─────────────── */
-function MobileStack() {
+function MobileStack({ shouldReduceMotion }) {
   const W = 400;
   const PAD_X = 20;
   const BOX_X = 70;
@@ -156,6 +161,7 @@ function MobileStack() {
   const TOP_Y = 30;
   const total = layers.length * BOX_H + (layers.length - 1) * GAP;
   const H = TOP_Y + total + 30;
+  const packetY = shouldReduceMotion ? TOP_Y + total / 2 : TOP_Y - 4;
 
   return (
     <svg
@@ -184,21 +190,32 @@ function MobileStack() {
         className="dashed"
         opacity="0.6"
       />
-      <rect x={BOX_X - 22} y={TOP_Y - 4} width="8" height="3" className="fill">
-        <animate
-          attributeName="y"
-          from={TOP_Y - 4}
-          to={TOP_Y + total + 4}
-          dur="6s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0;1;1;0"
-          keyTimes="0;0.08;0.92;1"
-          dur="6s"
-          repeatCount="indefinite"
-        />
+      <rect
+        x={BOX_X - 22}
+        y={packetY}
+        width="8"
+        height="3"
+        className="fill"
+        opacity={shouldReduceMotion ? '0.45' : undefined}
+      >
+        {!shouldReduceMotion && (
+          <>
+            <animate
+              attributeName="y"
+              from={TOP_Y - 4}
+              to={TOP_Y + total + 4}
+              dur="6s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.08;0.92;1"
+              dur="6s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
       </rect>
 
       {layers.map((l, i) => {
@@ -285,7 +302,7 @@ function MobileStack() {
 }
 
 /* ─────────────── DESKTOP — axonometric exploded with glyphs ─────────────── */
-function DesktopStack() {
+function DesktopStack({ shouldReduceMotion }) {
   const BOX_W = 470;
   const BOX_H = 64;
   const OFFSET_X = 38;
@@ -295,6 +312,13 @@ function DesktopStack() {
   const TOP_Y = 90;
   const CANVAS_W = 1200;
   const CANVAS_H = TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + OFFSET_Y + 90;
+  const GUIDE_LEFT_X = LEFT_X;
+  const GUIDE_RIGHT_X = LEFT_X + BOX_W + OFFSET_X;
+  const OUTPUT_END_X = GUIDE_RIGHT_X + 96;
+  const OUTPUT_LABEL_X = OUTPUT_END_X + 14;
+  const lowerGuideY = TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30;
+  const downPacketY = shouldReduceMotion ? TOP_Y + ROW_GAP * 1.2 : TOP_Y - 30;
+  const upPacketY = shouldReduceMotion ? TOP_Y + ROW_GAP * 3.2 : lowerGuideY;
 
   return (
     <svg
@@ -322,66 +346,66 @@ function DesktopStack() {
       </defs>
       <rect width={CANVAS_W} height={CANVAS_H} fill="url(#diag-grid-d)" opacity="0.55" />
 
-      <line
-        x1={LEFT_X}
-        y1={TOP_Y - 30}
-        x2={LEFT_X}
-        y2={TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30}
-        className="dashed"
-        opacity="0.55"
-      />
-      <line
-        x1={LEFT_X + BOX_W + OFFSET_X}
-        y1={TOP_Y - 30}
-        x2={LEFT_X + BOX_W + OFFSET_X}
-        y2={TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30}
-        className="dashed"
-        opacity="0.55"
-      />
-
       {/* Animated packets */}
-      <rect x={LEFT_X - 4} y={TOP_Y - 30} width="8" height="3" className="fill">
-        <animate
-          attributeName="y"
-          from={TOP_Y - 30}
-          to={TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30}
-          dur="6s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0;1;1;0"
-          keyTimes="0;0.1;0.9;1"
-          dur="6s"
-          repeatCount="indefinite"
-        />
-      </rect>
       <rect
-        x={LEFT_X + BOX_W + OFFSET_X - 4}
-        y={TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30}
+        x={GUIDE_LEFT_X - 4}
+        y={downPacketY}
         width="8"
         height="3"
         className="fill"
+        opacity={shouldReduceMotion ? '0.45' : undefined}
       >
-        <animate
-          attributeName="y"
-          from={TOP_Y + ROW_GAP * (layers.length - 1) + BOX_H + 30}
-          to={TOP_Y - 30}
-          dur="6s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0;1;1;0"
-          keyTimes="0;0.1;0.9;1"
-          dur="6s"
-          repeatCount="indefinite"
-        />
+        {!shouldReduceMotion && (
+          <>
+            <animate
+              attributeName="y"
+              from={TOP_Y - 30}
+              to={lowerGuideY}
+              dur="6s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.1;0.9;1"
+              dur="6s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
+      </rect>
+      <rect
+        x={GUIDE_RIGHT_X - 4}
+        y={upPacketY}
+        width="8"
+        height="3"
+        className="fill"
+        opacity={shouldReduceMotion ? '0.45' : undefined}
+      >
+        {!shouldReduceMotion && (
+          <>
+            <animate
+              attributeName="y"
+              from={lowerGuideY}
+              to={TOP_Y - 30}
+              dur="6s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.1;0.9;1"
+              dur="6s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
       </rect>
 
       {layers.map((l, i) => {
         const y = TOP_Y + i * ROW_GAP;
         const topY = y - OFFSET_Y;
+        const midY = y + BOX_H / 2;
         const rightX = LEFT_X + BOX_W;
         const topRightX = rightX + OFFSET_X;
 
@@ -429,17 +453,17 @@ function DesktopStack() {
 
             {/* Right-side leader line + descriptor */}
             <line
-              x1={topRightX}
-              y1={y + BOX_H / 2 - 10}
-              x2={topRightX + 70}
-              y2={y + BOX_H / 2 - 10}
+              x1={GUIDE_RIGHT_X}
+              y1={midY}
+              x2={OUTPUT_END_X}
+              y2={midY}
               className="stroke-soft"
             />
             <polygon
-              points={`${topRightX + 70},${y + BOX_H / 2 - 13} ${topRightX + 76},${y + BOX_H / 2 - 10} ${topRightX + 70},${y + BOX_H / 2 - 7}`}
+              points={`${OUTPUT_END_X},${midY - 3} ${OUTPUT_END_X + 7},${midY} ${OUTPUT_END_X},${midY + 3}`}
               className="fill"
             />
-            <text x={topRightX + 84} y={y + BOX_H / 2 - 6} className="lbl">
+            <text x={OUTPUT_LABEL_X} y={midY + 4} className="lbl">
               {l.note.toUpperCase()}
             </text>
 
@@ -452,18 +476,20 @@ function DesktopStack() {
             {i < layers.length - 1 && (
               <>
                 <line
-                  x1={LEFT_X + 50}
+                  x1={GUIDE_LEFT_X}
                   y1={y + BOX_H}
-                  x2={LEFT_X + 50}
+                  x2={GUIDE_LEFT_X}
                   y2={y + ROW_GAP - OFFSET_Y}
                   className="dashed"
+                  opacity="0.55"
                 />
                 <line
-                  x1={rightX - 50}
+                  x1={GUIDE_RIGHT_X}
                   y1={y + BOX_H}
-                  x2={rightX - 50}
+                  x2={GUIDE_RIGHT_X}
                   y2={y + ROW_GAP - OFFSET_Y}
                   className="dashed"
+                  opacity="0.55"
                 />
               </>
             )}

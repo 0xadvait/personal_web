@@ -12,6 +12,7 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuId = 'mobile-navigation';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -19,6 +20,22 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const close = () => setOpen(false);
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') close();
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('hashchange', close);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('hashchange', close);
+    };
+  }, [open]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -33,23 +50,25 @@ export default function Nav() {
           <a
             href="#top"
             className="font-serif italic text-[15px] sm:text-base text-fg hover:text-accent transition-colors"
-            aria-label="Home"
+            aria-label="Advait Jayant home"
           >
             Advait Jayant
           </a>
 
-          <ul className="hidden md:flex items-center gap-7">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <nav className="hidden md:block" aria-label="Primary navigation">
+            <ul className="flex items-center gap-7">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <a
             href="#contact"
@@ -62,7 +81,8 @@ export default function Nav() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             className="md:hidden inline-flex h-10 w-10 -mr-2 items-center justify-center"
-            aria-label="Toggle menu"
+            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-controls={menuId}
             aria-expanded={open}
           >
             <span className="relative block h-3 w-4">
@@ -74,7 +94,11 @@ export default function Nav() {
         </div>
 
         {open && (
-          <div className="md:hidden border-t border-border bg-bg">
+          <nav
+            id={menuId}
+            className="md:hidden border-t border-border bg-bg"
+            aria-label="Mobile navigation"
+          >
             <ul className="mx-auto max-w-6xl px-5 py-4 flex flex-col gap-1">
               {links.map((l) => (
                 <li key={l.href}>
@@ -97,7 +121,7 @@ export default function Nav() {
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         )}
       </div>
     </header>

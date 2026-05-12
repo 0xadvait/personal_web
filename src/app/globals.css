@@ -50,6 +50,7 @@
 :root { color-scheme: light; }
 
 html {
+  scroll-padding-top: 5rem;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,6 +82,10 @@ button, a, input, select, textarea {
   color: var(--color-accent-deep);
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 .font-serif {
   font-family: var(--font-serif);
   font-feature-settings: 'kern' 1, 'liga' 1;
@@ -98,21 +103,12 @@ button, a, input, select, textarea {
           mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
 }
 
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-
-@keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
-}
-.marquee-track {
-  animation: marquee 60s linear infinite;
-  will-change: transform;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee-track { animation: none; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

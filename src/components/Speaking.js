@@ -59,13 +59,14 @@ export default function Speaking() {
                     href={t.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${t.title} at ${t.v} (opens in a new tab)`}
                     className="group grid gap-2 md:grid-cols-12 md:gap-10 py-5 sm:py-6 transition-colors hover:bg-surface-soft/60 -mx-4 px-4 sm:-mx-6 sm:px-6"
                   >
                     <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
                       {t.v}
                     </div>
                     <div className="md:col-span-9">
-                      <div className="font-serif text-lg sm:text-xl md:text-2xl tracking-[-0.005em] text-fg leading-snug group-hover:text-accent transition-colors">
+                      <div className="font-serif text-lg sm:text-xl md:text-2xl text-fg leading-snug group-hover:text-accent transition-colors">
                         {t.title}
                         <span aria-hidden className="ml-2 inline-block text-fg-faint transition-transform group-hover:translate-x-0.5">↗</span>
                       </div>
@@ -80,7 +81,7 @@ export default function Speaking() {
                       {t.v}
                     </div>
                     <div className="md:col-span-9">
-                      <div className="font-serif text-lg sm:text-xl md:text-2xl tracking-[-0.005em] text-fg leading-snug">
+                      <div className="font-serif text-lg sm:text-xl md:text-2xl text-fg leading-snug">
                         {t.title}
                       </div>
                       <div className="mt-1 font-serif italic text-[15px] text-fg-muted leading-relaxed">

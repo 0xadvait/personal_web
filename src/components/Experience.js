@@ -7,6 +7,7 @@ function AdvisorLink({ href, children }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`${children} (opens in a new tab)`}
       className="text-fg underline decoration-fg-faint underline-offset-[3px] hover:decoration-accent hover:text-accent transition-colors"
     >
       {children}
@@ -94,12 +95,13 @@ export default function Experience() {
                 </div>
                 <div className="md:col-span-9">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl md:text-[36px] tracking-[-0.012em] text-fg leading-[1.1]">
+                    <h3 className="font-serif text-2xl sm:text-3xl md:text-[36px] text-fg leading-[1.1]">
                       {r.href ? (
                         <a
                           href={r.href}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`${r.org} website (opens in a new tab)`}
                           className="hover:text-accent transition-colors"
                         >
                           {r.org}

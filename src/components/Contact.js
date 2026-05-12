@@ -21,7 +21,7 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.98] tracking-[-0.02em] text-fg max-w-4xl text-balance">
+          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.98] text-fg max-w-4xl text-balance">
             Let&apos;s <span className="italic text-accent">talk.</span>
           </h2>
         </Reveal>
@@ -40,13 +40,14 @@ export default function Contact() {
                   href={c.href}
                   target={c.href.startsWith('http') ? '_blank' : undefined}
                   rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={`${c.k}: ${c.v}${c.href.startsWith('http') ? ' (opens in a new tab)' : ''}`}
                   className="group flex items-center justify-between gap-4 py-5 sm:py-6 transition-colors hover:bg-surface-soft/60 -mx-4 px-4 sm:-mx-6 sm:px-6 min-h-[64px]"
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-10 min-w-0 flex-1">
                     <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-accent shrink-0 sm:w-[150px]">
                       {c.k}
                     </span>
-                    <span className="font-serif text-xl sm:text-2xl md:text-3xl text-fg truncate group-hover:text-accent transition-colors">
+                    <span className="font-serif text-xl sm:text-2xl md:text-3xl text-fg [overflow-wrap:anywhere] group-hover:text-accent transition-colors">
                       {c.v}
                     </span>
                   </div>

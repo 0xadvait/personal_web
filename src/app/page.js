@@ -7,12 +7,14 @@ import Work from '@/components/Work';
 import Speaking from '@/components/Speaking';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import StructuredData from '@/components/StructuredData';
 
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <Nav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <Hero />
         <About />
         <StackDiagram />

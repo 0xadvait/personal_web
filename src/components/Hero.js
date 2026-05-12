@@ -1,8 +1,22 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+  const fadeUp = (y = 18, delay = 0, duration = 0.9) =>
+    shouldReduceMotion
+      ? {
+          initial: false,
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0 },
+        }
+      : {
+          initial: { opacity: 0, y },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration, delay, ease: [0.22, 1, 0.36, 1] },
+        };
+
   return (
     <section id="top" className="relative isolate overflow-hidden">
       <div className="dot-field" aria-hidden />
@@ -10,18 +24,14 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="min-h-[88vh] sm:min-h-[92vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 sm:pb-28">
           <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-[56px] xs:text-[68px] sm:text-[88px] md:text-[104px] lg:text-[120px] leading-[0.98] tracking-[-0.02em] text-fg"
+            {...fadeUp()}
+            className="font-serif text-[56px] xs:text-[68px] sm:text-[88px] md:text-[104px] lg:text-[120px] leading-[0.98] text-fg"
           >
             Advait <span className="italic text-accent">Jayant</span>
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            {...fadeUp(18, 0.18)}
             className="mt-8 sm:mt-10 max-w-2xl font-serif text-lg sm:text-xl md:text-[22px] leading-[1.55] text-fg space-y-3"
           >
             <p>
@@ -35,6 +45,7 @@ export default function Hero() {
                 href="https://opengradient.ai"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="OpenGradient website (opens in a new tab)"
                 className="text-accent hover:underline underline-offset-[3px]"
               >
                 OpenGradient
@@ -48,9 +59,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.34 }}
+            {...fadeUp(12, 0.34, 0.8)}
             className="mt-10 sm:mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em]"
           >
             <a href="#about" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
@@ -68,15 +77,11 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="pb-10 font-mono text-[10.5px] tracking-[0.16em] text-fg-dim"
+          {...fadeUp(0, 0.6, 1)}
+          className="pb-10 font-mono text-[12px] tracking-[0.1em] text-fg"
         >
-          <span className="inline-flex items-center gap-2" aria-label="Location — London">
-            <span aria-hidden>📍</span>
-            <span aria-hidden>-</span>
-            <span>London</span>
+          <span className="inline-flex items-center" aria-label="Location: London">
+            <span aria-hidden>📍 - London</span>
           </span>
         </motion.div>
       </div>

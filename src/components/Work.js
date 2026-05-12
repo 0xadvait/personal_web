@@ -82,14 +82,14 @@ function Card({ item }) {
           href={primaryHref}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={primaryLabel}
+          aria-label={`${primaryLabel} (opens in a new tab)`}
           className="text-fg-faint group-hover:text-accent transition-colors before:content-[''] before:absolute before:inset-0 before:z-0 focus-visible:outline-offset-4"
         >
           <span aria-hidden>↗</span>
         </a>
       </div>
 
-      <h3 className="mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] tracking-[-0.01em] text-fg group-hover:text-accent transition-colors">
+      <h3 className="mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] text-fg group-hover:text-accent transition-colors">
         {item.title}
       </h3>
       <p className="mt-3 font-serif text-[14.5px] sm:text-[15px] leading-[1.55] text-fg-muted">
@@ -104,6 +104,7 @@ function Card({ item }) {
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${l.label} for ${item.title} (opens in a new tab)`}
               className="group/pill inline-flex items-center gap-1.5 rounded-[3px] border border-border bg-bg px-3.5 py-2 min-h-[36px] font-mono text-[10.5px] uppercase tracking-[0.12em] text-fg-muted hover:border-accent hover:text-accent transition-colors"
             >
               {l.label}
