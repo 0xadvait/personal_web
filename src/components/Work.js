@@ -7,6 +7,7 @@ const items = [
     label: 'Film',
     title: 'OpenGradient — film work',
     desc: 'Producer, director, writer. Part of the campaign that took the OpenGradient X account past 50M+ views.',
+    impact: '50M+ views',
     links: [
       { label: 'Flagship', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
@@ -18,6 +19,7 @@ const items = [
     label: 'Report · 2024',
     title: 'The State of Edge AI',
     desc: 'First author. Real-time data, privacy, and deployment strategies for large models at the edge. 174K+ X impressions, 6 academic citations.',
+    impact: '174K+ impressions',
     links: [
       { label: 'PDF', href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf' },
       { label: 'Launch tweet', href: 'https://x.com/advait_jayant/status/1844420752323510351' },
@@ -28,6 +30,7 @@ const items = [
     label: 'Report',
     title: 'The AiFi Thesis',
     desc: 'A framework for combining AI and DeFi to tokenize computation, training data, and ML models.',
+    impact: 'AI x DeFi thesis',
     href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
   },
   {
@@ -35,6 +38,7 @@ const items = [
     label: 'Paper · SSRN',
     title: 'The Economics of Wash Trading',
     desc: 'Microstructure and incentive design behind manufactured volume in digital-asset markets.',
+    impact: 'Market structure',
     href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
   },
   {
@@ -42,15 +46,20 @@ const items = [
     label: 'Talk',
     title: 'FHE for Consensus in AI Models',
     desc: 'Using fully-homomorphic encryption to coordinate trustless consensus across model outputs.',
+    impact: 'Verifiable compute',
     href: 'https://www.youtube.com/watch?v=4s_IhcMoOks',
   },
 ];
 
 export default function Work() {
   return (
-    <section id="work" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+    <section id="work" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border bg-surface/40">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeader index="03" title="Writing" lede="A few things I've written and made." />
+        <SectionHeader
+          index="04"
+          title="Selected work"
+          lede="Research, media, and talks that move technical ideas into the market."
+        />
 
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
           {items.map((it, i) => (
@@ -70,8 +79,9 @@ function Card({ item }) {
   const primaryLabel = item.href ? item.title : `${item.title} — ${item.links?.[0]?.label}`;
 
   return (
-    <div className="group relative h-full rounded-[3px] border border-border bg-surface p-6 sm:p-7 md:p-8 transition-all hover:border-accent hover:-translate-y-0.5">
-      <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
+    <div className="group relative flex h-full min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent sm:p-7 md:p-8">
+      <div aria-hidden className="absolute inset-x-0 top-0 h-1 bg-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
+      <div className="relative z-10 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
         <span>
           <span className="text-accent">{item.num}</span>
           <span className="text-fg-faint mx-2">·</span>
@@ -89,15 +99,19 @@ function Card({ item }) {
         </a>
       </div>
 
-      <h3 className="mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] text-fg group-hover:text-accent transition-colors">
+      <h3 className="relative z-10 mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] text-fg group-hover:text-accent transition-colors">
         {item.title}
       </h3>
-      <p className="mt-3 font-serif text-[14.5px] sm:text-[15px] leading-[1.55] text-fg-muted">
+      <p className="relative z-10 mt-3 font-serif text-[14.5px] sm:text-[15px] leading-[1.55] text-fg-muted">
         {item.desc}
       </p>
 
+      <div className="relative z-10 mt-5 inline-flex w-fit border-y border-border py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt">
+        {item.impact}
+      </div>
+
       {item.links && (
-        <div className="relative z-10 mt-5 flex flex-wrap gap-2">
+        <div className="relative z-10 mt-auto pt-6 flex flex-wrap gap-2">
           {item.links.map((l) => (
             <a
               key={l.href}

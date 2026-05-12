@@ -3,25 +3,26 @@
 @theme {
   --breakpoint-xs: 420px;
 
-  /* Warm paper palette — adopted from advait's bps-2024-visual */
-  --color-bg: #faf8f1;
-  --color-surface: #fffdf6;
-  --color-surface-soft: #f4f1e6;
+  /* Quiet editorial palette with technical accents */
+  --color-bg: #f7f7f2;
+  --color-surface: #ffffff;
+  --color-surface-soft: #eef2ee;
 
-  /* Ink scale — slate, no pure black */
-  --color-fg: #1f2937;
-  --color-fg-muted: #4b5563;
-  --color-fg-dim: #9ca3af;
-  --color-fg-faint: #cdc8b8;
+  /* Ink scale — no pure black */
+  --color-fg: #1d2528;
+  --color-fg-muted: #4d5b60;
+  --color-fg-dim: #8c9895;
+  --color-fg-faint: #c5cbc2;
 
-  /* Warm hairline borders */
-  --color-border: #e5e1d3;
-  --color-border-soft: #efebe0;
+  /* Hairline borders */
+  --color-border: #dde2da;
+  --color-border-soft: #ebeee8;
 
-  /* Single bright accent — bps indigo-blue */
-  --color-accent: #2347d9;
-  --color-accent-deep: #1d3aa8;
-  --color-accent-soft: #eef2ff;
+  --color-accent: #2446c7;
+  --color-accent-deep: #162f84;
+  --color-accent-soft: #edf3ff;
+  --color-accent-alt: #0f766e;
+  --color-accent-warm: #9a3412;
 
   --color-success: #2f8f5b;
 
@@ -32,20 +33,20 @@
 }
 
 /* Technical-diagram styles — adopted from bps-2024-visual .diag */
-.diag .stroke   { stroke: #2347d9; fill: none; stroke-width: 1.2; }
-.diag .stroke-2 { stroke: #2347d9; fill: none; stroke-width: 1.8; }
+.diag .stroke   { stroke: #2446c7; fill: none; stroke-width: 1.2; }
+.diag .stroke-2 { stroke: #2446c7; fill: none; stroke-width: 1.8; }
 .diag .stroke-soft { stroke: #6f87df; fill: none; stroke-width: 1; }
-.diag .dashed   { stroke: #2347d9; fill: none; stroke-width: 0.8; stroke-dasharray: 3 3; }
-.diag .fill     { fill: #2347d9; }
-.diag .fill-soft { fill: #eef2ff; }
-.diag .fill-mid  { fill: #c5d3f4; }
-.diag .fill-paper { fill: #fffdf6; }
-.diag .fill-bg    { fill: #faf8f1; }
-.diag .grid       { stroke: #d8e0f5; fill: none; stroke-width: 0.4; }
-.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11.5px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.diag .dashed   { stroke: #2446c7; fill: none; stroke-width: 0.8; stroke-dasharray: 3 3; }
+.diag .fill     { fill: #2446c7; }
+.diag .fill-soft { fill: #edf3ff; }
+.diag .fill-mid  { fill: #c6d4f5; }
+.diag .fill-paper { fill: #ffffff; }
+.diag .fill-bg    { fill: #f7f7f2; }
+.diag .grid       { stroke: #d7dfef; fill: none; stroke-width: 0.4; }
+.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11.5px; fill: #2446c7; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
 .diag .lbl-soft   { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10.5px; fill: #6b7280; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
-.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13.5px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
-.diag .lbl-body   { font-family: var(--font-serif), serif; font-size: 12px; fill: #1f2937; }
+.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13.5px; fill: #2446c7; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+.diag .lbl-body   { font-family: var(--font-serif), serif; font-size: 12px; fill: #1d2528; }
 
 :root { color-scheme: light; }
 
@@ -63,6 +64,10 @@ html, body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: 'ss01', 'cv11', 'kern', 'liga';
   overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
 }
 
 button, a, input, select, textarea {
@@ -97,10 +102,28 @@ section[id] {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(35, 71, 217, 0.10) 1px, transparent 1px);
-  background-size: 28px 28px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
-          mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
+  background-image:
+    radial-gradient(rgba(36, 70, 199, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 118, 110, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px, 112px 112px;
+  -webkit-mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
+          mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
+}
+
+.section-band {
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.34), transparent 18rem),
+    var(--color-bg);
+}
+
+.hero-name-break {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .hero-name-break {
+    display: inline;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

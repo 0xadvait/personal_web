@@ -7,14 +7,20 @@ const meta = [
   { k: 'Education', v: 'LBS · BITS Pilani' },
 ];
 
+const outcomes = [
+  { k: 'Revenue', v: '7 figures', d: 'new AI infrastructure product' },
+  { k: 'Reach', v: '50M+', d: 'OpenGradient campaign views' },
+  { k: 'Launches', v: '1K+', d: 'Korea event attendees in a week' },
+];
+
 export default function About() {
   return (
-    <section id="about" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+    <section id="about" className="section-band relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="01"
+          index="02"
           title="About"
-          lede="Most production AI asks you to trust the operator. I'm building the alternative."
+          lede="I work where AI systems stop being demos and start becoming accountable infrastructure."
         />
 
         <Reveal>
@@ -32,79 +38,103 @@ export default function About() {
           </dl>
         </Reveal>
 
-        <div className="mt-16 sm:mt-20 md:mt-24 max-w-[680px]">
-          <Reveal>
-            <Block label="Now">
-              <p>
-                I&apos;m Chief Strategy Officer at{' '}
-                <Link href="https://opengradient.ai">OpenGradient</Link> — the Network for Open
-                Intelligence, backed by a16z crypto and Coinbase Ventures. We host, execute, and
-                verify AI models on a decentralized GPU + TEE coprocessor.
-              </p>
-              <p>
-                I lead product strategy, ecosystem growth, and customer engineering across the
-                network and <strong>MemSync</strong>, our portable memory layer for AI agents. A few
-                recent shipments:
-              </p>
-              <ul className="space-y-3 pl-0 list-none pt-1">
-                <Bullet>
-                  Took a new AI infrastructure product from <strong>zero to seven figures</strong>{' '}
-                  in revenue.
-                </Bullet>
-                <Bullet>
-                  Secured token listings across <strong>Coinbase, Binance, OKX</strong> and other
-                  tier-one exchanges.
-                </Bullet>
-                <Bullet>
-                  Scaled the network to{' '}
-                  <strong>4,500+ models, 2M+ inferences, and 500K+ verifiable proofs</strong>.
-                </Bullet>
-                <Bullet>
-                  Grew the <Link href="https://x.com/opengradient">OpenGradient X account</Link>{' '}
-                  past <strong>50M+ views</strong>; produced, directed, and wrote OpenGradient&apos;s{' '}
-                  <Link href="https://x.com/OpenGradient/status/2045849964539171274">films</Link>.
-                </Bullet>
-                <Bullet>
-                  Launched OpenGradient into the Korean market — hosted events for{' '}
-                  <strong>1,000+ people in a week</strong>, integrated with the local builder
-                  community, and earned coverage in Korean press.
-                </Bullet>
-              </ul>
-            </Block>
-          </Reveal>
+        <div className="mt-16 sm:mt-20 md:mt-24 grid gap-14 lg:grid-cols-[minmax(0,680px)_280px] lg:gap-20 lg:items-start">
+          <div className="max-w-[680px]">
+            <Reveal>
+              <Block label="Now">
+                <p>
+                  I&apos;m Chief Strategy Officer at{' '}
+                  <Link href="https://opengradient.ai">OpenGradient</Link> — the Network for Open
+                  Intelligence, backed by a16z crypto and Coinbase Ventures. We host, execute, and
+                  verify AI models on a decentralized GPU + TEE coprocessor.
+                </p>
+                <p>
+                  I lead product strategy, ecosystem growth, and customer engineering across the
+                  network and <strong>MemSync</strong>, our portable memory layer for AI agents. A
+                  few recent shipments:
+                </p>
+                <ul className="space-y-3 pl-0 list-none pt-1">
+                  <Bullet>
+                    Took a new AI infrastructure product from <strong>zero to seven figures</strong>{' '}
+                    in revenue.
+                  </Bullet>
+                  <Bullet>
+                    Secured token listings across <strong>Coinbase, Binance, OKX</strong> and other
+                    tier-one exchanges.
+                  </Bullet>
+                  <Bullet>
+                    Scaled the network to{' '}
+                    <strong>4,500+ models, 2M+ inferences, and 500K+ verifiable proofs</strong>.
+                  </Bullet>
+                  <Bullet>
+                    Grew the <Link href="https://x.com/opengradient">OpenGradient X account</Link>{' '}
+                    past <strong>50M+ views</strong>; produced, directed, and wrote
+                    OpenGradient&apos;s{' '}
+                    <Link href="https://x.com/OpenGradient/status/2045849964539171274">films</Link>.
+                  </Bullet>
+                  <Bullet>
+                    Launched OpenGradient into the Korean market — hosted events for{' '}
+                    <strong>1,000+ people in a week</strong>, integrated with the local builder
+                    community, and earned coverage in Korean press.
+                  </Bullet>
+                </ul>
+              </Block>
+            </Reveal>
 
-          <Reveal delay={0.05}>
-            <Block label="Before">
-              <p>
-                I founded <Link href="https://supersight.xyz/">SuperSight</Link> (later{' '}
-                <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial College–anchored
-                AI research lab. I built the LLM-powered NL-to-SQL system end-to-end — schema
-                grounding, retrieval, evaluation — to{' '}
-                <strong>200K+ users at 95% accuracy</strong>.
-              </p>
-              <p>
-                Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and
-                Vayner Fund. Advised by Illia Polosukhin (NEAR · co-author of{' '}
-                <em>Attention Is All You Need</em>), Sriram Vishwanath (UT Austin), Bowen Li
-                (OpenAI), and Paul Taylor (BlackRock). IP later acquired.
-              </p>
-            </Block>
-          </Reveal>
+            <Reveal delay={0.05}>
+              <Block label="Before">
+                <p>
+                  I founded <Link href="https://supersight.xyz/">SuperSight</Link> (later{' '}
+                  <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial
+                  College-anchored AI research lab. I built the LLM-powered NL-to-SQL system
+                  end-to-end — schema grounding, retrieval, evaluation — to{' '}
+                  <strong>200K+ users at 95% accuracy</strong>.
+                </p>
+                <p>
+                  Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and
+                  Vayner Fund. Advised by Illia Polosukhin (NEAR · co-author of{' '}
+                  <em>Attention Is All You Need</em>), Sriram Vishwanath (UT Austin), Bowen Li
+                  (OpenAI), and Paul Taylor (BlackRock). IP later acquired.
+                </p>
+              </Block>
+            </Reveal>
 
-          <Reveal delay={0.1}>
-            <aside className="mt-12 sm:mt-14 mb-2 rounded-[2px] border-l-[3px] border-accent bg-accent-soft py-5 sm:py-6 px-5 sm:px-7">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold mb-2.5">
-                Why
+            <Reveal delay={0.1}>
+              <aside className="mt-12 sm:mt-14 mb-2 rounded-[2px] border-l-[3px] border-accent bg-accent-soft py-5 sm:py-6 px-5 sm:px-7">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold mb-2.5">
+                  Why
+                </div>
+                <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
+                  Production AI is going to need three things it doesn&apos;t have yet: a way to
+                  prove an inference happened the way it claims, a way to persist context across
+                  models and sessions, and a way to settle high-stakes agent actions where the
+                  operator can&apos;t cheat.
+                </p>
+                <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
+                  That&apos;s the work.
+                </p>
+              </aside>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.12} className="lg:sticky lg:top-28">
+            <aside aria-label="Selected outcomes" className="border-y border-border py-6">
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold">
+                Selected outcomes
               </div>
-              <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                Production AI is going to need three things it doesn&apos;t have yet: a way to
-                prove an inference happened the way it claims, a way to persist context across
-                models and sessions, and a way to settle high-stakes agent actions where the
-                operator can&apos;t cheat.
-              </p>
-              <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
-                That&apos;s the work.
-              </p>
+              <dl className="mt-5 divide-y divide-border-soft">
+                {outcomes.map((item) => (
+                  <div key={item.k} className="py-5 first:pt-0 last:pb-0">
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted">
+                      {item.k}
+                    </dt>
+                    <dd className="mt-2 font-serif text-4xl leading-none text-fg">{item.v}</dd>
+                    <dd className="mt-2 font-serif text-[15px] leading-snug text-fg-muted">
+                      {item.d}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </aside>
           </Reveal>
         </div>

@@ -48,7 +48,11 @@ export default function Speaking() {
   return (
     <section id="speaking" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeader index="04" title="Speaking" lede="Selected stages." />
+        <SectionHeader
+          index="05"
+          title="Speaking"
+          lede="Selected rooms where I've explained the agentic internet, open intelligence, and verifiable compute."
+        />
 
         <ul>
           {talks.map((t, i) => (

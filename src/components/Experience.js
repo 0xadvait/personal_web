@@ -81,15 +81,15 @@ export default function Experience() {
     <section id="experience" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="02"
+          index="03"
           title="Experience"
-          lede="Where I've been building."
+          lede="A track record across product, research, capital, and go-to-market."
         />
 
         <ol>
           {roles.map((r, i) => (
             <Reveal key={r.org} delay={i * 0.05}>
-              <li className="grid gap-4 md:grid-cols-12 md:gap-10 py-8 sm:py-10 md:py-12 border-t border-border first:border-t-0">
+              <li className="group grid gap-4 md:grid-cols-12 md:gap-10 py-8 sm:py-10 md:py-12 border-t border-border first:border-t-0 transition-colors hover:bg-surface/45 -mx-4 px-4 sm:-mx-6 sm:px-6">
                 <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
                   {r.period}
                 </div>
@@ -102,7 +102,7 @@ export default function Experience() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${r.org} website (opens in a new tab)`}
-                          className="hover:text-accent transition-colors"
+                          className="transition-colors group-hover:text-accent hover:underline underline-offset-[4px]"
                         >
                           {r.org}
                         </a>

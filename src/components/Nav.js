@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const links = [
-  { href: '#about', label: 'About' },
+  { href: '#thesis', label: 'Thesis' },
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
   { href: '#speaking', label: 'Speaking' },
@@ -12,6 +12,7 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('top');
   const menuId = 'mobile-navigation';
 
   useEffect(() => {
@@ -22,6 +23,27 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
+    const ids = ['top', ...links.map((link) => link.href.slice(1)), 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!open) return undefined;
 
     const close = () => setOpen(false);
@@ -29,20 +51,39 @@ export default function Nav() {
       if (event.key === 'Escape') close();
     };
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('hashchange', close);
     return () => {
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('hashchange', close);
     };
   }, [open]);
+
+  const linkClass = (href) => {
+    const isActive = active === href.slice(1);
+    return `font-mono text-[11px] uppercase tracking-[0.12em] transition-colors border-b ${
+      isActive
+        ? 'text-accent border-accent'
+        : 'text-fg-muted border-transparent hover:text-accent hover:border-accent'
+    }`;
+  };
+
+  const mobileLinkClass = (href) => {
+    const isActive = active === href.slice(1);
+    return `block py-3 font-mono text-xs uppercase tracking-[0.12em] transition-colors ${
+      isActive ? 'text-accent' : 'text-fg-muted hover:text-accent'
+    }`;
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={`transition-all ${
           scrolled
-            ? 'border-b border-border bg-bg/85 backdrop-blur-md'
+            ? 'border-b border-border bg-bg/88 shadow-[0_1px_0_rgba(29,37,40,0.02)] backdrop-blur-md'
             : 'bg-transparent'
         }`}
       >
@@ -61,7 +102,8 @@ export default function Nav() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+                    aria-current={active === l.href.slice(1) ? 'location' : undefined}
+                    className={linkClass(l.href)}
                   >
                     {l.label}
                   </a>
@@ -72,7 +114,8 @@ export default function Nav() {
 
           <a
             href="#contact"
-            className="hidden md:inline-flex font-mono text-[11px] uppercase tracking-[0.12em] text-fg hover:text-accent transition-colors items-center gap-1.5 border-b border-transparent hover:border-accent"
+            aria-current={active === 'contact' ? 'location' : undefined}
+            className={`hidden md:inline-flex items-center gap-1.5 ${linkClass('#contact')}`}
           >
             Contact <span aria-hidden>→</span>
           </a>
@@ -80,7 +123,7 @@ export default function Nav() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-10 w-10 -mr-2 items-center justify-center"
+            className="md:hidden inline-flex h-10 w-10 -mr-2 items-center justify-center rounded-[3px] hover:bg-surface-soft transition-colors"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-controls={menuId}
             aria-expanded={open}
@@ -96,7 +139,7 @@ export default function Nav() {
         {open && (
           <nav
             id={menuId}
-            className="md:hidden border-t border-border bg-bg"
+            className="md:hidden border-t border-border bg-bg/98 shadow-[0_18px_44px_rgba(29,37,40,0.08)] backdrop-blur-md"
             aria-label="Mobile navigation"
           >
             <ul className="mx-auto max-w-6xl px-5 py-4 flex flex-col gap-1">
@@ -105,7 +148,8 @@ export default function Nav() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block py-3 font-mono text-xs uppercase tracking-[0.12em] text-fg-muted hover:text-accent transition-colors"
+                    aria-current={active === l.href.slice(1) ? 'location' : undefined}
+                    className={mobileLinkClass(l.href)}
                   >
                     {l.label}
                   </a>
@@ -115,7 +159,8 @@ export default function Nav() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="block py-3 font-mono text-xs uppercase tracking-[0.12em] text-accent"
+                  aria-current={active === 'contact' ? 'location' : undefined}
+                  className={mobileLinkClass('#contact')}
                 >
                   Contact →
                 </a>

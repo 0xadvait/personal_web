@@ -3,25 +3,22 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
-const siteUrl = 'https://advaitjayant.com';
-const siteDescription =
-  'Advait Jayant is a technical founder and Chief Strategy Officer at OpenGradient, working on verifiable AI inference, persistent agent memory, and crypto market structure.';
+import { siteDescription, siteName, siteUrl } from '@/lib/site';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: 'Advait Jayant',
+  applicationName: siteName,
   title: {
-    default: 'Advait Jayant',
-    template: '%s — Advait Jayant',
+    default: `${siteName} | Verifiable AI Infrastructure`,
+    template: `%s | ${siteName}`,
   },
   description: siteDescription,
   alternates: {
     canonical: '/',
   },
-  authors: [{ name: 'Advait Jayant', url: siteUrl }],
-  creator: 'Advait Jayant',
-  publisher: 'Advait Jayant',
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
   keywords: [
     'Advait Jayant',
     'OpenGradient',
@@ -31,17 +28,17 @@ export const metadata = {
     'crypto market structure',
   ],
   openGraph: {
-    title: 'Advait Jayant',
+    title: `${siteName} | Verifiable AI Infrastructure`,
     description: siteDescription,
-    url: '/',
-    siteName: 'Advait Jayant',
+    url: siteUrl,
+    siteName,
     type: 'website',
     locale: 'en_GB',
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@advait_jayant',
-    title: 'Advait Jayant',
+    title: `${siteName} | Verifiable AI Infrastructure`,
     description: siteDescription,
   },
   robots: {
@@ -62,7 +59,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#faf8f1',
+  themeColor: '#f7f7f2',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

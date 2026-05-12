@@ -17,10 +17,10 @@ export default function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#faf8f1',
-          color: '#1f2937',
+          background: '#f7f7f2',
+          color: '#1d2528',
           padding: '72px',
-          border: '1px solid #e5e1d3',
+          border: '1px solid #dde2da',
           fontFamily: 'Georgia, serif',
         }}
       >
@@ -29,7 +29,7 @@ export default function Image() {
             display: 'flex',
             alignItems: 'center',
             gap: '18px',
-            color: '#2347d9',
+            color: '#2446c7',
             fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
             fontSize: 24,
             letterSpacing: '0.12em',
@@ -37,24 +37,27 @@ export default function Image() {
           }}
         >
           <span>Advait Jayant</span>
-          <span style={{ width: 96, height: 2, background: '#2347d9', opacity: 0.4 }} />
-          <span style={{ color: '#9ca3af' }}>London</span>
+          <span style={{ width: 96, height: 2, background: '#2446c7', opacity: 0.4 }} />
+          <span style={{ color: '#8c9895' }}>advait.tech</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           <div style={{ fontSize: 104, lineHeight: 0.98, maxWidth: 900 }}>
             Verifiable AI infrastructure.
           </div>
-          <div style={{ width: 168, height: 6, background: '#2347d9' }} />
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ width: 128, height: 6, background: '#2446c7' }} />
+            <div style={{ width: 56, height: 6, background: '#0f766e' }} />
+          </div>
         </div>
         <div
           style={{
             maxWidth: 820,
-            color: '#4b5563',
+            color: '#4d5b60',
             fontSize: 34,
             lineHeight: 1.35,
           }}
         >
-          Inference proofs, persistent agent memory, and the on-chain bits that hold it together.
+          For agents that touch money, memory, and markets.
         </div>
       </div>
     ),

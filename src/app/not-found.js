@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
   title: 'Not found',
   robots: {
@@ -25,12 +27,12 @@ export default function NotFound() {
           The link may be old, or the page may have moved. The homepage has the current writing,
           talks, and contact links.
         </p>
-        <a
+        <Link
           href="/"
           className="mt-10 inline-flex min-h-[44px] items-center gap-2 rounded-[3px] border border-accent bg-accent px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent-deep"
         >
           Return home <span aria-hidden>→</span>
-        </a>
+        </Link>
       </section>
     </main>
   );
