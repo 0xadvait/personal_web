@@ -24,6 +24,7 @@ const talks = [
     title: '“Building Intelligent Multi-Agent Coordination Networks”',
     v: 'Kryptoplanet 2025',
     d: 'Solo talk',
+    href: 'https://www.youtube.com/watch?v=97jd4fm0AdQ',
   },
   {
     title: 'FHE for Consensus in AI Models',
