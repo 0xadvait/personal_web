@@ -8,12 +8,6 @@ const focus = [
   ['03', 'Settlement for agent actions'],
 ];
 
-const metrics = [
-  ['7 figures', 'new AI infra revenue'],
-  ['4,500+', 'models on-network'],
-  ['500K+', 'verifiable proofs'],
-];
-
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const fadeUp = (y = 18, delay = 0, duration = 0.9) =>
