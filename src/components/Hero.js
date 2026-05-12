@@ -112,16 +112,10 @@ export default function Hero() {
               ))}
             </ul>
 
-            <div className="mt-7 grid grid-cols-1 gap-4">
-              {metrics.map(([value, label]) => (
-                <div key={label} className="border-l border-accent/35 pl-4">
-                  <div className="font-serif text-3xl leading-none text-fg">{value}</div>
-                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted">
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="mt-7 border-l border-accent/35 pl-4 font-serif text-[16px] leading-[1.55] text-fg-muted">
+              The through-line: execution you can prove, memory users can carry, and settlement
+              nobody can quietly rewrite.
+            </p>
           </motion.aside>
         </div>
       </div>
