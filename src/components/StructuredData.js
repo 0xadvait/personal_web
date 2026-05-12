@@ -1,4 +1,4 @@
-const siteUrl = 'https://advaitjayant.com';
+import { siteDescription, siteName, siteUrl, socialLinks } from '@/lib/site';
 
 const data = {
   '@context': 'https://schema.org',
@@ -6,8 +6,9 @@ const data = {
     {
       '@type': 'Person',
       '@id': `${siteUrl}/#person`,
-      name: 'Advait Jayant',
+      name: siteName,
       url: siteUrl,
+      image: `${siteUrl}/opengraph-image`,
       jobTitle: 'Chief Strategy Officer',
       worksFor: {
         '@type': 'Organization',
@@ -22,20 +23,20 @@ const data = {
         { '@type': 'CollegeOrUniversity', name: 'London Business School' },
         { '@type': 'CollegeOrUniversity', name: 'BITS Pilani' },
       ],
-      sameAs: [
-        'https://github.com/0xadvait',
-        'https://www.linkedin.com/in/advait-jayant-21b465bb/',
-        'https://scholar.google.com/citations?user=jG6k8swAAAAJ&hl=en',
-        'https://x.com/advait_jayant',
+      knowsAbout: [
+        'Verifiable AI inference',
+        'Agent memory',
+        'Decentralized AI infrastructure',
+        'Crypto market structure',
       ],
+      sameAs: Object.values(socialLinks),
     },
     {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'Advait Jayant',
-      description:
-        'Technical founder working on verifiable AI inference, persistent agent memory, and crypto market structure.',
+      name: siteName,
+      description: siteDescription,
       inLanguage: 'en-GB',
       publisher: { '@id': `${siteUrl}/#person` },
     },

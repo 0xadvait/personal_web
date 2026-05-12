@@ -12,7 +12,7 @@ export default function SectionHeader({ index, title, lede }) {
       </Reveal>
       {lede && (
         <Reveal delay={0.08}>
-          <p className="mt-6 sm:mt-7 font-serif italic text-2xl sm:text-3xl md:text-[34px] leading-[1.25] text-fg-muted text-balance">
+          <p className="mt-6 sm:mt-7 font-serif italic text-2xl sm:text-3xl md:text-[34px] leading-[1.25] text-fg text-balance">
             {lede}
           </p>
         </Reveal>

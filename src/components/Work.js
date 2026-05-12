@@ -48,7 +48,7 @@ const items = [
 
 export default function Work() {
   return (
-    <section id="work" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+    <section id="work" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border bg-surface/40">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader index="03" title="Writing" lede="A few things I've written and made." />
 
@@ -70,8 +70,9 @@ function Card({ item }) {
   const primaryLabel = item.href ? item.title : `${item.title} — ${item.links?.[0]?.label}`;
 
   return (
-    <div className="group relative h-full rounded-[3px] border border-border bg-surface p-6 sm:p-7 md:p-8 transition-all hover:border-accent hover:-translate-y-0.5">
-      <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
+    <div className="group relative flex h-full min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent sm:p-7 md:p-8">
+      <div aria-hidden className="absolute inset-x-0 top-0 h-1 bg-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
+      <div className="relative z-10 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
         <span>
           <span className="text-accent">{item.num}</span>
           <span className="text-fg-faint mx-2">·</span>
@@ -89,15 +90,15 @@ function Card({ item }) {
         </a>
       </div>
 
-      <h3 className="mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] text-fg group-hover:text-accent transition-colors">
+      <h3 className="relative z-10 mt-4 sm:mt-5 font-serif text-2xl sm:text-[28px] md:text-[30px] leading-[1.1] text-fg group-hover:text-accent transition-colors">
         {item.title}
       </h3>
-      <p className="mt-3 font-serif text-[14.5px] sm:text-[15px] leading-[1.55] text-fg-muted">
+      <p className="relative z-10 mt-3 font-serif text-[14.5px] sm:text-[15px] leading-[1.55] text-fg-muted">
         {item.desc}
       </p>
 
       {item.links && (
-        <div className="relative z-10 mt-5 flex flex-wrap gap-2">
+        <div className="relative z-10 mt-auto pt-6 flex flex-wrap gap-2">
           {item.links.map((l) => (
             <a
               key={l.href}

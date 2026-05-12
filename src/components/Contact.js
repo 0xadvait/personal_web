@@ -10,7 +10,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-16 sm:py-24 md:py-32 lg:py-44 border-t border-border">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32 lg:py-44 border-t border-border bg-surface/35">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
@@ -28,7 +28,7 @@ export default function Contact() {
 
         <Reveal delay={0.12}>
           <p className="mt-6 sm:mt-8 max-w-xl font-serif italic text-lg sm:text-xl leading-relaxed text-fg-muted">
-            If you&apos;re building at the AI × crypto interface, drop me a line.
+            If you&apos;re building at the AI x crypto interface, drop me a line.
           </p>
         </Reveal>
 

@@ -177,7 +177,7 @@ function MobileStack({ shouldReduceMotion }) {
           <path d="M 16 0 L 0 0 0 16" className="grid" />
         </pattern>
         <pattern id="tee-hatch-m" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="6" stroke="#2347d9" strokeWidth="0.5" opacity="0.4" />
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#2446c7" strokeWidth="0.5" opacity="0.4" />
         </pattern>
       </defs>
       <rect width={W} height={H} fill="url(#diag-grid-m)" opacity="0.55" />
@@ -341,7 +341,7 @@ function DesktopStack({ shouldReduceMotion }) {
         </pattern>
         {/* Diagonal hatching for the TEE highlight zone */}
         <pattern id="tee-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="6" stroke="#2347d9" strokeWidth="0.6" opacity="0.55" />
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#2446c7" strokeWidth="0.6" opacity="0.55" />
         </pattern>
       </defs>
       <rect width={CANVAS_W} height={CANVAS_H} fill="url(#diag-grid-d)" opacity="0.55" />
