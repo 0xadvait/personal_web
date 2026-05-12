@@ -34,7 +34,7 @@
 /* Technical-diagram styles — adopted from bps-2024-visual .diag */
 .diag .stroke   { stroke: #2347d9; fill: none; stroke-width: 1.2; }
 .diag .stroke-2 { stroke: #2347d9; fill: none; stroke-width: 1.8; }
-.diag .stroke-soft { stroke: #93a8f0; fill: none; stroke-width: 1; }
+.diag .stroke-soft { stroke: #6f87df; fill: none; stroke-width: 1; }
 .diag .dashed   { stroke: #2347d9; fill: none; stroke-width: 0.8; stroke-dasharray: 3 3; }
 .diag .fill     { fill: #2347d9; }
 .diag .fill-soft { fill: #eef2ff; }
@@ -42,9 +42,9 @@
 .diag .fill-paper { fill: #fffdf6; }
 .diag .fill-bg    { fill: #faf8f1; }
 .diag .grid       { stroke: #d8e0f5; fill: none; stroke-width: 0.4; }
-.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
-.diag .lbl-soft   { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10px; fill: #9ca3af; letter-spacing: 0.08em; text-transform: uppercase; }
-.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11.5px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.diag .lbl-soft   { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10.5px; fill: #6b7280; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13.5px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
 .diag .lbl-body   { font-family: var(--font-serif), serif; font-size: 12px; fill: #1f2937; }
 
 :root { color-scheme: light; }
