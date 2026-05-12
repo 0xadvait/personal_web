@@ -1,20 +1,70 @@
 import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
+function AdvisorLink({ href, children }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-fg underline decoration-fg-faint underline-offset-[3px] hover:decoration-accent hover:text-accent transition-colors"
+    >
+      {children}
+    </a>
+  );
+}
+
 const roles = [
   {
     period: '2025 — Now',
     org: 'OpenGradient',
     href: 'https://opengradient.ai',
     title: 'Chief Strategy Officer',
-    body: 'Network for Open Intelligence — decentralized GPU + TEE coprocessor for hosting, executing, and verifying AI models. $9.5M seed led by a16z crypto. Leading strategy, ecosystem, and product across the inference network and MemSync — a verifiable memory layer for agents across Claude, ChatGPT, Gemini, and open-source models.',
+    body: (
+      <>
+        Network for Open Intelligence — decentralized GPU + TEE coprocessor for hosting,
+        executing, and verifying AI models.{' '}
+        <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
+          $9.5M seed led by a16z crypto
+        </AdvisorLink>
+        . Leading strategy, ecosystem, and product across the inference network and MemSync — a
+        verifiable memory layer for agents across Claude, ChatGPT, Gemini, and open-source models.
+      </>
+    ),
   },
   {
     period: '2022 — 2025',
     org: 'Peri Labs',
     href: 'https://perilabs.net/',
     title: 'Founder & CEO',
-    body: 'Founded SuperSight (later Peri Labs). Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected for the Delphi Labs AI Accelerator (with NEAR) and UT Austin’s incubator. Advised by Illia Polosukhin (NEAR), Sriram Vishwanath (UT Austin), Luca Prosperi (m0), Bowen Li (OpenAI), and Paul Taylor (BlackRock). Designed and shipped the NL-to-SQL pipeline end-to-end to 200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.',
+    body: (
+      <>
+        Founded SuperSight (later Peri Labs).{' '}
+        <AdvisorLink href="https://www.finsmes.com/2023/07/supersight-raises-1m-in-pre-seed-funding.html">
+          Raised $1.5M pre-seed at $30M
+        </AdvisorLink>{' '}
+        from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected for the{' '}
+        <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
+          Delphi Labs AI Accelerator
+        </AdvisorLink>
+        (with NEAR) and UT Austin&rsquo;s incubator. Advised by{' '}
+        <AdvisorLink href="https://pt.linkedin.com/in/illia-polosukhin-77b6538">
+          Illia Polosukhin
+        </AdvisorLink>{' '}
+        (NEAR),{' '}
+        <AdvisorLink href="https://scholar.google.com/citations?user=SOB-2hQAAAAJ&hl=en">
+          Sriram Vishwanath
+        </AdvisorLink>{' '}
+        (UT Austin),{' '}
+        <AdvisorLink href="https://pt.linkedin.com/in/lucaprosperi">Luca Prosperi</AdvisorLink>{' '}
+        (m0),{' '}
+        <AdvisorLink href="https://www.linkedin.com/in/bowenli86">Bowen Li</AdvisorLink>{' '}
+        (OpenAI), and{' '}
+        <AdvisorLink href="https://www.linkedin.com/in/officialpaultaylor">Paul Taylor</AdvisorLink>{' '}
+        (BlackRock). Designed and shipped the NL-to-SQL pipeline end-to-end to 200K+ users at 95%
+        accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.
+      </>
+    ),
   },
   {
     period: '2019 — 2022',

@@ -2,12 +2,45 @@ import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
 const talks = [
-  { title: '“From ‘Attention’ to Action: Architecting the Agentic Internet”', v: 'Kryptoplanet 2025', d: 'Fireside with Illia Polosukhin (NEAR · co-author, Attention Is All You Need)' },
-  { title: '“Infrastructure for the Agentic World”', v: 'Kryptoplanet 2025', d: 'Why we can’t build the future on closed black boxes' },
-  { title: '“Building Intelligent Multi-Agent Coordination Networks”', v: 'Kryptoplanet 2025', d: 'Solo talk' },
-  { title: 'FHE for Consensus in AI Models', v: 'FHE Summit', d: 'Trustless consensus across model outputs' },
-  { title: 'CEGE0115 — Portfolio Management', v: 'University College London', d: 'Lecturer' },
-  { title: 'Digital Investing', v: 'London Business School', d: 'Guest lecture' },
+  {
+    title: '“From ‘Attention’ to Action: Architecting the Agentic Internet”',
+    v: 'Kryptoplanet 2025',
+    d: 'Fireside with Illia Polosukhin (NEAR · co-author, Attention Is All You Need)',
+    href: 'https://www.youtube.com/watch?v=9OoB9aptaYM',
+  },
+  {
+    title: '“Infrastructure for the Agentic World”',
+    v: 'Kryptoplanet 2025',
+    d: 'Why we can’t build the future on closed black boxes',
+    href: 'https://www.youtube.com/watch?v=Qzq5wEZFPCk',
+  },
+  {
+    title: '“The Network for Open Intelligence”',
+    v: 'Conversation',
+    d: 'With Matthew Wang — on the OpenGradient thesis',
+    href: 'https://www.youtube.com/watch?v=wF1OfY2I4Ec',
+  },
+  {
+    title: '“Building Intelligent Multi-Agent Coordination Networks”',
+    v: 'Kryptoplanet 2025',
+    d: 'Solo talk',
+  },
+  {
+    title: 'FHE for Consensus in AI Models',
+    v: 'FHE Summit',
+    d: 'Trustless consensus across model outputs',
+    href: 'https://www.youtube.com/watch?v=4s_IhcMoOks',
+  },
+  {
+    title: 'CEGE0115 — Portfolio Management',
+    v: 'University College London',
+    d: 'Lecturer',
+  },
+  {
+    title: 'Digital Investing',
+    v: 'London Business School',
+    d: 'Guest lecture',
+  },
 ];
 
 export default function Speaking() {
@@ -19,18 +52,42 @@ export default function Speaking() {
         <ul>
           {talks.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.03}>
-              <li className="border-t border-border first:border-t-0 py-5 sm:py-6 grid gap-2 md:grid-cols-12 md:gap-10">
-                <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
-                  {t.v}
-                </div>
-                <div className="md:col-span-9">
-                  <div className="font-serif text-lg sm:text-xl md:text-2xl tracking-[-0.005em] text-fg leading-snug">
-                    {t.title}
+              <li className="border-t border-border first:border-t-0">
+                {t.href ? (
+                  <a
+                    href={t.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group grid gap-2 md:grid-cols-12 md:gap-10 py-5 sm:py-6 transition-colors hover:bg-surface-soft/60 -mx-4 px-4 sm:-mx-6 sm:px-6"
+                  >
+                    <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
+                      {t.v}
+                    </div>
+                    <div className="md:col-span-9">
+                      <div className="font-serif text-lg sm:text-xl md:text-2xl tracking-[-0.005em] text-fg leading-snug group-hover:text-accent transition-colors">
+                        {t.title}
+                        <span aria-hidden className="ml-2 inline-block text-fg-faint transition-transform group-hover:translate-x-0.5">↗</span>
+                      </div>
+                      <div className="mt-1 font-serif italic text-[15px] text-fg-muted leading-relaxed">
+                        {t.d}
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div className="grid gap-2 md:grid-cols-12 md:gap-10 py-5 sm:py-6 -mx-4 px-4 sm:-mx-6 sm:px-6">
+                    <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
+                      {t.v}
+                    </div>
+                    <div className="md:col-span-9">
+                      <div className="font-serif text-lg sm:text-xl md:text-2xl tracking-[-0.005em] text-fg leading-snug">
+                        {t.title}
+                      </div>
+                      <div className="mt-1 font-serif italic text-[15px] text-fg-muted leading-relaxed">
+                        {t.d}
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-1 font-serif italic text-[15px] text-fg-muted leading-relaxed">
-                    {t.d}
-                  </div>
-                </div>
+                )}
               </li>
             </Reveal>
           ))}

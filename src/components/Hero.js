@@ -13,9 +13,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-pixel uppercase font-bold text-[40px] xs:text-[52px] leading-[0.95] sm:text-[80px] md:text-[104px] lg:text-[128px] text-accent break-words"
+            className="font-serif text-[56px] xs:text-[68px] sm:text-[88px] md:text-[104px] lg:text-[120px] leading-[0.98] tracking-[-0.02em] text-fg"
           >
-            Advait Jayant
+            Advait <span className="italic text-accent">Jayant</span>
           </motion.h1>
 
           <motion.div

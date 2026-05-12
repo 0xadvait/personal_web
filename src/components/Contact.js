@@ -1,10 +1,10 @@
 import Reveal from './Reveal';
 
 const channels = [
-  { k: 'Personal email', v: 'advaitjayant1703@gmail.com', href: 'mailto:advaitjayant1703@gmail.com' },
-  { k: 'OpenGradient', v: 'advait@opengradient.ai', href: 'mailto:advait@opengradient.ai' },
+  { k: 'Email', v: 'advait@opengradient.ai', href: 'mailto:advait@opengradient.ai' },
   { k: 'GitHub', v: 'github.com/0xadvait', href: 'https://github.com/0xadvait' },
   { k: 'LinkedIn', v: 'in/advait-jayant-21b465bb', href: 'https://www.linkedin.com/in/advait-jayant-21b465bb/' },
+  { k: 'Google Scholar', v: 'Advait Jayant', href: 'https://scholar.google.com/citations?user=jG6k8swAAAAJ&hl=en' },
   { k: 'Twitter / X', v: '@advait_jayant', href: 'https://x.com/advait_jayant' },
 ];
 
@@ -21,8 +21,8 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-pixel uppercase font-bold text-4xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.95] text-accent max-w-4xl text-balance">
-            Let&apos;s talk.
+          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.98] tracking-[-0.02em] text-fg max-w-4xl text-balance">
+            Let&apos;s <span className="italic text-accent">talk.</span>
           </h2>
         </Reveal>
 

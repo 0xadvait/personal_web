@@ -29,14 +29,6 @@
   --font-mono: var(--font-geist-mono);
   /* System serif stack — Iowan Old Style on Mac, Palatino fallback */
   --font-serif: "Iowan Old Style", "Palatino", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  /* Pixel display font for cover-title moments — adopts the "Making Software" reference */
-  --font-pixel: var(--font-pixel);
-}
-
-.font-pixel {
-  font-family: var(--font-pixel), ui-monospace, monospace;
-  font-feature-settings: normal;
-  letter-spacing: 0;
 }
 
 /* Technical-diagram styles — adopted from bps-2024-visual .diag */
