@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
-            <span>05</span>
+            <span>06</span>
             <span className="h-px w-10 bg-accent/40" />
             <span className="text-fg-dim">Contact</span>
           </div>
@@ -28,7 +28,8 @@ export default function Contact() {
 
         <Reveal delay={0.12}>
           <p className="mt-6 sm:mt-8 max-w-xl font-serif italic text-lg sm:text-xl leading-relaxed text-fg-muted">
-            If you&apos;re building at the AI x crypto interface, drop me a line.
+            If you&apos;re building verifiable AI infrastructure, agent memory, crypto rails, or
+            anything where trust boundaries matter, drop me a line.
           </p>
         </Reveal>
 

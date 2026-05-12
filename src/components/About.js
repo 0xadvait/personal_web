@@ -18,9 +18,9 @@ export default function About() {
     <section id="about" className="section-band relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="01"
+          index="02"
           title="About"
-          lede="Most production AI asks you to trust the operator. I'm building the alternative."
+          lede="I work where AI systems stop being demos and start becoming accountable infrastructure."
         />
 
         <Reveal>

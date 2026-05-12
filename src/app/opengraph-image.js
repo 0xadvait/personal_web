@@ -57,7 +57,7 @@ export default function Image() {
             lineHeight: 1.35,
           }}
         >
-          Inference proofs, persistent agent memory, and the on-chain bits that hold it together.
+          For agents that touch money, memory, and markets.
         </div>
       </div>
     ),

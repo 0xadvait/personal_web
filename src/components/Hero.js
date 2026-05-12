@@ -3,9 +3,9 @@
 import { motion, useReducedMotion } from 'motion/react';
 
 const focus = [
-  ['01', 'Verifiable inference'],
-  ['02', 'Portable agent memory'],
-  ['03', 'On-chain settlement'],
+  ['01', 'Proofs for AI execution'],
+  ['02', 'Portable memory for agents'],
+  ['03', 'Settlement for agent actions'],
 ];
 
 const metrics = [
@@ -40,9 +40,9 @@ export default function Hero() {
               {...fadeUp(10, 0, 0.75)}
               className="mb-7 inline-flex items-center gap-3 border-y border-border py-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-fg-muted"
             >
-              <span className="text-accent">London</span>
+              <span className="text-accent">Technical founder</span>
               <span aria-hidden className="h-px w-8 bg-accent/40" />
-              <span>OpenGradient</span>
+              <span>CSO at OpenGradient</span>
             </motion.div>
 
             <motion.h1
@@ -57,11 +57,11 @@ export default function Hero() {
               className="mt-8 sm:mt-10 max-w-2xl font-serif text-lg sm:text-xl md:text-[22px] leading-[1.55] text-fg space-y-3"
             >
               <p>
-                I build at the AI x crypto interface: inference proofs, persistent agent memory,
-                and the settlement rails that make production agents accountable.
+                I build verifiable AI infrastructure for agents that touch money, memory, and
+                markets.
               </p>
               <p>
-                I&apos;m currently Chief Strategy Officer at{' '}
+                At{' '}
                 <a
                   href="https://opengradient.ai"
                   target="_blank"
@@ -71,7 +71,9 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                . I also write research, ship product, and{' '}
+                , I lead product strategy, ecosystem growth, and customer engineering across a
+                decentralized GPU + TEE inference network and MemSync, a portable memory layer for
+                agents. I also write research and{' '}
                 <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
                   produce films
                 </a>
@@ -83,8 +85,8 @@ export default function Hero() {
               {...fadeUp(12, 0.34, 0.8)}
               className="mt-10 sm:mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em]"
             >
-              <a href="#about" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
-                About <span aria-hidden>↓</span>
+              <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
+                Read the thesis <span aria-hidden>↓</span>
               </a>
               <span aria-hidden className="text-fg-faint">·</span>
               <a href="#experience" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Experience</a>

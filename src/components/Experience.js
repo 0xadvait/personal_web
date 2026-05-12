@@ -81,9 +81,9 @@ export default function Experience() {
     <section id="experience" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="02"
+          index="03"
           title="Experience"
-          lede="Where I've been building."
+          lede="A track record across product, research, capital, and go-to-market."
         />
 
         <ol>
