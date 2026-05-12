@@ -71,14 +71,12 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="pb-10 font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-dim"
+          className="pb-10 font-mono text-[10.5px] tracking-[0.16em] text-fg-dim"
         >
-          <span className="inline-flex items-center gap-2">
-            <span className="relative inline-flex h-1.5 w-1.5">
-              <span className="absolute inset-0 rounded-full bg-success opacity-70 animate-ping" />
-              <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-success" />
-            </span>
-            Available — London
+          <span className="inline-flex items-center gap-2" aria-label="Location — London">
+            <span aria-hidden>📍</span>
+            <span aria-hidden>-</span>
+            <span>London</span>
           </span>
         </motion.div>
       </div>
