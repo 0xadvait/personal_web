@@ -1,0 +1,76 @@
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
+
+const roles = [
+  {
+    period: '2025 — Now',
+    org: 'OpenGradient',
+    href: 'https://opengradient.ai',
+    title: 'Chief Strategy Officer',
+    body: 'Network for Open Intelligence — decentralized GPU + TEE coprocessor for hosting, executing, and verifying AI models. $9.5M seed led by a16z crypto. Leading strategy, ecosystem, and product across the inference network and MemSync — a verifiable memory layer for agents across Claude, ChatGPT, Gemini, and open-source models.',
+  },
+  {
+    period: '2022 — 2025',
+    org: 'Peri Labs',
+    href: 'https://perilabs.net/',
+    title: 'Founder & CEO',
+    body: 'Founded SuperSight (later Peri Labs). Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected for the Delphi Labs AI Accelerator (with NEAR) and UT Austin’s incubator. Advised by Illia Polosukhin (NEAR), Sriram Vishwanath (UT Austin), Luca Prosperi (m0), Bowen Li (OpenAI), and Paul Taylor (BlackRock). Designed and shipped the NL-to-SQL pipeline end-to-end to 200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.',
+  },
+  {
+    period: '2019 — 2022',
+    org: 'Technics Publications',
+    href: null,
+    title: 'Technical Author',
+    body: '50+ technical publications on AI — neural networks, NLP, transfer learning, big-data infrastructure. Featured in O’Reilly Safari Books Online. 15K+ readers.',
+  },
+];
+
+export default function Experience() {
+  return (
+    <section id="experience" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeader
+          index="02"
+          title="Experience"
+          lede="Where I've been building."
+        />
+
+        <ol>
+          {roles.map((r, i) => (
+            <Reveal key={r.org} delay={i * 0.05}>
+              <li className="grid gap-4 md:grid-cols-12 md:gap-10 py-8 sm:py-10 md:py-12 border-t border-border first:border-t-0">
+                <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
+                  {r.period}
+                </div>
+                <div className="md:col-span-9">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="font-serif text-2xl sm:text-3xl md:text-[36px] tracking-[-0.012em] text-fg leading-[1.1]">
+                      {r.href ? (
+                        <a
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent transition-colors"
+                        >
+                          {r.org}
+                        </a>
+                      ) : (
+                        r.org
+                      )}
+                    </h3>
+                    <span className="font-serif italic text-fg-muted text-base sm:text-lg">
+                      — {r.title}
+                    </span>
+                  </div>
+                  <p className="mt-3 sm:mt-4 max-w-2xl font-serif text-[15px] sm:text-base leading-[1.65] text-fg-muted">
+                    {r.body}
+                  </p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

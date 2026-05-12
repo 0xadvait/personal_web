@@ -2,5 +2,7 @@ node_modules
 .next
 out
 .DS_Store
-npm-debug.log
-yarn-error.log
+*.log
+.env*.local
+.vercel
+

@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-xs: 420px;
+
+  /* Warm paper palette — adopted from advait's bps-2024-visual */
+  --color-bg: #faf8f1;
+  --color-surface: #fffdf6;
+  --color-surface-soft: #f4f1e6;
+
+  /* Ink scale — slate, no pure black */
+  --color-fg: #1f2937;
+  --color-fg-muted: #4b5563;
+  --color-fg-dim: #9ca3af;
+  --color-fg-faint: #cdc8b8;
+
+  /* Warm hairline borders */
+  --color-border: #e5e1d3;
+  --color-border-soft: #efebe0;
+
+  /* Single bright accent — bps indigo-blue */
+  --color-accent: #2347d9;
+  --color-accent-deep: #1d3aa8;
+  --color-accent-soft: #eef2ff;
+
+  --color-success: #2f8f5b;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* System serif stack — Iowan Old Style on Mac, Palatino fallback */
+  --font-serif: "Iowan Old Style", "Palatino", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  /* Pixel display font for cover-title moments — adopts the "Making Software" reference */
+  --font-pixel: var(--font-pixel);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  font-feature-settings: normal;
+  letter-spacing: 0;
+}
+
+/* Technical-diagram styles — adopted from bps-2024-visual .diag */
+.diag .stroke   { stroke: #2347d9; fill: none; stroke-width: 1.2; }
+.diag .stroke-2 { stroke: #2347d9; fill: none; stroke-width: 1.8; }
+.diag .stroke-soft { stroke: #93a8f0; fill: none; stroke-width: 1; }
+.diag .dashed   { stroke: #2347d9; fill: none; stroke-width: 0.8; stroke-dasharray: 3 3; }
+.diag .fill     { fill: #2347d9; }
+.diag .fill-soft { fill: #eef2ff; }
+.diag .fill-mid  { fill: #c5d3f4; }
+.diag .fill-paper { fill: #fffdf6; }
+.diag .fill-bg    { fill: #faf8f1; }
+.diag .grid       { stroke: #d8e0f5; fill: none; stroke-width: 0.4; }
+.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.diag .lbl-soft   { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10px; fill: #9ca3af; letter-spacing: 0.08em; text-transform: uppercase; }
+.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13px; fill: #2347d9; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.diag .lbl-body   { font-family: var(--font-serif), serif; font-size: 12px; fill: #1f2937; }
+
+:root { color-scheme: light; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: 'ss01', 'cv11', 'kern', 'liga';
+  overflow-x: hidden;
+}
+
+button, a, input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* Subtle dotted backdrop behind hero */
+.dot-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(35, 71, 217, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}
