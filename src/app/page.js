@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import ProofStrip from '@/components/ProofStrip';
 import Thesis from '@/components/Thesis';
 import About from '@/components/About';
+import ImpactLedger from '@/components/ImpactLedger';
 import StackDiagram from '@/components/StackDiagram';
 import Experience from '@/components/Experience';
 import Work from '@/components/Work';
@@ -21,6 +22,7 @@ export default function Home() {
         <ProofStrip />
         <Thesis />
         <About />
+        <ImpactLedger />
         <StackDiagram />
         <Experience />
         <Work />

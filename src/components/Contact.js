@@ -8,13 +8,28 @@ const channels = [
   { k: 'Twitter / X', v: '@advait_jayant', href: 'https://x.com/advait_jayant' },
 ];
 
+const collaboration = [
+  {
+    k: 'Build',
+    v: 'Verifiable AI infra, agent memory, decentralized compute, product strategy.',
+  },
+  {
+    k: 'Think',
+    v: 'Research, market maps, crypto rails, AI x capital formation.',
+  },
+  {
+    k: 'Tell',
+    v: 'Technical narratives, launch films, talks, and category creation.',
+  },
+];
+
 export default function Contact() {
   return (
     <section id="contact" className="relative py-16 sm:py-24 md:py-32 lg:py-44 border-t border-border bg-surface/35">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
-            <span>06</span>
+            <span>07</span>
             <span className="h-px w-10 bg-accent/40" />
             <span className="text-fg-dim">Contact</span>
           </div>
@@ -34,6 +49,21 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.2}>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {collaboration.map((item) => (
+              <div key={item.k} className="border border-border bg-bg px-5 py-5">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  {item.k}
+                </div>
+                <p className="mt-3 font-serif text-[15px] leading-[1.5] text-fg-muted">
+                  {item.v}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.24}>
           <ul className="mt-12 sm:mt-16">
             {channels.map((c) => (
               <li key={c.k} className="border-t border-border last:border-b">

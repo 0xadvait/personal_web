@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 const links = [
   { href: '#thesis', label: 'Thesis' },
+  { href: '#impact', label: 'Impact' },
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
   { href: '#speaking', label: 'Speaking' },
@@ -97,7 +98,7 @@ export default function Nav() {
           </a>
 
           <nav className="hidden md:block" aria-label="Primary navigation">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-6">
               {links.map((l) => (
                 <li key={l.href}>
                   <a

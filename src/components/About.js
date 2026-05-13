@@ -13,6 +13,21 @@ const outcomes = [
   { k: 'Launches', v: '1K+', d: 'Korea event attendees in a week' },
 ];
 
+const modes = [
+  {
+    k: 'Translate',
+    v: 'Make frontier systems understandable without flattening the technical truth.',
+  },
+  {
+    k: 'Ship',
+    v: 'Move from thesis to working product, customer proof, and revenue.',
+  },
+  {
+    k: 'Distribute',
+    v: 'Give technical infrastructure a narrative surface the market can remember.',
+  },
+];
+
 export default function About() {
   return (
     <section id="about" className="section-band relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
@@ -36,6 +51,21 @@ export default function About() {
               </div>
             ))}
           </dl>
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {modes.map((mode) => (
+              <div key={mode.k} className="border border-border bg-surface px-5 py-5">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  {mode.k}
+                </div>
+                <p className="mt-3 font-serif text-[16px] leading-[1.5] text-fg-muted">
+                  {mode.v}
+                </p>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         <div className="mt-16 sm:mt-20 md:mt-24 grid gap-14 lg:grid-cols-[minmax(0,680px)_280px] lg:gap-20 lg:items-start">

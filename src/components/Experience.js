@@ -32,6 +32,7 @@ const roles = [
         verifiable memory layer for agents across Claude, ChatGPT, Gemini, and open-source models.
       </>
     ),
+    highlights: ['7-figure product revenue', '4,500+ hosted models', '500K+ proofs'],
   },
   {
     period: '2022 — 2025',
@@ -66,6 +67,7 @@ const roles = [
         accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.
       </>
     ),
+    highlights: ['$1.5M raised', '200K+ users', '30+ pilots'],
   },
   {
     period: '2019 — 2022',
@@ -73,6 +75,7 @@ const roles = [
     href: null,
     title: 'Technical Author',
     body: '50+ technical publications on AI — neural networks, NLP, transfer learning, big-data infrastructure. Featured in O’Reilly Safari Books Online. 15K+ readers.',
+    highlights: ['50+ publications', '15K+ readers', 'O’Reilly Safari'],
   },
 ];
 
@@ -81,9 +84,9 @@ export default function Experience() {
     <section id="experience" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="03"
+          index="04"
           title="Experience"
-          lede="A track record across product, research, capital, and go-to-market."
+          lede="A track record across product, research, capital, and go-to-market when the category is still forming."
         />
 
         <ol>
@@ -117,6 +120,16 @@ export default function Experience() {
                   <p className="mt-3 sm:mt-4 max-w-2xl font-serif text-[15px] sm:text-base leading-[1.65] text-fg-muted">
                     {r.body}
                   </p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {r.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-dim"
+                      >
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </li>
             </Reveal>

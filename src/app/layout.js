@@ -9,7 +9,7 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: `${siteName} | Verifiable AI Infrastructure`,
+    default: `${siteName} | Accountable AI Infrastructure`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -28,7 +28,7 @@ export const metadata = {
     'crypto market structure',
   ],
   openGraph: {
-    title: `${siteName} | Verifiable AI Infrastructure`,
+    title: `${siteName} | Accountable AI Infrastructure`,
     description: siteDescription,
     url: siteUrl,
     siteName,
@@ -38,7 +38,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@advait_jayant',
-    title: `${siteName} | Verifiable AI Infrastructure`,
+    title: `${siteName} | Accountable AI Infrastructure`,
     description: siteDescription,
   },
   robots: {

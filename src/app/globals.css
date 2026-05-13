@@ -88,7 +88,7 @@ button, a, input, select, textarea {
 }
 
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 0;
 }
 
 .font-serif {

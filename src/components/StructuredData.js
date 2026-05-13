@@ -25,9 +25,11 @@ const data = {
       ],
       knowsAbout: [
         'Verifiable AI inference',
+        'Accountable AI agents',
         'Agent memory',
         'Decentralized AI infrastructure',
         'Crypto market structure',
+        'Technical product strategy',
       ],
       sameAs: Object.values(socialLinks),
     },
