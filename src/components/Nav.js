@@ -97,7 +97,7 @@ export default function Nav() {
             Advait Jayant
           </a>
 
-          <nav className="hidden md:block" aria-label="Primary navigation">
+          <nav className="hidden lg:block" aria-label="Primary navigation">
             <ul className="flex items-center gap-6">
               {links.map((l) => (
                 <li key={l.href}>
@@ -116,7 +116,7 @@ export default function Nav() {
           <a
             href="#contact"
             aria-current={active === 'contact' ? 'location' : undefined}
-            className={`hidden md:inline-flex items-center gap-1.5 ${linkClass('#contact')}`}
+            className={`hidden lg:inline-flex items-center gap-1.5 ${linkClass('#contact')}`}
           >
             Contact <span aria-hidden>→</span>
           </a>
@@ -124,7 +124,7 @@ export default function Nav() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-10 w-10 -mr-2 items-center justify-center rounded-[3px] hover:bg-surface-soft transition-colors"
+            className="inline-flex h-10 w-10 -mr-2 items-center justify-center rounded-[3px] hover:bg-surface-soft transition-colors lg:hidden"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-controls={menuId}
             aria-expanded={open}
@@ -140,7 +140,7 @@ export default function Nav() {
         {open && (
           <nav
             id={menuId}
-            className="md:hidden border-t border-border bg-bg/98 shadow-[0_18px_44px_rgba(29,37,40,0.08)] backdrop-blur-md"
+            className="border-t border-border bg-bg/98 shadow-[0_18px_44px_rgba(29,37,40,0.08)] backdrop-blur-md lg:hidden"
             aria-label="Mobile navigation"
           >
             <ul className="mx-auto max-w-6xl px-5 py-4 flex flex-col gap-1">

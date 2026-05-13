@@ -88,15 +88,19 @@ export default function ImpactLedger() {
             </aside>
           </Reveal>
 
-          <div className="divide-y divide-border">
+          <div>
             {entries.map((entry, index) => (
               <Reveal key={`${entry.year}-${entry.arena}`} delay={index * 0.04}>
-                <article className="group grid gap-4 py-7 first:pt-0 last:pb-0 sm:grid-cols-[5rem_1fr] sm:gap-7">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
+                <article
+                  className={`group grid gap-3 py-8 sm:grid-cols-[5rem_1fr] sm:gap-7 ${
+                    index === 0 ? 'pt-0' : 'border-t border-border'
+                  } ${index === entries.length - 1 ? 'pb-0' : ''}`}
+                >
+                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1.5">
                     {entry.year}
                   </div>
                   <div>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                       <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
                         {entry.arena}
                       </h3>
@@ -104,14 +108,14 @@ export default function ImpactLedger() {
                         aria-hidden
                         className="hidden h-px w-8 bg-accent/35 sm:inline-block"
                       />
-                      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-fg-dim">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-fg-dim sm:text-[10px] sm:tracking-[0.14em]">
                         {entry.role}
                       </p>
                     </div>
-                    <p className="mt-3 max-w-3xl font-serif text-2xl leading-[1.2] text-fg transition-colors group-hover:text-accent sm:text-[30px]">
+                    <p className="mt-3 max-w-3xl font-serif text-[23px] leading-[1.17] text-fg transition-colors group-hover:text-accent sm:text-[30px] sm:leading-[1.2]">
                       {entry.result}
                     </p>
-                    <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.6] text-fg-muted">
+                    <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:leading-[1.6]">
                       {entry.proof}
                     </p>
                   </div>

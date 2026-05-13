@@ -4,12 +4,6 @@ import { motion, useReducedMotion } from 'motion/react';
 
 const signals = ['proofs for AI execution', 'portable memory', 'agent settlement'];
 
-const checkItems = [
-  ['model', 'open'],
-  ['run', 'attested'],
-  ['output', 'signed'],
-];
-
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const fadeUp = (y = 18, delay = 0, duration = 0.9) =>
@@ -30,11 +24,11 @@ export default function Hero() {
       <div className="dot-field" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid min-h-[86svh] items-center gap-12 pb-6 pt-24 sm:min-h-[90svh] sm:pb-8 sm:pt-30 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.62fr)] lg:gap-16">
+        <div className="grid items-center gap-9 pb-8 pt-20 sm:gap-10 sm:pb-10 sm:pt-24 md:pt-26 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.62fr)] lg:gap-12 lg:pt-18 xl:gap-16">
           <div className="min-w-0">
             <motion.div
               {...fadeUp(10, 0, 0.75)}
-              className="mb-7 inline-flex items-center gap-3 border-y border-border py-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-fg-muted"
+              className="mb-6 inline-flex items-center gap-3 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:text-[10.5px]"
             >
               <span className="text-accent">Technical founder</span>
               <span aria-hidden className="h-px w-8 bg-accent/40" />
@@ -43,14 +37,14 @@ export default function Hero() {
 
             <motion.h1
               {...fadeUp()}
-              className="font-serif text-[56px] xs:text-[68px] sm:text-[88px] md:text-[104px] lg:text-[116px] leading-[0.98] text-fg text-balance"
+              className="font-serif text-[52px] leading-[0.98] text-fg text-balance xs:text-[62px] sm:text-[78px] md:text-[88px] lg:text-[96px] xl:text-[108px]"
             >
               Advait <span className="hero-name-break italic text-accent">Jayant</span>
             </motion.h1>
 
             <motion.div
               {...fadeUp(18, 0.18)}
-              className="mt-8 sm:mt-10 max-w-2xl font-serif text-lg sm:text-xl md:text-[22px] leading-[1.55] text-fg space-y-3"
+              className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
             >
               <p>
                 I build infrastructure for AI agents that are about to touch money, memory,
@@ -80,7 +74,7 @@ export default function Hero() {
 
             <motion.div
               {...fadeUp(12, 0.34, 0.8)}
-              className="mt-10 sm:mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em]"
+              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.12em] sm:mt-10 sm:gap-x-7 sm:text-[12px] lg:mt-9"
             >
               <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
                 Read the thesis <span aria-hidden>↓</span>
@@ -95,26 +89,26 @@ export default function Hero() {
           <motion.aside
             {...fadeUp(14, 0.42, 0.8)}
             aria-label="Current focus"
-            className="relative overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-12"
+            className="relative w-full max-w-[520px] justify-self-center overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-6 lg:max-w-none"
           >
             <HeroSystemPanel />
 
-            <div className="p-5 sm:p-6">
+            <div className="p-4 sm:p-5">
               <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-accent">
                 Current work
               </div>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {signals.map((signal) => (
                   <span
                     key={signal}
-                    className="rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-muted"
+                    className="rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-fg-muted"
                   >
                     {signal}
                   </span>
                 ))}
               </div>
 
-              <p className="mt-5 border-l border-accent/35 pl-4 font-serif text-[15px] leading-[1.5] text-fg-muted">
+              <p className="mt-4 border-l border-accent/35 pl-4 font-serif text-[14px] leading-[1.45] text-fg-muted">
                 The work is direct: prove execution, let users carry memory, and settle actions
                 where the operator cannot quietly rewrite them.
               </p>
@@ -128,7 +122,7 @@ export default function Hero() {
 
 function HeroSystemPanel() {
   return (
-    <div className="relative overflow-hidden border-b border-border bg-[linear-gradient(135deg,#ffffff_0%,#f7f7f2_46%,#edf3ff_100%)] p-5 sm:p-6">
+    <div className="relative overflow-hidden border-b border-border bg-[linear-gradient(135deg,#ffffff_0%,#f7f7f2_46%,#edf3ff_100%)] p-4 sm:p-5">
       <div
         aria-hidden
         className="absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(36,70,199,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.07)_1px,transparent_1px)] [background-size:24px_24px]"
@@ -147,7 +141,7 @@ function HeroSystemPanel() {
           <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
             Agent run
           </div>
-          <p className="mt-2 max-w-[18rem] font-serif text-[22px] leading-[1.08] text-fg sm:text-[24px]">
+          <p className="mt-2 max-w-[18rem] font-serif text-[20px] leading-[1.08] text-fg sm:text-[22px]">
             Agents that can be checked after they act.
           </p>
         </div>
@@ -156,7 +150,7 @@ function HeroSystemPanel() {
         </span>
       </div>
 
-      <div className="relative z-10 mt-5 overflow-hidden border border-border bg-surface/75 p-3 shadow-[0_1px_0_rgba(29,37,40,0.03)] sm:p-4">
+      <div className="relative z-10 mt-4 overflow-hidden border border-border bg-surface/75 p-3 shadow-[0_1px_0_rgba(29,37,40,0.03)] sm:p-4">
         <svg
           aria-hidden
           viewBox="0 0 380 220"
@@ -196,19 +190,19 @@ function HeroSystemPanel() {
           <path d="M 190 86 V 134" fill="none" stroke="#c6d4f5" strokeWidth="1" />
         </svg>
 
-        <div className="relative z-10 grid min-h-[210px] grid-cols-[0.84fr_1.02fr_0.84fr] items-center gap-1.5 sm:min-h-[220px] sm:gap-2">
-          <div className="grid gap-5">
+        <div className="relative z-10 grid min-h-[178px] grid-cols-[0.84fr_1.02fr_0.84fr] items-center gap-1.5 sm:min-h-[190px] sm:gap-2">
+          <div className="grid gap-3 sm:gap-4">
             <FlowNode k="Input" v="intent + context" />
             <FlowNode k="Memory" v="portable state" />
           </div>
 
           <div className="flex justify-center">
-            <div className="relative flex h-28 w-full max-w-28 flex-col items-center justify-center border border-accent/35 bg-accent-soft/85 text-center shadow-[0_10px_30px_rgba(36,70,199,0.08)] sm:h-32 sm:max-w-32">
+            <div className="relative flex h-24 w-full max-w-24 flex-col items-center justify-center border border-accent/35 bg-accent-soft/85 text-center shadow-[0_10px_30px_rgba(36,70,199,0.08)] sm:h-28 sm:max-w-28">
               <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
                 Verified run
               </div>
-              <div className="mt-3 flex h-10 w-10 items-center justify-center rounded-full border border-accent/45 bg-surface sm:h-12 sm:w-12">
-                <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6">
+              <div className="mt-2.5 flex h-9 w-9 items-center justify-center rounded-full border border-accent/45 bg-surface sm:h-10 sm:w-10">
+                <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5">
                   <path
                     d="M 5 12.5 L 10 17 L 19 7"
                     fill="none"
@@ -219,31 +213,18 @@ function HeroSystemPanel() {
                   />
                 </svg>
               </div>
-              <div className="mt-3 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
+              <div className="mt-2.5 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
                 TEE + model
               </div>
             </div>
           </div>
 
-          <div className="grid gap-5">
+          <div className="grid gap-3 sm:gap-4">
             <FlowNode k="Output" v="signed result" align="right" />
             <FlowNode k="Settle" v="external record" align="right" />
           </div>
         </div>
       </div>
-
-      <dl className="relative z-10 mt-4 grid grid-cols-3 border-y border-border bg-bg/60">
-        {checkItems.map(([k, v]) => (
-          <div key={k} className="border-r border-border px-3 py-2.5 last:border-r-0">
-            <dt className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-fg-dim">
-              {k}
-            </dt>
-            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-fg-muted">
-              {v}
-            </dd>
-          </div>
-        ))}
-      </dl>
     </div>
   );
 }
@@ -253,7 +234,7 @@ function FlowNode({ k, v, align = 'left' }) {
 
   return (
     <div
-      className={`flex min-h-[58px] min-w-0 flex-col justify-center border-y border-border bg-surface/95 px-2.5 py-2.5 sm:px-3 ${textAlign}`}
+      className={`flex min-h-[52px] min-w-0 flex-col justify-center border-y border-border bg-surface/95 px-2.5 py-2 sm:px-3 ${textAlign}`}
     >
       <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
         {k}
