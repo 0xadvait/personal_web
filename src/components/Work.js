@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
@@ -10,7 +9,7 @@ const items = [
     desc: 'Producer, director, writer. A technical media campaign designed to make open intelligence feel tangible, not abstract.',
     impact: '50M+ views · launch narrative',
     featured: true,
-    image: '/images/ascii_bg.gif',
+    visual: 'campaign',
     signals: ['narrative strategy', 'technical distribution', 'brand surface'],
     links: [
       { label: 'Flagship', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
@@ -95,27 +94,7 @@ function Card({ item }) {
     >
       <div aria-hidden className="absolute inset-x-0 top-0 h-1 bg-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
 
-      {item.image && (
-        <div className="relative min-h-[210px] border-b border-border md:min-h-full md:border-b-0 md:border-r">
-          <Image
-            src={item.image}
-            alt=""
-            fill
-            unoptimized
-            sizes="(min-width: 768px) 470px, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-bg/5 via-bg/15 to-bg/80" />
-          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-              Technical media
-            </span>
-            <span className="rounded-[2px] border border-border bg-surface/80 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent-alt">
-              50M+
-            </span>
-          </div>
-        </div>
-      )}
+      {item.visual === 'campaign' && <CampaignVisual />}
 
       <div className={`relative flex h-full flex-col ${isFeatured ? 'p-6 sm:p-7 md:p-8' : ''}`}>
         <div className="relative z-10 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
@@ -179,6 +158,91 @@ function Card({ item }) {
             ))}
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+function CampaignVisual() {
+  const frames = [
+    { k: 'Hook', v: 'Open intelligence enters the room' },
+    { k: 'Proof', v: 'TEE inference becomes visible' },
+    { k: 'Distribution', v: 'The thesis travels' },
+  ];
+
+  return (
+    <div className="relative min-h-[240px] overflow-hidden border-b border-border bg-fg md:min-h-full md:border-b-0 md:border-r">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:22px_22px]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(circle_at_68%_42%,rgba(237,243,255,0.5),transparent_28%),radial-gradient(circle_at_18%_72%,rgba(15,118,110,0.22),transparent_32%),linear-gradient(135deg,rgba(36,70,199,0.32),transparent_58%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute -right-12 top-8 h-52 w-52 rounded-full border border-white/20 bg-accent/20"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-fg via-fg/55 to-transparent"
+      />
+
+      <div className="relative z-10 flex h-full min-h-[240px] flex-col justify-between p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
+              Campaign artifact
+            </div>
+            <p className="mt-2 max-w-[15rem] font-serif text-[25px] leading-[1.02] text-white sm:text-[30px]">
+              Making open intelligence feel cinematic.
+            </p>
+          </div>
+          <span className="rounded-[2px] border border-white/18 bg-white/10 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/80">
+            50M+
+          </span>
+        </div>
+
+        <div className="mt-8 grid gap-2">
+          {frames.map((frame, index) => (
+            <div
+              key={frame.k}
+              className="grid grid-cols-[3.5rem_1fr] gap-3 border border-white/16 bg-white/[0.07] px-3 py-2.5 backdrop-blur-[2px]"
+            >
+              <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-accent-soft">
+                F{String(index + 1).padStart(2, '0')}
+              </div>
+              <div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/70">
+                  {frame.k}
+                </div>
+                <div className="mt-1 font-serif text-[13.5px] leading-snug text-white/82">
+                  {frame.v}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8">
+          <div className="flex items-center gap-2">
+            {[20, 42, 68, 100].map((width, index) => (
+              <div key={width} className="h-px flex-1 bg-white/18">
+                <div
+                  className="h-px bg-accent-soft"
+                  style={{ width: `${index === 3 ? 100 : width}%` }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.16em] text-white/62">
+            <span>Write</span>
+            <span>Direct</span>
+            <span>Launch</span>
+            <span>Distribute</span>
+          </div>
+        </div>
       </div>
     </div>
   );
