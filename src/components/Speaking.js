@@ -53,7 +53,7 @@ const topics = [
 
 export default function Speaking() {
   return (
-    <section id="speaking" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+    <section id="speaking" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="06"

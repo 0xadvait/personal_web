@@ -4,13 +4,13 @@ import SectionHeader from './SectionHeader';
 const items = [
   {
     num: '01',
-    label: 'Campaign system',
+    label: 'Film campaign',
     title: 'OpenGradient — film work',
-    desc: 'Producer, director, writer. A technical media campaign that made open intelligence feel concrete.',
+    desc: 'Producer, director, writer. A film-led launch that made open intelligence feel concrete.',
     impact: '50M+ views · launch narrative',
     featured: true,
     visual: 'campaign',
-    signals: ['narrative strategy', 'technical distribution', 'brand system'],
+    signals: ['narrative strategy', 'technical distribution', 'launch surface'],
     links: [
       { label: 'Flagship', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
@@ -60,12 +60,12 @@ const items = [
 
 export default function Work() {
   return (
-    <section id="work" className="relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border bg-surface/40">
+    <section id="work" className="relative border-t border-border bg-surface/40 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="05"
           title="Selected work"
-          lede="Research, media, and talks that move technical ideas into the market."
+          lede="Papers, films, and talks that made technical work easier to understand, fund, and ship."
         />
 
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
@@ -88,7 +88,7 @@ function Card({ item }) {
 
   return (
     <div
-      className={`group relative flex h-full min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent ${
+      className={`group relative flex min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent sm:h-full ${
         isFeatured ? 'md:grid md:min-h-[330px] md:grid-cols-[0.92fr_1.08fr]' : 'p-6 sm:p-7 md:p-8'
       }`}
     >
@@ -96,7 +96,7 @@ function Card({ item }) {
 
       {item.visual === 'campaign' && <CampaignVisual />}
 
-      <div className={`relative flex h-full flex-col ${isFeatured ? 'p-6 sm:p-7 md:p-8' : ''}`}>
+      <div className={`relative flex flex-col sm:h-full ${isFeatured ? 'p-6 sm:p-7 md:p-8' : ''}`}>
         <div className="relative z-10 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
           <span>
             <span className="text-accent">{item.num}</span>
@@ -140,7 +140,11 @@ function Card({ item }) {
         )}
 
         {item.links && (
-          <div className="relative z-10 mt-auto flex flex-wrap gap-2 pt-6">
+          <div
+            className={`relative z-10 mt-6 flex flex-wrap gap-2 ${
+              isFeatured ? 'md:mt-auto md:pt-6' : 'sm:mt-auto sm:pt-6'
+            }`}
+          >
             {item.links.map((l) => (
               <a
                 key={l.href}
@@ -165,35 +169,46 @@ function Card({ item }) {
 
 function CampaignVisual() {
   const frames = [
-    { k: 'Hook', v: 'Open intelligence enters the room' },
-    { k: 'Proof', v: 'TEE inference becomes visible' },
-    { k: 'Distribution', v: 'The thesis travels' },
+    { k: 'F01', v: 'Open intelligence enters the room' },
+    { k: 'F02', v: 'Proofs become visible' },
+    { k: 'F03', v: 'The thesis travels' },
   ];
 
   return (
     <div className="relative min-h-[240px] overflow-hidden border-b border-border bg-fg md:min-h-full md:border-b-0 md:border-r">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:22px_22px]"
+        className="absolute inset-0 opacity-35 [background-image:linear-gradient(to_right,rgba(255,255,255,0.13)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_68%_42%,rgba(237,243,255,0.5),transparent_28%),radial-gradient(circle_at_18%_72%,rgba(15,118,110,0.22),transparent_32%),linear-gradient(135deg,rgba(36,70,199,0.32),transparent_58%)]"
+        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(36,70,199,0.28),transparent_42%),linear-gradient(180deg,transparent_18%,rgba(10,18,20,0.62)_100%)]"
       />
       <div
         aria-hidden
-        className="absolute -right-12 top-8 h-52 w-52 rounded-full border border-white/20 bg-accent/20"
+        className="absolute inset-y-0 left-0 w-9 border-r border-white/10 bg-black/18"
       />
+      <div aria-hidden className="absolute inset-y-0 right-0 w-9 border-l border-white/10 bg-black/18" />
+      <div aria-hidden className="absolute inset-y-5 left-3 flex flex-col justify-between">
+        {Array.from({ length: 9 }).map((_, index) => (
+          <span key={index} className="h-2 w-2 border border-white/18 bg-white/[0.06]" />
+        ))}
+      </div>
+      <div aria-hidden className="absolute inset-y-5 right-3 flex flex-col justify-between">
+        {Array.from({ length: 9 }).map((_, index) => (
+          <span key={index} className="h-2 w-2 border border-white/18 bg-white/[0.06]" />
+        ))}
+      </div>
       <div
         aria-hidden
-        className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-fg via-fg/55 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-fg via-fg/45 to-transparent"
       />
 
-      <div className="relative z-10 flex h-full min-h-[240px] flex-col justify-between p-5 sm:p-6">
+      <div className="relative z-10 flex h-full min-h-[240px] flex-col justify-between p-5 pl-12 pr-12 sm:p-6 sm:pl-14 sm:pr-14">
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
-              Campaign board
+              Film board
             </div>
             <p className="mt-2 max-w-[15rem] font-serif text-[25px] leading-[1.02] text-white sm:text-[30px]">
               Making open intelligence feel real.
@@ -205,17 +220,17 @@ function CampaignVisual() {
         </div>
 
         <div className="mt-8 grid gap-2">
-          {frames.map((frame, index) => (
+          {frames.map((frame) => (
             <div
               key={frame.k}
-              className="grid grid-cols-[3.5rem_1fr] gap-3 border border-white/16 bg-white/[0.07] px-3 py-2.5 backdrop-blur-[2px]"
+              className="grid grid-cols-[3.25rem_1fr] gap-3 border border-white/16 bg-white/[0.07] px-3 py-2.5 backdrop-blur-[2px]"
             >
               <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-accent-soft">
-                F{String(index + 1).padStart(2, '0')}
+                {frame.k}
               </div>
               <div>
                 <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/70">
-                  {frame.k}
+                  Scene
                 </div>
                 <div className="mt-1 font-serif text-[13.5px] leading-snug text-white/82">
                   {frame.v}

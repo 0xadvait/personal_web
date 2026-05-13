@@ -50,7 +50,7 @@ export default function ImpactLedger() {
   return (
     <section
       id="impact"
-      className="relative border-t border-border bg-surface/35 py-16 sm:py-24 md:py-32 lg:py-40"
+      className="relative border-t border-border bg-surface/35 py-14 sm:py-20 md:py-28 lg:py-32"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader

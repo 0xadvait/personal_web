@@ -29,7 +29,7 @@ const beforeAfter = [
 
 export default function Thesis() {
   return (
-    <section id="thesis" className="relative border-t border-border py-16 sm:py-24 md:py-32">
+    <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="01"

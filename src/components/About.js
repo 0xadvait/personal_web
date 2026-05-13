@@ -30,7 +30,7 @@ const modes = [
 
 export default function About() {
   return (
-    <section id="about" className="section-band relative py-16 sm:py-24 md:py-32 lg:py-40 border-t border-border">
+    <section id="about" className="section-band relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="02"
@@ -68,7 +68,7 @@ export default function About() {
           </div>
         </Reveal>
 
-        <div className="mt-16 sm:mt-20 md:mt-24 grid gap-14 lg:grid-cols-[minmax(0,680px)_280px] lg:gap-20 lg:items-start">
+        <div className="mt-12 grid gap-12 sm:mt-16 md:mt-20 lg:grid-cols-[minmax(0,680px)_280px] lg:items-start lg:gap-16">
           <div className="max-w-[680px]">
             <Reveal>
               <Block label="Now">

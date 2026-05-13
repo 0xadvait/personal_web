@@ -26,7 +26,7 @@ const collaboration = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-16 sm:py-24 md:py-32 lg:py-44 border-t border-border bg-surface/35">
+    <section id="contact" className="relative border-t border-border bg-surface/35 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
@@ -50,18 +50,20 @@ export default function Contact() {
 
             <aside
               aria-label="Contact note"
-              className="relative min-h-[240px] overflow-hidden rounded-[3px] border border-border bg-fg shadow-[0_22px_70px_rgba(29,37,40,0.08)] sm:min-h-[300px]"
+              className="overflow-hidden rounded-[3px] border border-border bg-fg shadow-[0_22px_70px_rgba(29,37,40,0.08)]"
             >
-              <Image
-                src="/images/ascii_bg.gif"
-                alt=""
-                fill
-                unoptimized
-                sizes="(min-width: 1024px) 360px, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-fg/15 via-fg/20 to-fg/78" />
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+              <div className="relative h-48 overflow-hidden sm:h-56 lg:h-60">
+                <Image
+                  src="/images/ascii_bg.gif"
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 360px, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-fg/5 via-transparent to-fg/30" />
+              </div>
+              <div className="border-t border-white/10 p-5 sm:p-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
                   Usually async first
                 </div>

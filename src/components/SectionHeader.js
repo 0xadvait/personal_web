@@ -2,7 +2,7 @@ import Reveal from './Reveal';
 
 export default function SectionHeader({ index, title, lede }) {
   return (
-    <div className="mb-14 sm:mb-20 md:mb-24 max-w-3xl">
+    <div className="mb-10 max-w-3xl sm:mb-14 md:mb-16">
       <Reveal>
         <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3">
           <span>{index}</span>
@@ -12,7 +12,7 @@ export default function SectionHeader({ index, title, lede }) {
       </Reveal>
       {lede && (
         <Reveal delay={0.08}>
-          <p className="mt-6 sm:mt-7 font-serif italic text-2xl sm:text-3xl md:text-[34px] leading-[1.25] text-fg text-balance">
+          <p className="mt-5 font-serif italic text-[22px] leading-[1.25] text-fg text-balance sm:mt-6 sm:text-[28px] md:text-[31px]">
             {lede}
           </p>
         </Reveal>
