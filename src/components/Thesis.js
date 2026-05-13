@@ -33,27 +33,30 @@ const datedCalls = [
     source: 'The State of Edge AI',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
     call:
-      'Cloud-only AI was going to hit latency, privacy, and bandwidth walls. More intelligence needed to move closer to the user.',
-    after: '28 Oct 2024',
+      'Cloud-only AI was going to hit latency, privacy, and bandwidth walls. Useful intelligence would move closer to the user.',
+    after: '9 Jun 2025',
     happened:
-      'Apple Intelligence went live across iPhone, iPad, and Mac with on-device models and Private Cloud Compute as the privacy story.',
-    evidence: 'Apple rollout',
-    evidenceHref:
-      'https://www.apple.com/newsroom/2024/10/apple-intelligence-is-available-today-on-iphone-ipad-and-mac/',
+      'Apple opened its on-device foundation model to developers, turning local private AI into a platform feature instead of a demo.',
+    evidenceLinks: [
+      {
+        label: 'Apple models',
+        href: 'https://machinelearning.apple.com/research/apple-foundation-models-2025-updates',
+      },
+    ],
   },
   {
     made: '28 Feb 2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     call:
-      'AI compute would stop being just another cloud line item. The capacity itself would become something capital markets finance directly.',
-    after: '27 Mar 2025 / 10 Apr 2026',
+      'AI compute would stop being just another cloud line item. Capacity itself would become something capital markets finance directly.',
+    after: '24 Sep 2025 / 10 Apr 2026',
     happened:
-      'CoreWeave priced its Nasdaq IPO weeks later. Blackstone then filed a public vehicle for newly built data centers.',
+      'Oracle moved to raise $18B of debt for AI cloud infrastructure. Blackstone later filed a public vehicle for newly built data centers.',
     evidenceLinks: [
       {
-        label: 'CoreWeave IPO',
-        href: 'https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Pricing-of-Initial-Public-Offering/default.aspx',
+        label: 'Oracle debt',
+        href: 'https://www.bloomberg.com/news/articles/2025-09-24/oracle-looks-to-raise-15-billion-from-corporate-bond-sale',
       },
       {
         label: 'Blackstone BXDC',
@@ -161,8 +164,8 @@ export default function Thesis() {
                   Calls that aged well
                 </div>
                 <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
-                  The part I care about is writing down a market pressure before it gets obvious,
-                  then staying close as it turns into products.
+                  The point is the pattern, not the timestamp: write down the pressure, then watch
+                  where serious companies put product and capital.
                 </p>
               </div>
 
@@ -198,7 +201,7 @@ export default function Thesis() {
                       </p>
                       <div className="mt-4 border-l border-accent/30 pl-4">
                         <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
-                          What happened after · {item.after}
+                          Later signal · {item.after}
                         </div>
                         <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
                           {item.happened}
