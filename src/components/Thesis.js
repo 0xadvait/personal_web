@@ -6,19 +6,16 @@ const pillars = [
     k: 'Read',
     v: "Care before it's obvious.",
     d: 'I like the moment when the demo is still rough, but you can tell the market is going to matter. Edge AI, compute markets, agent rails all had that feeling.',
-    detail: 'research notes, market maps, sharper questions',
   },
   {
     k: 'Product',
     v: 'Turn the thesis into something real.',
     d: 'The writing only matters if it changes what gets built, bought, or funded.',
-    detail: 'product direction, customer work, launch plans',
   },
   {
     k: 'Reach',
     v: 'Give the idea a way in.',
     d: 'Sometimes that is a report. Sometimes it is a talk, a launch, or a film. The format matters less than whether people finally get it.',
-    detail: 'research reports, talks, films',
   },
 ];
 
@@ -146,9 +143,6 @@ export default function Thesis() {
                     <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.6] text-fg-muted">
                       {pillar.d}
                     </p>
-                    <div className="mt-5 border-l border-accent/35 pl-4 font-serif text-[14px] leading-[1.45] text-fg-dim">
-                      {pillar.detail}
-                    </div>
                   </div>
                 </li>
               ))}

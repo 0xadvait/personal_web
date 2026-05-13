@@ -65,8 +65,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , that means product direction, customer work, and stories around model networks
-                and agent workflows. I also{' '}
+                , that means figuring out what to build, working with early customers, and telling
+                the story around model networks and agent workflows. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"

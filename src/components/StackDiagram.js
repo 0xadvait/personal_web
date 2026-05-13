@@ -4,19 +4,19 @@ const phases = [
   {
     step: '01',
     k: 'Read',
-    v: 'Notice what feels broken before the market has a clean name for it.',
-    meta: ['research', 'market maps'],
+    v: 'Follow the thing that keeps showing up.',
+    meta: ['research', 'patterns'],
   },
   {
     step: '02',
     k: 'Build',
-    v: 'Turn the thesis into product work, customer conversations, and a wedge that is real.',
+    v: 'Turn the thesis into a product people actually use.',
     meta: ['product', 'customers'],
   },
   {
     step: '03',
     k: 'Tell',
-    v: 'Give the idea words, visuals, and evidence people can pass around.',
+    v: 'Make the idea easy to understand without sanding it down.',
     meta: ['writing', 'film', 'talks'],
   },
 ];

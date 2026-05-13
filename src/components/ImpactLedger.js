@@ -6,7 +6,7 @@ const entries = [
     year: '2026',
     arena: 'Product',
     result: 'Helped turn a new technical product from zero into 7-figure revenue.',
-    role: 'Product direction, customer work, enterprise sales',
+    role: 'Zero to revenue, early customers, enterprise sales',
     detail: 'The work spans what to build, who needs it, and how to explain it clearly.',
   },
   {
