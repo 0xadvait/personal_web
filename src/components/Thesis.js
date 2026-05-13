@@ -6,7 +6,7 @@ const pillars = [
     k: 'Foresight',
     v: 'Notice the pressure early.',
     d: 'I like markets where the technical problem is real, but people are still reaching for the right words: edge AI, compute markets, agent rails.',
-    detail: 'dated research, market maps, honest questions',
+    detail: 'research notes, market maps, honest questions',
   },
   {
     k: 'Product',

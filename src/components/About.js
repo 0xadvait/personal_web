@@ -15,7 +15,7 @@ const outcomes = [
 
 const highlights = [
   { k: 'Product', v: 'zero to 7-figure revenue' },
-  { k: 'Research', v: 'dated AI + crypto market reports' },
+  { k: 'Research', v: 'AI + crypto market reports' },
   { k: 'Market', v: '1,000+ launch attendees in one week' },
   { k: 'Media', v: '50M+ technical film views' },
 ];

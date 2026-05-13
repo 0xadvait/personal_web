@@ -22,7 +22,7 @@ const phases = [
 ];
 
 const guarantees = [
-  ['research', 'dated'],
+  ['research', 'early'],
   ['product', 'usable'],
   ['capital', 'clear'],
   ['media', 'shareable'],
