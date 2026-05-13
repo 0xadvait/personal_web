@@ -12,6 +12,7 @@ export default function Footer() {
             advait.tech
           </a>
           <span>London</span>
+          <span className="hidden sm:inline">Iowan + Geist</span>
         </div>
       </div>
     </footer>

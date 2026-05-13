@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 
 const signals = ['verifiable runs', 'portable memory', 'agent settlement'];
@@ -28,11 +29,14 @@ export default function Hero() {
           <div className="min-w-0">
             <motion.div
               {...fadeUp(10, 0, 0.75)}
-              className="mb-6 inline-flex items-center gap-3 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:text-[10.5px]"
+              aria-label="Current context"
+              className="mb-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-1 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:grid-cols-3 sm:text-[10.5px]"
             >
-              <span className="text-accent">Technical founder</span>
-              <span aria-hidden className="h-px w-8 bg-accent/40" />
-              <span>CSO at OpenGradient</span>
+              <span className="text-accent">London</span>
+              <span className="sm:text-center">OpenGradient</span>
+              <span className="col-span-2 text-fg-dim sm:col-span-1 sm:text-right">
+                <LondonTime />
+              </span>
             </motion.div>
 
             <motion.h1
@@ -123,6 +127,29 @@ export default function Hero() {
       </div>
     </section>
   );
+}
+
+function LondonTime() {
+  const [time, setTime] = useState('London time');
+
+  useEffect(() => {
+    const update = () => {
+      const formatted = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }).format(new Date());
+
+      setTime(`${formatted} London`);
+    };
+
+    update();
+    const id = window.setInterval(update, 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  return time;
 }
 
 function HeroSystemPanel() {
