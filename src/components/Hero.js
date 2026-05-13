@@ -46,10 +46,7 @@ export default function Hero() {
               {...fadeUp(18, 0.18)}
               className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
             >
-              <p>
-                I build infrastructure for AI agents that are about to touch money, memory,
-                identity, and institutional workflows.
-              </p>
+              <p>I build infrastructure for AI agents that need to prove what they did.</p>
               <p>
                 At{' '}
                 <a
@@ -61,10 +58,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , I lead product strategy, ecosystem growth, and customer engineering across the
-                decentralized GPU + TEE inference network and MemSync, a portable memory layer for
-                agents. I work on the parts that make this stack easier to buy, trust, and build
-                on. I also{' '}
+                , I lead product strategy, ecosystem growth, and customer engineering for a
+                decentralized GPU + TEE inference network and MemSync. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"
@@ -72,7 +67,7 @@ export default function Hero() {
                   aria-label="The State of Edge AI report (opens in a new tab)"
                   className="text-accent hover:underline underline-offset-[3px]"
                 >
-                  write research
+                  write technical research
                 </a>{' '}
                 and{' '}
                 <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
@@ -83,15 +78,15 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              {...fadeUp(12, 0.34, 0.8)}
+              {...fadeUp(12, 0.28, 0.8)}
               className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.12em] sm:mt-10 sm:gap-x-7 sm:text-[12px] lg:mt-9"
             >
               <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
-                Read the thesis <span aria-hidden>↓</span>
+                Thesis <span aria-hidden>↓</span>
               </a>
-              <span aria-hidden className="text-fg-faint">·</span>
+              <span aria-hidden className="hidden text-fg-faint sm:inline">·</span>
               <a href="#impact" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Track record</a>
-              <span aria-hidden className="text-fg-faint">·</span>
+              <span aria-hidden className="hidden text-fg-faint sm:inline">·</span>
               <a href="#work" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Work</a>
             </motion.div>
           </div>
@@ -137,14 +132,8 @@ function HeroSystemPanel() {
         aria-hidden
         className="absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(36,70,199,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.07)_1px,transparent_1px)] [background-size:24px_24px]"
       />
-      <div
-        aria-hidden
-        className="absolute -right-12 -top-16 h-44 w-44 rounded-full border border-accent/20 bg-accent-soft/60"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-20 left-8 h-44 w-44 rounded-full border border-accent-alt/15 bg-surface/60"
-      />
+      <div aria-hidden className="absolute right-0 top-0 h-full w-20 border-l border-accent/10 bg-accent-soft/35" />
+      <div aria-hidden className="absolute bottom-0 left-0 h-16 w-2/3 border-t border-accent-alt/10 bg-surface/55" />
 
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>

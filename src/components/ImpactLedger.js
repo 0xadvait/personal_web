@@ -60,7 +60,7 @@ export default function ImpactLedger() {
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
-          <Reveal>
+          <Reveal className="hidden lg:block">
             <aside className="lg:sticky lg:top-28">
               <div className="border-y border-border py-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">

@@ -28,8 +28,8 @@ const roles = [
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . Leading strategy, ecosystem, and product across the inference network and MemSync — a
-        verifiable memory layer for agents across Claude, ChatGPT, Gemini, and open-source models.
+        . I lead strategy, ecosystem, and product across the inference network and MemSync, a
+        memory layer for agents.
       </>
     ),
     highlights: ['7-figure product revenue', '4,500+ hosted models', '500K+ proofs'],
@@ -49,22 +49,9 @@ const roles = [
         <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
           Delphi Labs AI Accelerator
         </AdvisorLink>
-        (with NEAR) and UT Austin&rsquo;s incubator. Advised by{' '}
-        <AdvisorLink href="https://pt.linkedin.com/in/illia-polosukhin-77b6538">
-          Illia Polosukhin
-        </AdvisorLink>{' '}
-        (NEAR),{' '}
-        <AdvisorLink href="https://scholar.google.com/citations?user=SOB-2hQAAAAJ&hl=en">
-          Sriram Vishwanath
-        </AdvisorLink>{' '}
-        (UT Austin),{' '}
-        <AdvisorLink href="https://pt.linkedin.com/in/lucaprosperi">Luca Prosperi</AdvisorLink>{' '}
-        (m0),{' '}
-        <AdvisorLink href="https://www.linkedin.com/in/bowenli86">Bowen Li</AdvisorLink>{' '}
-        (OpenAI), and{' '}
-        <AdvisorLink href="https://www.linkedin.com/in/officialpaultaylor">Paul Taylor</AdvisorLink>{' '}
-        (BlackRock). Designed and shipped the NL-to-SQL pipeline end-to-end to 200K+ users at 95%
-        accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.
+        (with NEAR) and UT Austin&rsquo;s incubator. Designed and shipped the NL-to-SQL pipeline
+        end-to-end to 200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State
+        of Edge AI. IP acquired.
       </>
     ),
     highlights: ['$1.5M raised', '200K+ users', '30+ pilots'],

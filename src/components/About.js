@@ -16,16 +16,23 @@ const outcomes = [
 const modes = [
   {
     k: 'Translate',
-    v: 'Make deeply technical systems understandable without watering them down.',
+    v: 'Make technical infrastructure understandable without flattening it.',
   },
   {
     k: 'Ship',
-    v: 'Move from thesis to working product, customer proof, and revenue.',
+    v: 'Move from thesis to product, customer proof, and revenue.',
   },
   {
     k: 'Distribute',
-    v: 'Give technical work a story people actually remember.',
+    v: 'Turn technical work into research, films, and market memory.',
   },
+];
+
+const shipments = [
+  { k: 'Product', v: 'zero to seven figures in revenue' },
+  { k: 'Network', v: '4,500+ models, 2M+ inferences, 500K+ proofs' },
+  { k: 'Market', v: '1,000+ Korea event attendees in a week' },
+  { k: 'Media', v: '50M+ views across OpenGradient films' },
 ];
 
 export default function About() {
@@ -54,7 +61,7 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.04}>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 hidden gap-4 sm:grid sm:grid-cols-3">
             {modes.map((mode) => (
               <div key={mode.k} className="border border-border bg-surface px-5 py-5">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
@@ -75,39 +82,25 @@ export default function About() {
                 <p>
                   I&apos;m Chief Strategy Officer at{' '}
                   <Link href="https://opengradient.ai">OpenGradient</Link> — the Network for Open
-                  Intelligence, backed by a16z crypto and Coinbase Ventures. We host, execute, and
-                  verify AI models on a decentralized GPU + TEE coprocessor.
+                  Intelligence, backed by a16z crypto and Coinbase Ventures.
                 </p>
                 <p>
-                  I lead product strategy, ecosystem growth, and customer engineering across the
-                  network and <strong>MemSync</strong>, our portable memory layer for AI agents. A
-                  few recent shipments:
+                  I lead product strategy, ecosystem growth, and customer engineering across a GPU +
+                  TEE inference network and <strong>MemSync</strong>, a portable memory layer for
+                  agents.
                 </p>
-                <ul className="space-y-3 pl-0 list-none pt-1">
-                  <Bullet>
-                    Took a new AI infrastructure product from <strong>zero to seven figures</strong>{' '}
-                    in revenue.
-                  </Bullet>
-                  <Bullet>
-                    Secured token listings across <strong>Coinbase, Binance, OKX</strong> and other
-                    tier-one exchanges.
-                  </Bullet>
-                  <Bullet>
-                    Scaled the network to{' '}
-                    <strong>4,500+ models, 2M+ inferences, and 500K+ verifiable proofs</strong>.
-                  </Bullet>
-                  <Bullet>
-                    Grew the <Link href="https://x.com/opengradient">OpenGradient X account</Link>{' '}
-                    past <strong>50M+ views</strong>; produced, directed, and wrote
-                    OpenGradient&apos;s{' '}
-                    <Link href="https://x.com/OpenGradient/status/2045849964539171274">films</Link>.
-                  </Bullet>
-                  <Bullet>
-                    Launched OpenGradient into the Korean market — hosted events for{' '}
-                    <strong>1,000+ people in a week</strong>, integrated with the local builder
-                    community, and earned coverage in Korean press.
-                  </Bullet>
-                </ul>
+                <dl className="grid gap-3 pt-1 sm:grid-cols-2">
+                  {shipments.map((item) => (
+                    <div key={item.k} className="border-y border-border px-0 py-3">
+                      <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent">
+                        {item.k}
+                      </dt>
+                      <dd className="mt-1 font-serif text-[15px] leading-snug text-fg-muted">
+                        {item.v}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </Block>
             </Reveal>
 
@@ -116,29 +109,24 @@ export default function About() {
                 <p>
                   I founded <Link href="https://supersight.xyz/">SuperSight</Link> (later{' '}
                   <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial
-                  College-anchored AI research lab. I built the LLM-powered NL-to-SQL system
-                  end-to-end — schema grounding, retrieval, evaluation — to{' '}
+                  College-anchored AI research lab. I built an LLM-powered NL-to-SQL system to{' '}
                   <strong>200K+ users at 95% accuracy</strong>.
                 </p>
                 <p>
                   Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and
-                  Vayner Fund. Advised by Illia Polosukhin (NEAR · co-author of{' '}
-                  <em>Attention Is All You Need</em>), Sriram Vishwanath (UT Austin), Bowen Li
-                  (OpenAI), and Paul Taylor (BlackRock). IP later acquired.
+                  Vayner Fund. 30+ enterprise pilots. IP later acquired.
                 </p>
               </Block>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <aside className="mt-12 sm:mt-14 mb-2 rounded-[2px] border-l-[3px] border-accent bg-accent-soft py-5 sm:py-6 px-5 sm:px-7">
+              <aside className="mb-2 mt-10 rounded-[2px] border-l-[3px] border-accent bg-accent-soft px-5 py-5 sm:mt-12 sm:px-7 sm:py-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold mb-2.5">
                   Why
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  Production AI is going to need three things it doesn&apos;t have yet: a way to
-                  prove an inference happened the way it claims, a way to persist context across
-                  models and sessions, and a way to settle high-stakes agent actions where the
-                  operator can&apos;t cheat.
+                  Production AI needs runs you can prove, memory users can carry, and high-stakes
+                  actions the operator cannot quietly rewrite.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.
@@ -147,7 +135,7 @@ export default function About() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.12} className="lg:sticky lg:top-28">
+          <Reveal delay={0.12} className="hidden lg:block lg:sticky lg:top-28">
             <aside aria-label="Selected outcomes" className="border-y border-border py-6">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold">
                 Selected outcomes
@@ -183,15 +171,6 @@ function Block({ label, children }) {
         {children}
       </div>
     </div>
-  );
-}
-
-function Bullet({ children }) {
-  return (
-    <li className="grid grid-cols-[auto_1fr] gap-x-4 items-baseline">
-      <span aria-hidden className="text-accent select-none">→</span>
-      <span>{children}</span>
-    </li>
   );
 }
 
