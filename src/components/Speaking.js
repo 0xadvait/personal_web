@@ -5,7 +5,7 @@ const talks = [
   {
     title: '“From ‘Attention’ to Action: Architecting the Agentic Internet”',
     v: 'Kryptoplanet 2025',
-    d: 'Fireside with Illia Polosukhin (NEAR · co-author, Attention Is All You Need)',
+    d: 'Fireside with Illia Polosukhin through the NEAR incubator',
     href: 'https://www.youtube.com/watch?v=9OoB9aptaYM',
   },
   {
