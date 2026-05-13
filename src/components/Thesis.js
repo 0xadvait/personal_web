@@ -4,27 +4,27 @@ import SectionHeader from './SectionHeader';
 const pillars = [
   {
     k: 'Trust layer',
-    v: 'Inference should be checkable.',
-    d: 'When an agent makes a claim, executes a trade, or touches user state, the system should be able to prove what model ran, where it ran, and what it returned.',
-    proof: 'TEE attestation, signed outputs, verifiable execution trails',
+    v: 'Make the run checkable.',
+    d: 'If an agent trades, updates memory, or changes access, you should know which model ran, where it ran, and what came back.',
+    proof: 'TEE attestation, signed outputs, execution trails',
   },
   {
     k: 'Memory layer',
-    v: 'Context should outlive the chat window.',
-    d: 'Useful agents need portable memory across models, sessions, and interfaces without trapping users inside one closed assistant.',
-    proof: 'MemSync-style context that can move across models and products',
+    v: 'Let context move with the user.',
+    d: "Good agents don't get to forget everything every session, and users shouldn't be stuck in one assistant just to keep their state.",
+    proof: 'portable context across models and products',
   },
   {
     k: 'Settlement layer',
-    v: 'High-stakes actions need neutral rails.',
-    d: 'The moment agents move money, reputation, or access, settlement has to be inspectable, programmable, and hard for the operator to quietly rewrite.',
-    proof: 'On-chain commitments for actions that need external accountability',
+    v: 'Put real actions on neutral rails.',
+    d: "When agents touch money, reputation, or access, the record can't depend on the app operator staying honest.",
+    proof: 'external commitments for actions that need accountability',
   },
 ];
 
 const beforeAfter = [
-  ['Today', 'black-box assistants', 'trust me'],
-  ['Next', 'accountable operators', 'verify this'],
+  ['Today', 'black-box chat', 'trust me'],
+  ['Next', 'agent workflows', 'verify it'],
 ];
 
 export default function Thesis() {
@@ -34,7 +34,7 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Thesis"
-          lede="AI agents are becoming operators. The infrastructure around them still behaves like a black box."
+          lede="AI agents are moving from chat into real work. The infrastructure around them is still too trust-me."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
@@ -44,12 +44,12 @@ export default function Thesis() {
                 Operating belief
               </div>
               <p className="mt-5 font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
-                The next useful AI systems will not win by sounding smarter. They will win by being
-                accountable enough to run workflows people actually care about.
+                The winners won&apos;t be agents that sound smarter. They&apos;ll be systems you
+                can check after they do the work.
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                That means verifiable execution, memory that users can carry, and economic rails
-                that make agent actions auditable later.
+                That means execution you can verify, memory users can carry, and economic rails
+                that leave a record.
               </p>
 
               <dl className="mt-8 divide-y divide-border-soft border-y border-border">

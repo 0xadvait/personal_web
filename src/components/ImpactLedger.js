@@ -5,30 +5,30 @@ const entries = [
   {
     year: '2026',
     arena: 'OpenGradient',
-    result: 'Took a new AI infrastructure product from zero to seven figures in revenue.',
+    result: 'Turned a new AI infrastructure product from zero into 7-figure revenue.',
     role: 'Product strategy, customer engineering, enterprise motion',
-    proof: 'Network scaled across hosted models, inference volume, and signed proofs.',
+    proof: 'The network grew across hosted models, inference volume, and signed proofs.',
   },
   {
     year: '2026',
     arena: 'Market entry',
-    result: 'Launched OpenGradient into Korea with 1,000+ event attendees in a week.',
-    role: 'Regional GTM, community design, ecosystem partnerships',
-    proof: 'Builder community activation and Korean press coverage.',
+    result: 'Launched OpenGradient in Korea with 1,000+ attendees in one week.',
+    role: 'Regional GTM, community design, ecosystem ties',
+    proof: 'Builder community, local events, and Korean press coverage.',
   },
   {
     year: '2025',
     arena: 'Distribution',
-    result: 'Built a film-led campaign that pushed OpenGradient past 50M+ X views.',
+    result: 'Produced a film-led campaign that took OpenGradient past 50M+ views.',
     role: 'Producer, director, writer',
-    proof: 'A technical thesis turned into something people could watch and share.',
+    proof: 'A technical thesis became something people could watch and pass around.',
   },
   {
     year: '2024',
     arena: 'Research',
-    result: 'Published The State of Edge AI with 174K+ launch impressions and citations.',
+    result: 'Published The State of Edge AI with 174K+ launch impressions and academic citations.',
     role: 'First author, market synthesis, technical writing',
-    proof: 'Edge AI thesis used by builders, investors, and researchers.',
+    proof: 'Used by builders, investors, and researchers working on edge AI.',
   },
   {
     year: '2022',
@@ -40,9 +40,9 @@ const entries = [
 ];
 
 const capabilities = [
-  'Turn new research into a story a market can understand.',
-  'Ship technical product with real customer proof.',
-  'Make opaque AI execution easier to audit.',
+  'Turn new research into a market story that lands.',
+  'Turn technical product into customer proof.',
+  'Make black-box AI execution easier to audit.',
   'Move between engineering, capital, ecosystem, and media.',
 ];
 
@@ -56,7 +56,7 @@ export default function ImpactLedger() {
         <SectionHeader
           index="03"
           title="Impact"
-          lede="I do my best work when the product is technical, the market is early, and the story is still hard to explain."
+          lede="I'm useful when the tech is real, the market is early, and the story is still messy."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
@@ -68,7 +68,7 @@ export default function ImpactLedger() {
                 </div>
                 <p className="mt-5 font-serif text-[21px] leading-[1.4] text-fg sm:text-[27px]">
                   I like the messy middle: the product works, the market is not fully there yet,
-                  and someone has to make the whole thing credible.
+                  and someone has to make the whole thing feel real.
                 </p>
               </div>
 

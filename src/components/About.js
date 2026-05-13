@@ -16,23 +16,23 @@ const outcomes = [
 const modes = [
   {
     k: 'Translate',
-    v: 'Make technical infrastructure understandable without flattening it.',
+    v: 'Make dense tech legible without dumbing it down.',
   },
   {
-    k: 'Ship',
-    v: 'Move from thesis to product, customer proof, and revenue.',
+    k: 'Build',
+    v: 'Get from thesis to product people pay for.',
   },
   {
     k: 'Distribute',
-    v: 'Turn technical work into research, films, and market memory.',
+    v: 'Make technical work travel: research, films, talks.',
   },
 ];
 
-const shipments = [
-  { k: 'Product', v: 'zero to seven figures in revenue' },
+const highlights = [
+  { k: 'Product', v: 'zero to 7-figure revenue' },
   { k: 'Network', v: '4,500+ models, 2M+ inferences, 500K+ proofs' },
-  { k: 'Market', v: '1,000+ Korea event attendees in a week' },
-  { k: 'Media', v: '50M+ views across OpenGradient films' },
+  { k: 'Market', v: '1,000+ Korea attendees in one week' },
+  { k: 'Media', v: '50M+ views on OpenGradient films' },
 ];
 
 export default function About() {
@@ -42,7 +42,7 @@ export default function About() {
         <SectionHeader
           index="02"
           title="About"
-          lede="I work where AI systems stop being demos and start becoming accountable infrastructure."
+          lede="I work on the gap between a cool demo and something people can actually run."
         />
 
         <Reveal>
@@ -85,12 +85,11 @@ export default function About() {
                   Intelligence, backed by a16z crypto and Coinbase Ventures.
                 </p>
                 <p>
-                  I lead product strategy, ecosystem growth, and customer engineering across a GPU +
-                  TEE inference network and <strong>MemSync</strong>, a portable memory layer for
-                  agents.
+                  My lane: product strategy, ecosystem growth, and customer engineering across the
+                  GPU + TEE inference network and <strong>MemSync</strong>.
                 </p>
                 <dl className="grid gap-3 pt-1 sm:grid-cols-2">
-                  {shipments.map((item) => (
+                  {highlights.map((item) => (
                     <div key={item.k} className="border-y border-border px-0 py-3">
                       <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent">
                         {item.k}
@@ -107,9 +106,11 @@ export default function About() {
             <Reveal delay={0.05}>
               <Block label="Before">
                 <p>
-                  I founded <Link href="https://supersight.xyz/">SuperSight</Link> (later{' '}
+                  Before that, I founded <Link href="https://supersight.xyz/">SuperSight</Link>{' '}
+                  (later{' '}
                   <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial
-                  College-anchored AI research lab. I built an LLM-powered NL-to-SQL system to{' '}
+                  College-anchored AI research lab. The core product was an LLM-powered NL-to-SQL
+                  system that reached{' '}
                   <strong>200K+ users at 95% accuracy</strong>.
                 </p>
                 <p>
@@ -125,8 +126,9 @@ export default function About() {
                   Why
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  Production AI needs runs you can prove, memory users can carry, and high-stakes
-                  actions the operator cannot quietly rewrite.
+                  The future of AI needs less black box and more replayable state: runs you can
+                  prove, memory users can carry, and actions the operator can&apos;t quietly
+                  rewrite.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.

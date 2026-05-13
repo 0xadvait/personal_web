@@ -23,13 +23,13 @@ const roles = [
     title: 'Chief Strategy Officer',
     body: (
       <>
-        Network for Open Intelligence — decentralized GPU + TEE coprocessor for hosting,
-        executing, and verifying AI models.{' '}
+        OpenGradient builds decentralized GPU + TEE infrastructure for hosting, running, and
+        verifying AI models.{' '}
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . I lead strategy, ecosystem, and product across the inference network and MemSync, a
-        memory layer for agents.
+        . My focus is the inference network, MemSync, ecosystem, and products customers can
+        actually use.
       </>
     ),
     highlights: ['7-figure product revenue', '4,500+ hosted models', '500K+ proofs'],
@@ -49,9 +49,9 @@ const roles = [
         <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
           Delphi Labs AI Accelerator
         </AdvisorLink>
-        (with NEAR) and UT Austin&rsquo;s incubator. Designed and shipped the NL-to-SQL pipeline
-        end-to-end to 200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State
-        of Edge AI. IP acquired.
+        (with NEAR) and UT Austin&rsquo;s incubator. Built the NL-to-SQL pipeline end-to-end to
+        200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI.
+        IP acquired.
       </>
     ),
     highlights: ['$1.5M raised', '200K+ users', '30+ pilots'],
@@ -61,7 +61,7 @@ const roles = [
     org: 'Technics Publications',
     href: null,
     title: 'Technical Author',
-    body: '50+ technical publications on AI — neural networks, NLP, transfer learning, big-data infrastructure. Featured in O’Reilly Safari Books Online. 15K+ readers.',
+    body: 'Wrote 50+ technical pieces on AI: neural networks, NLP, transfer learning, and big-data infrastructure. Featured in O’Reilly Safari Books Online. 15K+ readers.',
     highlights: ['50+ publications', '15K+ readers', 'O’Reilly Safari'],
   },
 ];
@@ -73,7 +73,7 @@ export default function Experience() {
         <SectionHeader
           index="04"
           title="Experience"
-          lede="Product, research, capital, and go-to-market work while the market is still taking shape."
+          lede="Product, research, capital, and GTM while the category is still being named."
         />
 
         <ol>

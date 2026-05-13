@@ -7,13 +7,13 @@ const items = [
     num: '01',
     label: 'Film campaign',
     title: 'OpenGradient — film work',
-    desc: 'Producer, director, writer. A film-led launch that made open intelligence feel concrete.',
+    desc: 'Producer, director, writer. A launch campaign that made open intelligence feel less abstract.',
     impact: '50M+ views · launch narrative',
     featured: true,
     visual: 'campaign',
     signals: ['narrative strategy', 'technical distribution', 'launch surface'],
     links: [
-      { label: 'Flagship', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
+      { label: 'Film I', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
       { label: 'Film III', href: 'https://x.com/OpenGradient/status/2052411220532109321' },
     ],
@@ -22,7 +22,7 @@ const items = [
     num: '02',
     label: 'Report · 2024',
     title: 'The State of Edge AI',
-    desc: 'First author. Real-time data, privacy, and deployment strategies for large models at the edge. 174K+ X impressions, 6 academic citations.',
+    desc: 'First author. A report on real-time data, privacy, and edge deployment for large models. 174K+ X impressions, 6 academic citations.',
     impact: '174K+ impressions',
     signals: ['edge AI', 'market map'],
     links: [
@@ -34,7 +34,7 @@ const items = [
     num: '03',
     label: 'Report',
     title: 'The AiFi Thesis',
-    desc: 'A framework for combining AI and DeFi to tokenize computation, training data, and ML models.',
+    desc: 'A thesis for AI x DeFi: tokenized compute, training data, and model markets.',
     impact: 'AI x DeFi thesis',
     signals: ['crypto rails', 'compute markets'],
     href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
@@ -43,7 +43,7 @@ const items = [
     num: '04',
     label: 'Paper · SSRN',
     title: 'The Economics of Wash Trading',
-    desc: 'Microstructure and incentive design behind manufactured volume in digital-asset markets.',
+    desc: 'A paper on manufactured volume, incentives, and market structure in crypto.',
     impact: 'Market structure',
     signals: ['market design', 'incentives'],
     href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
@@ -52,7 +52,7 @@ const items = [
     num: '05',
     label: 'Talk',
     title: 'FHE for Consensus in AI Models',
-    desc: 'Using fully-homomorphic encryption to coordinate trustless consensus across model outputs.',
+    desc: 'A talk on using FHE to coordinate trustless consensus across model outputs.',
     impact: 'Verifiable compute',
     signals: ['FHE', 'model consensus'],
     href: 'https://www.youtube.com/watch?v=4s_IhcMoOks',
@@ -66,7 +66,7 @@ export default function Work() {
         <SectionHeader
           index="05"
           title="Selected work"
-          lede="Papers, films, and talks that made technical work easier to understand, fund, and ship."
+          lede="Research, films, and talks. The common thread: make technical ideas easier to believe, fund, and use."
         />
 
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">

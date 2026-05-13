@@ -16,7 +16,7 @@ const phases = [
   {
     step: '03',
     k: 'Settle',
-    v: 'Commit high-stakes actions somewhere the operator cannot rewrite.',
+    v: "Write high-stakes actions somewhere the operator can't rewrite.",
     meta: ['external record', 'audit trail'],
   },
 ];

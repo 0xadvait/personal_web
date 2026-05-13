@@ -20,7 +20,7 @@ const collaboration = [
   },
   {
     k: 'Tell',
-    v: 'Technical narratives, launch films, talks, and explaining new categories.',
+    v: 'Technical narrative, launch films, talks, and new categories.',
   },
 ];
 
@@ -43,8 +43,8 @@ export default function Contact() {
                 Let&apos;s <span className="italic text-accent">talk.</span>
               </h2>
               <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
-                If you&apos;re building verifiable AI infrastructure, agent memory, crypto rails,
-                or anything where trust boundaries matter, drop me a line.
+                If you&apos;re building AI infrastructure, agent memory, or crypto rails and the
+                trust boundary is getting weird, send the sharp version.
               </p>
             </div>
 

@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 
-const signals = ['proofs for AI execution', 'portable memory', 'agent settlement'];
+const signals = ['verifiable runs', 'portable memory', 'agent settlement'];
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -46,7 +46,7 @@ export default function Hero() {
               {...fadeUp(18, 0.18)}
               className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
             >
-              <p>I build infrastructure for AI agents that need to prove what they did.</p>
+              <p>I build the trust layer for AI agents before they touch real workflows.</p>
               <p>
                 At{' '}
                 <a
@@ -58,8 +58,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , I lead product strategy, ecosystem growth, and customer engineering for a
-                decentralized GPU + TEE inference network and MemSync. I also{' '}
+                , I turn decentralized GPU + TEE compute and MemSync into products people can
+                actually buy, trust, and build on. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"
@@ -67,7 +67,7 @@ export default function Hero() {
                   aria-label="The State of Edge AI report (opens in a new tab)"
                   className="text-accent hover:underline underline-offset-[3px]"
                 >
-                  write technical research
+                  write research
                 </a>{' '}
                 and{' '}
                 <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
@@ -114,8 +114,8 @@ export default function Hero() {
               </div>
 
               <p className="mt-4 border-l border-accent/35 pl-4 font-serif text-[14px] leading-[1.45] text-fg-muted">
-                The work is direct: prove execution, let users carry memory, and settle actions
-                where the operator cannot quietly rewrite them.
+                Less chatbot magic. More runs you can replay, memory users own, and actions an
+                operator can&apos;t quietly edit.
               </p>
             </div>
           </motion.aside>
@@ -141,7 +141,7 @@ function HeroSystemPanel() {
             Agent run
           </div>
           <p className="mt-2 max-w-[18rem] font-serif text-[20px] leading-[1.08] text-fg sm:text-[22px]">
-            Agents that can be checked after they act.
+            Agents you can check after they act.
           </p>
         </div>
         <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
