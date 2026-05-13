@@ -46,12 +46,20 @@ const datedCalls = [
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     call:
-      'GPU capacity and AI infra would start acting like financial assets: financed, tokenized, and tied back to real usage.',
-    after: '22 Sep 2025',
+      'AI compute would stop being just another cloud line item. The capacity itself would become something capital markets finance directly.',
+    after: '27 Mar 2025 / 10 Apr 2026',
     happened:
-      'GAIB announced GPU and robotics tokenization deals, including a Siam AI GPU deal and $50.4M in deployed capital.',
-    evidence: 'GAIB deals',
-    evidenceHref: 'https://blog.gaib.ai/tokenizing-15m-and-5-4m-worth-of-robotics-and-gpu-assets/',
+      'CoreWeave priced its Nasdaq IPO weeks later. Blackstone then filed a public vehicle for newly built data centers.',
+    evidenceLinks: [
+      {
+        label: 'CoreWeave IPO',
+        href: 'https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Pricing-of-Initial-Public-Offering/default.aspx',
+      },
+      {
+        label: 'Blackstone BXDC',
+        href: 'https://www.blackstone.com/news/press/blackstone-digital-infrastructure-trust-announces-public-filing-of-registration-statement-with-the-sec/',
+      },
+    ],
   },
   {
     made: '28 Feb 2025',
@@ -62,9 +70,12 @@ const datedCalls = [
     after: '7 May 2026',
     happened:
       'AWS launched AgentCore Payments with Coinbase and Stripe, so agents can pay for APIs, MCP servers, web content, and other agents.',
-    evidence: 'AWS launch',
-    evidenceHref:
-      'https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-bedrock-agentcore-payments-preview/',
+    evidenceLinks: [
+      {
+        label: 'AWS launch',
+        href: 'https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-bedrock-agentcore-payments-preview/',
+      },
+    ],
   },
 ];
 
@@ -158,7 +169,7 @@ export default function Thesis() {
               <ol className="divide-y divide-border-soft border-t border-border lg:border-t-0">
                 {datedCalls.map((item, index) => (
                   <li
-                    key={`${item.source}-${item.evidence}`}
+                    key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
                     className="grid gap-4 py-6 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
                   >
                     <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
@@ -192,14 +203,21 @@ export default function Thesis() {
                         <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
                           {item.happened}
                         </p>
-                        <a
-                          href={item.evidenceHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
-                        >
-                          {item.evidence} ↗
-                        </a>
+                        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                          {(item.evidenceLinks ?? [
+                            { label: item.evidence, href: item.evidenceHref },
+                          ]).map((link) => (
+                            <a
+                              key={link.label}
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </li>
