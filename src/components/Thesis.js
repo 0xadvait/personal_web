@@ -27,28 +27,44 @@ const beforeAfter = [
   ['Next', 'agent workflows', 'verify it'],
 ];
 
-const researchNotes = [
+const datedCalls = [
   {
-    title: 'The State of Edge AI',
-    year: '2024',
-    href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
-    line: 'Not every model call belongs in a cloud API.',
-    notes: [
-      'Latency changes which AI products feel usable.',
-      'Private context should stay close to the user when it can.',
-      'Bandwidth, hardware, and deployment constraints matter as much as model quality.',
-    ],
+    made: '14 Oct 2024',
+    source: 'The State of Edge AI',
+    sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
+    call:
+      'Cloud-only AI was going to hit latency, privacy, and bandwidth walls. More intelligence needed to move closer to the user.',
+    after: '28 Oct 2024',
+    happened:
+      'Apple Intelligence went live across iPhone, iPad, and Mac with on-device models and Private Cloud Compute as the privacy story.',
+    evidence: 'Apple rollout',
+    evidenceHref:
+      'https://www.apple.com/newsroom/2024/10/apple-intelligence-is-available-today-on-iphone-ipad-and-mac/',
   },
   {
-    title: 'The AiFi Thesis',
-    year: '2025',
-    href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
-    line: 'AI resources are starting to look like markets.',
-    notes: [
-      'Compute, data, models, and agents need clear ways to price, access, and redeem them.',
-      'Tokenization only matters when it maps to custody, usage rights, or cash flows.',
-      'Agent economies need proofs before they deserve autonomy.',
-    ],
+    made: '28 Feb 2025',
+    source: 'The AiFi Thesis',
+    sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+    call:
+      'GPU capacity and AI infra would start acting like financial assets: financed, tokenized, and tied back to real usage.',
+    after: '22 Sep 2025',
+    happened:
+      'GAIB announced GPU and robotics tokenization deals, including a Siam AI GPU deal and $50.4M in deployed capital.',
+    evidence: 'GAIB deals',
+    evidenceHref: 'https://blog.gaib.ai/tokenizing-15m-and-5-4m-worth-of-robotics-and-gpu-assets/',
+  },
+  {
+    made: '28 Feb 2025',
+    source: 'The AiFi Thesis',
+    sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+    call:
+      'If agents were going to work with each other, they would need payment rails, spend controls, and a clean record of what happened.',
+    after: '7 May 2026',
+    happened:
+      'AWS launched AgentCore Payments with Coinbase and Stripe, so agents can pay for APIs, MCP servers, web content, and other agents.',
+    evidence: 'AWS launch',
+    evidenceHref:
+      'https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-bedrock-agentcore-payments-preview/',
   },
 ];
 
@@ -128,60 +144,67 @@ export default function Thesis() {
 
         <Reveal delay={0.08}>
           <div className="mt-12 border-y border-border py-6 sm:mt-16 sm:py-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,1.32fr)] lg:gap-14">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Research notes
+                  Calls that aged well
                 </div>
                 <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
-                  The fun stuff has been figuring out what happens when AI leaves the demo and
-                  starts needing markets, privacy, latency, and proof.
+                  The part I care about is writing down a market pressure before it gets obvious,
+                  then staying close as it turns into products.
                 </p>
               </div>
 
-              <div className="divide-y divide-border-soft border-t border-border lg:border-t-0">
-                {researchNotes.map((note) => (
-                  <a
-                    key={note.title}
-                    href={note.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${note.title} PDF (opens in a new tab)`}
-                    className="group block py-6 transition-colors hover:bg-surface-soft/50 sm:px-3"
+              <ol className="divide-y divide-border-soft border-t border-border lg:border-t-0">
+                {datedCalls.map((item, index) => (
+                  <li
+                    key={`${item.source}-${item.evidence}`}
+                    className="grid gap-4 py-6 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                        {note.year}
-                      </div>
-                      <span
-                        aria-hidden
-                        className="text-fg-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent"
-                      >
-                        ↗
-                      </span>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
+                      {String(index + 1).padStart(2, '0')}
                     </div>
-                    <h3 className="mt-2 font-serif text-[25px] leading-[1.15] text-fg transition-colors group-hover:text-accent sm:text-[31px]">
-                      {note.title}
-                    </h3>
-                    <p className="mt-2 font-serif text-[16px] leading-[1.5] text-fg-muted sm:text-[17px]">
-                      {note.line}
-                    </p>
-                    <ul className="mt-4 grid gap-2">
-                      {note.notes.map((item) => (
-                        <li
-                          key={item}
-                          className="grid grid-cols-[1.5rem_1fr] gap-2 font-serif text-[14.5px] leading-[1.5] text-fg-muted sm:text-[15px]"
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                        <a
+                          href={item.sourceHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
                         >
-                          <span aria-hidden className="font-mono text-[10px] text-accent-alt">
-                            /
-                          </span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </a>
+                          {item.made}
+                        </a>
+                        <span
+                          aria-hidden
+                          className="hidden h-px w-7 bg-accent/30 sm:inline-block"
+                        />
+                        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
+                          {item.source}
+                        </span>
+                      </div>
+                      <p className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
+                        {item.call}
+                      </p>
+                      <div className="mt-4 border-l border-accent/30 pl-4">
+                        <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
+                          What happened after · {item.after}
+                        </div>
+                        <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
+                          {item.happened}
+                        </p>
+                        <a
+                          href={item.evidenceHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+                        >
+                          {item.evidence} ↗
+                        </a>
+                      </div>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </div>
         </Reveal>
