@@ -22,9 +22,9 @@ const items = [
     num: '02',
     label: 'Report · 2024',
     title: 'The State of Edge AI',
-    desc: 'First author. A report on real-time data, privacy, and edge deployment for large models. 174K+ X impressions, 6 academic citations.',
+    desc: 'First author. A report on what changes when inference moves closer to the user: latency, privacy, bandwidth, and device constraints.',
     impact: '174K+ impressions',
-    signals: ['edge AI', 'market map'],
+    signals: ['edge AI', 'latency', 'privacy'],
     links: [
       { label: 'PDF', href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf' },
       { label: 'Launch tweet', href: 'https://x.com/advait_jayant/status/1844420752323510351' },
@@ -34,9 +34,9 @@ const items = [
     num: '03',
     label: 'Report',
     title: 'The AiFi Thesis',
-    desc: 'A thesis for AI x DeFi: tokenized compute, training data, and model markets.',
+    desc: 'A thesis for AI x DeFi: compute, data, models, and agents as resources with markets around them.',
     impact: 'AI x DeFi thesis',
-    signals: ['crypto rails', 'compute markets'],
+    signals: ['compute markets', 'agent finance'],
     href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
   },
   {

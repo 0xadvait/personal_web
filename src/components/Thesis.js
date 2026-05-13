@@ -27,6 +27,31 @@ const beforeAfter = [
   ['Next', 'agent workflows', 'verify it'],
 ];
 
+const researchNotes = [
+  {
+    title: 'The State of Edge AI',
+    year: '2024',
+    href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
+    line: 'Not every model call belongs in a cloud API.',
+    notes: [
+      'Latency changes which AI products feel usable.',
+      'Private context should stay close to the user when it can.',
+      'Bandwidth, hardware, and deployment constraints matter as much as model quality.',
+    ],
+  },
+  {
+    title: 'The AiFi Thesis',
+    year: '2025',
+    href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+    line: 'AI resources are starting to look like markets.',
+    notes: [
+      'Compute, data, models, and agents need clear ways to price, access, and redeem them.',
+      'Tokenization only matters when it maps to custody, usage rights, or cash flows.',
+      'Agent economies need proofs before they deserve autonomy.',
+    ],
+  },
+];
+
 export default function Thesis() {
   return (
     <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-24">
@@ -100,6 +125,66 @@ export default function Thesis() {
             </ol>
           </Reveal>
         </div>
+
+        <Reveal delay={0.08}>
+          <div className="mt-12 border-y border-border py-6 sm:mt-16 sm:py-8">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  Research notes
+                </div>
+                <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
+                  The fun stuff has been figuring out what happens when AI leaves the demo and
+                  starts needing markets, privacy, latency, and proof.
+                </p>
+              </div>
+
+              <div className="divide-y divide-border-soft border-t border-border lg:border-t-0">
+                {researchNotes.map((note) => (
+                  <a
+                    key={note.title}
+                    href={note.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${note.title} PDF (opens in a new tab)`}
+                    className="group block py-6 transition-colors hover:bg-surface-soft/50 sm:px-3"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                        {note.year}
+                      </div>
+                      <span
+                        aria-hidden
+                        className="text-fg-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                      >
+                        ↗
+                      </span>
+                    </div>
+                    <h3 className="mt-2 font-serif text-[25px] leading-[1.15] text-fg transition-colors group-hover:text-accent sm:text-[31px]">
+                      {note.title}
+                    </h3>
+                    <p className="mt-2 font-serif text-[16px] leading-[1.5] text-fg-muted sm:text-[17px]">
+                      {note.line}
+                    </p>
+                    <ul className="mt-4 grid gap-2">
+                      {note.notes.map((item) => (
+                        <li
+                          key={item}
+                          className="grid grid-cols-[1.5rem_1fr] gap-2 font-serif text-[14.5px] leading-[1.5] text-fg-muted sm:text-[15px]"
+                        >
+                          <span aria-hidden className="font-mono text-[10px] text-accent-alt">
+                            /
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
