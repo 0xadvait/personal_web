@@ -151,22 +151,24 @@ function LondonTime() {
 }
 
 function HeroSystemPanel() {
+  const lanes = [
+    ['01', 'Research', 'spot the thing before it has a clean name'],
+    ['02', 'Product', 'turn the thesis into something customers use'],
+    ['03', 'Film', 'make the idea feel real'],
+  ];
+
   return (
-    <div className="relative overflow-hidden border-b border-border bg-[linear-gradient(135deg,#ffffff_0%,#f7f7f2_46%,#edf3ff_100%)] p-4 sm:p-5">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(36,70,199,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.07)_1px,transparent_1px)] [background-size:24px_24px]"
-      />
-      <div aria-hidden className="absolute right-0 top-0 h-full w-20 border-l border-accent/10 bg-accent-soft/35" />
-      <div aria-hidden className="absolute bottom-0 left-0 h-16 w-2/3 border-t border-accent-alt/10 bg-surface/55" />
+    <div className="relative overflow-hidden border-b border-border bg-surface p-5 sm:p-6">
+      <div aria-hidden className="absolute inset-y-0 right-0 w-28 bg-[linear-gradient(90deg,transparent_0%,rgba(36,70,199,0.08)_100%)]" />
+      <div aria-hidden className="absolute right-6 top-6 h-20 w-20 rounded-full border border-accent/10 bg-accent-soft/40" />
 
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            Operating zone
+            Right now
           </div>
-          <p className="mt-2 max-w-[18rem] font-serif text-[20px] leading-[1.08] text-fg sm:text-[22px]">
-            New markets need taste, product, and reach.
+          <p className="mt-2 max-w-[20rem] font-serif text-[21px] leading-[1.1] text-fg sm:text-[24px]">
+            Find the weird early signal. Build around it. Make people care.
           </p>
         </div>
         <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
@@ -174,97 +176,22 @@ function HeroSystemPanel() {
         </span>
       </div>
 
-      <div className="relative z-10 mt-4 overflow-hidden border border-border bg-surface/75 p-3 shadow-[0_1px_0_rgba(29,37,40,0.03)] sm:p-4">
-        <svg
-          aria-hidden
-          viewBox="0 0 380 220"
-          className="absolute inset-0 h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="agent-line" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stopColor="#2446c7" stopOpacity="0.78" />
-              <stop offset="100%" stopColor="#0f766e" stopOpacity="0.58" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M 96 63 H 148"
-            fill="none"
-            stroke="url(#agent-line)"
-            strokeWidth="1.4"
-          />
-          <path
-            d="M 96 157 H 148"
-            fill="none"
-            stroke="url(#agent-line)"
-            strokeWidth="1.4"
-          />
-          <path
-            d="M 232 63 H 284"
-            fill="none"
-            stroke="url(#agent-line)"
-            strokeWidth="1.4"
-          />
-          <path
-            d="M 232 157 H 284"
-            fill="none"
-            stroke="url(#agent-line)"
-            strokeWidth="1.4"
-          />
-          <path d="M 190 86 V 134" fill="none" stroke="#c6d4f5" strokeWidth="1" />
-        </svg>
-
-        <div className="relative z-10 grid min-h-[178px] grid-cols-[0.84fr_1.02fr_0.84fr] items-center gap-1.5 sm:min-h-[190px] sm:gap-2">
-          <div className="grid gap-3 sm:gap-4">
-            <FlowNode k="Research" v="where the pressure is" />
-            <FlowNode k="Product" v="what people use" />
-          </div>
-
-          <div className="flex justify-center">
-            <div className="relative flex h-24 w-full max-w-24 flex-col items-center justify-center border border-accent/35 bg-accent-soft/85 text-center shadow-[0_10px_30px_rgba(36,70,199,0.08)] sm:h-28 sm:max-w-28">
-              <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
-                Market story
+      <div className="relative z-10 mt-6 divide-y divide-border-soft border-y border-border">
+        {lanes.map(([step, title, copy]) => (
+          <div key={title} className="grid gap-3 py-4 sm:grid-cols-[3rem_1fr] sm:gap-5">
+            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
+              {step}
+            </div>
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                {title}
               </div>
-              <div className="mt-2.5 flex h-9 w-9 items-center justify-center rounded-full border border-accent/45 bg-surface sm:h-10 sm:w-10">
-                <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5">
-                  <path
-                    d="M 5 12.5 L 10 17 L 19 7"
-                    fill="none"
-                    stroke="#2446c7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.4"
-                  />
-                </svg>
-              </div>
-              <div className="mt-2.5 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
-                thesis + launch
-              </div>
+              <p className="mt-1 font-serif text-[17px] leading-[1.35] text-fg-muted sm:text-[19px]">
+                {copy}
+              </p>
             </div>
           </div>
-
-          <div className="grid gap-3 sm:gap-4">
-            <FlowNode k="Capital" v="why it matters" align="right" />
-            <FlowNode k="Media" v="why it spreads" align="right" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FlowNode({ k, v, align = 'left' }) {
-  const textAlign = align === 'right' ? 'items-end text-right' : 'items-start text-left';
-
-  return (
-    <div
-      className={`flex min-h-[52px] min-w-0 flex-col justify-center border-y border-border bg-surface/95 px-2.5 py-2 sm:px-3 ${textAlign}`}
-    >
-      <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
-        {k}
-      </div>
-      <div className="mt-1 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
-        {v}
+        ))}
       </div>
     </div>
   );
