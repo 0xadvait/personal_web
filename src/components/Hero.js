@@ -156,10 +156,10 @@ function HeroSystemPanel() {
         </span>
       </div>
 
-      <div className="relative z-10 mt-5 h-[252px] overflow-hidden border border-border bg-surface/70 shadow-[0_1px_0_rgba(29,37,40,0.03)]">
+      <div className="relative z-10 mt-5 overflow-hidden border border-border bg-surface/75 p-3 shadow-[0_1px_0_rgba(29,37,40,0.03)] sm:p-4">
         <svg
           aria-hidden
-          viewBox="0 0 380 252"
+          viewBox="0 0 380 220"
           className="absolute inset-0 h-full w-full"
           preserveAspectRatio="none"
         >
@@ -170,45 +170,66 @@ function HeroSystemPanel() {
             </linearGradient>
           </defs>
           <path
-            d="M 70 64 C 126 35, 188 38, 227 73 C 266 108, 260 154, 218 181 C 176 208, 111 197, 80 158 C 48 118, 36 84, 70 64 Z"
-            fill="none"
-            stroke="#c6d4f5"
-            strokeWidth="1.2"
-          />
-          <path
-            d="M 74 72 C 128 58, 156 72, 184 104"
+            d="M 96 63 H 148"
             fill="none"
             stroke="url(#agent-line)"
-            strokeWidth="1.7"
-          />
-          <path
-            d="M 217 116 C 251 122, 281 132, 304 155"
-            fill="none"
-            stroke="url(#agent-line)"
-            strokeWidth="1.7"
-          />
-          <path
-            d="M 169 158 C 141 172, 111 169, 84 148"
-            fill="none"
-            stroke="#0f766e"
-            strokeOpacity="0.48"
             strokeWidth="1.4"
-            strokeDasharray="4 5"
           />
-          <circle cx="190" cy="126" r="42" fill="#edf3ff" stroke="#2446c7" strokeOpacity="0.35" />
-          <circle cx="190" cy="126" r="21" fill="#ffffff" stroke="#2446c7" strokeOpacity="0.45" />
-          <path d="M 179 126 L 188 135 L 204 115" fill="none" stroke="#2446c7" strokeWidth="2.2" />
-          <circle cx="74" cy="72" r="4" fill="#2446c7" />
-          <circle cx="184" cy="104" r="4" fill="#0f766e" />
-          <circle cx="304" cy="155" r="4" fill="#2446c7" />
-          <circle cx="84" cy="148" r="4" fill="#0f766e" />
+          <path
+            d="M 96 157 H 148"
+            fill="none"
+            stroke="url(#agent-line)"
+            strokeWidth="1.4"
+          />
+          <path
+            d="M 232 63 H 284"
+            fill="none"
+            stroke="url(#agent-line)"
+            strokeWidth="1.4"
+          />
+          <path
+            d="M 232 157 H 284"
+            fill="none"
+            stroke="url(#agent-line)"
+            strokeWidth="1.4"
+          />
+          <path d="M 190 86 V 134" fill="none" stroke="#c6d4f5" strokeWidth="1" />
         </svg>
 
-        <DiagramLabel className="left-4 top-4" k="Request" v="intent + context" />
-        <DiagramLabel className="bottom-5 left-5" k="Memory" v="portable state" />
-        <DiagramLabel className="left-1/2 top-1/2 w-[8.4rem] -translate-x-1/2 translate-y-[3.1rem] text-center" k="TEE run" v="model output" />
-        <DiagramLabel className="right-4 top-6 text-right" k="Proof" v="signed output" />
-        <DiagramLabel className="bottom-5 right-4 text-right" k="Settlement" v="external record" />
+        <div className="relative z-10 grid min-h-[210px] grid-cols-[0.84fr_1.02fr_0.84fr] items-center gap-1.5 sm:min-h-[220px] sm:gap-2">
+          <div className="grid gap-5">
+            <FlowNode k="Input" v="intent + context" />
+            <FlowNode k="Memory" v="portable state" />
+          </div>
+
+          <div className="flex justify-center">
+            <div className="relative flex h-28 w-full max-w-28 flex-col items-center justify-center border border-accent/35 bg-accent-soft/85 text-center shadow-[0_10px_30px_rgba(36,70,199,0.08)] sm:h-32 sm:max-w-32">
+              <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
+                Verified run
+              </div>
+              <div className="mt-3 flex h-10 w-10 items-center justify-center rounded-full border border-accent/45 bg-surface sm:h-12 sm:w-12">
+                <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6">
+                  <path
+                    d="M 5 12.5 L 10 17 L 19 7"
+                    fill="none"
+                    stroke="#2446c7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.4"
+                  />
+                </svg>
+              </div>
+              <div className="mt-3 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
+                TEE + model
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-5">
+            <FlowNode k="Output" v="signed result" align="right" />
+            <FlowNode k="Settle" v="external record" align="right" />
+          </div>
+        </div>
       </div>
 
       <dl className="relative z-10 mt-4 grid grid-cols-3 border-y border-border bg-bg/60">
@@ -227,13 +248,17 @@ function HeroSystemPanel() {
   );
 }
 
-function DiagramLabel({ className, k, v }) {
+function FlowNode({ k, v, align = 'left' }) {
+  const textAlign = align === 'right' ? 'items-end text-right' : 'items-start text-left';
+
   return (
-    <div className={`absolute z-10 max-w-[8.5rem] ${className}`}>
-      <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-accent">
+    <div
+      className={`flex min-h-[58px] min-w-0 flex-col justify-center border-y border-border bg-surface/95 px-2.5 py-2.5 sm:px-3 ${textAlign}`}
+    >
+      <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
         {k}
       </div>
-      <div className="mt-1 font-serif text-[13px] leading-tight text-fg-muted">
+      <div className="mt-1 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
         {v}
       </div>
     </div>
