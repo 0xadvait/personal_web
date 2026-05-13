@@ -3,8 +3,8 @@ import SectionHeader from './SectionHeader';
 
 const meta = [
   { k: 'Based', v: 'London' },
-  { k: 'Status', v: 'UK Global Talent' },
-  { k: 'Education', v: 'LBS · BITS Pilani' },
+  { k: 'Now', v: 'CSO at OpenGradient' },
+  { k: 'Before', v: 'Founder, SuperSight / Peri Labs' },
 ];
 
 const outcomes = [
@@ -15,16 +15,16 @@ const outcomes = [
 
 const modes = [
   {
-    k: 'Translate',
-    v: 'Make dense tech legible without dumbing it down.',
+    k: '01',
+    v: 'Make dense technical work easier to understand without sanding off the edge.',
   },
   {
-    k: 'Build',
-    v: 'Get from thesis to product people pay for.',
+    k: '02',
+    v: 'Move from research thesis to product, customers, and revenue.',
   },
   {
-    k: 'Distribute',
-    v: 'Make technical work travel: research, films, talks.',
+    k: '03',
+    v: 'Turn a hard category into writing, films, and talks people pass around.',
   },
 ];
 
@@ -42,7 +42,7 @@ export default function About() {
         <SectionHeader
           index="02"
           title="About"
-          lede="I work on the gap between a cool demo and something people can actually run."
+          lede="I work on the space between a good demo and something people will bet on."
         />
 
         <Reveal>
@@ -61,17 +61,22 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.04}>
-          <div className="mt-8 hidden gap-4 sm:grid sm:grid-cols-3">
+          <div className="mt-8 border-y border-border py-5 sm:py-6">
+            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              What I usually do
+            </div>
+            <ol className="mt-4 grid gap-4 sm:grid-cols-3 sm:gap-6">
             {modes.map((mode) => (
-              <div key={mode.k} className="border border-border bg-surface px-5 py-5">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              <li key={mode.k} className="grid grid-cols-[2rem_1fr] gap-3">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
                   {mode.k}
                 </div>
-                <p className="mt-3 font-serif text-[16px] leading-[1.5] text-fg-muted">
+                <p className="font-serif text-[15px] leading-[1.5] text-fg-muted sm:text-base">
                   {mode.v}
                 </p>
-              </div>
+              </li>
             ))}
+            </ol>
           </div>
         </Reveal>
 
@@ -85,8 +90,9 @@ export default function About() {
                   Intelligence, backed by a16z crypto and Coinbase Ventures.
                 </p>
                 <p>
-                  My lane: product strategy, ecosystem growth, and customer engineering across the
-                  GPU + TEE inference network and <strong>MemSync</strong>.
+                  My job is to make decentralized GPU + TEE inference, proofs, and{' '}
+                  <strong>MemSync</strong> feel concrete enough for customers, builders, and
+                  partners to care.
                 </p>
                 <dl className="grid gap-3 pt-1 sm:grid-cols-2">
                   {highlights.map((item) => (
@@ -108,10 +114,9 @@ export default function About() {
                 <p>
                   Before that, I founded <Link href="https://supersight.xyz/">SuperSight</Link>{' '}
                   (later{' '}
-                  <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial
-                  College-anchored AI research lab. The core product was an LLM-powered NL-to-SQL
-                  system that reached{' '}
-                  <strong>200K+ users at 95% accuracy</strong>.
+                  <Link href="https://perilabs.net/">Peri Labs</Link>), an Imperial College
+                  AI research lab. The core product was an NL-to-SQL system that reached{' '}
+                  <strong>200K+ users</strong> at 95% accuracy.
                 </p>
                 <p>
                   Raised $1.5M pre-seed at $30M from Animoca Brands, Blockchain Founders Fund, and
@@ -126,9 +131,8 @@ export default function About() {
                   Why
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  The future of AI needs less black box and more replayable state: runs you can
-                  prove, memory users can carry, and actions the operator can&apos;t quietly
-                  rewrite.
+                  The future of AI needs less black box and more replayable state: runs you can prove,
+                  memory users can carry, and actions the operator can&apos;t quietly rewrite.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.

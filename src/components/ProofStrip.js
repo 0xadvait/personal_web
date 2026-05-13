@@ -19,7 +19,7 @@ export default function ProofStrip() {
                 Snapshot
               </div>
               <p className="mt-2 max-w-xs font-serif text-[14px] leading-[1.45] text-fg-muted">
-                A quick read on the work so far.
+                A few numbers for context.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[3px] border border-border bg-border sm:grid-cols-5">

@@ -62,8 +62,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , I turn decentralized GPU + TEE compute and MemSync into products people can
-                actually buy, trust, and build on. I also{' '}
+                , I turn decentralized GPU + TEE compute and MemSync into products people can buy,
+                trust, and build on. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"

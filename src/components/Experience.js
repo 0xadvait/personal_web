@@ -28,8 +28,7 @@ const roles = [
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . My focus is the inference network, MemSync, ecosystem, and products customers can
-        actually use.
+        . I work across the inference network, MemSync, ecosystem, and the products customers use.
       </>
     ),
     highlights: ['7-figure product revenue', '4,500+ hosted models', '500K+ proofs'],
@@ -45,13 +44,13 @@ const roles = [
         <AdvisorLink href="https://www.finsmes.com/2023/07/supersight-raises-1m-in-pre-seed-funding.html">
           Raised $1.5M pre-seed at $30M
         </AdvisorLink>{' '}
-        from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected for the{' '}
+        from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected through the NEAR
+        Incubator for the{' '}
         <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
           Delphi Labs AI Accelerator
         </AdvisorLink>
-        (with NEAR) and UT Austin&rsquo;s incubator. Built the NL-to-SQL pipeline end-to-end to
-        200K+ users at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI.
-        IP acquired.
+        , plus UT Austin&rsquo;s incubator. Built the NL-to-SQL pipeline end-to-end to 200K+ users
+        at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.
       </>
     ),
     highlights: ['$1.5M raised', '200K+ users', '30+ pilots'],
@@ -73,7 +72,7 @@ export default function Experience() {
         <SectionHeader
           index="04"
           title="Experience"
-          lede="Product, research, capital, and GTM while the category is still being named."
+          lede="I’ve mostly worked where product, research, capital, and distribution overlap."
         />
 
         <ol>

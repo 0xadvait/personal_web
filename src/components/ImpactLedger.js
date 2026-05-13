@@ -13,7 +13,7 @@ const entries = [
     year: '2026',
     arena: 'Market entry',
     result: 'Launched OpenGradient in Korea with 1,000+ attendees in one week.',
-    role: 'Regional GTM, community design, ecosystem ties',
+    role: 'Regional launch, community design, ecosystem ties',
     proof: 'Builder community, local events, and Korean press coverage.',
   },
   {
@@ -55,7 +55,7 @@ export default function ImpactLedger() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="03"
-          title="Impact"
+          title="Track record"
           lede="I'm useful when the tech is real, the market is early, and the story is still messy."
         />
 
