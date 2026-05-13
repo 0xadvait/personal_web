@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Reveal from './Reveal';
 
 const channels = [
@@ -36,19 +37,43 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[104px] leading-[0.98] text-fg max-w-4xl text-balance">
-            Let&apos;s <span className="italic text-accent">talk.</span>
-          </h2>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_360px] lg:items-end lg:gap-16">
+            <div>
+              <h2 className="font-serif text-5xl leading-[0.98] text-fg text-balance sm:text-6xl md:text-7xl lg:text-[104px]">
+                Let&apos;s <span className="italic text-accent">talk.</span>
+              </h2>
+              <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
+                If you&apos;re building verifiable AI infrastructure, agent memory, crypto rails,
+                or anything where trust boundaries matter, drop me a line.
+              </p>
+            </div>
+
+            <aside
+              aria-label="Contact note"
+              className="relative min-h-[240px] overflow-hidden rounded-[3px] border border-border bg-fg shadow-[0_22px_70px_rgba(29,37,40,0.08)] sm:min-h-[300px]"
+            >
+              <Image
+                src="/images/ascii_bg.gif"
+                alt=""
+                fill
+                unoptimized
+                sizes="(min-width: 1024px) 360px, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-fg/15 via-fg/20 to-fg/78" />
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
+                  Usually async first
+                </div>
+                <p className="mt-3 max-w-[18rem] font-serif text-[21px] leading-[1.18] text-white sm:text-[24px]">
+                  Send the sharp version of the problem. I&apos;ll read it properly.
+                </p>
+              </div>
+            </aside>
+          </div>
         </Reveal>
 
-        <Reveal delay={0.12}>
-          <p className="mt-6 sm:mt-8 max-w-xl font-serif italic text-lg sm:text-xl leading-relaxed text-fg-muted">
-            If you&apos;re building verifiable AI infrastructure, agent memory, crypto rails, or
-            anything where trust boundaries matter, drop me a line.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.2}>
+        <Reveal delay={0.14}>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {collaboration.map((item) => (
               <div key={item.k} className="border border-border bg-bg px-5 py-5">
@@ -63,7 +88,7 @@ export default function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.24}>
+        <Reveal delay={0.18}>
           <ul className="mt-12 sm:mt-16">
             {channels.map((c) => (
               <li key={c.k} className="border-t border-border last:border-b">
