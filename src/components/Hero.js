@@ -64,7 +64,17 @@ export default function Hero() {
                 , I lead product strategy, ecosystem growth, and customer engineering across the
                 decentralized GPU + TEE inference network and MemSync, a portable memory layer for
                 agents. I work on the parts that make this stack easier to buy, trust, and build
-                on. I also write research and{' '}
+                on. I also{' '}
+                <a
+                  href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="The State of Edge AI report (opens in a new tab)"
+                  className="text-accent hover:underline underline-offset-[3px]"
+                >
+                  write research
+                </a>{' '}
+                and{' '}
                 <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
                   produce films
                 </a>
