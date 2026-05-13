@@ -11,16 +11,16 @@ const channels = [
 
 const collaboration = [
   {
-    k: 'Build',
-    v: 'Technical products, sharp positioning, early customers.',
+    k: 'AI',
+    v: 'Agents, models, edge inference, product questions.',
   },
   {
-    k: 'Think',
-    v: 'Market maps, technical research, crypto rails, AI x capital.',
+    k: 'Crypto',
+    v: 'Compute markets, payment rails, market structure.',
   },
   {
-    k: 'Tell',
-    v: 'Films, talks, and stories that make new categories click.',
+    k: 'Film',
+    v: 'Technical stories, launch films, talks.',
   },
 ];
 
@@ -40,11 +40,10 @@ export default function Contact() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_360px] lg:items-end lg:gap-16">
             <div>
               <h2 className="font-serif text-5xl leading-[0.98] text-fg text-balance sm:text-6xl md:text-7xl lg:text-[104px]">
-                Let&apos;s <span className="italic text-accent">talk.</span>
+                Say <span className="italic text-accent">hi.</span>
               </h2>
               <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
-                If you&apos;re working on a hard technical market before the words are obvious,
-                I&apos;m probably interested. Short context is enough.
+                A few lines of context is plenty.
               </p>
             </div>
 
@@ -65,10 +64,10 @@ export default function Contact() {
               </div>
               <div className="border-t border-white/10 p-5 sm:p-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
-                  Usually async first
+                  No big intro needed
                 </div>
                 <p className="mt-3 max-w-[18rem] font-serif text-[21px] leading-[1.18] text-white sm:text-[24px]">
-                  Send the real problem. I&apos;ll read it properly.
+                  Say hi, send a link, whatever is easiest.
                 </p>
               </div>
             </aside>

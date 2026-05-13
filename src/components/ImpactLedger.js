@@ -21,7 +21,7 @@ const entries = [
     arena: 'Film',
     result: 'Produced a film-led open intelligence campaign that passed 50M+ views.',
     role: 'Producer, director, writer',
-    detail: 'The point was simple: make a hard technical category feel concrete.',
+    detail: 'The point was simple: make open intelligence feel concrete.',
   },
   {
     year: '2024',
@@ -40,10 +40,10 @@ const entries = [
 ];
 
 const capabilities = [
-  'Turn new research into a market story people remember.',
-  'Turn technical product into customer traction.',
-  'Make early markets easier to understand.',
-  'Move between engineering, capital, partners, and media.',
+  'Edge AI before on-device models became the default conversation.',
+  'AI compute before data centers started looking like finance products.',
+  'Agent payments before the big platforms put rails around them.',
+  'Film when the category needed to feel less abstract.',
 ];
 
 export default function ImpactLedger() {
@@ -56,7 +56,7 @@ export default function ImpactLedger() {
         <SectionHeader
           index="03"
           title="Track record"
-          lede="A few places where the work moved from early signal to something concrete."
+          lede="A few places where an early read became a product, a launch, or media people actually saw."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">

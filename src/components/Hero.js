@@ -152,9 +152,9 @@ function LondonTime() {
 
 function HeroSystemPanel() {
   const lanes = [
-    ['01', 'Research', 'spot the thing before everyone knows what to call it'],
-    ['02', 'Product', 'turn the thesis into something customers use'],
-    ['03', 'Film', 'make the idea feel real'],
+    ['01', 'Research', 'get the read right early'],
+    ['02', 'Product', 'turn the thesis into something people use'],
+    ['03', 'Film', 'make the idea easier to share'],
   ];
 
   return (
@@ -168,7 +168,7 @@ function HeroSystemPanel() {
             Right now
           </div>
           <p className="mt-2 max-w-[20rem] font-serif text-[21px] leading-[1.1] text-fg sm:text-[24px]">
-            Find the weird early signal. Build around it. Make people care.
+            Get the read right. Make it real. Make people care.
           </p>
         </div>
         <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">

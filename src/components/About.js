@@ -27,7 +27,7 @@ export default function About() {
         <SectionHeader
           index="02"
           title="About"
-          lede="I work on the awkward stretch between a good demo and something people will bet on."
+          lede="I work where a technical idea has to become a product, a market, and a story people can repeat."
         />
 
         <Reveal>
@@ -96,9 +96,8 @@ export default function About() {
                   Why
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  I care about the moment before a market has clean language. The product is
-                  starting to work, the money is paying attention, and someone still has to make
-                  the whole thing make sense.
+                  I care about the point when the product starts to work, the money starts paying
+                  attention, and the category still feels too abstract for most people.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.

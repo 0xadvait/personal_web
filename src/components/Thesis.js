@@ -4,24 +4,24 @@ import SectionHeader from './SectionHeader';
 const pillars = [
   {
     k: 'Read',
-    v: "Care before it's obvious.",
-    d: 'I like the moment when the demo is still rough, but you can tell the market is going to matter. Edge AI, compute markets, agent rails all had that feeling.',
+    v: 'Get the read early.',
+    d: 'I like markets where a rough demo already shows what could matter: edge AI, compute markets, agent rails.',
   },
   {
     k: 'Product',
-    v: 'Turn the thesis into something real.',
-    d: 'The writing only matters if it changes what gets built, bought, or funded.',
+    v: 'Make the idea real.',
+    d: 'The research matters when it changes what gets built, bought, or funded.',
   },
   {
     k: 'Reach',
-    v: 'Give the idea a way in.',
-    d: 'Sometimes that is a report. Sometimes it is a talk, a launch, or a film. The format matters less than whether people finally get it.',
+    v: 'Make it easier to get.',
+    d: 'Sometimes that is a report. Sometimes it is a talk, a launch, or a film. The format matters less than whether it clicks.',
   },
 ];
 
 const beforeAfter = [
-  ['First', 'weird signal', 'spot it'],
-  ['Then', 'real product', 'make it useful'],
+  ['First', 'early read', 'write it down'],
+  ['Then', 'real product', 'make it matter'],
 ];
 
 const datedCalls = [
@@ -86,7 +86,7 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Thesis"
-          lede="I care about early technical markets: when the constraint is real, the words are still clumsy, and the right story can pull people in."
+          lede="I care about early technical markets: real constraints, rough demos, and ideas that are almost ready for more people."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
@@ -100,8 +100,8 @@ export default function Thesis() {
                 product, capital, and storytelling.
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                That&apos;s the work I keep coming back to: noticing the shift, building around it,
-                then explaining it well enough that other people can move.
+                A good read should lead to something people can use, fund, or explain without a
+                30-minute preamble.
               </p>
 
               <dl className="mt-8 divide-y divide-border-soft border-y border-border">
@@ -158,8 +158,8 @@ export default function Thesis() {
                   Signals I wrote down
                 </div>
                 <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
-                  The point is the pattern, not the timestamp: write down the pressure, then watch
-                  where serious companies start putting product and capital.
+                  The point is the pattern, not the timestamp: make the call early, then watch
+                  where serious companies put product and capital.
                 </p>
               </div>
 
