@@ -1,6 +1,5 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import ProofStrip from '@/components/ProofStrip';
 import Thesis from '@/components/Thesis';
 import About from '@/components/About';
 import ImpactLedger from '@/components/ImpactLedger';
@@ -19,7 +18,6 @@ export default function Home() {
       <Nav />
       <main id="main-content" className="relative">
         <Hero />
-        <ProofStrip />
         <Thesis />
         <About />
         <ImpactLedger />
