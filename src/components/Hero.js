@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 
-const signals = ['AI infrastructure', 'market research', 'technical media'];
+const signals = ['research', 'product', 'films'];
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -33,7 +33,7 @@ export default function Hero() {
               className="mb-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-1 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:grid-cols-3 sm:text-[10.5px]"
             >
               <span className="text-accent">London</span>
-              <span className="sm:text-center">AI infra + crypto</span>
+              <span className="sm:text-center">Research + product</span>
               <span className="col-span-2 text-fg-dim sm:col-span-1 sm:text-right">
                 <LondonTime />
               </span>
@@ -65,8 +65,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , that means product strategy, ecosystem work, and technical storytelling around AI
-                infrastructure. I also{' '}
+                , I&apos;m doing that around AI infrastructure: product direction, customer work,
+                and stories that make the category easier to understand. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"

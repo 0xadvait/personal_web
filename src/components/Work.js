@@ -8,10 +8,10 @@ const items = [
     label: 'Film campaign',
     title: 'AI infrastructure film work',
     desc: 'Producer, director, writer. A launch campaign that made open intelligence feel less abstract.',
-    impact: '50M+ views · launch narrative',
+    impact: '50M+ views',
     featured: true,
     visual: 'campaign',
-    signals: ['narrative strategy', 'technical distribution', 'launch surface'],
+    signals: ['strategy', 'films', 'launch'],
     links: [
       { label: 'Film I', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
@@ -69,7 +69,7 @@ export default function Work() {
         <SectionHeader
           index="05"
           title="Selected work"
-          lede="Research, films, and talks. The common thread: make technical ideas easier to believe, fund, and use."
+          lede="Research, films, and talks. Same idea each time: make technical work easier to believe, fund, and use."
         />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-8">
@@ -239,7 +239,7 @@ function CampaignVisual() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
-              Launch films
+              Films
             </div>
             <p className="mt-2 max-w-[15rem] font-serif text-[26px] leading-[1.02] text-white sm:text-[31px]">
               Making open intelligence feel real.
@@ -254,7 +254,7 @@ function CampaignVisual() {
           <div className="grid grid-cols-3 gap-3 font-mono text-[9px] uppercase tracking-[0.16em] text-white/62">
             <span>Write</span>
             <span>Direct</span>
-            <span>Launch</span>
+            <span>Release</span>
           </div>
         </div>
       </div>

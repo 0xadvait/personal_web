@@ -49,7 +49,7 @@ const topics = [
   'AI infrastructure',
   'Crypto market structure',
   'Agent economies',
-  'Technical storytelling',
+  'Technical stories',
 ];
 
 export default function Speaking() {
@@ -62,7 +62,7 @@ export default function Speaking() {
         <SectionHeader
           index="06"
           title="Speaking"
-          lede="I talk when the idea is still being formed, not after everyone has agreed on the words."
+          lede="I like talks where the idea gets clearer in public."
         />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
@@ -108,7 +108,7 @@ export default function Speaking() {
                 ))}
               </ul>
               <p className="mt-5 max-w-xl font-serif text-[17px] leading-[1.55] text-fg-muted">
-                The useful talks are the ones where the idea gets clearer in public.
+                Best when the room is still figuring out what the category even is.
               </p>
             </aside>
           </Reveal>

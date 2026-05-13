@@ -6,22 +6,22 @@ const entries = [
     year: '2026',
     arena: 'Product',
     result: 'Helped turn a new AI infrastructure product from zero into 7-figure revenue.',
-    role: 'Product strategy, customer engineering, enterprise motion',
-    detail: 'The work spans product, customer motion, ecosystem, and technical narrative.',
+    role: 'Product direction, customer work, enterprise sales',
+    detail: 'The work spans what to build, who needs it, and how to explain it clearly.',
   },
   {
     year: '2026',
     arena: 'Market entry',
     result: 'Built a Korea market entry week with 1,000+ attendees.',
-    role: 'Regional launch, community design, ecosystem ties',
+    role: 'Regional launch, community, local partners',
     detail: 'Builder community, local events, and Korean press coverage.',
   },
   {
     year: '2025',
-    arena: 'Distribution',
+    arena: 'Film',
     result: 'Produced a film-led AI infrastructure campaign that passed 50M+ views.',
     role: 'Producer, director, writer',
-    detail: 'A hard technical category became something people could watch and pass around.',
+    detail: 'The point was simple: make a hard technical category feel concrete.',
   },
   {
     year: '2024',
@@ -40,10 +40,10 @@ const entries = [
 ];
 
 const capabilities = [
-  'Turn new research into a market story that lands.',
+  'Turn new research into a market story people remember.',
   'Turn technical product into customer traction.',
   'Make early markets easier to understand.',
-  'Move between engineering, capital, ecosystem, and media.',
+  'Move between engineering, capital, partners, and media.',
 ];
 
 export default function ImpactLedger() {
@@ -67,8 +67,8 @@ export default function ImpactLedger() {
                   Where I&apos;m useful
                 </div>
                 <p className="mt-5 font-serif text-[21px] leading-[1.4] text-fg sm:text-[27px]">
-                  I like the messy middle: the product works, the market is not fully there yet,
-                  and someone has to make the whole thing feel real.
+                  I like the messy middle: the product works, the market is still half-formed, and
+                  someone has to make the whole thing feel real.
                 </p>
               </div>
 

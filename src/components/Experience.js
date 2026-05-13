@@ -27,11 +27,10 @@ const roles = [
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . I work across product strategy, customers, ecosystem, and the technical story around the
-        category.
+        . I work across product, customers, partners, and the story around the category.
       </>
     ),
-    highlights: ['7-figure product revenue', '4,500+ hosted models', 'ecosystem + product'],
+    highlights: ['7-figure product revenue', '4,500+ hosted models', 'product + partners'],
   },
   {
     period: '2022 — 2025',
@@ -72,7 +71,7 @@ export default function Experience() {
         <SectionHeader
           index="04"
           title="Experience"
-          lede="I’ve mostly worked where product, research, capital, and distribution overlap."
+          lede="I’ve mostly worked where product, research, capital, and storytelling overlap."
         />
 
         <ol>

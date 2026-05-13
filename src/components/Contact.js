@@ -12,7 +12,7 @@ const channels = [
 const collaboration = [
   {
     k: 'Build',
-    v: 'AI infrastructure, product direction, early customer motion.',
+    v: 'AI infrastructure, product direction, early customers.',
   },
   {
     k: 'Think',

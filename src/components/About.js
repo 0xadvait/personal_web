@@ -10,7 +10,7 @@ const meta = [
 const outcomes = [
   { k: 'Revenue', v: '7 figures', d: 'new AI infrastructure product' },
   { k: 'Reach', v: '50M+', d: 'technical film views' },
-  { k: 'Launches', v: '1K+', d: 'Korea event attendees in a week' },
+  { k: 'Launch', v: '1K+', d: 'Korea attendees in one week' },
 ];
 
 const highlights = [
@@ -27,7 +27,7 @@ export default function About() {
         <SectionHeader
           index="02"
           title="About"
-          lede="I work on the space between a good demo and something people will bet on."
+          lede="I work on the awkward stretch between a good demo and something people will bet on."
         />
 
         <Reveal>
@@ -55,7 +55,7 @@ export default function About() {
                   and Coinbase Ventures.
                 </p>
                 <p>
-                  My job sits across product, customers, ecosystem, and the story around AI
+                  My job sits across product, customers, partnerships, and the words around AI
                   infrastructure. The broader pattern is the same as before: take something early
                   and technical, then make it feel real to the people who should care.
                 </p>
@@ -97,8 +97,8 @@ export default function About() {
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
                   I care about the moment before a market has clean language. The product is
-                  starting to work, the capital is circling, and someone still has to make the
-                  whole thing make sense.
+                  starting to work, the money is paying attention, and someone still has to make
+                  the whole thing make sense.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.

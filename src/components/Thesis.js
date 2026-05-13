@@ -5,20 +5,20 @@ const pillars = [
   {
     k: 'Foresight',
     v: 'Notice the pressure early.',
-    d: 'I like markets where the technical constraint is real but the language is still awkward: edge AI, compute markets, agent rails.',
-    detail: 'dated research, market maps, uncomfortable questions',
+    d: 'I like markets where the technical problem is real, but people are still reaching for the right words: edge AI, compute markets, agent rails.',
+    detail: 'dated research, market maps, honest questions',
   },
   {
     k: 'Product',
     v: 'Make the category usable.',
-    d: 'A thesis only matters if it turns into something customers, builders, or investors can understand and act on.',
-    detail: 'product strategy, customer work, go-to-market',
+    d: 'A thesis only matters if it turns into something customers, builders, or investors can actually use.',
+    detail: 'product direction, customer work, launch plans',
   },
   {
-    k: 'Distribution',
+    k: 'Reach',
     v: 'Make the idea travel.',
-    d: 'Hard technical ideas need a surface people can repeat. That can be a report, a launch, a talk, or a film.',
-    detail: 'research reports, launch narratives, technical media',
+    d: 'Hard technical ideas need a way in. That can be a report, a launch, a talk, or a film.',
+    detail: 'research reports, talks, films',
   },
 ];
 
@@ -100,11 +100,11 @@ export default function Thesis() {
               </div>
               <p className="mt-5 font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
                 The interesting work is rarely one lane. It&apos;s the loop between research,
-                product, capital, and distribution.
+                product, capital, and storytelling.
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                That&apos;s where I&apos;ve been most useful: spotting the pressure, building around
-                it, then explaining it well enough that other people can move.
+                That&apos;s where I&apos;ve been most useful: noticing the shift, building around it,
+                then explaining it well enough that other people can move.
               </p>
 
               <dl className="mt-8 divide-y divide-border-soft border-y border-border">

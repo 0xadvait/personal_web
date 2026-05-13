@@ -4,19 +4,19 @@ const phases = [
   {
     step: '01',
     k: 'Read',
-    v: 'Find the pressure before the category has clean language.',
+    v: 'Notice what feels broken before the market has a clean name for it.',
     meta: ['research', 'market maps'],
   },
   {
     step: '02',
     k: 'Build',
-    v: 'Turn the thesis into product work, customer conversations, and a real wedge.',
+    v: 'Turn the thesis into product work, customer conversations, and a wedge that is real.',
     meta: ['product', 'customers'],
   },
   {
     step: '03',
     k: 'Tell',
-    v: 'Give the idea a surface people can understand, fund, and pass around.',
+    v: 'Give the idea words, visuals, and evidence people can pass around.',
     meta: ['writing', 'film', 'talks'],
   },
 ];
@@ -57,7 +57,7 @@ export default function StackDiagram() {
               </p>
               <p className="mt-5 max-w-xl font-serif text-[15.5px] leading-[1.65] text-fg-muted sm:text-[17px]">
                 I try to catch the pattern early, help turn it into a product people can use, and
-                make the story simple enough that the right audience can repeat it.
+                make the story clear enough that the right audience can repeat it.
               </p>
             </div>
           </Reveal>
@@ -73,7 +73,7 @@ export default function StackDiagram() {
                   Category loop
                 </div>
                 <div className="hidden font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:block">
-                  Research / product / media
+                  Research / product / story
                 </div>
               </div>
 
