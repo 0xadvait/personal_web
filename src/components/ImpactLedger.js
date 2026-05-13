@@ -56,7 +56,7 @@ export default function ImpactLedger() {
         <SectionHeader
           index="03"
           title="Track record"
-          lede="I'm useful when the tech is real, the market is early, and the story is still messy."
+          lede="A few places where the work moved from early signal to something concrete."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
@@ -64,11 +64,11 @@ export default function ImpactLedger() {
             <aside className="lg:sticky lg:top-28">
               <div className="border-y border-border py-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Where I&apos;m useful
+                  Common thread
                 </div>
                 <p className="mt-5 font-serif text-[21px] leading-[1.4] text-fg sm:text-[27px]">
-                  I like the messy middle: the product works, the market is still half-formed, and
-                  someone has to make the whole thing feel real.
+                  A lot of it sits in the messy middle: the product works, the market is still
+                  half-formed, and the story has to catch up.
                 </p>
               </div>
 

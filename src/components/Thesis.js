@@ -100,7 +100,7 @@ export default function Thesis() {
                 product, capital, and storytelling.
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                That&apos;s where I&apos;ve been most useful: noticing the shift, building around it,
+                That&apos;s the work I keep coming back to: noticing the shift, building around it,
                 then explaining it well enough that other people can move.
               </p>
 
