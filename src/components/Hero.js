@@ -152,7 +152,7 @@ function LondonTime() {
 
 function HeroSystemPanel() {
   const lanes = [
-    ['01', 'Research', 'spot the thing before it has a clean name'],
+    ['01', 'Research', 'spot the thing before everyone knows what to call it'],
     ['02', 'Product', 'turn the thesis into something customers use'],
     ['03', 'Film', 'make the idea feel real'],
   ];

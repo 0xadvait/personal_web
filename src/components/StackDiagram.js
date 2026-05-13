@@ -3,30 +3,19 @@ import Reveal from './Reveal';
 const phases = [
   {
     step: '01',
-    k: 'Read',
-    v: 'Follow the thing that keeps showing up.',
-    meta: ['research', 'patterns'],
+    k: 'Research',
+    v: 'Spot the thing before everyone knows what to call it.',
   },
   {
     step: '02',
-    k: 'Build',
-    v: 'Turn the thesis into a product people actually use.',
-    meta: ['product', 'customers'],
+    k: 'Product',
+    v: 'Turn the thesis into something customers use.',
   },
   {
     step: '03',
-    k: 'Tell',
-    v: 'Make the idea easy to understand without sanding it down.',
-    meta: ['writing', 'film', 'talks'],
+    k: 'Film',
+    v: 'Make the idea feel real.',
   },
-];
-
-const guarantees = [
-  ['research', 'early'],
-  ['product', 'usable'],
-  ['capital', 'clear'],
-  ['media', 'shareable'],
-  ['market', 'legible'],
 ];
 
 export default function StackDiagram() {
@@ -46,55 +35,51 @@ export default function StackDiagram() {
           </div>
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start lg:gap-14">
           <Reveal>
             <div className="border-y border-border py-6">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                What changes
+                The loop
               </div>
               <p className="mt-5 max-w-xl font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
-                The best opportunities look weird before they look obvious.
+                Find the weird early signal. Build around it. Make people care.
               </p>
               <p className="mt-5 max-w-xl font-serif text-[15.5px] leading-[1.65] text-fg-muted sm:text-[17px]">
-                I try to catch the pattern early, help turn it into a product people can use, and
-                make the story clear enough that the right audience can repeat it.
+                The pattern keeps showing up: notice the market early, help make the product real,
+                then make the idea easier to care about.
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="relative overflow-hidden border border-border bg-surface shadow-[0_18px_60px_rgba(29,37,40,0.05)]">
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,rgba(36,70,199,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.06)_1px,transparent_1px)] [background-size:28px_28px]"
-              />
-              <div className="relative z-10 flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Category loop
+            <div className="border border-border bg-surface shadow-[0_18px_60px_rgba(29,37,40,0.04)]">
+              <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                    Same loop
+                  </div>
+                  <p className="mt-1 font-serif text-[18px] leading-snug text-fg sm:text-[21px]">
+                    Research, product, film.
+                  </p>
                 </div>
-                <div className="hidden font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:block">
-                  Research / product / story
-                </div>
+                <span className="hidden rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-fg-muted sm:inline-flex">
+                  03 steps
+                </span>
               </div>
 
-              <div className="relative z-10 px-5 py-2 sm:px-6">
+              <div className="divide-y divide-border-soft px-5 sm:px-6">
                 {phases.map((phase) => (
                   <article
                     key={phase.k}
-                    className="grid gap-3 border-t border-border-soft py-5 first:border-t-0 sm:grid-cols-[3.25rem_1fr] sm:gap-5"
+                    className="grid gap-3 py-5 sm:grid-cols-[3.25rem_1fr] sm:gap-5"
                   >
                     <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
                       {phase.step}
                     </div>
                     <div>
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h3 className="font-serif text-[24px] leading-none text-fg sm:text-[30px]">
-                          {phase.k}
-                        </h3>
-                        <div className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim">
-                          {phase.meta.join(' / ')}
-                        </div>
-                      </div>
+                      <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                        {phase.k}
+                      </h3>
                       <p className="mt-2 max-w-xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-base">
                         {phase.v}
                       </p>
@@ -102,19 +87,6 @@ export default function StackDiagram() {
                   </article>
                 ))}
               </div>
-
-              <dl className="relative z-10 grid grid-cols-5 border-t border-border bg-bg/70">
-                {guarantees.map(([k, v]) => (
-                  <div key={k} className="border-r border-border px-2 py-3 last:border-r-0 sm:px-4">
-                    <dt className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-fg-dim">
-                      {k}
-                    </dt>
-                    <dd className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-fg-muted sm:text-[10px] sm:tracking-[0.12em]">
-                      {v}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
             </div>
           </Reveal>
         </div>
