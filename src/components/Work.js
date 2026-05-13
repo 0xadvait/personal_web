@@ -60,6 +60,9 @@ const items = [
 ];
 
 export default function Work() {
+  const featured = items.find((item) => item.featured) ?? items[0];
+  const indexItems = items.filter((item) => item !== featured);
+
   return (
     <section id="work" className="relative border-t border-border bg-surface/40 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -69,35 +72,33 @@ export default function Work() {
           lede="Research, films, and talks. The common thread: make technical ideas easier to believe, fund, and use."
         />
 
-        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
-          {items.map((it, i) => (
-            <Reveal key={it.title} delay={i * 0.04} className={it.featured ? 'sm:col-span-2' : undefined}>
-              <Card item={it} />
-            </Reveal>
-          ))}
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-8">
+          <Reveal>
+            <FeaturedWork item={featured} />
+          </Reveal>
+
+          <Reveal delay={0.06}>
+            <WorkIndex items={indexItems} />
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-function Card({ item }) {
-  // Primary link = item.href OR the first item.links entry.
+function FeaturedWork({ item }) {
   const primaryHref = item.href ?? item.links?.[0]?.href;
   const primaryLabel = item.href ? item.title : `${item.title} — ${item.links?.[0]?.label}`;
-  const isFeatured = item.featured;
 
   return (
     <div
-      className={`group relative flex min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent sm:h-full ${
-        isFeatured ? 'md:grid md:min-h-[330px] md:grid-cols-[0.92fr_1.08fr]' : 'p-6 sm:p-7 md:p-8'
-      }`}
+      className="group relative flex min-h-[250px] flex-col overflow-hidden rounded-[3px] border border-border bg-surface transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] focus-within:border-accent"
     >
       <div aria-hidden className="absolute inset-x-0 top-0 h-1 bg-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
 
-      {item.visual === 'campaign' && <CampaignVisual />}
+      <CampaignVisual />
 
-      <div className={`relative flex flex-col sm:h-full ${isFeatured ? 'p-6 sm:p-7 md:p-8' : ''}`}>
+      <div className="relative flex flex-col p-6 sm:h-full sm:p-7 md:p-8">
         <div className="relative z-10 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.12em] text-accent">
           <span>
             <span className="text-accent">{item.num}</span>
@@ -141,11 +142,7 @@ function Card({ item }) {
         )}
 
         {item.links && (
-          <div
-            className={`relative z-10 mt-6 flex flex-wrap gap-2 ${
-              isFeatured ? 'md:mt-auto md:pt-6' : 'sm:mt-auto sm:pt-6'
-            }`}
-          >
+          <div className="relative z-10 mt-6 flex flex-wrap gap-2 sm:mt-auto sm:pt-6">
             {item.links.map((l) => (
               <a
                 key={l.href}
@@ -168,9 +165,65 @@ function Card({ item }) {
   );
 }
 
+function WorkIndex({ items }) {
+  return (
+    <aside className="h-full border-y border-border py-4 sm:py-5">
+      <div className="flex items-center justify-between gap-4 px-0 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+        <span>Work index</span>
+        <span className="text-fg-dim">{String(items.length).padStart(2, '0')} entries</span>
+      </div>
+      <ul className="mt-4 divide-y divide-border-soft border-t border-border">
+        {items.map((item) => (
+          <li key={item.title}>
+            <WorkRow item={item} />
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+function WorkRow({ item }) {
+  const primaryHref = item.href ?? item.links?.[0]?.href;
+  const primaryLabel = item.href ? item.title : `${item.title} — ${item.links?.[0]?.label}`;
+
+  return (
+    <a
+      href={primaryHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${primaryLabel} (opens in a new tab)`}
+      className="group grid gap-3 py-5 transition-colors hover:bg-surface-soft/55 sm:grid-cols-[4.5rem_1fr] sm:gap-5 sm:px-3"
+    >
+      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
+        {item.num}
+      </div>
+      <div className="min-w-0">
+        <div className="flex items-center justify-between gap-4">
+          <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+            {item.label}
+          </div>
+          <span aria-hidden className="text-fg-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent">
+            ↗
+          </span>
+        </div>
+        <h3 className="mt-2 font-serif text-[24px] leading-[1.12] text-fg transition-colors group-hover:text-accent sm:text-[28px]">
+          {item.title}
+        </h3>
+        <p className="mt-2 max-w-xl font-serif text-[14.5px] leading-[1.5] text-fg-muted">
+          {item.desc}
+        </p>
+        <div className="mt-4 inline-flex border-y border-border py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt">
+          {item.impact}
+        </div>
+      </div>
+    </a>
+  );
+}
+
 function CampaignVisual() {
   return (
-    <div className="relative min-h-[235px] overflow-hidden border-b border-border bg-fg md:min-h-full md:border-b-0 md:border-r">
+    <div className="relative min-h-[235px] overflow-hidden border-b border-border bg-fg sm:min-h-[300px] lg:min-h-[380px]">
       <Image
         src="/images/ascii-animation.gif"
         alt=""
@@ -186,7 +239,7 @@ function CampaignVisual() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
-              Campaign still
+              Launch films
             </div>
             <p className="mt-2 max-w-[15rem] font-serif text-[26px] leading-[1.02] text-white sm:text-[31px]">
               Making open intelligence feel real.
