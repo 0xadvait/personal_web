@@ -13,21 +13,6 @@ const outcomes = [
   { k: 'Launches', v: '1K+', d: 'Korea event attendees in a week' },
 ];
 
-const modes = [
-  {
-    k: '01',
-    v: 'Make dense technical work easier to understand without sanding off the edge.',
-  },
-  {
-    k: '02',
-    v: 'Move from research thesis to product, customers, and revenue.',
-  },
-  {
-    k: '03',
-    v: 'Turn a hard category into writing, films, and talks people pass around.',
-  },
-];
-
 const highlights = [
   { k: 'Product', v: 'zero to 7-figure revenue' },
   { k: 'Network', v: '4,500+ models, 2M+ inferences, 500K+ proofs' },
@@ -60,27 +45,7 @@ export default function About() {
           </dl>
         </Reveal>
 
-        <Reveal delay={0.04}>
-          <div className="mt-8 border-y border-border py-5 sm:py-6">
-            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-              What I usually do
-            </div>
-            <ol className="mt-4 grid gap-4 sm:grid-cols-3 sm:gap-6">
-            {modes.map((mode) => (
-              <li key={mode.k} className="grid grid-cols-[2rem_1fr] gap-3">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
-                  {mode.k}
-                </div>
-                <p className="font-serif text-[15px] leading-[1.5] text-fg-muted sm:text-base">
-                  {mode.v}
-                </p>
-              </li>
-            ))}
-            </ol>
-          </div>
-        </Reveal>
-
-        <div className="mt-12 grid gap-12 sm:mt-16 md:mt-20 lg:grid-cols-[minmax(0,680px)_280px] lg:items-start lg:gap-16">
+        <div className="mt-12 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,680px)_280px] lg:items-start lg:gap-16">
           <div className="max-w-[680px]">
             <Reveal>
               <Block label="Now">
