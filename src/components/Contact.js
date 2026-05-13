@@ -12,15 +12,15 @@ const channels = [
 const collaboration = [
   {
     k: 'Build',
-    v: 'Verifiable AI infra, agent memory, decentralized compute, product strategy.',
+    v: 'Agent infrastructure, memory, verifiable runs, product direction.',
   },
   {
     k: 'Think',
-    v: 'Research, market maps, crypto rails, AI x capital formation.',
+    v: 'Market maps, technical research, crypto rails, AI x capital.',
   },
   {
     k: 'Tell',
-    v: 'Technical narrative, launch films, talks, and new categories.',
+    v: 'Films, talks, and stories that make new categories click.',
   },
 ];
 
@@ -43,8 +43,8 @@ export default function Contact() {
                 Let&apos;s <span className="italic text-accent">talk.</span>
               </h2>
               <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
-                If you&apos;re building AI infrastructure, agent memory, or crypto rails and the
-                trust boundary is getting weird, send the sharp version.
+                If agents are touching money, memory, or trust in your product, I&apos;m probably
+                interested. Short context is enough.
               </p>
             </div>
 
@@ -68,7 +68,7 @@ export default function Contact() {
                   Usually async first
                 </div>
                 <p className="mt-3 max-w-[18rem] font-serif text-[21px] leading-[1.18] text-white sm:text-[24px]">
-                  Send the sharp version of the problem. I&apos;ll read it properly.
+                  Send the real problem. I&apos;ll read it properly.
                 </p>
               </div>
             </aside>
