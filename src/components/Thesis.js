@@ -3,28 +3,28 @@ import SectionHeader from './SectionHeader';
 
 const pillars = [
   {
-    k: 'Foresight',
-    v: 'Notice the pressure early.',
-    d: 'I like markets where the technical problem is real, but people are still reaching for the right words: edge AI, compute markets, agent rails.',
-    detail: 'research notes, market maps, honest questions',
+    k: 'Read',
+    v: "Care before it's obvious.",
+    d: 'I like the moment when the demo is still rough, but you can tell the market is going to matter. Edge AI, compute markets, agent rails all had that feeling.',
+    detail: 'research notes, market maps, sharper questions',
   },
   {
     k: 'Product',
-    v: 'Make the category usable.',
-    d: 'A thesis only matters if it turns into something customers, builders, or investors can actually use.',
+    v: 'Turn the thesis into something real.',
+    d: 'The writing only matters if it changes what gets built, bought, or funded.',
     detail: 'product direction, customer work, launch plans',
   },
   {
     k: 'Reach',
-    v: 'Make the idea travel.',
-    d: 'Hard technical ideas need a way in. That can be a report, a launch, a talk, or a film.',
+    v: 'Give the idea a way in.',
+    d: 'Sometimes that is a report. Sometimes it is a talk, a launch, or a film. The format matters less than whether people finally get it.',
     detail: 'research reports, talks, films',
   },
 ];
 
 const beforeAfter = [
-  ['First', 'technical pressure', 'notice it'],
-  ['Then', 'product wedge', 'make it legible'],
+  ['First', 'weird signal', 'spot it'],
+  ['Then', 'real product', 'make it useful'],
 ];
 
 const datedCalls = [
