@@ -12,7 +12,7 @@ const channels = [
 const collaboration = [
   {
     k: 'Build',
-    v: 'Agent infrastructure, memory, verifiable runs, product direction.',
+    v: 'AI infrastructure, product direction, early customer motion.',
   },
   {
     k: 'Think',
@@ -43,8 +43,8 @@ export default function Contact() {
                 Let&apos;s <span className="italic text-accent">talk.</span>
               </h2>
               <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
-                If agents are touching money, memory, or trust in your product, I&apos;m probably
-                interested. Short context is enough.
+                If you&apos;re working on a hard technical market before the words are obvious,
+                I&apos;m probably interested. Short context is enough.
               </p>
             </div>
 

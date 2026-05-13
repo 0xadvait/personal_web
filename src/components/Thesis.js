@@ -3,28 +3,28 @@ import SectionHeader from './SectionHeader';
 
 const pillars = [
   {
-    k: 'Trust layer',
-    v: 'Make the run checkable.',
-    d: 'If an agent trades, updates memory, or changes access, you should know which model ran, where it ran, and what came back.',
-    proof: 'TEE attestation, signed outputs, execution trails',
+    k: 'Foresight',
+    v: 'Notice the pressure early.',
+    d: 'I like markets where the technical constraint is real but the language is still awkward: edge AI, compute markets, agent rails.',
+    detail: 'dated research, market maps, uncomfortable questions',
   },
   {
-    k: 'Memory layer',
-    v: 'Let context move with the user.',
-    d: "Good agents don't get to forget everything every session, and users shouldn't be stuck in one assistant just to keep their state.",
-    proof: 'portable context across models and products',
+    k: 'Product',
+    v: 'Make the category usable.',
+    d: 'A thesis only matters if it turns into something customers, builders, or investors can understand and act on.',
+    detail: 'product strategy, customer work, go-to-market',
   },
   {
-    k: 'Settlement layer',
-    v: 'Put real actions on neutral rails.',
-    d: "When agents touch money, reputation, or access, the record can't depend on the app operator staying honest.",
-    proof: 'external commitments for actions that need accountability',
+    k: 'Distribution',
+    v: 'Make the idea travel.',
+    d: 'Hard technical ideas need a surface people can repeat. That can be a report, a launch, a talk, or a film.',
+    detail: 'research reports, launch narratives, technical media',
   },
 ];
 
 const beforeAfter = [
-  ['Today', 'black-box chat', 'trust me'],
-  ['Next', 'agent workflows', 'verify it'],
+  ['First', 'technical pressure', 'notice it'],
+  ['Then', 'product wedge', 'make it legible'],
 ];
 
 const datedCalls = [
@@ -89,7 +89,7 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Thesis"
-          lede="AI agents are moving from chat into real work. The infrastructure around them is still too trust-me."
+          lede="I care about early technical markets: when the constraint is real, the words are still clumsy, and the right story can pull people in."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
@@ -99,12 +99,12 @@ export default function Thesis() {
                 Operating belief
               </div>
               <p className="mt-5 font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
-                The winners won&apos;t be agents that sound smarter. They&apos;ll be systems you
-                can check after they do the work.
+                The interesting work is rarely one lane. It&apos;s the loop between research,
+                product, capital, and distribution.
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                That means execution you can verify, memory users can carry, and economic rails
-                that leave a record.
+                That&apos;s where I&apos;ve been most useful: spotting the pressure, building around
+                it, then explaining it well enough that other people can move.
               </p>
 
               <dl className="mt-8 divide-y divide-border-soft border-y border-border">
@@ -147,7 +147,7 @@ export default function Thesis() {
                       {pillar.d}
                     </p>
                     <div className="mt-5 border-l border-accent/35 pl-4 font-serif text-[14px] leading-[1.45] text-fg-dim">
-                      {pillar.proof}
+                      {pillar.detail}
                     </div>
                   </div>
                 </li>
@@ -161,11 +161,11 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,1.32fr)] lg:gap-14">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Calls that aged well
+                  Signals I wrote down
                 </div>
                 <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
                   The point is the pattern, not the timestamp: write down the pressure, then watch
-                  where serious companies put product and capital.
+                  where serious companies start putting product and capital.
                 </p>
               </div>
 

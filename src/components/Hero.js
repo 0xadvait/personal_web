@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 
-const signals = ['verifiable runs', 'portable memory', 'agent settlement'];
+const signals = ['AI infrastructure', 'market research', 'technical media'];
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -33,7 +33,7 @@ export default function Hero() {
               className="mb-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-1 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:grid-cols-3 sm:text-[10.5px]"
             >
               <span className="text-accent">London</span>
-              <span className="sm:text-center">OpenGradient</span>
+              <span className="sm:text-center">AI infra + crypto</span>
               <span className="col-span-2 text-fg-dim sm:col-span-1 sm:text-right">
                 <LondonTime />
               </span>
@@ -50,7 +50,10 @@ export default function Hero() {
               {...fadeUp(18, 0.18)}
               className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
             >
-              <p>I build the trust layer for AI agents before they touch real workflows.</p>
+              <p>
+                I work on early technical ideas until they become products, markets, and stories
+                people want to pass around.
+              </p>
               <p>
                 At{' '}
                 <a
@@ -62,8 +65,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , I turn decentralized GPU + TEE compute and MemSync into products people can buy,
-                trust, and build on. I also{' '}
+                , that means product strategy, ecosystem work, and technical storytelling around AI
+                infrastructure. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"
@@ -104,7 +107,7 @@ export default function Hero() {
 
             <div className="p-4 sm:p-5">
               <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-accent">
-                Current work
+                Current lanes
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {signals.map((signal) => (
@@ -160,10 +163,10 @@ function HeroSystemPanel() {
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            Agent run
+            Operating zone
           </div>
           <p className="mt-2 max-w-[18rem] font-serif text-[20px] leading-[1.08] text-fg sm:text-[22px]">
-            Agents you can check after they act.
+            New markets need taste, product, and reach.
           </p>
         </div>
         <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
@@ -213,14 +216,14 @@ function HeroSystemPanel() {
 
         <div className="relative z-10 grid min-h-[178px] grid-cols-[0.84fr_1.02fr_0.84fr] items-center gap-1.5 sm:min-h-[190px] sm:gap-2">
           <div className="grid gap-3 sm:gap-4">
-            <FlowNode k="Input" v="intent + context" />
-            <FlowNode k="Memory" v="portable state" />
+            <FlowNode k="Research" v="where the pressure is" />
+            <FlowNode k="Product" v="what people use" />
           </div>
 
           <div className="flex justify-center">
             <div className="relative flex h-24 w-full max-w-24 flex-col items-center justify-center border border-accent/35 bg-accent-soft/85 text-center shadow-[0_10px_30px_rgba(36,70,199,0.08)] sm:h-28 sm:max-w-28">
               <div className="font-mono text-[8px] uppercase tracking-[0.12em] text-accent sm:text-[9px] sm:tracking-[0.16em]">
-                Verified run
+                Market story
               </div>
               <div className="mt-2.5 flex h-9 w-9 items-center justify-center rounded-full border border-accent/45 bg-surface sm:h-10 sm:w-10">
                 <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5">
@@ -235,14 +238,14 @@ function HeroSystemPanel() {
                 </svg>
               </div>
               <div className="mt-2.5 font-serif text-[12px] leading-tight text-fg-muted sm:text-[13px]">
-                TEE + model
+                thesis + launch
               </div>
             </div>
           </div>
 
           <div className="grid gap-3 sm:gap-4">
-            <FlowNode k="Output" v="signed result" align="right" />
-            <FlowNode k="Settle" v="external record" align="right" />
+            <FlowNode k="Capital" v="why it matters" align="right" />
+            <FlowNode k="Media" v="why it spreads" align="right" />
           </div>
         </div>
       </div>

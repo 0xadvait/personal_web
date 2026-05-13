@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Advait Jayant — accountable AI infrastructure';
+export const alt = 'Advait Jayant — AI infrastructure, markets, and media';
 export const size = {
   width: 1200,
   height: 630,
@@ -42,7 +42,7 @@ export default function Image() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           <div style={{ fontSize: 104, lineHeight: 0.98, maxWidth: 900 }}>
-            Accountable AI infrastructure.
+            AI infrastructure, markets, and media.
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
             <div style={{ width: 128, height: 6, background: '#2446c7' }} />
@@ -57,7 +57,7 @@ export default function Image() {
             lineHeight: 1.35,
           }}
         >
-          Proofs, memory, and settlement for agents that do real work.
+          Research, product, and technical storytelling for early markets.
         </div>
       </div>
     ),

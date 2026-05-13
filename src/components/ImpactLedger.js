@@ -4,45 +4,45 @@ import SectionHeader from './SectionHeader';
 const entries = [
   {
     year: '2026',
-    arena: 'OpenGradient',
-    result: 'Turned a new AI infrastructure product from zero into 7-figure revenue.',
+    arena: 'Product',
+    result: 'Helped turn a new AI infrastructure product from zero into 7-figure revenue.',
     role: 'Product strategy, customer engineering, enterprise motion',
-    proof: 'The network grew across hosted models, inference volume, and signed proofs.',
+    detail: 'The work spans product, customer motion, ecosystem, and technical narrative.',
   },
   {
     year: '2026',
     arena: 'Market entry',
-    result: 'Launched OpenGradient in Korea with 1,000+ attendees in one week.',
+    result: 'Built a Korea market entry week with 1,000+ attendees.',
     role: 'Regional launch, community design, ecosystem ties',
-    proof: 'Builder community, local events, and Korean press coverage.',
+    detail: 'Builder community, local events, and Korean press coverage.',
   },
   {
     year: '2025',
     arena: 'Distribution',
-    result: 'Produced a film-led campaign that took OpenGradient past 50M+ views.',
+    result: 'Produced a film-led AI infrastructure campaign that passed 50M+ views.',
     role: 'Producer, director, writer',
-    proof: 'A technical thesis became something people could watch and pass around.',
+    detail: 'A hard technical category became something people could watch and pass around.',
   },
   {
     year: '2024',
     arena: 'Research',
     result: 'Published The State of Edge AI with 174K+ launch impressions and academic citations.',
     role: 'First author, market synthesis, technical writing',
-    proof: 'Used by builders, investors, and researchers working on edge AI.',
+    detail: 'Used by builders, investors, and researchers working on edge AI.',
   },
   {
     year: '2022',
     arena: 'Founder track',
     result: 'Built SuperSight / Peri Labs to 200K+ users and 30+ enterprise pilots.',
     role: 'Founder, product architect, NL-to-SQL pipeline',
-    proof: '$1.5M pre-seed at $30M; IP later acquired.',
+    detail: '$1.5M pre-seed at $30M; IP later acquired.',
   },
 ];
 
 const capabilities = [
   'Turn new research into a market story that lands.',
-  'Turn technical product into customer proof.',
-  'Make black-box AI execution easier to audit.',
+  'Turn technical product into customer traction.',
+  'Make early markets easier to understand.',
   'Move between engineering, capital, ecosystem, and media.',
 ];
 
@@ -116,7 +116,7 @@ export default function ImpactLedger() {
                       {entry.result}
                     </p>
                     <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:leading-[1.6]">
-                      {entry.proof}
+                      {entry.detail}
                     </p>
                   </div>
                 </article>

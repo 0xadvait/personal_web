@@ -3,30 +3,30 @@ import Reveal from './Reveal';
 const phases = [
   {
     step: '01',
-    k: 'Run',
-    v: 'Bring the request, user memory, and model execution into one trace.',
-    meta: ['request', 'memory', 'model'],
+    k: 'Read',
+    v: 'Find the pressure before the category has clean language.',
+    meta: ['research', 'market maps'],
   },
   {
     step: '02',
-    k: 'Prove',
-    v: 'Have the enclave sign what happened, not just describe it.',
-    meta: ['TEE attestation', 'signed output'],
+    k: 'Build',
+    v: 'Turn the thesis into product work, customer conversations, and a real wedge.',
+    meta: ['product', 'customers'],
   },
   {
     step: '03',
-    k: 'Settle',
-    v: "Write high-stakes actions somewhere the operator can't rewrite.",
-    meta: ['external record', 'audit trail'],
+    k: 'Tell',
+    v: 'Give the idea a surface people can understand, fund, and pass around.',
+    meta: ['writing', 'film', 'talks'],
   },
 ];
 
 const guarantees = [
-  ['model', 'open'],
-  ['run', 'attested'],
-  ['output', 'signed'],
-  ['state', 'portable'],
-  ['action', 'recorded'],
+  ['research', 'dated'],
+  ['product', 'usable'],
+  ['capital', 'clear'],
+  ['media', 'shareable'],
+  ['market', 'legible'],
 ];
 
 export default function StackDiagram() {
@@ -41,7 +41,7 @@ export default function StackDiagram() {
             <span>Fig_001</span>
             <span className="h-px w-10 bg-accent/40" />
             <h2 id="stack-heading" className="text-fg-dim">
-              Verifiable inference stack
+              How I work
             </h2>
           </div>
         </Reveal>
@@ -53,11 +53,11 @@ export default function StackDiagram() {
                 What changes
               </div>
               <p className="mt-5 max-w-xl font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
-                A model answer is not enough once an agent can move money, memory, or access.
+                The best opportunities look weird before they look obvious.
               </p>
               <p className="mt-5 max-w-xl font-serif text-[15.5px] leading-[1.65] text-fg-muted sm:text-[17px]">
-                The system has to leave behind a run you can inspect later: what context came in,
-                where the model ran, what it returned, and where the action landed.
+                I try to catch the pattern early, help turn it into a product people can use, and
+                make the story simple enough that the right audience can repeat it.
               </p>
             </div>
           </Reveal>
@@ -70,10 +70,10 @@ export default function StackDiagram() {
               />
               <div className="relative z-10 flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Agent run record
+                  Category loop
                 </div>
                 <div className="hidden font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:block">
-                  OpenGradient / 2026
+                  Research / product / media
                 </div>
               </div>
 

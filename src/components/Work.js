@@ -6,7 +6,7 @@ const items = [
   {
     num: '01',
     label: 'Film campaign',
-    title: 'OpenGradient — film work',
+    title: 'AI infrastructure film work',
     desc: 'Producer, director, writer. A launch campaign that made open intelligence feel less abstract.',
     impact: '50M+ views · launch narrative',
     featured: true,
@@ -53,7 +53,7 @@ const items = [
     label: 'Talk',
     title: 'FHE for Consensus in AI Models',
     desc: 'A talk on using FHE to coordinate trustless consensus across model outputs.',
-    impact: 'Verifiable compute',
+    impact: 'AI infrastructure',
     signals: ['FHE', 'model consensus'],
     href: 'https://www.youtube.com/watch?v=4s_IhcMoOks',
   },

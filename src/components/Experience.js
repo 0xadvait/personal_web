@@ -23,15 +23,15 @@ const roles = [
     title: 'Chief Strategy Officer',
     body: (
       <>
-        OpenGradient builds decentralized GPU + TEE infrastructure for hosting, running, and
-        verifying AI models.{' '}
+        OpenGradient builds AI infrastructure for model networks, memory, and agent workflows.{' '}
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . I work across the inference network, MemSync, ecosystem, and the products customers use.
+        . I work across product strategy, customers, ecosystem, and the technical story around the
+        category.
       </>
     ),
-    highlights: ['7-figure product revenue', '4,500+ hosted models', '500K+ proofs'],
+    highlights: ['7-figure product revenue', '4,500+ hosted models', 'ecosystem + product'],
   },
   {
     period: '2022 — 2025',

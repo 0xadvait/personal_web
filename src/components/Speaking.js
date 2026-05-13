@@ -18,7 +18,7 @@ const talks = [
   {
     title: 'The Network for Open Intelligence',
     v: 'Conversation',
-    d: 'With Matthew Wang, on the OpenGradient thesis.',
+    d: 'With Matthew Wang, on open intelligence and model networks.',
     href: 'https://www.youtube.com/watch?v=wF1OfY2I4Ec',
   },
   {
@@ -46,10 +46,10 @@ const talks = [
 ];
 
 const topics = [
-  'Agent infrastructure',
-  'Open intelligence',
-  'Verifiable compute',
-  'AI x crypto rails',
+  'AI infrastructure',
+  'Crypto market structure',
+  'Agent economies',
+  'Technical storytelling',
 ];
 
 export default function Speaking() {

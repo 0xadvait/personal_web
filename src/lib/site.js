@@ -1,7 +1,7 @@
 export const siteUrl = 'https://www.advait.tech';
 export const siteName = 'Advait Jayant';
 export const siteDescription =
-  'Advait Jayant works on AI infrastructure, agent memory, and the trust layer for systems people need to verify.';
+  'Advait Jayant works across AI infrastructure, crypto markets, product strategy, research, and technical media.';
 
 export const socialLinks = {
   github: 'https://github.com/0xadvait',

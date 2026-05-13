@@ -3,21 +3,21 @@ import SectionHeader from './SectionHeader';
 
 const meta = [
   { k: 'Based', v: 'London' },
-  { k: 'Now', v: 'CSO at OpenGradient' },
+  { k: 'Now', v: 'CSO, OpenGradient' },
   { k: 'Before', v: 'Founder, SuperSight / Peri Labs' },
 ];
 
 const outcomes = [
   { k: 'Revenue', v: '7 figures', d: 'new AI infrastructure product' },
-  { k: 'Reach', v: '50M+', d: 'OpenGradient campaign views' },
+  { k: 'Reach', v: '50M+', d: 'technical film views' },
   { k: 'Launches', v: '1K+', d: 'Korea event attendees in a week' },
 ];
 
 const highlights = [
   { k: 'Product', v: 'zero to 7-figure revenue' },
-  { k: 'Network', v: '4,500+ models, 2M+ inferences, 500K+ proofs' },
-  { k: 'Market', v: '1,000+ Korea attendees in one week' },
-  { k: 'Media', v: '50M+ views on OpenGradient films' },
+  { k: 'Research', v: 'dated AI + crypto market reports' },
+  { k: 'Market', v: '1,000+ launch attendees in one week' },
+  { k: 'Media', v: '50M+ technical film views' },
 ];
 
 export default function About() {
@@ -51,13 +51,13 @@ export default function About() {
               <Block label="Now">
                 <p>
                   I&apos;m Chief Strategy Officer at{' '}
-                  <Link href="https://opengradient.ai">OpenGradient</Link> — the Network for Open
-                  Intelligence, backed by a16z crypto and Coinbase Ventures.
+                  <Link href="https://opengradient.ai">OpenGradient</Link>, backed by a16z crypto
+                  and Coinbase Ventures.
                 </p>
                 <p>
-                  My job is to make decentralized GPU + TEE inference, proofs, and{' '}
-                  <strong>MemSync</strong> feel concrete enough for customers, builders, and
-                  partners to care.
+                  My job sits across product, customers, ecosystem, and the story around AI
+                  infrastructure. The broader pattern is the same as before: take something early
+                  and technical, then make it feel real to the people who should care.
                 </p>
                 <dl className="grid gap-3 pt-1 sm:grid-cols-2">
                   {highlights.map((item) => (
@@ -96,8 +96,9 @@ export default function About() {
                   Why
                 </div>
                 <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  The future of AI needs less black box and more replayable state: runs you can prove,
-                  memory users can carry, and actions the operator can&apos;t quietly rewrite.
+                  I care about the moment before a market has clean language. The product is
+                  starting to work, the capital is circling, and someone still has to make the
+                  whole thing make sense.
                 </p>
                 <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
                   That&apos;s the work.

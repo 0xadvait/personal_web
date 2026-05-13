@@ -9,7 +9,7 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: `${siteName} | Accountable AI Infrastructure`,
+    default: `${siteName} | AI Infrastructure, Markets, and Media`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -22,13 +22,13 @@ export const metadata = {
   keywords: [
     'Advait Jayant',
     'OpenGradient',
-    'verifiable inference',
-    'agent memory',
     'AI infrastructure',
+    'technical media',
+    'AI research',
     'crypto market structure',
   ],
   openGraph: {
-    title: `${siteName} | Accountable AI Infrastructure`,
+    title: `${siteName} | AI Infrastructure, Markets, and Media`,
     description: siteDescription,
     url: siteUrl,
     siteName,
@@ -38,7 +38,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@advait_jayant',
-    title: `${siteName} | Accountable AI Infrastructure`,
+    title: `${siteName} | AI Infrastructure, Markets, and Media`,
     description: siteDescription,
   },
   robots: {
