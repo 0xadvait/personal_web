@@ -1,7 +1,7 @@
 export const siteUrl = 'https://www.advait.tech';
 export const siteName = 'Advait Jayant';
 export const siteDescription =
-  'Advait Jayant works across AI infrastructure, crypto markets, product strategy, research, and film.';
+  'Advait Jayant works on early technical markets across research, product, crypto, and film.';
 
 export const socialLinks = {
   github: 'https://github.com/0xadvait',

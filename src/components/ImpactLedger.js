@@ -5,7 +5,7 @@ const entries = [
   {
     year: '2026',
     arena: 'Product',
-    result: 'Helped turn a new AI infrastructure product from zero into 7-figure revenue.',
+    result: 'Helped turn a new technical product from zero into 7-figure revenue.',
     role: 'Product direction, customer work, enterprise sales',
     detail: 'The work spans what to build, who needs it, and how to explain it clearly.',
   },
@@ -19,7 +19,7 @@ const entries = [
   {
     year: '2025',
     arena: 'Film',
-    result: 'Produced a film-led AI infrastructure campaign that passed 50M+ views.',
+    result: 'Produced a film-led open intelligence campaign that passed 50M+ views.',
     role: 'Producer, director, writer',
     detail: 'The point was simple: make a hard technical category feel concrete.',
   },

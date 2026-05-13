@@ -8,7 +8,7 @@ const meta = [
 ];
 
 const outcomes = [
-  { k: 'Revenue', v: '7 figures', d: 'new AI infrastructure product' },
+  { k: 'Revenue', v: '7 figures', d: 'new technical product' },
   { k: 'Reach', v: '50M+', d: 'technical film views' },
   { k: 'Launch', v: '1K+', d: 'Korea attendees in one week' },
 ];
@@ -55,9 +55,9 @@ export default function About() {
                   and Coinbase Ventures.
                 </p>
                 <p>
-                  My job sits across product, customers, partnerships, and the words around AI
-                  infrastructure. The broader pattern is the same as before: take something early
-                  and technical, then make it feel real to the people who should care.
+                  My job sits across product, customers, partnerships, and the words around the
+                  category. The broader pattern is the same as before: take something early and
+                  technical, then make it feel real to the people who should care.
                 </p>
                 <dl className="grid gap-3 pt-1 sm:grid-cols-2">
                   {highlights.map((item) => (

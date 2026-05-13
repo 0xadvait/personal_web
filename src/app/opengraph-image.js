@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Advait Jayant — AI infrastructure, markets, and film';
+export const alt = 'Advait Jayant — research, product, and film';
 export const size = {
   width: 1200,
   height: 630,
@@ -42,7 +42,7 @@ export default function Image() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           <div style={{ fontSize: 104, lineHeight: 0.98, maxWidth: 900 }}>
-            AI infrastructure, markets, and film.
+            Research, product, and film.
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
             <div style={{ width: 128, height: 6, background: '#2446c7' }} />

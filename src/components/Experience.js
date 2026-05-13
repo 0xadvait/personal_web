@@ -23,7 +23,7 @@ const roles = [
     title: 'Chief Strategy Officer',
     body: (
       <>
-        OpenGradient builds AI infrastructure for model networks, memory, and agent workflows.{' '}
+        OpenGradient works on model networks, memory, and agent workflows.{' '}
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>

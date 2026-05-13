@@ -46,7 +46,7 @@ const talks = [
 ];
 
 const topics = [
-  'AI infrastructure',
+  'AI markets',
   'Crypto market structure',
   'Agent economies',
   'Technical stories',

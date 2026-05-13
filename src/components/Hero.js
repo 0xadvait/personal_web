@@ -65,8 +65,8 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , I&apos;m doing that around AI infrastructure: product direction, customer work,
-                and stories that make the category easier to understand. I also{' '}
+                , that means product direction, customer work, and stories around model networks
+                and agent workflows. I also{' '}
                 <a
                   href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
                   target="_blank"
