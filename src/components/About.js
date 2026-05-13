@@ -7,19 +7,6 @@ const meta = [
   { k: 'Before', v: 'Founder, SuperSight / Peri Labs' },
 ];
 
-const outcomes = [
-  { k: 'Revenue', v: '7 figures', d: 'new technical product' },
-  { k: 'Reach', v: '50M+', d: 'technical film views' },
-  { k: 'Launch', v: '1K+', d: 'Korea attendees in one week' },
-];
-
-const highlights = [
-  { k: 'Product', v: 'zero to 7-figure revenue' },
-  { k: 'Research', v: 'AI + crypto market reports' },
-  { k: 'Market', v: '1,000+ launch attendees in one week' },
-  { k: 'Media', v: '50M+ technical film views' },
-];
-
 export default function About() {
   return (
     <section id="about" className="section-band relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
@@ -27,7 +14,7 @@ export default function About() {
         <SectionHeader
           index="02"
           title="About"
-          lede="I work where a technical idea has to become a product, a market, and a story people can repeat."
+          lede="Short version: London, OpenGradient now, SuperSight / Peri Labs before."
         />
 
         <Reveal>
@@ -45,8 +32,8 @@ export default function About() {
           </dl>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,680px)_280px] lg:items-start lg:gap-16">
-          <div className="max-w-[680px]">
+        <div className="mt-12 max-w-[760px] sm:mt-16">
+          <div>
             <Reveal>
               <Block label="Now">
                 <p>
@@ -55,22 +42,9 @@ export default function About() {
                   and Coinbase Ventures.
                 </p>
                 <p>
-                  My job sits across product, customers, partnerships, and the words around the
-                  category. The broader pattern is the same as before: take something early and
-                  technical, then make it feel real to the people who should care.
+                  I work on product, customers, and partnerships for model networks and agent
+                  workflows.
                 </p>
-                <dl className="grid gap-3 pt-1 sm:grid-cols-2">
-                  {highlights.map((item) => (
-                    <div key={item.k} className="border-y border-border px-0 py-3">
-                      <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent">
-                        {item.k}
-                      </dt>
-                      <dd className="mt-1 font-serif text-[15px] leading-snug text-fg-muted">
-                        {item.v}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
               </Block>
             </Reveal>
 
@@ -89,43 +63,7 @@ export default function About() {
                 </p>
               </Block>
             </Reveal>
-
-            <Reveal delay={0.1}>
-              <aside className="mb-2 mt-10 rounded-[2px] border-l-[3px] border-accent bg-accent-soft px-5 py-5 sm:mt-12 sm:px-7 sm:py-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold mb-2.5">
-                  Why
-                </div>
-                <p className="font-serif text-[17px] sm:text-[19px] leading-[1.55] text-fg">
-                  I care about the point when the product starts to work, the money starts paying
-                  attention, and the category still feels too abstract for most people.
-                </p>
-                <p className="mt-3 font-serif italic text-[17px] sm:text-[19px] text-fg-muted">
-                  That&apos;s the work.
-                </p>
-              </aside>
-            </Reveal>
           </div>
-
-          <Reveal delay={0.12} className="hidden lg:block lg:sticky lg:top-28">
-            <aside aria-label="Selected outcomes" className="border-y border-border py-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent font-semibold">
-                Selected outcomes
-              </div>
-              <dl className="mt-5 divide-y divide-border-soft">
-                {outcomes.map((item) => (
-                  <div key={item.k} className="py-5 first:pt-0 last:pb-0">
-                    <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted">
-                      {item.k}
-                    </dt>
-                    <dd className="mt-2 font-serif text-4xl leading-none text-fg">{item.v}</dd>
-                    <dd className="mt-2 font-serif text-[15px] leading-snug text-fg-muted">
-                      {item.d}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </aside>
-          </Reveal>
         </div>
       </div>
     </section>

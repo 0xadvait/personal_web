@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 
-const signals = ['research', 'product', 'films'];
-
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const fadeUp = (y = 18, delay = 0, duration = 0.9) =>
@@ -104,22 +102,6 @@ export default function Hero() {
             className="relative w-full max-w-[520px] justify-self-center overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-6 lg:max-w-none"
           >
             <HeroSystemPanel />
-
-            <div className="p-4 sm:p-5">
-              <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-accent">
-                Current lanes
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {signals.map((signal) => (
-                  <span
-                    key={signal}
-                    className="rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-fg-muted"
-                  >
-                    {signal}
-                  </span>
-                ))}
-              </div>
-            </div>
           </motion.aside>
         </div>
       </div>
@@ -151,24 +133,24 @@ function LondonTime() {
 }
 
 function HeroSystemPanel() {
-  const lanes = [
-    ['01', 'Research', 'get the read right early'],
-    ['02', 'Product', 'turn the thesis into something people use'],
-    ['03', 'Film', 'make the idea easier to share'],
+  const notes = [
+    ['Role', 'CSO at OpenGradient'],
+    ['Focus', 'model networks + agent memory'],
+    ['Base', 'London'],
   ];
 
   return (
-    <div className="relative overflow-hidden border-b border-border bg-surface p-5 sm:p-6">
+    <div className="relative overflow-hidden bg-surface p-5 sm:p-6">
       <div aria-hidden className="absolute inset-y-0 right-0 w-28 bg-[linear-gradient(90deg,transparent_0%,rgba(36,70,199,0.08)_100%)]" />
       <div aria-hidden className="absolute right-6 top-6 h-20 w-20 rounded-full border border-accent/10 bg-accent-soft/40" />
 
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            Right now
+            Current work
           </div>
-          <p className="mt-2 max-w-[20rem] font-serif text-[21px] leading-[1.1] text-fg sm:text-[24px]">
-            Get the read right. Make it real. Make people care.
+          <p className="mt-2 max-w-[20rem] font-serif text-[23px] leading-[1.1] text-fg sm:text-[27px]">
+            Open intelligence, agent memory, and the market around model networks.
           </p>
         </div>
         <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
@@ -176,20 +158,15 @@ function HeroSystemPanel() {
         </span>
       </div>
 
-      <div className="relative z-10 mt-6 divide-y divide-border-soft border-y border-border">
-        {lanes.map(([step, title, copy]) => (
-          <div key={title} className="grid gap-3 py-4 sm:grid-cols-[3rem_1fr] sm:gap-5">
-            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
-              {step}
+      <div className="relative z-10 mt-7 divide-y divide-border-soft border-y border-border">
+        {notes.map(([label, value]) => (
+          <div key={label} className="grid gap-2 py-4 sm:grid-cols-[5rem_1fr] sm:gap-5">
+            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
+              {label}
             </div>
-            <div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                {title}
-              </div>
-              <p className="mt-1 font-serif text-[17px] leading-[1.35] text-fg-muted sm:text-[19px]">
-                {copy}
-              </p>
-            </div>
+            <p className="font-serif text-[17px] leading-[1.35] text-fg-muted sm:text-[19px]">
+              {value}
+            </p>
           </div>
         ))}
       </div>

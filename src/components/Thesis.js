@@ -1,29 +1,6 @@
 import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
-const pillars = [
-  {
-    k: 'Read',
-    v: 'Get the read early.',
-    d: 'I like markets where a rough demo already shows what could matter: edge AI, compute markets, agent rails.',
-  },
-  {
-    k: 'Product',
-    v: 'Make the idea real.',
-    d: 'The research matters when it changes what gets built, bought, or funded.',
-  },
-  {
-    k: 'Reach',
-    v: 'Make it easier to get.',
-    d: 'Sometimes that is a report. Sometimes it is a talk, a launch, or a film. The format matters less than whether it clicks.',
-  },
-];
-
-const beforeAfter = [
-  ['First', 'early read', 'write it down'],
-  ['Then', 'real product', 'make it matter'],
-];
-
 const datedCalls = [
   {
     made: '14 Oct 2024',
@@ -86,80 +63,18 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Thesis"
-          lede="I care about early technical markets: real constraints, rough demos, and ideas that are almost ready for more people."
+          lede="Calls from the Edge AI and AiFi reports, plus what happened after."
         />
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
-          <Reveal>
-            <div className="border-y border-border py-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                Operating belief
-              </div>
-              <p className="mt-5 font-serif text-[22px] leading-[1.35] text-fg sm:text-[28px]">
-                The interesting work is rarely one lane. It&apos;s the loop between research,
-                product, capital, and storytelling.
-              </p>
-              <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
-                A good read should lead to something people can use, fund, or explain without a
-                30-minute preamble.
-              </p>
-
-              <dl className="mt-8 divide-y divide-border-soft border-y border-border">
-                {beforeAfter.map(([label, system, promise]) => (
-                  <div
-                    key={label}
-                    className="grid grid-cols-[4.5rem_1fr] gap-4 py-4 sm:grid-cols-[5.5rem_1fr_6rem]"
-                  >
-                    <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
-                      {label}
-                    </dt>
-                    <dd className="font-serif text-[16px] leading-snug text-fg">{system}</dd>
-                    <dd className="font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:text-right">
-                      {promise}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <ol className="grid gap-4">
-              {pillars.map((pillar, index) => (
-                <li
-                  key={pillar.k}
-                  className="group grid gap-5 rounded-[3px] border border-border bg-surface px-5 py-5 transition-all hover:border-accent hover:shadow-[0_18px_50px_rgba(29,37,40,0.06)] sm:grid-cols-[4rem_1fr] sm:px-6 sm:py-6"
-                >
-                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt sm:pt-1">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                      {pillar.k}
-                    </div>
-                    <h3 className="mt-2 font-serif text-2xl leading-snug text-fg transition-colors group-hover:text-accent">
-                      {pillar.v}
-                    </h3>
-                    <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.6] text-fg-muted">
-                      {pillar.d}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-        </div>
-
-        <Reveal delay={0.08}>
-          <div className="mt-12 border-y border-border py-6 sm:mt-16 sm:py-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,1.32fr)] lg:gap-14">
+        <Reveal>
+          <div className="border-y border-border py-6 sm:py-8">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.52fr)_minmax(0,1.48fr)] lg:gap-14">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Signals I wrote down
+                  Calls with dates
                 </div>
                 <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
-                  The point is the pattern, not the timestamp: make the call early, then watch
-                  where serious companies put product and capital.
+                  The dates matter because the calls were public before the market caught up.
                 </p>
               </div>
 
@@ -195,7 +110,7 @@ export default function Thesis() {
                       </p>
                       <div className="mt-4 border-l border-accent/30 pl-4">
                         <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
-                          Later signal · {item.after}
+                          What happened · {item.after}
                         </div>
                         <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
                           {item.happened}

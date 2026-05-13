@@ -69,7 +69,7 @@ export default function Work() {
         <SectionHeader
           index="05"
           title="Selected work"
-          lede="Research, films, and talks. Same idea each time: make technical work easier to believe, fund, and use."
+          lede="A few public artifacts."
         />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-8">
