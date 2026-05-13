@@ -1,7 +1,6 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import Thesis from '@/components/Thesis';
-import About from '@/components/About';
 import ImpactLedger from '@/components/ImpactLedger';
 import Experience from '@/components/Experience';
 import Work from '@/components/Work';
@@ -18,7 +17,6 @@ export default function Home() {
       <main id="main-content" className="relative">
         <Hero />
         <Thesis />
-        <About />
         <ImpactLedger />
         <Experience />
         <Work />

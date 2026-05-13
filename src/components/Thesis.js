@@ -67,75 +67,64 @@ export default function Thesis() {
         />
 
         <Reveal>
-          <div className="border-y border-border py-6 sm:py-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.52fr)_minmax(0,1.48fr)] lg:gap-14">
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  Calls with dates
-                </div>
-                <p className="mt-4 max-w-xl font-serif text-[21px] leading-[1.35] text-fg sm:text-[27px]">
-                  The dates matter because the calls were public before the market caught up.
-                </p>
-              </div>
-
-              <ol className="divide-y divide-border-soft border-t border-border lg:border-t-0">
-                {datedCalls.map((item, index) => (
-                  <li
-                    key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
-                    className="grid gap-4 py-6 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
-                  >
-                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
-                      {String(index + 1).padStart(2, '0')}
+          <div className="border-y border-border py-2 sm:py-4">
+            <ol className="divide-y divide-border-soft">
+              {datedCalls.map((item, index) => (
+                <li
+                  key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
+                  className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
+                >
+                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                      <a
+                        href={item.sourceHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
+                      >
+                        {item.made}
+                      </a>
+                      <span
+                        aria-hidden
+                        className="hidden h-px w-7 bg-accent/30 sm:inline-block"
+                      />
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
+                        {item.source}
+                      </span>
                     </div>
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                        <a
-                          href={item.sourceHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
-                        >
-                          {item.made}
-                        </a>
-                        <span
-                          aria-hidden
-                          className="hidden h-px w-7 bg-accent/30 sm:inline-block"
-                        />
-                        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
-                          {item.source}
-                        </span>
+                    <p className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
+                      {item.call}
+                    </p>
+                    <div className="mt-4 border-l border-accent/30 pl-4">
+                      <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
+                        What happened · {item.after}
                       </div>
-                      <p className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
-                        {item.call}
+                      <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
+                        {item.happened}
                       </p>
-                      <div className="mt-4 border-l border-accent/30 pl-4">
-                        <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
-                          What happened · {item.after}
-                        </div>
-                        <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
-                          {item.happened}
-                        </p>
-                        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-                          {(item.evidenceLinks ?? [
-                            { label: item.evidence, href: item.evidenceHref },
-                          ]).map((link) => (
-                            <a
-                              key={link.label}
-                              href={link.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
-                            >
-                              {link.label} ↗
-                            </a>
-                          ))}
-                        </div>
+                      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                        {(item.evidenceLinks ?? [
+                          { label: item.evidence, href: item.evidenceHref },
+                        ]).map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+                          >
+                            {link.label} ↗
+                          </a>
+                        ))}
                       </div>
                     </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </Reveal>
       </div>

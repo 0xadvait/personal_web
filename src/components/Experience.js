@@ -23,14 +23,13 @@ const roles = [
     title: 'Chief Strategy Officer',
     body: (
       <>
-        OpenGradient works on model networks, memory, and agent workflows.{' '}
+        I lead product strategy, customer work, and partnerships.{' '}
         <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </AdvisorLink>
-        . I work across product, customers, partners, and the story around the category.
+        .
       </>
     ),
-    highlights: ['7-figure product revenue', '4,500+ hosted models', 'product + partners'],
   },
   {
     period: '2022 — 2025',
@@ -48,11 +47,9 @@ const roles = [
         <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
           Delphi Labs AI Accelerator
         </AdvisorLink>
-        , plus UT Austin&rsquo;s incubator. Built the NL-to-SQL pipeline end-to-end to 200K+ users
-        at 95% accuracy. 30+ enterprise pilots. First author of The State of Edge AI. IP acquired.
+        , plus UT Austin&rsquo;s incubator. IP acquired.
       </>
     ),
-    highlights: ['$1.5M raised', '200K+ users', '30+ pilots'],
   },
   {
     period: '2019 — 2022',
@@ -60,7 +57,6 @@ const roles = [
     href: null,
     title: 'Technical Author',
     body: 'Wrote 50+ technical pieces on AI: neural networks, NLP, transfer learning, and big-data infrastructure. Featured in O’Reilly Safari Books Online. 15K+ readers.',
-    highlights: ['50+ publications', '15K+ readers', 'O’Reilly Safari'],
   },
 ];
 
@@ -69,9 +65,8 @@ export default function Experience() {
     <section id="experience" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="04"
+          index="03"
           title="Experience"
-          lede="I’ve mostly worked where product, research, capital, and storytelling overlap."
         />
 
         <ol>
@@ -105,16 +100,6 @@ export default function Experience() {
                   <p className="mt-3 sm:mt-4 max-w-2xl font-serif text-[15px] sm:text-base leading-[1.65] text-fg-muted">
                     {r.body}
                   </p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {r.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="rounded-[2px] border border-border bg-bg px-2.5 py-1.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-dim"
-                      >
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </li>
             </Reveal>

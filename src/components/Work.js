@@ -7,11 +7,9 @@ const items = [
     num: '01',
     label: 'Film campaign',
     title: 'Open intelligence films',
-    desc: 'Producer, director, writer. A launch campaign that made open intelligence feel less abstract.',
-    impact: '50M+ views',
+    desc: 'Producer, director, writer. Three OpenGradient launch films.',
     featured: true,
     visual: 'campaign',
-    signals: ['strategy', 'films', 'launch'],
     links: [
       { label: 'Film I', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
@@ -23,8 +21,6 @@ const items = [
     label: 'Report · 2024',
     title: 'The State of Edge AI',
     desc: 'First author. A report on what changes when inference moves closer to the user: latency, privacy, bandwidth, and device constraints.',
-    impact: '174K+ impressions',
-    signals: ['edge AI', 'latency', 'privacy'],
     links: [
       { label: 'PDF', href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf' },
       { label: 'Launch tweet', href: 'https://x.com/advait_jayant/status/1844420752323510351' },
@@ -35,8 +31,6 @@ const items = [
     label: 'Report',
     title: 'The AiFi Thesis',
     desc: 'A thesis for AI x DeFi: compute, data, models, and agents as resources with markets around them.',
-    impact: 'AI x DeFi thesis',
-    signals: ['compute markets', 'agent finance'],
     href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
   },
   {
@@ -44,18 +38,7 @@ const items = [
     label: 'Paper · SSRN',
     title: 'The Economics of Wash Trading',
     desc: 'A paper on manufactured volume, incentives, and market structure in crypto.',
-    impact: 'Market structure',
-    signals: ['market design', 'incentives'],
     href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
-  },
-  {
-    num: '05',
-    label: 'Talk',
-    title: 'FHE for Consensus in AI Models',
-    desc: 'A talk on using FHE to coordinate trustless consensus across model outputs.',
-    impact: 'Model consensus',
-    signals: ['FHE', 'model consensus'],
-    href: 'https://www.youtube.com/watch?v=4s_IhcMoOks',
   },
 ];
 
@@ -67,9 +50,8 @@ export default function Work() {
     <section id="work" className="relative border-t border-border bg-surface/40 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="05"
+          index="04"
           title="Selected work"
-          lede="A few public artifacts."
         />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-8">
@@ -123,23 +105,6 @@ function FeaturedWork({ item }) {
         <p className="relative z-10 mt-3 font-serif text-[14.5px] leading-[1.55] text-fg-muted sm:text-[15px]">
           {item.desc}
         </p>
-
-        <div className="relative z-10 mt-5 inline-flex w-fit border-y border-border py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt">
-          {item.impact}
-        </div>
-
-        {item.signals && (
-          <div className="relative z-10 mt-5 flex flex-wrap gap-2">
-            {item.signals.map((signal) => (
-              <span
-                key={signal}
-                className="rounded-[2px] border border-border-soft bg-bg px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim"
-              >
-                {signal}
-              </span>
-            ))}
-          </div>
-        )}
 
         {item.links && (
           <div className="relative z-10 mt-6 flex flex-wrap gap-2 sm:mt-auto sm:pt-6">
@@ -213,9 +178,6 @@ function WorkRow({ item }) {
         <p className="mt-2 max-w-xl font-serif text-[14.5px] leading-[1.5] text-fg-muted">
           {item.desc}
         </p>
-        <div className="mt-4 inline-flex border-y border-border py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt">
-          {item.impact}
-        </div>
       </div>
     </a>
   );
@@ -241,13 +203,8 @@ function CampaignVisual() {
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
               Films
             </div>
-            <p className="mt-2 max-w-[15rem] font-serif text-[26px] leading-[1.02] text-white sm:text-[31px]">
-              Making open intelligence feel real.
-            </p>
           </div>
-          <span className="rounded-[2px] border border-white/20 bg-white/10 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/80">
-            50M+
-          </span>
+          <span className="h-px w-10 bg-white/25" />
         </div>
 
         <div className="mt-10 border-t border-white/20 pt-4">

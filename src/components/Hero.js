@@ -23,15 +23,15 @@ export default function Hero() {
       <div className="dot-field" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid items-center gap-9 pb-8 pt-20 sm:gap-10 sm:pb-10 sm:pt-24 md:pt-26 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.62fr)] lg:gap-12 lg:pt-18 xl:gap-16">
-          <div className="min-w-0">
+        <div className="flex min-h-[calc(100svh-4rem)] items-center pb-10 pt-20 sm:pb-12 sm:pt-24 lg:pt-18">
+          <div className="max-w-[820px] min-w-0">
             <motion.div
               {...fadeUp(10, 0, 0.75)}
               aria-label="Current context"
               className="mb-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-1 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:grid-cols-3 sm:text-[10.5px]"
             >
               <span className="text-accent">London</span>
-              <span className="sm:text-center">Research + product</span>
+              <span className="sm:text-center">AI + crypto</span>
               <span className="col-span-2 text-fg-dim sm:col-span-1 sm:text-right">
                 <LondonTime />
               </span>
@@ -49,11 +49,7 @@ export default function Hero() {
               className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
             >
               <p>
-                I work on early technical ideas until they become products, markets, and stories
-                people want to pass around.
-              </p>
-              <p>
-                At{' '}
+                CSO at{' '}
                 <a
                   href="https://opengradient.ai"
                   target="_blank"
@@ -63,22 +59,11 @@ export default function Hero() {
                 >
                   OpenGradient
                 </a>
-                , that means figuring out what to build, working with early customers, and telling
-                the story around model networks and agent workflows. I also{' '}
-                <a
-                  href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="The State of Edge AI report (opens in a new tab)"
-                  className="text-accent hover:underline underline-offset-[3px]"
-                >
-                  write research
-                </a>{' '}
-                and{' '}
-                <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
-                  produce films
-                </a>
-                .
+                . Previously founded SuperSight / Peri Labs.
+              </p>
+              <p>
+                I write research and make films about AI infrastructure, compute markets, and
+                crypto rails.
               </p>
             </motion.div>
 
@@ -95,14 +80,6 @@ export default function Hero() {
               <a href="#work" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Work</a>
             </motion.div>
           </div>
-
-          <motion.aside
-            {...fadeUp(14, 0.42, 0.8)}
-            aria-label="Current focus"
-            className="relative w-full max-w-[520px] justify-self-center overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-6 lg:max-w-none"
-          >
-            <HeroSystemPanel />
-          </motion.aside>
         </div>
       </div>
     </section>
@@ -130,46 +107,4 @@ function LondonTime() {
   }, []);
 
   return time;
-}
-
-function HeroSystemPanel() {
-  const notes = [
-    ['Role', 'CSO at OpenGradient'],
-    ['Focus', 'model networks + agent memory'],
-    ['Base', 'London'],
-  ];
-
-  return (
-    <div className="relative overflow-hidden bg-surface p-5 sm:p-6">
-      <div aria-hidden className="absolute inset-y-0 right-0 w-28 bg-[linear-gradient(90deg,transparent_0%,rgba(36,70,199,0.08)_100%)]" />
-      <div aria-hidden className="absolute right-6 top-6 h-20 w-20 rounded-full border border-accent/10 bg-accent-soft/40" />
-
-      <div className="relative z-10 flex items-center justify-between gap-4">
-        <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            Current work
-          </div>
-          <p className="mt-2 max-w-[20rem] font-serif text-[23px] leading-[1.1] text-fg sm:text-[27px]">
-            Open intelligence, agent memory, and the market around model networks.
-          </p>
-        </div>
-        <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
-          2026
-        </span>
-      </div>
-
-      <div className="relative z-10 mt-7 divide-y divide-border-soft border-y border-border">
-        {notes.map(([label, value]) => (
-          <div key={label} className="grid gap-2 py-4 sm:grid-cols-[5rem_1fr] sm:gap-5">
-            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
-              {label}
-            </div>
-            <p className="font-serif text-[17px] leading-[1.35] text-fg-muted sm:text-[19px]">
-              {value}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
 }

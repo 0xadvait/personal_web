@@ -45,13 +45,6 @@ const talks = [
   },
 ];
 
-const topics = [
-  'AI markets',
-  'Crypto market structure',
-  'Agent economies',
-  'Technical stories',
-];
-
 export default function Speaking() {
   const featuredTalk = talks.find((talk) => talk.featured) ?? talks[0];
   const listTalks = talks.filter((talk) => talk !== featuredTalk);
@@ -60,12 +53,11 @@ export default function Speaking() {
     <section id="speaking" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="06"
+          index="05"
           title="Speaking"
-          lede="I like talks where the idea gets clearer in public."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
+        <div className="max-w-3xl">
           <Reveal>
             <a
               href={featuredTalk.href}
@@ -90,27 +82,6 @@ export default function Speaking() {
                 {featuredTalk.v}
               </div>
             </a>
-          </Reveal>
-
-          <Reveal delay={0.04}>
-            <aside className="border-y border-border py-5">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                Usually about
-              </div>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {topics.map((topic) => (
-                  <li
-                    key={topic}
-                    className="rounded-[2px] border border-border bg-surface px-2.5 py-1.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-muted"
-                  >
-                    {topic}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 max-w-xl font-serif text-[17px] leading-[1.55] text-fg-muted">
-                Best when the room is still figuring out what the category even is.
-              </p>
-            </aside>
           </Reveal>
         </div>
 

@@ -9,28 +9,13 @@ const channels = [
   { k: 'Twitter / X', v: '@advait_jayant', href: 'https://x.com/advait_jayant' },
 ];
 
-const collaboration = [
-  {
-    k: 'AI',
-    v: 'Agents, models, edge inference, product questions.',
-  },
-  {
-    k: 'Crypto',
-    v: 'Compute markets, payment rails, market structure.',
-  },
-  {
-    k: 'Film',
-    v: 'Technical stories, launch films, talks.',
-  },
-];
-
 export default function Contact() {
   return (
     <section id="contact" className="relative border-t border-border bg-surface/35 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
-            <span>07</span>
+            <span>06</span>
             <span className="h-px w-10 bg-accent/40" />
             <span className="text-fg-dim">Contact</span>
           </div>
@@ -43,15 +28,15 @@ export default function Contact() {
                 Say <span className="italic text-accent">hi.</span>
               </h2>
               <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
-                A few lines of context is plenty.
+                A few lines is plenty.
               </p>
             </div>
 
             <aside
-              aria-label="Contact note"
+              aria-hidden="true"
               className="overflow-hidden rounded-[3px] border border-border bg-fg shadow-[0_22px_70px_rgba(29,37,40,0.08)]"
             >
-              <div className="relative h-48 overflow-hidden sm:h-56 lg:h-60">
+              <div className="relative h-64 overflow-hidden sm:h-72 lg:h-80">
                 <Image
                   src="/images/ascii_bg.gif"
                   alt=""
@@ -62,35 +47,12 @@ export default function Contact() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-fg/5 via-transparent to-fg/30" />
               </div>
-              <div className="border-t border-white/10 p-5 sm:p-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
-                  No big intro needed
-                </div>
-                <p className="mt-3 max-w-[18rem] font-serif text-[21px] leading-[1.18] text-white sm:text-[24px]">
-                  Say hi, send a link, whatever is easiest.
-                </p>
-              </div>
             </aside>
           </div>
         </Reveal>
 
-        <Reveal delay={0.14}>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {collaboration.map((item) => (
-              <div key={item.k} className="border border-border bg-bg px-5 py-5">
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  {item.k}
-                </div>
-                <p className="mt-3 font-serif text-[15px] leading-[1.5] text-fg-muted">
-                  {item.v}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
         <Reveal delay={0.18}>
-          <ul className="mt-12 sm:mt-16">
+          <ul className="mt-10 sm:mt-14">
             {channels.map((c) => (
               <li key={c.k} className="border-t border-border last:border-b">
                 <a

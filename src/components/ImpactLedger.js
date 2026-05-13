@@ -5,37 +5,32 @@ const entries = [
   {
     year: '2026',
     arena: 'Product',
-    result: 'Helped turn a new technical product from zero into 7-figure revenue.',
-    role: 'Zero to revenue, early customers, enterprise sales',
-    detail: 'The work spans what to build, who needs it, and how to explain it clearly.',
+    result: 'Helped take an AI infra product from zero to 7-figure revenue.',
+    role: 'Early customers, enterprise sales',
   },
   {
     year: '2026',
     arena: 'Market entry',
-    result: 'Built a Korea market entry week with 1,000+ attendees.',
-    role: 'Regional launch, community, local partners',
-    detail: 'Builder community, local events, and Korean press coverage.',
+    result: 'Ran a Korea launch week with 1,000+ attendees.',
+    role: 'Local partners, community, events',
   },
   {
     year: '2025',
     arena: 'Film',
-    result: 'Produced a film-led open intelligence campaign that passed 50M+ views.',
+    result: 'Produced three OpenGradient films that passed 50M+ views.',
     role: 'Producer, director, writer',
-    detail: 'The point was simple: make open intelligence feel concrete.',
   },
   {
     year: '2024',
     arena: 'Research',
     result: 'Published The State of Edge AI with 174K+ launch impressions and academic citations.',
     role: 'First author, market synthesis, technical writing',
-    detail: 'Used by builders, investors, and researchers working on edge AI.',
   },
   {
     year: '2022',
-    arena: 'Founder track',
+    arena: 'Company',
     result: 'Built SuperSight / Peri Labs to 200K+ users and 30+ enterprise pilots.',
-    role: 'Founder, product architect, NL-to-SQL pipeline',
-    detail: '$1.5M pre-seed at $30M; IP later acquired.',
+    role: 'Founder, product, NL-to-SQL',
   },
 ];
 
@@ -47,9 +42,8 @@ export default function ImpactLedger() {
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
-          index="03"
+          index="02"
           title="Track record"
-          lede="A short list of concrete outcomes."
         />
 
         <div className="max-w-5xl">
@@ -78,9 +72,6 @@ export default function ImpactLedger() {
                   </div>
                   <p className="mt-3 max-w-3xl font-serif text-[23px] leading-[1.17] text-fg transition-colors group-hover:text-accent sm:text-[30px] sm:leading-[1.2]">
                     {entry.result}
-                  </p>
-                  <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:leading-[1.6]">
-                    {entry.detail}
                   </p>
                 </div>
               </article>
