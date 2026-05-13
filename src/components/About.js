@@ -16,7 +16,7 @@ const outcomes = [
 const modes = [
   {
     k: 'Translate',
-    v: 'Make frontier systems understandable without flattening the technical truth.',
+    v: 'Make deeply technical systems understandable without watering them down.',
   },
   {
     k: 'Ship',
@@ -24,7 +24,7 @@ const modes = [
   },
   {
     k: 'Distribute',
-    v: 'Give technical infrastructure a narrative surface the market can remember.',
+    v: 'Give technical work a story people actually remember.',
   },
 ];
 

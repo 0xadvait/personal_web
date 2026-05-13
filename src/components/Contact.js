@@ -19,7 +19,7 @@ const collaboration = [
   },
   {
     k: 'Tell',
-    v: 'Technical narratives, launch films, talks, and category creation.',
+    v: 'Technical narratives, launch films, talks, and explaining new categories.',
   },
 ];
 

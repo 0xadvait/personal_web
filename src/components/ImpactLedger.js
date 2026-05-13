@@ -21,7 +21,7 @@ const entries = [
     arena: 'Distribution',
     result: 'Built a film-led campaign that pushed OpenGradient past 50M+ X views.',
     role: 'Producer, director, writer',
-    proof: 'Technical narrative translated into a repeatable media surface.',
+    proof: 'A technical thesis turned into something people could watch and share.',
   },
   {
     year: '2024',
@@ -40,9 +40,9 @@ const entries = [
 ];
 
 const capabilities = [
-  'Turn frontier research into a market narrative.',
-  'Ship technical product with customer-facing credibility.',
-  'Build trust surfaces around opaque AI execution.',
+  'Turn new research into a story a market can understand.',
+  'Ship technical product with real customer proof.',
+  'Make opaque AI execution easier to audit.',
   'Move between engineering, capital, ecosystem, and media.',
 ];
 
@@ -56,7 +56,7 @@ export default function ImpactLedger() {
         <SectionHeader
           index="03"
           title="Impact"
-          lede="The work compounds when technical depth, distribution, and trust design point in the same direction."
+          lede="I do my best work when the product is technical, the market is early, and the story is still hard to explain."
         />
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
@@ -64,11 +64,11 @@ export default function ImpactLedger() {
             <aside className="lg:sticky lg:top-28">
               <div className="border-y border-border py-6">
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                  What this site should make obvious
+                  Where I&apos;m useful
                 </div>
                 <p className="mt-5 font-serif text-[21px] leading-[1.4] text-fg sm:text-[27px]">
-                  I am strongest where the product is technical, the market is early, and the
-                  story has to become credible before it becomes obvious.
+                  I like the messy middle: the product works, the market is not fully there yet,
+                  and someone has to make the whole thing credible.
                 </p>
               </div>
 

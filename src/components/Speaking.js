@@ -58,14 +58,14 @@ export default function Speaking() {
         <SectionHeader
           index="06"
           title="Speaking"
-          lede="Selected rooms where I've explained the agentic internet, open intelligence, and verifiable compute."
+          lede="Talks and conversations on agents, open intelligence, and verifiable compute."
         />
 
         <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:gap-14">
           <Reveal>
             <aside className="border-y border-border py-5 lg:sticky lg:top-28">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                Speaking lanes
+                Topics
               </div>
               <ul className="mt-4 flex flex-wrap gap-2 lg:flex-col">
                 {topics.map((topic) => (

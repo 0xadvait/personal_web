@@ -8,11 +8,11 @@ const pipeline = [
   { k: 'Request', v: 'intent + context' },
   { k: 'Memory', v: 'portable state' },
   { k: 'Execute', v: 'GPU + TEE' },
-  { k: 'Prove', v: 'signed receipt' },
+  { k: 'Prove', v: 'signed output' },
   { k: 'Settle', v: 'external record' },
 ];
 
-const receipt = [
+const auditItems = [
   ['model', 'open model'],
   ['enclave', 'attested'],
   ['proof', 'ed25519'],
@@ -62,7 +62,7 @@ export default function Hero() {
               className="mt-8 sm:mt-10 max-w-2xl font-serif text-lg sm:text-xl md:text-[22px] leading-[1.55] text-fg space-y-3"
             >
               <p>
-                I build the trust layer for AI agents that are about to touch money, memory,
+                I build infrastructure for AI agents that are about to touch money, memory,
                 identity, and institutional workflows.
               </p>
               <p>
@@ -78,8 +78,8 @@ export default function Hero() {
                 </a>
                 , I lead product strategy, ecosystem growth, and customer engineering across the
                 decentralized GPU + TEE inference network and MemSync, a portable memory layer for
-                agents. The job is to make frontier infrastructure legible enough to buy, trust,
-                and build on. I also write research and{' '}
+                agents. I work on the parts that make this stack easier to buy, trust, and build
+                on. I also write research and{' '}
                 <a href="#work" className="text-accent hover:underline underline-offset-[3px]">
                   produce films
                 </a>
@@ -92,10 +92,10 @@ export default function Hero() {
               className="mt-10 sm:mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em]"
             >
               <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
-                Read the operating thesis <span aria-hidden>↓</span>
+                Read the thesis <span aria-hidden>↓</span>
               </a>
               <span aria-hidden className="text-fg-faint">·</span>
-              <a href="#impact" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">See receipts</a>
+              <a href="#impact" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Track record</a>
               <span aria-hidden className="text-fg-faint">·</span>
               <a href="#work" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Work</a>
             </motion.div>
@@ -110,7 +110,7 @@ export default function Hero() {
 
             <div className="p-5 sm:p-6">
               <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-accent">
-                Operating lanes
+                Current work
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {signals.map((signal) => (
@@ -124,8 +124,8 @@ export default function Hero() {
               </div>
 
               <p className="mt-5 border-l border-accent/35 pl-4 font-serif text-[15px] leading-[1.5] text-fg-muted">
-                The through-line: execution you can prove, memory users can carry, and settlement
-                nobody can quietly rewrite.
+                The work is direct: prove execution, let users carry memory, and settle actions
+                where the operator cannot quietly rewrite them.
               </p>
             </div>
           </motion.aside>
@@ -154,7 +154,7 @@ function HeroSystemPanel() {
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
           <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            Agent action receipt
+            Agent audit trail
           </div>
           <p className="mt-2 max-w-[18rem] font-serif text-[22px] leading-[1.08] text-fg">
             Accountable agents, not smarter chat windows.
@@ -191,7 +191,7 @@ function HeroSystemPanel() {
       </div>
 
       <dl className="relative z-10 mt-4 grid grid-cols-2 gap-2">
-        {receipt.map(([k, v]) => (
+        {auditItems.map(([k, v]) => (
           <div key={k} className="border-y border-border bg-bg/70 px-3 py-2">
             <dt className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-fg-dim">
               {k}

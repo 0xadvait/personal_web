@@ -6,11 +6,11 @@ const items = [
     num: '01',
     label: 'Campaign system',
     title: 'OpenGradient — film work',
-    desc: 'Producer, director, writer. A technical media campaign designed to make open intelligence feel tangible, not abstract.',
+    desc: 'Producer, director, writer. A technical media campaign that made open intelligence feel concrete.',
     impact: '50M+ views · launch narrative',
     featured: true,
     visual: 'campaign',
-    signals: ['narrative strategy', 'technical distribution', 'brand surface'],
+    signals: ['narrative strategy', 'technical distribution', 'brand system'],
     links: [
       { label: 'Flagship', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
       { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
@@ -193,10 +193,10 @@ function CampaignVisual() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/68">
-              Campaign artifact
+              Campaign board
             </div>
             <p className="mt-2 max-w-[15rem] font-serif text-[25px] leading-[1.02] text-white sm:text-[30px]">
-              Making open intelligence feel cinematic.
+              Making open intelligence feel real.
             </p>
           </div>
           <span className="rounded-[2px] border border-white/18 bg-white/10 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-white/80">

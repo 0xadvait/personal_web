@@ -1,10 +1,10 @@
 import Reveal from './Reveal';
 
 const proof = [
-  { value: '7 figures', label: 'AI infra revenue', detail: 'new product motion' },
-  { value: '4,500+', label: 'hosted models', detail: 'network surface area' },
+  { value: '7 figures', label: 'AI infra revenue', detail: 'new product line' },
+  { value: '4,500+', label: 'hosted models', detail: 'model coverage' },
   { value: '2M+', label: 'network inferences', detail: 'execution volume' },
-  { value: '500K+', label: 'verifiable proofs', detail: 'signed receipts' },
+  { value: '500K+', label: 'verifiable proofs', detail: 'signed outputs' },
   { value: '50M+', label: 'campaign views', detail: 'technical narrative' },
 ];
 
@@ -16,10 +16,10 @@ export default function ProofStrip() {
           <div className="grid grid-cols-2 border-x border-border lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))]">
             <div className="col-span-2 border-b border-r border-border px-4 py-5 sm:px-5 lg:col-span-1 lg:border-b-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                Receipts
+                A few numbers
               </div>
               <p className="mt-2 max-w-sm font-serif text-[14px] leading-[1.45] text-fg-muted">
-                Hard outcomes the rest of the page has to earn.
+                The numbers behind the rest of the page.
               </p>
             </div>
             {proof.map((item) => (

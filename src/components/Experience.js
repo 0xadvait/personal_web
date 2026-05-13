@@ -86,7 +86,7 @@ export default function Experience() {
         <SectionHeader
           index="04"
           title="Experience"
-          lede="A track record across product, research, capital, and go-to-market when the category is still forming."
+          lede="Product, research, capital, and go-to-market work while the market is still taking shape."
         />
 
         <ol>

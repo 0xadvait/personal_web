@@ -3,8 +3,8 @@ import SectionHeader from './SectionHeader';
 
 const pillars = [
   {
-    k: 'Trust surface',
-    v: 'Inference should carry receipts.',
+    k: 'Trust layer',
+    v: 'Inference should be checkable.',
     d: 'When an agent makes a claim, executes a trade, or touches user state, the system should be able to prove what model ran, where it ran, and what it returned.',
     proof: 'TEE attestation, signed outputs, verifiable execution trails',
   },
@@ -49,7 +49,7 @@ export default function Thesis() {
               </p>
               <p className="mt-5 font-serif text-base leading-[1.65] text-fg-muted sm:text-[17px]">
                 That means verifiable execution, memory that users can carry, and economic rails
-                that make agent actions legible after the fact.
+                that make agent actions auditable later.
               </p>
 
               <dl className="mt-8 divide-y divide-border-soft border-y border-border">
