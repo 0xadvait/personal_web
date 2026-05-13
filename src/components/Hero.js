@@ -116,11 +116,6 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
-
-              <p className="mt-4 border-l border-accent/35 pl-4 font-serif text-[14px] leading-[1.45] text-fg-muted">
-                Less chatbot magic. More runs you can replay, memory users own, and actions an
-                operator can&apos;t quietly edit.
-              </p>
             </div>
           </motion.aside>
         </div>
