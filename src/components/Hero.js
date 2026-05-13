@@ -1,15 +1,23 @@
 'use client';
 
-import Image from 'next/image';
 import { motion, useReducedMotion } from 'motion/react';
 
-const focus = [
-  ['01', 'Proofs for AI execution'],
-  ['02', 'Portable memory for agents'],
-  ['03', 'Settlement for agent actions'],
+const signals = ['proofs for AI execution', 'portable memory', 'agent settlement'];
+
+const pipeline = [
+  { k: 'Request', v: 'intent + context' },
+  { k: 'Memory', v: 'portable state' },
+  { k: 'Execute', v: 'GPU + TEE' },
+  { k: 'Prove', v: 'signed receipt' },
+  { k: 'Settle', v: 'external record' },
 ];
 
-const signals = ['AI infra', 'crypto rails', 'technical media'];
+const receipt = [
+  ['model', 'open model'],
+  ['enclave', 'attested'],
+  ['proof', 'ed25519'],
+  ['state', 'committed'],
+];
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -31,7 +39,7 @@ export default function Hero() {
       <div className="dot-field" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid min-h-[88svh] items-center gap-12 pb-14 pt-28 sm:min-h-[92svh] sm:pb-20 sm:pt-36 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.62fr)] lg:gap-16">
+        <div className="grid min-h-[86svh] items-center gap-12 pb-6 pt-24 sm:min-h-[90svh] sm:pb-8 sm:pt-30 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.62fr)] lg:gap-16">
           <div className="min-w-0">
             <motion.div
               {...fadeUp(10, 0, 0.75)}
@@ -96,50 +104,15 @@ export default function Hero() {
           <motion.aside
             {...fadeUp(14, 0.42, 0.8)}
             aria-label="Current focus"
-            className="relative overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-20"
+            className="relative overflow-hidden rounded-[3px] border border-border bg-surface shadow-[0_24px_80px_rgba(29,37,40,0.08)] lg:mt-12"
           >
-            <div className="relative h-48 overflow-hidden border-b border-border sm:h-56">
-              <Image
-                src="/images/ascii_bg.gif"
-                alt=""
-                fill
-                priority
-                unoptimized
-                sizes="(min-width: 1024px) 390px, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-bg/10 via-bg/10 to-bg/80" />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                    Current operating zone
-                  </div>
-                  <p className="mt-2 max-w-[17rem] font-serif text-[22px] leading-[1.1] text-fg">
-                    Accountable agents, not smarter chat windows.
-                  </p>
-                </div>
-                <span className="hidden rounded-[2px] border border-border bg-surface/80 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
-                  2026
-                </span>
-              </div>
-            </div>
+            <HeroSystemPanel />
 
             <div className="p-5 sm:p-6">
               <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-accent">
-                Current focus
+                Operating lanes
               </div>
-              <ul className="mt-5 divide-y divide-border-soft">
-                {focus.map(([num, label]) => (
-                  <li key={label} className="grid grid-cols-[2.5rem_1fr] items-baseline gap-4 py-3">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent-alt">
-                      {num}
-                    </span>
-                    <span className="font-serif text-[17px] leading-snug text-fg">{label}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {signals.map((signal) => (
                   <span
                     key={signal}
@@ -150,7 +123,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <p className="mt-6 border-l border-accent/35 pl-4 font-serif text-[16px] leading-[1.55] text-fg-muted">
+              <p className="mt-5 border-l border-accent/35 pl-4 font-serif text-[15px] leading-[1.5] text-fg-muted">
                 The through-line: execution you can prove, memory users can carry, and settlement
                 nobody can quietly rewrite.
               </p>
@@ -159,5 +132,76 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroSystemPanel() {
+  return (
+    <div className="relative overflow-hidden border-b border-border bg-[linear-gradient(135deg,#ffffff_0%,#f7f7f2_46%,#edf3ff_100%)] p-5">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,rgba(36,70,199,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.07)_1px,transparent_1px)] [background-size:24px_24px]"
+      />
+      <div
+        aria-hidden
+        className="absolute -right-12 -top-16 h-44 w-44 rounded-full border border-accent/20 bg-accent-soft/60"
+      />
+      <div
+        aria-hidden
+        className="absolute -bottom-20 left-8 h-44 w-44 rounded-full border border-accent-alt/15 bg-surface/60"
+      />
+
+      <div className="relative z-10 flex items-center justify-between gap-4">
+        <div>
+          <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+            Agent action receipt
+          </div>
+          <p className="mt-2 max-w-[18rem] font-serif text-[22px] leading-[1.08] text-fg">
+            Accountable agents, not smarter chat windows.
+          </p>
+        </div>
+        <span className="hidden rounded-[2px] border border-border bg-surface/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent sm:inline-flex">
+          2026
+        </span>
+      </div>
+
+      <div className="relative z-10 mt-5 grid gap-2">
+        {pipeline.map((step, index) => (
+          <div
+            key={step.k}
+            className="grid grid-cols-[2.1rem_minmax(0,1fr)_auto] items-center gap-3 rounded-[2px] border border-border bg-surface/82 px-3 py-2 shadow-[0_1px_0_rgba(29,37,40,0.03)]"
+          >
+            <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent-alt">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="min-w-0">
+              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+                {step.k}
+              </div>
+              <div className="mt-0.5 truncate font-serif text-[13px] leading-tight text-fg-muted">
+                {step.v}
+              </div>
+            </div>
+            <span
+              aria-hidden
+              className={`h-2 w-2 rounded-full ${index === 3 ? 'bg-accent' : 'bg-accent-alt/60'}`}
+            />
+          </div>
+        ))}
+      </div>
+
+      <dl className="relative z-10 mt-4 grid grid-cols-2 gap-2">
+        {receipt.map(([k, v]) => (
+          <div key={k} className="border-y border-border bg-bg/70 px-3 py-2">
+            <dt className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-fg-dim">
+              {k}
+            </dt>
+            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-fg-muted">
+              {v}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }

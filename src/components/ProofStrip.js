@@ -13,22 +13,19 @@ export default function ProofStrip() {
     <section aria-label="Selected proof points" className="border-t border-border bg-surface/45">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="border-x border-border">
-            <div className="grid gap-4 border-b border-border px-4 py-4 sm:grid-cols-[9rem_1fr] sm:gap-8 sm:px-5">
+          <div className="grid grid-cols-2 border-x border-border lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))]">
+            <div className="col-span-2 border-b border-r border-border px-4 py-5 sm:px-5 lg:col-span-1 lg:border-b-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
                 Receipts
               </div>
-              <p className="max-w-3xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-base">
-                Hard outcomes matter on a personal site. These are the numbers the rest of the page
-                has to earn.
+              <p className="mt-2 max-w-sm font-serif text-[14px] leading-[1.45] text-fg-muted">
+                Hard outcomes the rest of the page has to earn.
               </p>
             </div>
-          </div>
-          <dl className="grid grid-cols-2 border-x border-border sm:grid-cols-5">
             {proof.map((item) => (
-              <div
+              <dl
                 key={item.label}
-                className="border-b border-r border-border px-4 py-5 last:border-r-0 sm:border-b-0 sm:px-5 sm:py-6"
+                className="border-b border-r border-border px-4 py-5 last:border-r-0 lg:border-b-0 lg:px-5 lg:py-6"
               >
                 <dt className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-muted">
                   {item.label}
@@ -39,9 +36,9 @@ export default function ProofStrip() {
                 <dd className="mt-2 font-serif text-[13px] leading-snug text-fg-dim">
                   {item.detail}
                 </dd>
-              </div>
+              </dl>
             ))}
-          </dl>
+          </div>
         </Reveal>
       </div>
     </section>
