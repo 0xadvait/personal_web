@@ -1,8 +1,8 @@
 import Reveal from './Reveal';
 
 const proof = [
-  { value: '7 figures', label: 'Revenue', detail: 'AI infra product' },
-  { value: '4,500+', label: 'Models', detail: 'hosted on-network' },
+  { value: '7 figures', label: 'Revenue', detail: 'new AI infra product' },
+  { value: '4,500+', label: 'Models', detail: 'on the network' },
   { value: '2M+', label: 'Inferences', detail: 'network volume' },
   { value: '500K+', label: 'Proofs', detail: 'signed outputs' },
   { value: '50M+', label: 'Views', detail: 'OpenGradient films' },
@@ -13,15 +13,7 @@ export default function ProofStrip() {
     <section aria-label="Selected outcomes" className="border-y border-border bg-surface/35">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="grid gap-5 py-5 sm:py-6 lg:grid-cols-[220px_1fr] lg:items-center">
-            <div className="border-l border-accent/35 pl-4">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                Snapshot
-              </div>
-              <p className="mt-2 max-w-xs font-serif text-[14px] leading-[1.45] text-fg-muted">
-                A few numbers for context.
-              </p>
-            </div>
+          <div className="py-5 sm:py-6">
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[3px] border border-border bg-border sm:grid-cols-5">
               {proof.map((item, index) => (
                 <dl
