@@ -23,7 +23,7 @@ const entries = [
   {
     year: '2024',
     arena: 'Research',
-    result: 'Published The State of Edge AI with 174K+ launch impressions and academic citations.',
+    result: 'Published The State of Edge AI with 174K+ launch impressions and 6 citations.',
     role: 'First author, market synthesis, technical writing',
   },
   {
