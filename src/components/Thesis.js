@@ -63,7 +63,29 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Early research"
-          lede="Before OpenGradient, I wrote two public reports: one on edge AI, one on AI x DeFi. A few predictions ended up being right."
+          lede={
+            <>
+              Before OpenGradient, I wrote two public reports: one on{' '}
+              <a
+                href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline underline-offset-[3px]"
+              >
+                edge AI
+              </a>
+              , one on{' '}
+              <a
+                href="https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline underline-offset-[3px]"
+              >
+                AI x DeFi
+              </a>
+              . A few predictions ended up being right.
+            </>
+          }
         />
 
         <Reveal>
