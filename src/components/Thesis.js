@@ -1,12 +1,12 @@
 import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
-const datedCalls = [
+const datedPredictions = [
   {
     made: '14 Oct 2024',
     source: 'The State of Edge AI',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
-    call:
+    prediction:
       'Cloud-only AI was going to hit latency, privacy, and bandwidth walls. Useful intelligence would move closer to the user.',
     after: '9 Jun 2025',
     happened:
@@ -22,7 +22,7 @@ const datedCalls = [
     made: '28 Feb 2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
-    call:
+    prediction:
       'AI compute would stop being just another cloud line item. Capacity itself would become something capital markets finance directly.',
     after: '24 Sep 2025 / 10 Apr 2026',
     happened:
@@ -42,7 +42,7 @@ const datedCalls = [
     made: '28 Feb 2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
-    call:
+    prediction:
       'If agents were going to work with each other, they would need payment rails, spend controls, and a clean record of what happened.',
     after: '7 May 2026',
     happened:
@@ -63,13 +63,13 @@ export default function Thesis() {
         <SectionHeader
           index="01"
           title="Thesis"
-          lede="Calls from the Edge AI and AiFi reports, plus what happened after."
+          lede="Predictions from the Edge AI and AiFi reports, plus what happened after."
         />
 
         <Reveal>
           <div className="border-y border-border py-2 sm:py-4">
             <ol className="divide-y divide-border-soft">
-              {datedCalls.map((item, index) => (
+              {datedPredictions.map((item, index) => (
                 <li
                   key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
                   className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
@@ -96,7 +96,7 @@ export default function Thesis() {
                       </span>
                     </div>
                     <p className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
-                      {item.call}
+                      {item.prediction}
                     </p>
                     <div className="mt-4 border-l border-accent/30 pl-4">
                       <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
