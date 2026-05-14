@@ -22,37 +22,35 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_360px] lg:items-end lg:gap-16">
-            <div>
-              <h2 className="font-serif text-5xl leading-[0.98] text-fg text-balance sm:text-6xl md:text-7xl lg:text-[104px]">
+          <div className="overflow-hidden border-y border-border bg-bg/45 lg:grid lg:min-h-[360px] lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)]">
+            <div className="flex min-h-[260px] flex-col justify-end py-8 sm:py-10 lg:min-h-0 lg:py-12 lg:pr-12">
+              <h2 className="font-serif text-5xl leading-[0.98] text-fg text-balance sm:text-6xl md:text-7xl lg:text-[96px]">
                 Say <span className="italic text-accent">hi.</span>
               </h2>
-              <p className="mt-6 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-8 sm:text-xl">
+              <p className="mt-5 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-7 sm:text-xl">
                 A few lines is plenty.
               </p>
             </div>
 
             <aside
               aria-hidden="true"
-              className="overflow-hidden rounded-[3px] border border-border bg-fg shadow-[0_22px_70px_rgba(29,37,40,0.08)]"
+              className="relative min-h-[220px] overflow-hidden border-t border-border bg-fg lg:min-h-full lg:border-l lg:border-t-0"
             >
-              <div className="relative h-64 overflow-hidden sm:h-72 lg:h-80">
-                <Image
-                  src="/images/ascii_bg.gif"
-                  alt=""
-                  fill
-                  unoptimized
-                  sizes="(min-width: 1024px) 360px, 100vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-fg/5 via-transparent to-fg/30" />
-              </div>
+              <Image
+                src="/images/ascii_bg.gif"
+                alt=""
+                fill
+                unoptimized
+                sizes="(min-width: 1024px) 430px, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-fg/5 via-transparent to-fg/28" />
             </aside>
           </div>
         </Reveal>
 
         <Reveal delay={0.18}>
-          <ul className="mt-10 sm:mt-14">
+          <ul className="-mt-px">
             {channels.map((c) => (
               <li key={c.k} className="border-t border-border last:border-b">
                 <a
