@@ -16,9 +16,9 @@ const entries = [
   },
   {
     year: '2025',
-    arena: 'Film',
-    result: 'Produced three OpenGradient films that passed 50M+ views.',
-    role: 'Producer, director, writer',
+    arena: 'Marketing',
+    result: 'Within a year of running marketing at OpenGradient, we crossed 50M+ views.',
+    role: 'Brand, films, launches',
   },
   {
     year: '2024',
