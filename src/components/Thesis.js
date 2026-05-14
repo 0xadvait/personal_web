@@ -4,6 +4,7 @@ import SectionHeader from './SectionHeader';
 const datedPredictions = [
   {
     made: '14 Oct 2024',
+    year: '2024',
     source: 'The State of Edge AI',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
     prediction:
@@ -20,6 +21,7 @@ const datedPredictions = [
   },
   {
     made: '28 Feb 2025',
+    year: '2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     prediction:
@@ -40,6 +42,7 @@ const datedPredictions = [
   },
   {
     made: '28 Feb 2025',
+    year: '2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     prediction:
@@ -176,22 +179,22 @@ export default function Thesis() {
                   className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
                 >
                   <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
-                    {String(index + 1).padStart(2, '0')}
+                    {item.year}
                   </div>
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                        Prediction {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span aria-hidden className="hidden h-px w-7 bg-accent/30 sm:inline-block" />
                       <a
                         href={item.sourceHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
+                        className="font-mono text-[10px] uppercase tracking-[0.16em] text-fg-dim hover:text-accent hover:underline underline-offset-[3px]"
                       >
                         {item.made}
                       </a>
-                      <span
-                        aria-hidden
-                        className="hidden h-px w-7 bg-accent/30 sm:inline-block"
-                      />
                       <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
                         {item.source}
                       </span>
