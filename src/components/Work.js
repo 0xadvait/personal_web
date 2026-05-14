@@ -2,50 +2,19 @@ import Image from 'next/image';
 import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
-const items = [
-  {
-    num: '01',
-    label: 'Film campaign',
-    title: 'Open intelligence films',
-    desc: 'Producer, director, writer. Three OpenGradient launch films.',
-    featured: true,
-    visual: 'campaign',
-    links: [
-      { label: 'Film I', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
-      { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
-      { label: 'Film III', href: 'https://x.com/OpenGradient/status/2052411220532109321' },
-    ],
-  },
-  {
-    num: '02',
-    label: 'Report · 2024',
-    title: 'The State of Edge AI',
-    desc: 'First author. A report on what changes when inference moves closer to the user: latency, privacy, bandwidth, and device constraints.',
-    links: [
-      { label: 'PDF', href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf' },
-      { label: 'Launch tweet', href: 'https://x.com/advait_jayant/status/1844420752323510351' },
-    ],
-  },
-  {
-    num: '03',
-    label: 'Report',
-    title: 'The AiFi Thesis',
-    desc: 'A thesis for AI x DeFi: compute, data, models, and agents as resources with markets around them.',
-    href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
-  },
-  {
-    num: '04',
-    label: 'Paper · SSRN',
-    title: 'The Economics of Wash Trading',
-    desc: 'A paper on manufactured volume, incentives, and market structure in crypto.',
-    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
-  },
-];
+const filmCampaign = {
+  num: '01',
+  label: 'Film campaign',
+  title: 'Open intelligence films',
+  desc: 'Producer, director, writer. Three OpenGradient launch films.',
+  links: [
+    { label: 'Film I', href: 'https://x.com/OpenGradient/status/2045849964539171274' },
+    { label: 'Film II', href: 'https://x.com/OpenGradient/status/2053766717474492927' },
+    { label: 'Film III', href: 'https://x.com/OpenGradient/status/2052411220532109321' },
+  ],
+};
 
 export default function Work() {
-  const featured = items.find((item) => item.featured) ?? items[0];
-  const indexItems = items.filter((item) => item !== featured);
-
   return (
     <section id="work" className="relative border-t border-border bg-surface/40 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -54,13 +23,9 @@ export default function Work() {
           title="Selected work"
         />
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start lg:gap-8">
+        <div className="max-w-3xl">
           <Reveal>
-            <FeaturedWork item={featured} />
-          </Reveal>
-
-          <Reveal delay={0.06}>
-            <WorkIndex items={indexItems} />
+            <FeaturedWork item={filmCampaign} />
           </Reveal>
         </div>
       </div>
@@ -127,59 +92,6 @@ function FeaturedWork({ item }) {
         )}
       </div>
     </div>
-  );
-}
-
-function WorkIndex({ items }) {
-  return (
-    <aside className="h-full border-y border-border py-4 sm:py-5">
-      <div className="flex items-center justify-between gap-4 px-0 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-        <span>Work index</span>
-        <span className="text-fg-dim">{String(items.length).padStart(2, '0')} entries</span>
-      </div>
-      <ul className="mt-4 divide-y divide-border-soft border-t border-border">
-        {items.map((item) => (
-          <li key={item.title}>
-            <WorkRow item={item} />
-          </li>
-        ))}
-      </ul>
-    </aside>
-  );
-}
-
-function WorkRow({ item }) {
-  const primaryHref = item.href ?? item.links?.[0]?.href;
-  const primaryLabel = item.href ? item.title : `${item.title} — ${item.links?.[0]?.label}`;
-
-  return (
-    <a
-      href={primaryHref}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${primaryLabel} (opens in a new tab)`}
-      className="group grid gap-3 py-5 transition-colors hover:bg-surface-soft/55 sm:grid-cols-[4.5rem_1fr] sm:gap-5 sm:px-3"
-    >
-      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt">
-        {item.num}
-      </div>
-      <div className="min-w-0">
-        <div className="flex items-center justify-between gap-4">
-          <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
-            {item.label}
-          </div>
-          <span aria-hidden className="text-fg-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent">
-            ↗
-          </span>
-        </div>
-        <h3 className="mt-2 font-serif text-[24px] leading-[1.12] text-fg transition-colors group-hover:text-accent sm:text-[28px]">
-          {item.title}
-        </h3>
-        <p className="mt-2 max-w-xl font-serif text-[14.5px] leading-[1.5] text-fg-muted">
-          {item.desc}
-        </p>
-      </div>
-    </a>
   );
 }
 

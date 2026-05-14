@@ -56,6 +56,32 @@ const datedPredictions = [
   },
 ];
 
+const soloPaper = {
+  year: '2023',
+  title: 'The Economics of Wash Trading',
+  href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
+  desc:
+    'Solo-authored SSRN paper on NFT wash trading: token incentives, fake volume, and whether any of it translated into real trading.',
+  citations: [
+    {
+      label: 'Journal of Banking & Finance',
+      href: 'https://www.sciencedirect.com/science/article/abs/pii/S0378426625001499',
+    },
+    {
+      label: 'European Journal of Finance',
+      href: 'https://doi.org/10.1080/1351847X.2026.2624485',
+    },
+    {
+      label: 'NBER',
+      href: 'https://www.nber.org/papers/w34837',
+    },
+    {
+      label: 'Scholar citations',
+      href: 'https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2223007016064564882&as_sdt=5',
+    },
+  ],
+};
+
 export default function Thesis() {
   return (
     <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-24">
@@ -83,14 +109,67 @@ export default function Thesis() {
               >
                 AI x DeFi
               </a>
-              . A few predictions ended up being right.
+              , plus a solo paper on NFT wash trading.
             </>
           }
         />
 
         <Reveal>
           <div className="border-y border-border py-2 sm:py-4">
-            <ol className="divide-y divide-border-soft">
+            <article className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3">
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
+                {soloPaper.year}
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                  <a
+                    href={soloPaper.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
+                  >
+                    Solo paper · SSRN
+                  </a>
+                  <span aria-hidden className="hidden h-px w-7 bg-accent/30 sm:inline-block" />
+                  <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
+                    Market structure
+                  </span>
+                </div>
+                <h3 className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
+                  <a
+                    href={soloPaper.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-accent hover:underline underline-offset-[4px]"
+                  >
+                    {soloPaper.title}
+                  </a>
+                </h3>
+                <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
+                  {soloPaper.desc}
+                </p>
+                <div className="mt-4 border-l border-accent/30 pl-4">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
+                    Cited by
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                    {soloPaper.citations.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <ol className="divide-y divide-border-soft border-t border-border">
               {datedPredictions.map((item, index) => (
                 <li
                   key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
