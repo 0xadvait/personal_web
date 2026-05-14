@@ -72,7 +72,7 @@ export default function Hero() {
               className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.12em] sm:mt-10 sm:gap-x-7 sm:text-[12px] lg:mt-9"
             >
               <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
-                Thesis <span aria-hidden>↓</span>
+                Research <span aria-hidden>↓</span>
               </a>
               <span aria-hidden className="hidden text-fg-faint sm:inline">·</span>
               <a href="#impact" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Track record</a>

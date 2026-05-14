@@ -62,8 +62,8 @@ export default function Thesis() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="01"
-          title="Thesis"
-          lede="Predictions from the Edge AI and AiFi reports, plus what happened after."
+          title="Early research"
+          lede="Before OpenGradient, I wrote two public reports: one on edge AI, one on AI x DeFi. A few predictions ended up being right."
         />
 
         <Reveal>
