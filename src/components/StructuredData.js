@@ -29,6 +29,26 @@ const data = {
         { '@type': 'CollegeOrUniversity', name: 'London Business School' },
         { '@type': 'CollegeOrUniversity', name: 'BITS Pilani' },
       ],
+      hasCredential: [
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'M.Res., Business and Management Studies',
+          credentialCategory: "Master's degree",
+          recognizedBy: { '@type': 'CollegeOrUniversity', name: 'London Business School' },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Master of Analytics and Management',
+          credentialCategory: "Master's degree",
+          recognizedBy: { '@type': 'CollegeOrUniversity', name: 'London Business School' },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'B.E., Computer Science',
+          credentialCategory: "Bachelor's degree",
+          recognizedBy: { '@type': 'CollegeOrUniversity', name: 'BITS Pilani' },
+        },
+      ],
       knowsAbout: [
         'Early technical markets',
         'Agent economies',

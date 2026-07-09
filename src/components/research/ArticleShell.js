@@ -178,9 +178,11 @@ export function AuthorCard() {
           The Economics of Wash Trading
         </a>{' '}
         (SSRN {paper.abstractId}) has been cited in the Journal of Banking &amp; Finance, the
-        European Journal of Finance, and an NBER working paper. He studied at London Business
-        School and BITS Pilani, and works across AI infrastructure, compute markets, and crypto
-        market structure.
+        European Journal of Finance, and an NBER working paper. He is an alumnus of London Business
+        School, where he completed two master&rsquo;s degrees (an M.Res. in Business and Management
+        Studies and a Master of Analytics and Management) and was enrolled in the PhD programme, and
+        holds a Computer Science degree from BITS Pilani. He works across AI infrastructure, compute
+        markets, and crypto market structure.
       </p>
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em]">
         {links.map((l) => (
