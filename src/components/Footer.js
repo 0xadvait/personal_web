@@ -8,6 +8,9 @@ export default function Footer() {
           <a href="#top" className="hover:text-accent transition-colors">
             Top
           </a>
+          <a href="/research" className="hover:text-accent transition-colors">
+            Research
+          </a>
           <a href="https://www.advait.tech" className="hover:text-accent transition-colors">
             advait.tech
           </a>

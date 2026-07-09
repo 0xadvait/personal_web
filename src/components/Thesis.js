@@ -137,6 +137,12 @@ export default function Thesis() {
                   <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
                     Market structure
                   </span>
+                  <a
+                    href="/research/the-economics-of-wash-trading"
+                    className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt hover:underline underline-offset-[3px]"
+                  >
+                    Overview + findings →
+                  </a>
                 </div>
                 <h3 className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
                   <a

@@ -8,6 +8,7 @@ const links = [
   { href: '#experience', label: 'Experience' },
   { href: '#work', label: 'Work' },
   { href: '#speaking', label: 'Speaking' },
+  { href: '/research', label: 'Papers' },
 ];
 
 export default function Nav() {

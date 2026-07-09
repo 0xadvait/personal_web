@@ -20,12 +20,16 @@ export const metadata = {
   creator: siteName,
   publisher: siteName,
   keywords: [
+    'Advait',
     'Advait Jayant',
     'OpenGradient',
     'early technical markets',
     'technical film',
     'AI research',
     'crypto market structure',
+    'wash trading',
+    'NFT markets',
+    'The Economics of Wash Trading',
   ],
   openGraph: {
     title: `${siteName} | Research, Product, and Film`,

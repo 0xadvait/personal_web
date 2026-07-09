@@ -8,4 +8,5 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/in/advait-jayant-21b465bb/',
   scholar: 'https://scholar.google.com/citations?user=jG6k8swAAAAJ&hl=en',
   x: 'https://x.com/advait_jayant',
+  ssrn: 'https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6236096',
 };

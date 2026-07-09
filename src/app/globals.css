@@ -96,6 +96,87 @@ section[id] {
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
+/* Long-form research article typography */
+.prose-research {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--color-fg);
+}
+.prose-research > * + * { margin-top: 1.25em; }
+.prose-research h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  line-height: 1.28;
+  margin-top: 2.4em;
+  color: var(--color-fg);
+}
+.prose-research h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.3;
+  margin-top: 1.9em;
+  color: var(--color-fg);
+}
+.prose-research a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(36, 70, 199, 0.35);
+}
+.prose-research a:hover { text-decoration-color: var(--color-accent); }
+.prose-research strong { font-weight: 600; }
+.prose-research ul, .prose-research ol { padding-left: 1.35em; }
+.prose-research ul { list-style: disc; }
+.prose-research ol { list-style: decimal; }
+.prose-research li + li { margin-top: 0.45em; }
+.prose-research blockquote {
+  border-left: 2px solid rgba(36, 70, 199, 0.4);
+  padding-left: 1.1em;
+  font-style: italic;
+  color: var(--color-fg-muted);
+}
+.prose-research table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.prose-research th {
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10.5px;
+  color: var(--color-fg-dim);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.55em 0.9em 0.55em 0;
+}
+.prose-research td {
+  border-bottom: 1px solid var(--color-border-soft);
+  padding: 0.65em 0.9em 0.65em 0;
+  vertical-align: top;
+}
+.prose-research .table-wrap { overflow-x: auto; }
+.prose-research hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: 2.4em;
+}
+.prose-research .aside-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-fg-muted);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 3px;
+  padding: 0.9em 1.1em;
+}
+
 /* Subtle dotted backdrop behind hero */
 .dot-field {
   position: absolute;
