@@ -5,7 +5,7 @@ const channels = [
   { k: 'Email', v: 'advait@opengradient.ai', href: 'mailto:advait@opengradient.ai' },
   { k: 'GitHub', v: 'github.com/0xadvait', href: 'https://github.com/0xadvait' },
   { k: 'LinkedIn', v: 'in/advait-jayant-21b465bb', href: 'https://www.linkedin.com/in/advait-jayant-21b465bb/' },
-  { k: 'Google Scholar', v: 'Advait Jayant', href: 'https://scholar.google.com/citations?user=jG6k8swAAAAJ&hl=en' },
+  { k: 'Google Scholar', v: 'Advait Jayant', href: 'https://scholar.google.com/citations?user=tGFdvmgAAAAJ&hl=en' },
   { k: 'Twitter / X', v: '@advait_jayant', href: 'https://x.com/advait_jayant' },
 ];
 

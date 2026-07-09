@@ -15,7 +15,7 @@ export const paper = {
   researchGateUrl:
     'https://www.researchgate.net/publication/375780286_The_Economics_of_Wash_Trading',
   scholarRecordUrl:
-    'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jG6k8swAAAAJ&citation_for_view=jG6k8swAAAAJ:UeHWp8X0CEIC',
+    'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=tGFdvmgAAAAJ&citation_for_view=tGFdvmgAAAAJ:u-x6o8ySG0sC',
   scholarCitedByUrl:
     'https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2223007016064564882&as_sdt=5',
   video: {
@@ -320,7 +320,7 @@ export const reports = [
     dateModified: '2026-07-09',
     pdf: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
     scholarRecordUrl:
-      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jG6k8swAAAAJ&citation_for_view=jG6k8swAAAAJ:IjCSPb-OGe4C',
+      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=tGFdvmgAAAAJ&citation_for_view=tGFdvmgAAAAJ:u5HHmVD_uO8C',
     keywords: [
       'The State of Edge AI',
       'edge AI report',
@@ -342,7 +342,7 @@ export const reports = [
     dateModified: '2026-07-09',
     pdf: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     scholarRecordUrl:
-      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jG6k8swAAAAJ&citation_for_view=jG6k8swAAAAJ:zYLM7Y9cAGgC',
+      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=tGFdvmgAAAAJ&citation_for_view=tGFdvmgAAAAJ:qjMakFHDy7sC',
     keywords: [
       'The AiFi Thesis',
       'AiFi',
