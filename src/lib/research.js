@@ -305,10 +305,63 @@ export const articles = [
   },
 ];
 
+// Standalone research reports (non-wash-trading), each with its own landing page.
+export const reports = [
+  {
+    slug: 'the-state-of-edge-ai',
+    kicker: 'Report',
+    navLabel: 'Edge AI report',
+    title: 'The State of Edge AI: The Report and What It Got Right',
+    metaTitle: 'The State of Edge AI: Report by Advait Jayant et al.',
+    description:
+      'The State of Edge AI (Peri Labs, 2024): the report on why AI inference moves from cloud to device, its predictions, what happened next, and where to download the PDF.',
+    dek: 'Written before on-device AI was a platform feature: why cloud-only intelligence hits latency, privacy, and bandwidth walls.',
+    datePublished: '2026-07-09',
+    dateModified: '2026-07-09',
+    pdf: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
+    scholarRecordUrl:
+      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jG6k8swAAAAJ&citation_for_view=jG6k8swAAAAJ:IjCSPb-OGe4C',
+    keywords: [
+      'The State of Edge AI',
+      'edge AI report',
+      'on-device AI',
+      'edge AI research',
+      'Peri Labs',
+    ],
+  },
+  {
+    slug: 'the-aifi-thesis',
+    kicker: 'Report',
+    navLabel: 'AiFi thesis',
+    title: 'The AiFi Thesis: Financing AI Compute as an Asset Class',
+    metaTitle: 'The AiFi Thesis: AI Compute as a Financeable Asset Class',
+    description:
+      'The AiFi Thesis (Peri Labs x GAIB, 2025): the report arguing AI compute becomes a directly financeable asset class and agents need payment rails, plus the predictions it landed.',
+    dek: 'The argument that AI compute stops being a cloud line item and becomes something capital markets finance directly. Then Oracle, Blackstone, and AWS made it look obvious.',
+    datePublished: '2026-07-09',
+    dateModified: '2026-07-09',
+    pdf: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+    scholarRecordUrl:
+      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jG6k8swAAAAJ&citation_for_view=jG6k8swAAAAJ:zYLM7Y9cAGgC',
+    keywords: [
+      'The AiFi Thesis',
+      'AiFi',
+      'AI compute financing',
+      'AI x DeFi',
+      'agent payments',
+      'compute asset class',
+    ],
+  },
+];
+
+export function getReport(slug) {
+  return reports.find((r) => r.slug === slug);
+}
+
 export const researchHub = {
   title: 'Wash Trading and NFT Markets: Research and Explainers',
   description:
-    'Research on wash trading and NFT markets by Advait Jayant: the SSRN paper The Economics of Wash Trading, plus explainers on detection, legality, token incentives, and market efficiency.',
+    'Research by Advait Jayant: the SSRN paper The Economics of Wash Trading with explainers on detection, legality, and token incentives, plus reports on edge AI and AI compute finance.',
 };
 
 export function articleUrl(slug) {
@@ -378,11 +431,11 @@ export const videoNode = {
   author: { '@id': `${siteUrl}/#person` },
 };
 
-export function buildArticleGraph(article, { faqs, isPaperPage = false } = {}) {
+export function buildArticleGraph(article, { faqs, isPaperPage = false, includePaper = true } = {}) {
   const url = articleUrl(article.slug);
   const graph = [
     personNode,
-    scholarlyArticleNode,
+    ...(includePaper ? [scholarlyArticleNode] : []),
     ...(isPaperPage ? [videoNode] : []),
     {
       '@type': 'BreadcrumbList',
@@ -405,7 +458,7 @@ export function buildArticleGraph(article, { faqs, isPaperPage = false } = {}) {
       inLanguage: 'en-GB',
       isPartOf: { '@id': `${siteUrl}/#website` },
       keywords: article.keywords.join(', '),
-      citation: { '@id': `${paper.doiUrl}#paper` },
+      ...(includePaper ? { citation: { '@id': `${paper.doiUrl}#paper` } } : {}),
       ...(isPaperPage ? { mainEntity: { '@id': `${paper.doiUrl}#paper` } } : {}),
     },
   ];

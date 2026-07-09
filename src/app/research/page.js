@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { ResearchHeader, CiteBlock, AuthorCard } from '@/components/research/ArticleShell';
-import { articles, paper, researchHub, scholarlyArticleNode } from '@/lib/research';
+import { articles, paper, reports, researchHub, scholarlyArticleNode } from '@/lib/research';
 import { siteName, siteUrl } from '@/lib/site';
 
 export const metadata = {
@@ -150,6 +150,30 @@ export default function ResearchPage() {
                     </p>
                   </div>
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section aria-label="Reports" className="mt-14">
+          <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim">
+            Reports: edge AI and compute finance
+          </h2>
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+            {reports.map((r) => (
+              <li key={r.slug} className="rounded-[3px] border border-border bg-surface p-6">
+                <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent-alt">
+                  {r.kicker}
+                </div>
+                <Link
+                  href={`/research/${r.slug}`}
+                  className="mt-2 block font-serif text-[19px] leading-[1.28] text-fg transition-colors hover:text-accent sm:text-[21px]"
+                >
+                  {r.title}
+                </Link>
+                <p className="mt-2 font-serif text-[14.5px] leading-[1.55] text-fg-muted">
+                  {r.dek}
+                </p>
               </li>
             ))}
           </ul>

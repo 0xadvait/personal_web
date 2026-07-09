@@ -1,5 +1,5 @@
 import { siteUrl } from '@/lib/site';
-import { articles } from '@/lib/research';
+import { articles, reports } from '@/lib/research';
 
 export default function sitemap() {
   return [
@@ -20,6 +20,12 @@ export default function sitemap() {
       lastModified: new Date(a.dateModified),
       changeFrequency: 'monthly',
       priority: a.slug === 'the-economics-of-wash-trading' ? 0.9 : 0.8,
+    })),
+    ...reports.map((r) => ({
+      url: `${siteUrl}/research/${r.slug}`,
+      lastModified: new Date(r.dateModified),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     })),
   ];
 }

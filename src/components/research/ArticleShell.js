@@ -225,8 +225,14 @@ export function RelatedArticles({ slug }) {
   );
 }
 
-export default function ArticleShell({ article, faqs, isPaperPage = false, children }) {
-  const graph = buildArticleGraph(article, { faqs, isPaperPage });
+export default function ArticleShell({
+  article,
+  faqs,
+  isPaperPage = false,
+  includePaper = true,
+  children,
+}) {
+  const graph = buildArticleGraph(article, { faqs, isPaperPage, includePaper });
   return (
     <>
       <script

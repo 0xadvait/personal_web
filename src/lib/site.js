@@ -9,4 +9,6 @@ export const socialLinks = {
   scholar: 'https://scholar.google.com/citations?user=jG6k8swAAAAJ&hl=en',
   x: 'https://x.com/advait_jayant',
   ssrn: 'https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6236096',
+  iqWiki: 'https://iq.wiki/wiki/advait-jayant',
+  alphaXiv: 'https://www.alphaxiv.org/@advait-jayant',
 };
