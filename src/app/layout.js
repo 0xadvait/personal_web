@@ -45,6 +45,9 @@ export const metadata = {
     title: `${siteName} | Research, Product, and Film`,
     description: siteDescription,
   },
+  verification: {
+    google: 'Pmkxad7jaIq-ZBTDDkq5UqkO30fM1R7HHtpEo2GXBEI',
+  },
   robots: {
     index: true,
     follow: true,
