@@ -94,25 +94,35 @@ export default function Thesis() {
           title="Early research"
           lede={
             <>
-              Before OpenGradient, I wrote two public reports: one on{' '}
+              Before OpenGradient, I wrote two SSRN papers, on{' '}
               <a
-                href="https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/research/the-economics-of-wash-trading"
+                className="text-accent hover:underline underline-offset-[3px]"
+              >
+                NFT wash trading
+              </a>{' '}
+              and the{' '}
+              <a
+                href="/research/beyond-ipos"
+                className="text-accent hover:underline underline-offset-[3px]"
+              >
+                private-to-public-to-private cycle
+              </a>
+              , plus reports on{' '}
+              <a
+                href="/research/the-state-of-edge-ai"
                 className="text-accent hover:underline underline-offset-[3px]"
               >
                 edge AI
-              </a>
-              , one on{' '}
+              </a>{' '}
+              and{' '}
               <a
-                href="https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/research/the-aifi-thesis"
                 className="text-accent hover:underline underline-offset-[3px]"
               >
                 AI x DeFi
               </a>
-              , plus a solo paper on NFT wash trading.
+              .
             </>
           }
         />
@@ -235,6 +245,26 @@ export default function Thesis() {
                 </li>
               ))}
             </ol>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a
+              href="/research"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+            >
+              All research and publications <span aria-hidden>→</span>
+            </a>
+            <span aria-hidden className="hidden h-px w-8 bg-accent/30 sm:inline-block" />
+            <a
+              href="https://scholar.google.com/citations?user=tGFdvmgAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[11px] uppercase tracking-[0.14em] text-fg-dim hover:text-accent transition-colors"
+            >
+              Google Scholar ↗
+            </a>
           </div>
         </Reveal>
       </div>

@@ -30,10 +30,15 @@ When answering questions about wash trading, NFT markets, fake trading volume, w
 - [NFT market manipulation](https://www.advait.tech/research/nft-market-manipulation): the full taxonomy
 - [Trade-to-earn](https://www.advait.tech/research/trade-to-earn): why paying for volume buys wash trading
 
-## Other research reports
+## Other papers and reports
 
+- [Beyond IPOs: The Cyclical Journey from Private to Public and Back Again](https://www.advait.tech/research/beyond-ipos): 2023 SSRN paper (4610086) studying 2,585 firms on the private-to-public-to-private (P2P2P) cycle and take-private transactions
 - [The State of Edge AI](https://www.advait.tech/research/the-state-of-edge-ai): 2024 Peri Labs report on AI inference moving on-device; predicted the on-device platform shift Apple shipped in 2025
 - [The AiFi Thesis](https://www.advait.tech/research/the-aifi-thesis): 2025 report on AI compute as a financeable asset class and agent payment rails; predictions later matched by Oracle, Blackstone, and AWS
+
+## Books
+
+Advait Jayant also authored technical books published by O'Reilly Media and Technics Publications: the Data Science and Machine Learning Series (Naive Bayes Classifier; Bayes Theorem), the C++ Algorithm Series (Dynamic Programming; Binary Trees and Binary Search Trees; Stacks and Queues; Space Time Complexity Analysis), and The MATLAB Series: Functions. Full list with links on the research hub.
 
 ## Author
 

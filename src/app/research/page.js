@@ -1,20 +1,30 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { ResearchHeader, CiteBlock, AuthorCard } from '@/components/research/ArticleShell';
-import { articles, paper, reports, researchHub, scholarlyArticleNode } from '@/lib/research';
-import { siteName, siteUrl } from '@/lib/site';
+import {
+  articles,
+  paper,
+  reports,
+  researchHub,
+  scholarlyArticleNode,
+  publications,
+  publicationNodes,
+} from '@/lib/research';
+import { siteName, siteUrl, socialLinks } from '@/lib/site';
 
 export const metadata = {
   title: researchHub.title,
   description: researchHub.description,
   alternates: { canonical: '/research' },
   keywords: [
+    'Advait Jayant research',
+    'Advait Jayant publications',
     'wash trading',
     'NFT markets',
-    'NFT wash trading',
-    'wash trading detection',
     'The Economics of Wash Trading',
-    'Advait Jayant research',
+    'Beyond IPOs',
+    'The AiFi Thesis',
+    'The State of Edge AI',
   ],
   openGraph: {
     title: researchHub.title,
@@ -27,7 +37,16 @@ export const metadata = {
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: siteName,
+      alternateName: ['Advait', 'Advait Jayant', 'Advait Leo Jayant', '0xadvait'],
+      url: siteUrl,
+      sameAs: Object.values(socialLinks),
+    },
     scholarlyArticleNode,
+    ...publicationNodes(),
     {
       '@type': 'CollectionPage',
       '@id': `${siteUrl}/research#page`,
@@ -35,7 +54,7 @@ const graph = {
       description: researchHub.description,
       url: `${siteUrl}/research`,
       isPartOf: { '@id': `${siteUrl}/#website` },
-      about: { '@id': `${paper.doiUrl}#paper` },
+      about: { '@id': `${siteUrl}/#person` },
       inLanguage: 'en-GB',
     },
     {
@@ -64,30 +83,43 @@ export default function ResearchPage() {
           Research
         </div>
         <h1 className="mt-4 max-w-3xl font-serif text-[32px] leading-[1.16] text-fg text-balance sm:text-[44px]">
-          Wash trading and NFT markets
+          The research of Advait Jayant
         </h1>
         <p className="mt-5 max-w-2xl font-serif text-[17px] leading-[1.65] text-fg-muted sm:text-[18px]">
-          {siteName} wrote{' '}
+          {siteName} researches market microstructure, manipulation, and the economics of AI
+          infrastructure. That spans two SSRN papers, on{' '}
+          <Link
+            href="/research/the-economics-of-wash-trading"
+            className="text-accent underline decoration-accent/35 underline-offset-[3px] hover:decoration-accent"
+          >
+            wash trading in NFT markets
+          </Link>{' '}
+          and the{' '}
+          <Link
+            href="/research/beyond-ipos"
+            className="text-accent underline decoration-accent/35 underline-offset-[3px] hover:decoration-accent"
+          >
+            private-to-public-to-private cycle
+          </Link>
+          , reports on edge AI and AI compute finance, and technical books. The full bibliography is
+          below, mirrored on{' '}
           <a
-            href={paper.ssrnUrl}
+            href={socialLinks.scholar}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent underline decoration-accent/35 underline-offset-[3px] hover:decoration-accent"
           >
-            The Economics of Wash Trading
+            Google Scholar
           </a>
-          , an 85-page study of manipulation in non-fungible token markets. These pages unpack the
-          paper for people who search before they cite: what wash trading is, how large it runs in
-          NFT markets, how to detect it, whether it is illegal, and what token incentives do to
-          trading behaviour.
+          .
         </p>
 
-        <section aria-label="The paper" className="mt-12">
+        <section aria-label="Featured paper" className="mt-12">
           <div className="rounded-[3px] border border-border bg-surface p-6 shadow-[0_1px_0_rgba(29,37,40,0.02)] sm:p-8">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[10px] uppercase tracking-[0.16em]">
               <span className="text-accent">Solo paper · SSRN {paper.abstractId}</span>
               <span aria-hidden className="hidden h-px w-7 bg-accent/30 sm:inline-block" />
-              <span className="text-fg-dim">October 2023 · {paper.pages} pages</span>
+              <span className="text-fg-dim">October 2023 · {paper.pages} pages · cited by 5</span>
             </div>
             <h2 className="mt-4 font-serif text-[26px] leading-[1.2] text-fg sm:text-[32px]">
               <Link
@@ -127,6 +159,30 @@ export default function ResearchPage() {
           </div>
         </section>
 
+        <section aria-label="Papers and reports" className="mt-14">
+          <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim">
+            Papers and reports
+          </h2>
+          <ul className="mt-4 grid gap-4 sm:grid-cols-3">
+            {reports.map((r) => (
+              <li key={r.slug} className="rounded-[3px] border border-border bg-surface p-6">
+                <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent-alt">
+                  {r.kicker}
+                </div>
+                <Link
+                  href={`/research/${r.slug}`}
+                  className="mt-2 block font-serif text-[18px] leading-[1.28] text-fg transition-colors hover:text-accent sm:text-[20px]"
+                >
+                  {r.title}
+                </Link>
+                <p className="mt-2 font-serif text-[14px] leading-[1.5] text-fg-muted">
+                  {r.dek}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section aria-label="Explainers" className="mt-14">
           <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim">
             Explainers and methods
@@ -155,28 +211,93 @@ export default function ResearchPage() {
           </ul>
         </section>
 
-        <section aria-label="Reports" className="mt-14">
-          <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim">
-            Reports: edge AI and compute finance
-          </h2>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2">
-            {reports.map((r) => (
-              <li key={r.slug} className="rounded-[3px] border border-border bg-surface p-6">
-                <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-accent-alt">
-                  {r.kicker}
-                </div>
-                <Link
-                  href={`/research/${r.slug}`}
-                  className="mt-2 block font-serif text-[19px] leading-[1.28] text-fg transition-colors hover:text-accent sm:text-[21px]"
-                >
-                  {r.title}
-                </Link>
-                <p className="mt-2 font-serif text-[14.5px] leading-[1.55] text-fg-muted">
-                  {r.dek}
-                </p>
-              </li>
+        <section aria-label="Full publications list" className="mt-16">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="font-serif text-[24px] leading-[1.2] text-fg sm:text-[28px]">
+              Publications
+            </h2>
+            <a
+              href={socialLinks.scholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+            >
+              Google Scholar ↗
+            </a>
+          </div>
+          <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.6] text-fg-dim">
+            The complete authored body of work, newest first within each group.
+          </p>
+
+          <div className="mt-8 space-y-10">
+            {publications.map((section) => (
+              <div key={section.group}>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim">
+                  {section.group}
+                </h3>
+                <ol className="mt-3 divide-y divide-border-soft border-y border-border">
+                  {section.items.map((item) => (
+                    <li
+                      key={item.title}
+                      className="grid gap-1 py-5 sm:grid-cols-[3.5rem_1fr] sm:gap-5"
+                    >
+                      <div className="font-mono text-[11px] text-accent-alt sm:pt-1">
+                        {item.year}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-serif text-[16.5px] leading-[1.35] text-fg">
+                          {item.internal ? (
+                            <Link
+                              href={item.internal}
+                              className="transition-colors hover:text-accent"
+                            >
+                              {item.title}
+                            </Link>
+                          ) : (
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="transition-colors hover:text-accent"
+                            >
+                              {item.title}
+                            </a>
+                          )}
+                        </div>
+                        <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.1em] text-fg-dim">
+                          {item.venue}
+                          {item.doi ? ` · DOI ${item.doi}` : ''}
+                        </div>
+                        {item.note && (
+                          <p className="mt-1.5 font-serif text-[13.5px] leading-[1.5] text-fg-muted">
+                            {item.note}
+                          </p>
+                        )}
+                        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.12em]">
+                          {item.internal && (
+                            <Link
+                              href={item.internal}
+                              className="text-accent hover:underline underline-offset-[3px]"
+                            >
+                              Read on this site →
+                            </Link>
+                          )}
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:underline underline-offset-[3px]"
+                          >
+                            {item.type === 'Book' ? 'Google Books ↗' : 'Source ↗'}
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
         <CiteBlock />

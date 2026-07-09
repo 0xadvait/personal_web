@@ -330,6 +330,35 @@ export const reports = [
     ],
   },
   {
+    slug: 'beyond-ipos',
+    kicker: 'Working paper',
+    navLabel: 'Beyond IPOs',
+    title: 'Beyond IPOs: The Cyclical Journey from Private to Public and Back Again',
+    metaTitle: 'Beyond IPOs: The Private-to-Public-to-Private (P2P2P) Cycle',
+    description:
+      'Beyond IPOs (SSRN 4610086) by Advait Jayant: a study of 2,585 firms on why companies go public and then return private, the P2P2P cycle, take-private transactions, and post-IPO valuation.',
+    dek: 'Why do firms leave the public markets they fought to enter? A study of 2,585 companies on the private-to-public-to-private cycle.',
+    datePublished: '2026-07-09',
+    dateModified: '2026-07-09',
+    ssrnUrl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610086',
+    ssrnShortUrl: 'https://ssrn.com/abstract=4610086',
+    doi: '10.2139/ssrn.4610086',
+    doiUrl: 'https://dx.doi.org/10.2139/ssrn.4610086',
+    abstractId: '4610086',
+    pages: 48,
+    dateWritten: '2023-09-24',
+    scholarRecordUrl:
+      'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=tGFdvmgAAAAJ&citation_for_view=tGFdvmgAAAAJ:2osOgNQ5qMEC',
+    keywords: [
+      'Beyond IPOs',
+      'P2P2P',
+      'private to public to private',
+      'take-private transaction',
+      'why companies go private',
+      'IPO research',
+    ],
+  },
+  {
     slug: 'the-aifi-thesis',
     kicker: 'Report',
     navLabel: 'AiFi thesis',
@@ -358,10 +387,115 @@ export function getReport(slug) {
   return reports.find((r) => r.slug === slug);
 }
 
+// Complete authored bibliography — every work on the Google Scholar profile.
+// Drives the Publications section on /research and the author-corpus JSON-LD.
+// `internal` links to a landing page on this site; `href` is the canonical source.
+export const publications = [
+  {
+    group: 'Research papers',
+    items: [
+      {
+        title: 'The Economics of Wash Trading',
+        year: 2023,
+        venue: 'SSRN Working Paper 4610162',
+        type: 'ScholarlyArticle',
+        href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
+        internal: '/research/the-economics-of-wash-trading',
+        doi: '10.2139/ssrn.4610162',
+        note: 'Cited in the Journal of Banking & Finance, European Journal of Finance, and an NBER working paper.',
+      },
+      {
+        title: 'Beyond IPOs: The Cyclical Journey from Private to Public and Back Again',
+        year: 2023,
+        venue: 'SSRN Working Paper 4610086',
+        type: 'ScholarlyArticle',
+        href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610086',
+        internal: '/research/beyond-ipos',
+        doi: '10.2139/ssrn.4610086',
+      },
+    ],
+  },
+  {
+    group: 'Industry reports',
+    items: [
+      {
+        title: 'The AiFi Thesis',
+        year: 2025,
+        venue: 'Peri Labs x GAIB',
+        type: 'Report',
+        href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+        internal: '/research/the-aifi-thesis',
+      },
+      {
+        title: 'The State of Edge AI',
+        year: 2024,
+        venue: 'Peri Labs',
+        type: 'Report',
+        href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
+        internal: '/research/the-state-of-edge-ai',
+      },
+    ],
+  },
+  {
+    group: 'Technical books',
+    items: [
+      {
+        title: 'Data Science and Machine Learning Series: Naive Bayes Classifier Advanced Concepts',
+        year: 2020,
+        venue: 'Technics Publications',
+        type: 'Book',
+        href: 'https://books.google.com/books?id=Q0A_zQEACAAJ',
+      },
+      {
+        title: 'Data Science and Machine Learning Series: Bayes Theorem and the Naive Bayes Classifier',
+        year: 2020,
+        venue: 'Technics Publications',
+        type: 'Book',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=tGFdvmgAAAAJ&citation_for_view=tGFdvmgAAAAJ:d1gkVwhDpl0C',
+      },
+      {
+        title: 'C++ Algorithm Series: Dynamic Programming',
+        year: 2019,
+        venue: "O'Reilly Media",
+        type: 'Book',
+        href: 'https://books.google.com/books?id=hIhOzQEACAAJ',
+      },
+      {
+        title: 'C++ Algorithm Series: Binary Trees and Binary Search Trees',
+        year: 2019,
+        venue: "O'Reilly Media",
+        type: 'Book',
+        href: 'https://books.google.com/books?id=_uw5zQEACAAJ',
+      },
+      {
+        title: 'C++ Algorithm Series: Stacks and Queues',
+        year: 2019,
+        venue: "O'Reilly Media",
+        type: 'Book',
+        href: 'https://books.google.com/books?id=NN5DzQEACAAJ',
+      },
+      {
+        title: 'C++ Algorithm Series: Space Time Complexity Analysis',
+        year: 2019,
+        venue: "O'Reilly Media",
+        type: 'Book',
+        href: 'https://books.google.com/books?id=wGBAzQEACAAJ',
+      },
+      {
+        title: 'The MATLAB Series: Functions',
+        year: 2019,
+        venue: "O'Reilly Media",
+        type: 'Book',
+        href: 'https://books.google.com/books?id=xveczQEACAAJ',
+      },
+    ],
+  },
+];
+
 export const researchHub = {
-  title: 'Wash Trading and NFT Markets: Research and Explainers',
+  title: 'Research by Advait Jayant: Market Structure, AI Infrastructure, and Manipulation',
   description:
-    'Research by Advait Jayant: the SSRN paper The Economics of Wash Trading with explainers on detection, legality, and token incentives, plus reports on edge AI and AI compute finance.',
+    'The complete research of Advait Jayant: SSRN papers on wash trading in NFT markets and the private-to-public-to-private cycle, reports on edge AI and AI compute finance, technical books, and explainers.',
 };
 
 export function articleUrl(slug) {
@@ -476,4 +610,24 @@ export function buildArticleGraph(article, { faqs, isPaperPage = false, includeP
   }
 
   return { '@context': 'https://schema.org', '@graph': graph };
+}
+
+// One schema.org node per published work — the full authored corpus.
+// Emitted on /research so Google's entity graph sees every publication by name.
+export function publicationNodes() {
+  return publications.flatMap((section) =>
+    section.items.map((item) => ({
+      '@type': item.type,
+      name: item.title,
+      headline: item.title,
+      author: { '@id': `${siteUrl}/#person` },
+      datePublished: String(item.year),
+      url: item.internal ? `${siteUrl}${item.internal}` : item.href,
+      ...(item.internal ? { sameAs: item.href } : {}),
+      ...(item.doi
+        ? { identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: item.doi } }
+        : {}),
+      publisher: item.venue,
+    }))
+  );
 }

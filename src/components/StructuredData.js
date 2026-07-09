@@ -74,6 +74,19 @@ const data = {
       ],
       mainEntityOfPage: `${siteUrl}/research/the-economics-of-wash-trading`,
     },
+    {
+      '@type': 'ScholarlyArticle',
+      '@id': 'https://dx.doi.org/10.2139/ssrn.4610086#paper',
+      headline: 'Beyond IPOs: The Cyclical Journey from Private to Public and Back Again',
+      author: { '@id': `${siteUrl}/#person` },
+      datePublished: '2023-09-24',
+      url: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610086',
+      sameAs: [
+        'https://ssrn.com/abstract=4610086',
+        'https://dx.doi.org/10.2139/ssrn.4610086',
+      ],
+      mainEntityOfPage: `${siteUrl}/research/beyond-ipos`,
+    },
   ],
 };
 
