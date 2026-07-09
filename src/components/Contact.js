@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
 
 const channels = [
   { k: 'Email', v: 'advait@opengradient.ai', href: 'mailto:advait@opengradient.ai' },
@@ -13,19 +14,19 @@ export default function Contact() {
   return (
     <section id="contact" className="relative border-t border-border bg-surface/35 py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal>
-          <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3 mb-8 sm:mb-10">
-            <span>06</span>
-            <span className="h-px w-10 bg-accent/40" />
-            <span className="text-fg-dim">Contact</span>
-          </div>
-        </Reveal>
+        <SectionHeader index="06" title="Contact" />
 
         <Reveal delay={0.05}>
           <div className="overflow-hidden border-y border-border bg-bg/45 lg:grid lg:min-h-[360px] lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)]">
             <div className="flex min-h-[260px] flex-col justify-end py-8 sm:py-10 lg:min-h-0 lg:py-12 lg:pr-12">
               <h2 className="font-serif text-5xl leading-[0.98] text-fg text-balance sm:text-6xl md:text-7xl lg:text-[96px]">
-                Say <span className="italic text-accent">hi.</span>
+                Say{' '}
+                <a
+                  href="mailto:advait@opengradient.ai"
+                  className="italic text-accent transition-colors hover:text-accent-deep"
+                >
+                  hi.
+                </a>
               </h2>
               <p className="mt-5 max-w-xl font-serif text-lg italic leading-relaxed text-fg-muted sm:mt-7 sm:text-xl">
                 A few lines is plenty.

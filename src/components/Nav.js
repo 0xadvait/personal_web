@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const links = [
   { href: '#thesis', label: 'Research' },
@@ -15,13 +15,25 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('top');
+  const progressRef = useRef(null);
   const menuId = 'mobile-navigation';
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      if (progressRef.current) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+        progressRef.current.style.transform = `scaleX(${p})`;
+      }
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -82,6 +94,11 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
+      <span
+        ref={progressRef}
+        aria-hidden
+        className="absolute inset-x-0 top-0 z-10 block h-[2px] origin-left scale-x-0 bg-accent"
+      />
       <div
         className={`transition-all ${
           scrolled

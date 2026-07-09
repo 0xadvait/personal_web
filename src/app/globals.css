@@ -184,11 +184,34 @@ section[id] {
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(rgba(36, 70, 199, 0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 118, 110, 0.05) 1px, transparent 1px);
+    radial-gradient(rgba(36, 70, 199, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 118, 110, 0.06) 1px, transparent 1px);
   background-size: 28px 28px, 112px 112px;
   -webkit-mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
           mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
+}
+
+/* Paper grain — a whisper of print texture over everything */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Slow drift on the hero figure's dashed orbit */
+.diag .diag-orbit {
+  animation: diag-orbit-drift 90s linear infinite;
+}
+@keyframes diag-orbit-drift {
+  to {
+    stroke-dashoffset: -600;
+  }
 }
 
 .section-band {

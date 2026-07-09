@@ -87,7 +87,7 @@ const soloPaper = {
 
 export default function Thesis() {
   return (
-    <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-24">
+    <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeader
           index="01"

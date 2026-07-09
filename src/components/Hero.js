@@ -81,13 +81,75 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+
+        <motion.div
+          {...fadeUp(10, 0.55, 1.1)}
+          aria-hidden
+          className="diag pointer-events-none absolute right-0 top-1/2 z-0 hidden w-[300px] -translate-y-[62%] select-none xl:block"
+        >
+          <HeroFigure />
+        </motion.div>
       </div>
     </section>
   );
 }
 
+function HeroFigure() {
+  return (
+    <svg viewBox="0 0 320 300" className="w-full opacity-90">
+      <defs>
+        <marker
+          id="hero-arrow"
+          markerWidth="7"
+          markerHeight="7"
+          refX="5"
+          refY="3.5"
+          orient="auto"
+        >
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#2446c7" />
+        </marker>
+      </defs>
+
+      {/* orbit guide */}
+      <circle cx="160" cy="150" r="96" className="dashed diag-orbit" />
+
+      {/* centre mark */}
+      <line x1="154" y1="150" x2="166" y2="150" className="stroke-soft" />
+      <line x1="160" y1="144" x2="160" y2="156" className="stroke-soft" />
+      <text x="160" y="130" textAnchor="middle" className="lbl-soft">
+        FIG. 01
+      </text>
+
+      {/* flow arcs, clockwise */}
+      <path d="M192.8,59.8 A96,96 0 0 1 255.1,163.4" className="stroke" markerEnd="url(#hero-arrow)" />
+      <path d="M219.1,225.7 A96,96 0 0 1 100.9,225.7" className="stroke" markerEnd="url(#hero-arrow)" />
+      <path d="M64.9,163.4 A96,96 0 0 1 124.0,61.0" className="stroke" markerEnd="url(#hero-arrow)" />
+
+      {/* nodes */}
+      <g>
+        <rect x="112" y="41" width="96" height="26" rx="1.5" className="stroke fill-paper" />
+        <text x="160" y="58" textAnchor="middle" className="lbl">
+          Research
+        </text>
+      </g>
+      <g>
+        <rect x="200" y="185" width="86" height="26" rx="1.5" className="stroke fill-paper" />
+        <text x="243" y="202" textAnchor="middle" className="lbl">
+          Product
+        </text>
+      </g>
+      <g>
+        <rect x="45" y="185" width="64" height="26" rx="1.5" className="stroke fill-paper" />
+        <text x="77" y="202" textAnchor="middle" className="lbl">
+          Film
+        </text>
+      </g>
+    </svg>
+  );
+}
+
 function LondonTime() {
-  const [time, setTime] = useState('London time');
+  const [time, setTime] = useState('Local time');
 
   useEffect(() => {
     const update = () => {
@@ -98,7 +160,7 @@ function LondonTime() {
         hour12: false,
       }).format(new Date());
 
-      setTime(`${formatted} London`);
+      setTime(`${formatted} local`);
     };
 
     update();
