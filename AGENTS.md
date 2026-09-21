@@ -18,18 +18,17 @@ and which files to never touch. The reference sections after them are backup det
 | I want to change… | Edit this | Notes |
 |---|---|---|
 | Homepage look, layout, animation, colors | `src/components/*.js` (Hero, Nav, etc.) + `src/app/globals.css` | Free to redesign. Keep the `.prose-research` block in globals.css. |
-| A shared primitive (section wrapper, section heading, kicker label, card) | `src/components/ui.js` | The whole page is built from these four. Change one, every section follows. |
-| The short first-person bio under the hero | `src/components/About.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
-| The "cited in" strip under the hero | `src/components/CitedBy.js` | Verify each venue link is live before changing it. |
+| The section wrapper + label used by every homepage section | `src/components/ui.js` (`Section`) | One component. The label is the `.kicker` class in `globals.css`. |
+| The headline + first-person bio at the top | `src/components/Hero.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
 | Homepage copy (hero text, headings, blurbs) | the relevant `src/components/*.js` | Keep stated facts true. |
-| Roles / job history | `src/components/Experience.js` | |
+| Roles / job history, and the track-record numbers (revenue, views, users) | `src/components/Experience.js` | The numbers live inside each role's paragraph now; there is no separate track-record section. |
 | Talks / speaking | `src/components/Speaking.js` | |
-| Projects / work | `src/components/Work.js` | |
-| The "Early research" homepage section | `src/components/Thesis.js` | Layout/copy is yours; keep its links to `/research/*` and Scholar valid. |
-| Contact section / socials shown on page | `src/components/Contact.js` (display) | The link **values** come from `site.js` (next row). |
+| The three OpenGradient films | `src/components/Films.js` | One paragraph, three links. |
+| The "Research" homepage section (the four works) | `src/components/Research.js` | Layout/copy is yours; keep its links to `/research/*`, SSRN, and Scholar valid. |
+| Contact section / socials shown on page | `src/components/Contact.js` (display), `src/components/Footer.js` (footer row) | The link **values** come from `site.js` (next row). |
 | A social / profile link (X, GitHub, Scholar, SSRN…) | `src/lib/site.js` → `socialLinks` | One source of truth. Flows into `Person.sameAs` and every cite link. Change the **ID** only if the profile truly moved. |
 | Site name, URL, or tagline | `src/lib/site.js` | `siteUrl` flows into canonicals, sitemap, JSON-LD everywhere. |
-| **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/About.js` | **Three places now. Keep them factually identical.** |
+| **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/Hero.js` (second paragraph) | **Three places. Keep them factually identical.** |
 | The author bio shown on research pages | `src/components/research/ArticleShell.js` → `AuthorCard` | Mirror any fact change into `StructuredData.js`. |
 | A research page's **body text** | `src/app/research/<slug>/page.js` (the JSX children) | |
 | A research page's **title / description / keywords / dates** | `src/lib/research.js` (that page's registry entry) | NOT the component — the component reads these from the registry. |
@@ -93,10 +92,13 @@ and which files to never touch. The reference sections after them are backup det
 ### Design system, in one breath
 
 Warm paper (`--color-bg #f5f4f0`) and warm ink (`--color-fg #1a1815`), **monochrome** (the
-`--color-accent-*` tokens are deep-ink greys, not a hue). One container width (`max-w-[1060px]`),
-one heading treatment (`SectionHeading`: statement in ink, trailing clause in `.tone-soft` grey),
-one label style (`.kicker`), one card (`rounded-[14px]` hairline on `--color-surface`), one button
-(ink pill, `rounded-[10px]`). Links are ink with a receding underline (`.link`), never coloured.
+`--color-accent-*` tokens are deep-ink greys, not a hue). The homepage is **one column**
+(`max-w-[720px]`, set in `page.js`, `Nav.js`, `Footer.js`): headline + bio, then Research,
+Experience, Films, Talks, Contact, each introduced by a small `.kicker` label and nothing else.
+No cards, no hero image, no section numbers, no taglines. The one two-tone moment is the
+headline (statement in ink, trailing clause in `.tone-soft` grey); the one button is the ink pill
+in the nav. Links are ink with a receding underline (`.link`), never coloured. When in doubt,
+remove: the page was cut from 8,700px to 3,000px on purpose, so a new section needs a reason.
 
 ### Build & dev — there's a trap
 

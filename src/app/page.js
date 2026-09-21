@@ -1,11 +1,8 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import CitedBy from '@/components/CitedBy';
-import About from '@/components/About';
-import Thesis from '@/components/Thesis';
-import ImpactLedger from '@/components/ImpactLedger';
+import Research from '@/components/Research';
 import Experience from '@/components/Experience';
-import Work from '@/components/Work';
+import Films from '@/components/Films';
 import Speaking from '@/components/Speaking';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -16,14 +13,11 @@ export default function Home() {
     <>
       <StructuredData />
       <Nav />
-      <main id="main-content" className="relative">
+      <main id="main-content" className="mx-auto w-full max-w-[720px] px-5 sm:px-8">
         <Hero />
-        <CitedBy />
-        <About />
-        <Thesis />
-        <ImpactLedger />
+        <Research />
         <Experience />
-        <Work />
+        <Films />
         <Speaking />
         <Contact />
       </main>

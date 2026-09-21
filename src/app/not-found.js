@@ -11,7 +11,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <main id="main-content" className="flex min-h-screen items-center bg-bg text-fg">
-      <section className="mx-auto w-full max-w-[1060px] px-5 py-24 sm:px-8 sm:py-32">
+      <section className="mx-auto w-full max-w-[720px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="kicker">404 &middot; Not found</div>
         <h1 className="mt-7 max-w-[18ch] text-[36px] font-normal leading-[1.06] tracking-[-0.03em] text-fg text-balance sm:text-[52px] lg:text-[58px]">
           This page drifted off the graph.

@@ -1,4 +1,4 @@
-import { Section, SectionHeading } from './ui';
+import { Section } from './ui';
 
 const talks = [
   {
@@ -45,40 +45,29 @@ const talks = [
 
 export default function Speaking() {
   return (
-    <Section id="speaking">
-      <SectionHeading
-        index="05"
-        label="Speaking"
-        title="Talks and fireside chats,"
-        tail="plus two university lectures."
-      />
-
-      <ul className="border-t border-border">
+    <Section id="talks" label="Talks">
+      <ul className="space-y-6">
         {talks.map((t) => (
-          <li key={t.title} className="grid gap-2 border-b border-border py-7 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-12">
-              <div className="kicker md:pt-2">{t.v}</div>
-              <div className="min-w-0">
-                <h3 className="text-[18.5px] font-normal leading-[1.32] tracking-[-0.012em] text-fg sm:text-[20px]">
-                  {t.href ? (
-                    <a
-                      href={t.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${t.title} at ${t.v} (opens in a new tab)`}
-                      className="link"
-                    >
-                      {t.title}
-                      <span aria-hidden className="ml-1.5 text-fg-faint">
-                        ↗
-                      </span>
-                    </a>
-                  ) : (
-                    t.title
-                  )}
-                </h3>
-                <p className="mt-2 max-w-[72ch] text-[15.5px] leading-[1.6] text-fg-muted">{t.d}</p>
-              </div>
-            </li>
+          <li key={t.title}>
+            <h3 className="text-[17px] font-normal leading-[1.35] tracking-[-0.01em] text-fg">
+              {t.href ? (
+                <a
+                  href={t.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t.title} at ${t.v} (opens in a new tab)`}
+                  className="link"
+                >
+                  {t.title}
+                </a>
+              ) : (
+                t.title
+              )}
+            </h3>
+            <p className="mt-1.5 text-[15px] leading-[1.6] text-fg-muted">
+              {t.v}. {t.d}
+            </p>
+          </li>
         ))}
       </ul>
     </Section>
