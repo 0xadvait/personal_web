@@ -1,22 +1,25 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { LAND_H, LAND_W, landMask } from '@/lib/landMask';
 
 /*
- * A live ASCII sphere. Points on a sphere are rotated, projected onto a
- * character grid, and each cell shows the character for its nearest point.
+ * A live ASCII Earth. Every character cell inside the disc is a ray onto a
+ * unit sphere; the hit point is rotated back to latitude and longitude and
+ * looked up in a land mask. Land is shaded by a fixed light, ocean is a
+ * faint dot. Runs on a canvas at the display refresh rate.
  *
- * Interaction: drag to spin (with momentum), the globe leans toward the
- * pointer, and characters under the pointer light up. Auto-rotation stops
- * under reduced motion; dragging still works.
+ * Interaction: drag to spin (with momentum), the axis leans toward the
+ * pointer, and the characters under the pointer light up. Reduced motion
+ * stops the auto-spin but keeps the drag.
  */
-const CHARS = ' .:-=+*#%@';
-const POINTS = 3200;
+const LAND = '=+*#%@';
 const CELL_W = 9;
 const CELL_H = 15;
-const AUTO_SPIN = 0.00022; // radians per ms
-const DRAG_GAIN = 0.0055; // radians per pixel
-const GLOW_RADIUS = 150; // px
+const AUTO_SPIN = 0.00016; // radians per ms, west to east like the real thing
+const DRAG_GAIN = 0.006; // radians per pixel
+const GLOW_RADIUS = 140; // px
+const LIGHT = [-0.25, 0.4, 0.88]; // mostly from the front, a touch upper left
 
 export default function AsciiGlobe({ className = '' }) {
   const ref = useRef(null);
@@ -27,30 +30,22 @@ export default function AsciiGlobe({ className = '' }) {
     const host = canvas.parentElement;
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const golden = Math.PI * (3 - Math.sqrt(5));
-    const pts = [];
-    for (let i = 0; i < POINTS; i++) {
-      const y = 1 - (i / (POINTS - 1)) * 2;
-      const r = Math.sqrt(1 - y * y);
-      const th = golden * i;
-      pts.push([Math.cos(th) * r, y, Math.sin(th) * r]);
-    }
+    const land = landMask();
 
     let raf = 0;
     let lastT = 0;
     let w = 0;
     let h = 0;
 
-    // motion state
-    let rot = 0;
+    let rot = 0.35;
     let vel = 0;
     let dragging = false;
     let lastX = 0;
     let px = -1;
     let py = -1;
-    let tiltTarget = 0.4;
-    let tilt = 0.4;
+    const baseTilt = 0.4;
+    let tiltTarget = baseTilt;
+    let tilt = baseTilt;
     let leanTarget = 0;
     let lean = 0;
 
@@ -69,54 +64,64 @@ export default function AsciiGlobe({ className = '' }) {
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
-      const wide = w > 700;
-      const R = Math.min(wide ? w * 0.31 : w * 0.5, h * 0.46);
-      const cx = wide ? w * 0.75 : w * 0.5;
+      const wide = w > 760;
+      const R = Math.min(wide ? w * 0.27 : w * 0.46, h * 0.44);
+      const cx = wide ? w * 0.74 : w * 0.5;
       const cy = h * 0.5;
-      const a = rot + lean;
-      const ca = Math.cos(a);
-      const sa = Math.sin(a);
+      const theta = rot + lean;
+      const ca = Math.cos(theta);
+      const sa = Math.sin(theta);
       const ct = Math.cos(tilt);
       const st = Math.sin(tilt);
-      const cols = Math.ceil(w / CELL_W);
-      const rows = Math.ceil(h / CELL_H);
-      const grid = new Float32Array(cols * rows).fill(-2);
-
-      for (let i = 0; i < pts.length; i++) {
-        const [x0, y0, z0] = pts[i];
-        const x1 = x0 * ca + z0 * sa;
-        const z1 = -x0 * sa + z0 * ca;
-        const y2 = y0 * ct - z1 * st;
-        const z2 = y0 * st + z1 * ct;
-        if (z2 < -0.15) continue;
-        const c = Math.floor((cx + x1 * R) / CELL_W);
-        const r = Math.floor((cy - y2 * R) / CELL_H);
-        if (c < 0 || r < 0 || c >= cols || r >= rows) continue;
-        const k = r * cols + c;
-        if (z2 > grid[k]) grid[k] = z2;
-      }
-
+      const [lx, ly, lz] = LIGHT;
       const glow = px >= 0;
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const z = grid[r * cols + c];
-          if (z < -1) continue;
+
+      const c0 = Math.max(0, Math.floor((cx - R) / CELL_W));
+      const c1 = Math.min(Math.ceil(w / CELL_W), Math.ceil((cx + R) / CELL_W));
+      const r0 = Math.max(0, Math.floor((cy - R) / CELL_H));
+      const r1 = Math.min(Math.ceil(h / CELL_H), Math.ceil((cy + R) / CELL_H));
+
+      for (let r = r0; r < r1; r++) {
+        const y = r * CELL_H + CELL_H / 2;
+        const ny = (cy - y) / R;
+        for (let c = c0; c < c1; c++) {
           const x = c * CELL_W + CELL_W / 2;
-          const y = r * CELL_H + CELL_H / 2;
-          let d = (z + 0.15) / 1.15;
-          let alpha = 0.14 + d * 0.74;
+          const nx = (x - cx) / R;
+          const d2 = nx * nx + ny * ny;
+          if (d2 > 1) continue;
+          const nz = Math.sqrt(1 - d2);
+
+          // undo tilt, then undo spin, to find the point on the still globe
+          const y1 = ny * ct + nz * st;
+          const z1 = -ny * st + nz * ct;
+          const mx = nx * ca - z1 * sa;
+          const mz = nx * sa + z1 * ca;
+          const lat = Math.asin(Math.max(-1, Math.min(1, y1)));
+          const lon = Math.atan2(mx, mz);
+          const col = Math.min(LAND_W - 1, Math.floor(((lon + Math.PI) / (2 * Math.PI)) * LAND_W));
+          const row = Math.min(LAND_H - 1, Math.floor(((Math.PI / 2 - lat) / Math.PI) * LAND_H));
+          const isLand = land[row * LAND_W + col] === 1;
+
+          const shade = Math.max(0, nx * lx + ny * ly + nz * lz);
+          const limb = 0.4 + 0.6 * nz;
+          let boost = 0;
           if (glow) {
             const dx = x - px;
             const dy = y - py;
-            const boost = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / GLOW_RADIUS);
-            if (boost > 0) {
-              alpha = Math.min(1, alpha + boost * 0.6);
-              d = Math.min(1, d + boost * 0.35);
-            }
+            boost = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / GLOW_RADIUS);
           }
-          const idx = 1 + Math.floor(d * d * (CHARS.length - 2));
+          let alpha;
+          let ch;
+          if (isLand) {
+            const t = Math.min(1, shade * limb + boost * 0.5);
+            ch = LAND[Math.min(LAND.length - 1, Math.floor(t * LAND.length))];
+            alpha = 0.5 + 0.5 * t;
+          } else {
+            ch = '\u00b7';
+            alpha = Math.min(0.7, 0.13 + 0.2 * shade * limb + boost * 0.35);
+          }
           ctx.fillStyle = `rgba(245, 244, 240, ${alpha})`;
-          ctx.fillText(CHARS[idx], x, y);
+          ctx.fillText(ch, x, y);
         }
       }
     };
@@ -128,8 +133,8 @@ export default function AsciiGlobe({ className = '' }) {
         rot += (reduceMotion ? 0 : AUTO_SPIN * dt) + vel;
         vel *= 0.94;
       }
-      tilt += (tiltTarget - tilt) * 0.07;
-      lean += (leanTarget - lean) * 0.07;
+      tilt += (tiltTarget - tilt) * 0.06;
+      lean += (leanTarget - lean) * 0.06;
       draw();
       raf = requestAnimationFrame(frame);
     };
@@ -138,10 +143,9 @@ export default function AsciiGlobe({ className = '' }) {
       const rect = canvas.getBoundingClientRect();
       px = e.clientX - rect.left;
       py = e.clientY - rect.top;
-      tiltTarget = 0.4 + (py / h - 0.5) * 0.7;
-      leanTarget = (px / w - 0.5) * 0.8;
+      tiltTarget = baseTilt + (py / h - 0.5) * 0.5;
+      leanTarget = (px / w - 0.5) * 0.5;
     };
-
     const onMove = (e) => {
       pointAt(e);
       if (dragging) {
@@ -152,7 +156,8 @@ export default function AsciiGlobe({ className = '' }) {
       }
     };
     const onDown = (e) => {
-      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.target.closest('a, button')) return;
       dragging = true;
       vel = 0;
       lastX = e.clientX;
@@ -169,7 +174,7 @@ export default function AsciiGlobe({ className = '' }) {
       onUp();
       px = -1;
       py = -1;
-      tiltTarget = 0.4;
+      tiltTarget = baseTilt;
       leanTarget = 0;
     };
 
@@ -188,11 +193,8 @@ export default function AsciiGlobe({ className = '' }) {
       resize();
       raf = requestAnimationFrame(frame);
     };
-    if (document.fonts?.load) {
-      document.fonts.load('13px "IBM Plex Mono"').then(start, start);
-    } else {
-      start();
-    }
+    if (document.fonts?.load) document.fonts.load('13px "IBM Plex Mono"').then(start, start);
+    else start();
 
     return () => {
       cancelAnimationFrame(raf);

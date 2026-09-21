@@ -1,48 +1,11 @@
 import Link from 'next/link';
+import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { socialLinks } from '@/lib/site';
 import { buildArticleGraph, paper, relatedArticles } from '@/lib/research';
 
 export function ResearchHeader() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border-soft bg-bg/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-[1000px] items-center justify-between gap-6 px-5 sm:h-20 sm:px-8">
-        <Link
-          href="/"
-          className="text-[17px] font-medium leading-none tracking-[-0.01em] text-fg transition-opacity hover:opacity-70"
-        >
-          Advait Jayant
-        </Link>
-        <nav aria-label="Research navigation">
-          <ul className="flex items-center gap-5 text-[14.5px] sm:gap-6">
-            <li>
-              <Link href="/research" className="text-fg-muted transition-colors hover:text-fg">
-                Research
-              </Link>
-            </li>
-            <li className="hidden sm:block">
-              <a
-                href={paper.ssrnUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-fg-muted transition-colors hover:text-fg"
-              >
-                Paper on SSRN ↗
-              </a>
-            </li>
-            <li>
-              <Link
-                href="/#contact"
-                className="inline-flex items-center rounded-[9px] bg-fg px-[15px] py-[9px] leading-none text-bg shadow-[0_1px_2px_rgba(26,24,21,0.16),0_10px_22px_-14px_rgba(26,24,21,0.7)] transition-colors hover:bg-[#000]"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
+  return <Nav current="/research" />;
 }
 
 export function PaperCallout({ compact = false }) {
