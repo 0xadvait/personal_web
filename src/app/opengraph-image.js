@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og';
-import { forEachEarthCell, landChar } from '@/lib/asciiEarth';
+import { cellStyle, makeBuffer, rasterGpu } from '@/lib/asciiGpu';
 import { loadGoogleFont } from '@/lib/ogFonts';
 
 export const alt = 'Advait Jayant. Chief Strategy Officer at OpenGradient, London.';
@@ -10,31 +10,29 @@ const CELL_W = 9;
 const CELL_H = 15;
 const INK = '#f5f4f0';
 
-/* One frame of the same ASCII Earth the homepage draws, as rows of text runs. */
-function earthRows() {
+/* One frame of the same ASCII GPU the homepage draws, as rows of text runs. */
+function gpuRows() {
   const cols = Math.ceil(size.width / CELL_W);
   const rows = Math.ceil(size.height / CELL_H);
-  const grid = Array.from({ length: rows }, () => new Array(cols).fill(null));
-  forEachEarthCell(
-    { cols, rows, cellW: CELL_W, cellH: CELL_H, cx: 600, cy: 300, R: 232, rot: 0.55, tilt: 0.4 },
-    (c, r, x, y, isLand, t) => {
-      grid[r][c] = isLand ? { ch: landChar(t), land: true } : { ch: '·', land: false };
-    }
-  );
-  return grid.map((row) => {
+  const buf = makeBuffer(cols, rows);
+  rasterGpu({ cellW: CELL_W, cellH: CELL_H, cx: 600, cy: 290, S: 215, rot: 0.55, tilt: 0.42, fanSpin: 0.6 }, buf);
+  const out = [];
+  for (let r = 0; r < rows; r++) {
     const runs = [];
     let cur = null;
-    for (const cell of row) {
-      const land = cell ? cell.land : null;
-      const ch = cell ? cell.ch : ' ';
-      if (cur && cur.land === land) cur.text += ch;
+    for (let c = 0; c < cols; c++) {
+      const st = cellStyle(buf, c, r);
+      const bright = st ? st[1] > 0.6 : null;
+      const ch = st ? st[0] : ' ';
+      if (cur && cur.bright === bright) cur.text += ch;
       else {
-        cur = { land, text: ch };
+        cur = { bright, text: ch };
         runs.push(cur);
       }
     }
-    return runs;
-  });
+    out.push(runs);
+  }
+  return out;
 }
 
 export default async function Image() {
@@ -42,7 +40,7 @@ export default async function Image() {
   const fonts = [];
   if (sans) fonts.push({ name: 'Figtree', data: sans, weight: 400, style: 'normal' });
   if (mono) fonts.push({ name: 'IBM Plex Mono', data: mono, weight: 400, style: 'normal' });
-  const rows = mono ? earthRows() : [];
+  const rows = mono ? gpuRows() : [];
 
   return new ImageResponse(
     (
@@ -77,10 +75,10 @@ export default async function Image() {
                   key={i}
                   style={{
                     color:
-                      run.land === true
+                      run.bright === true
                         ? 'rgba(245, 244, 240, 0.92)'
-                        : run.land === false
-                          ? 'rgba(245, 244, 240, 0.2)'
+                        : run.bright === false
+                          ? 'rgba(245, 244, 240, 0.45)'
                           : 'transparent',
                   }}
                 >

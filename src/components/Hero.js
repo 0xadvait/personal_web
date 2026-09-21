@@ -1,4 +1,4 @@
-import AsciiGlobe from './AsciiGlobe';
+import AsciiGpu from './AsciiGpu';
 
 const email = 'advait@opengradient.ai';
 
@@ -7,9 +7,9 @@ export default function Hero() {
     <main id="main-content" className="flex flex-1 flex-col">
       <h1 className="sr-only">Advait Jayant</h1>
 
-      {/* The stage is the Earth. */}
+      {/* The stage is the card. */}
       <section id="top" className="relative min-h-[52vh] flex-1 md:min-h-[440px]">
-        <AsciiGlobe className="absolute inset-0 h-full w-full" />
+        <AsciiGpu className="absolute inset-0 h-full w-full" />
       </section>
 
       <div className="relative mx-auto w-full max-w-[1000px] px-5 sm:px-8">

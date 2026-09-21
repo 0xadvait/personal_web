@@ -1,25 +1,25 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { LONDON, forEachEarthCell, landChar, projectPoint } from '@/lib/asciiEarth';
+import { LED, cellStyle, makeBuffer, project, rasterGpu } from '@/lib/asciiGpu';
 
 /*
- * The live ASCII Earth. See lib/asciiEarth.js for the projection.
+ * The live ASCII GPU. See lib/asciiGpu.js for the scene.
  *
- * It spins west to east, drags with momentum, leans toward the pointer, and
- * lights up under it. London is marked with the one spot of colour on the
- * site and the local time, shown while it faces the viewer. Reduced motion
- * stops the auto-spin but keeps the drag.
+ * It turns on its own with the fans spinning, drags with momentum, leans
+ * toward the pointer, and lights up under it. A power LED breathes in amber,
+ * the one spot of colour on the site. Reduced motion stops the auto-spin but
+ * keeps the drag.
  */
-const CELL_W = 8;
-const CELL_H = 13;
 const FONT = '11.5px "IBM Plex Mono", ui-monospace, monospace';
-const AUTO_SPIN = 0.00016; // radians per ms
+const FONT_SMALL = '8.5px "IBM Plex Mono", ui-monospace, monospace';
+const AUTO_SPIN = 0.00026; // radians per ms
+const FAN_SPIN = 0.0075; // radians per ms
 const DRAG_GAIN = 0.006; // radians per pixel
 const GLOW_RADIUS = 140; // px
 const ACCENT = '255, 184, 92';
 
-export default function AsciiGlobe({ className = '' }) {
+export default function AsciiGpu({ className = '' }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -29,29 +29,23 @@ export default function AsciiGlobe({ className = '' }) {
     const ctx = canvas.getContext('2d');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const coarse = window.matchMedia('(pointer: coarse)').matches;
-    const minFrame = coarse ? 30 : 0;
-    const clockFmt = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });
+    const minFrame = coarse ? 40 : 0;
 
     let raf = 0;
     let disposed = false;
+    let buf = null;
     let lastT = 0;
-    let lastClock = -1e9;
-    let clock = '';
     let w = 0;
     let h = 0;
 
-    let rot = 0.55;
+    let rot = 0.5;
     let vel = 0;
+    let fan = 0;
     let dragging = false;
     let lastX = 0;
     let px = -1;
     let py = -1;
-    const baseTilt = 0.4;
+    const baseTilt = 0.42;
     let tiltTarget = baseTilt;
     let tilt = baseTilt;
     let leanTarget = 0;
@@ -69,81 +63,51 @@ export default function AsciiGlobe({ className = '' }) {
 
     const draw = (now) => {
       ctx.clearRect(0, 0, w, h);
-      const R = Math.min(w * 0.42, h * 0.43);
-      const cx = w * 0.5;
-      const cy = h * 0.5;
-      const view = { cx, cy, R, rot: rot + lean, tilt };
-      const glow = px >= 0;
+      // Narrow screens get a finer grid and a bigger card, or it is too coarse to read.
+      const narrow = w < 700;
+      const CELL_W = narrow ? 6 : 8;
+      const CELL_H = narrow ? 10 : 13;
+      const S = narrow ? Math.min(w / 3.2, h / 2.3) : Math.min(w / 4.4, h / 2.5);
+      const view = { cx: w * 0.5, cy: h * 0.5, S, rot: rot + lean, tilt };
+      const cols = Math.ceil(w / CELL_W);
+      const rows = Math.ceil(h / CELL_H);
+      buf = makeBuffer(cols, rows, buf);
+      rasterGpu({ cellW: CELL_W, cellH: CELL_H, fanSpin: fan, ...view }, buf);
 
-      ctx.font = FONT;
+      ctx.font = narrow ? FONT_SMALL : FONT;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      forEachEarthCell(
-        { cols: Math.ceil(w / CELL_W), rows: Math.ceil(h / CELL_H), cellW: CELL_W, cellH: CELL_H, ...view },
-        (c, r, x, y, isLand, t0) => {
-          let boost = 0;
+      const glow = px >= 0;
+      for (let r = buf.r0; r < buf.r1; r++) {
+        for (let c = buf.c0; c < buf.c1; c++) {
+          const style = cellStyle(buf, c, r);
+          if (!style) continue;
+          const x = c * CELL_W + CELL_W / 2;
+          const y = r * CELL_H + CELL_H / 2;
+          let a = style[1];
           if (glow) {
-            const dx = x - px;
-            const dy = y - py;
-            boost = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / GLOW_RADIUS);
+            const gx = x - px;
+            const gy = y - py;
+            a = Math.min(1, a + Math.max(0, 1 - Math.sqrt(gx * gx + gy * gy) / GLOW_RADIUS) * 0.45);
           }
-          if (isLand) {
-            const t = Math.min(1, t0 + boost * 0.5);
-            ctx.fillStyle = `rgba(245, 244, 240, ${0.5 + 0.5 * t})`;
-            ctx.fillText(landChar(t), x, y);
-          } else {
-            ctx.fillStyle = `rgba(245, 244, 240, ${Math.min(0.7, 0.13 + 0.2 * t0 + boost * 0.35)})`;
-            ctx.fillText('·', x, y);
-          }
+          ctx.fillStyle = `rgba(245, 244, 240, ${a})`;
+          ctx.fillText(style[0], x, y);
         }
-      );
-
-      // London: a pulsing point and the local time, while it faces the viewer.
-      const L = projectPoint(LONDON, view);
-      if (L.z > 0.1) {
-        if (now - lastClock > 1000) {
-          clock = clockFmt.format(new Date());
-          lastClock = now;
-        }
-        const a = Math.min(1, (L.z - 0.1) / 0.3);
-        const pulse = 0.5 + 0.5 * Math.sin(now / 550);
-        ctx.beginPath();
-        ctx.arc(L.x, L.y, 4 + 7 * pulse, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${ACCENT}, ${a * 0.5 * (1 - pulse)})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(L.x, L.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${ACCENT}, ${a})`;
-        ctx.fill();
-        // The readout sits in a dark pill with a short leader, so it stays legible over land.
-        ctx.font = '11px "IBM Plex Mono", ui-monospace, monospace';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
-        if ('letterSpacing' in ctx) ctx.letterSpacing = '0.14em';
-        const label = `LONDON ${clock}`;
-        const tw = ctx.measureText(label).width;
-        const pw = tw + 18;
-        const ph = 22;
-        const flip = L.x + 16 + pw > w - 8;
-        const bx = flip ? L.x - 16 - pw : L.x + 16;
-        const by = L.y - 30;
-        ctx.strokeStyle = `rgba(${ACCENT}, ${a * 0.6})`;
-        ctx.beginPath();
-        ctx.moveTo(L.x + (flip ? -4 : 4), L.y - 4);
-        ctx.lineTo(flip ? bx + pw : bx, by + ph / 2 + 4);
-        ctx.stroke();
-        ctx.fillStyle = `rgba(15, 14, 13, ${a * 0.9})`;
-        ctx.beginPath();
-        ctx.roundRect(bx, by, pw, ph, 5);
-        ctx.fill();
-        ctx.strokeStyle = `rgba(${ACCENT}, ${a * 0.4})`;
-        ctx.stroke();
-        ctx.fillStyle = `rgba(${ACCENT}, ${a})`;
-        ctx.fillText(label, bx + 9, by + ph / 2 + 0.5);
-        if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
       }
 
+      // power LED
+      const L = project(LED, view);
+      if (L.z > 0.05) {
+        const a = Math.min(1, L.z / 0.4) * (0.55 + 0.45 * (0.5 + 0.5 * Math.sin(now / 900)));
+        ctx.beginPath();
+        ctx.arc(L.x, L.y, 10, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${ACCENT}, ${a * 0.16})`;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(L.x, L.y, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${ACCENT}, ${a})`;
+        ctx.fill();
+      }
     };
 
     const frame = (t) => {
@@ -155,6 +119,7 @@ export default function AsciiGlobe({ className = '' }) {
         rot += (reduceMotion ? 0 : AUTO_SPIN * dt) + vel;
         vel *= 0.94;
       }
+      if (!reduceMotion) fan += FAN_SPIN * dt;
       tilt += (tiltTarget - tilt) * 0.06;
       lean += (leanTarget - lean) * 0.06;
       draw(t);

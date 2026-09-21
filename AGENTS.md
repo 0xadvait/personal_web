@@ -19,8 +19,8 @@ and which files to never touch. The reference sections after them are backup det
 |---|---|---|
 | Homepage look, layout, animation, colors | `src/components/*.js` (Hero, Nav, etc.) + `src/app/globals.css` | Free to redesign. Keep the `.prose-research` block in globals.css. |
 | The section wrapper + label used by every homepage section | `src/components/ui.js` (`Section`) | One component. The label is the `.kicker` class in `globals.css`. |
-| The homepage stage (the Earth, one line of role text, the email) | `src/components/Hero.js` | There is deliberately no headline and no bio here. Keep it to those three things. |
-| The live ASCII Earth | `src/components/AsciiGlobe.js` (canvas) + `src/lib/asciiEarth.js` (projection) + `src/lib/landMask.js` (Natural Earth bitmap) | Client-only. It is the one moving thing on the page; do not add a second. The London marker is the only colour on the site. |
+| The homepage stage (the GPU, one line of role text, the email) | `src/components/Hero.js` | There is deliberately no headline and no bio here. Keep it to those three things. |
+| The live ASCII GPU | `src/components/AsciiGpu.js` (canvas) + `src/lib/asciiGpu.js` (signed-distance scene, ray march, characters) | Client-only. It is the one moving thing on the page; do not add a second. The amber power LED is the only colour on the site. |
 | The first-person bio (rendered at `/about`) | `src/components/About.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
 | The frame shared by `/about`, `/experience`, `/talks` (nav, h1, column, footer) | `src/components/PageShell.js` | The pages themselves are one-liners in `src/app/<page>/page.js` that set `metadata` + `current`. |
 | The nav tabs and which one is active | `src/components/Nav.js` (`tabs`, `current` prop) | Server component; no client JS. |
@@ -39,7 +39,7 @@ and which files to never touch. The reference sections after them are backup det
 | A research page's **FAQ** | the local `faqs` array in that `src/app/research/<slug>/page.js` | Feeds the FAQPage JSON-LD. |
 | The paper's "cited by" / suggested citation | `src/lib/research.js` → `paper` | Verify every citation link is live first. |
 | The book / bibliography list | `src/lib/research.js` → `publications[]` | Books stay here only — no individual book pages (see Rules). |
-| Homepage `<title>` / meta keywords / OG tags | `src/app/layout.js` → `metadata` | The OG *image* is `src/app/opengraph-image.js` (dark, same headline, ASCII Earth). |
+| Homepage `<title>` / meta keywords / OG tags | `src/app/layout.js` → `metadata` | The OG *image* is `src/app/opengraph-image.js` (dark, ASCII GPU, role line). |
 | The JSON-LD on the homepage | `src/components/StructuredData.js` | Structured data — edit deliberately. |
 | The JSON-LD on research pages | `src/lib/research.js` → `buildArticleGraph()` / node builders | Structured data — edit deliberately. |
 | **Add a brand-new research page** | register in `src/lib/research.js` + create `src/app/research/<slug>/page.js` + add to `public/llms.txt` | Only for a genuinely distinct search intent. Full steps below. |
@@ -89,7 +89,7 @@ and which files to never touch. The reference sections after them are backup det
   labels + the ASCII globe), via `next/font/google` in `layout.js`.** The link-preview images
   (`src/app/opengraph-image.js`, `src/app/research/opengraph-image.js`) fetch the same two fonts
   at build time through `src/lib/ogFonts.js`; if that fetch fails they fall back to Satori's
-  default font and the homepage card drops its ASCII globe rather than misaligning it. They are wired to Tailwind through
+  default font and the homepage card drops its ASCII GPU rather than misaligning it. They are wired to Tailwind through
   `--font-sans` / `--font-mono` / `--font-serif` in the `@theme` block. Geist is gone.
 - **No animation library.** `motion` and `geist` were removed from `package.json`. The only
   entrance animation is the CSS `.rise` class on the hero, so content is never hidden behind
@@ -100,10 +100,10 @@ and which files to never touch. The reference sections after them are backup det
 
 Warm paper (`--color-bg #f5f4f0`) and warm ink (`--color-fg #1a1815`), **monochrome** (the
 `--color-accent-*` tokens are deep-ink greys, not a hue). **The homepage is one dark screen**:
-nav, a live draggable ASCII Earth (`AsciiGlobe.js`, projection shared
-with the link-preview card in `src/lib/asciiEarth.js`, land mask in `src/lib/landMask.js`),
-and one line with the email. The Earth carries a pulsing London marker with the live local time,
-the only spot of colour on the site. No stats strip, no bio on the homepage. Everything else lives on its
+nav, a live draggable ASCII GPU (`AsciiGpu.js`; the scene and ray march live in
+`src/lib/asciiGpu.js` and are shared with the link-preview card), and one line with the email.
+The card's fans spin and its power LED breathes in amber, the only spot of colour on the site.
+No stats strip, no bio on the homepage. (The earlier ASCII Earth is in git history at c5231d5.) Everything else lives on its
 own page behind a nav tab: `/about`, `/research` (the SEO hub), `/experience`, `/talks`. Those
 pages share `PageShell.js`: nav, an h1, one 720px reading column, footer. No other cards or
 images, no section numbers, no taglines. The one button is the ink pill in the nav. Links are
