@@ -1,15 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { LED, cellStyle, makeBuffer, project, rasterGpu } from '@/lib/asciiGpu';
+import { cellStyle, makeBuffer, rasterGpu } from '@/lib/asciiGpu';
 
 /*
  * The live ASCII GPU. See lib/asciiGpu.js for the scene.
  *
  * It turns on its own with the fans spinning, drags with momentum, leans
- * toward the pointer, and lights up under it. A power LED breathes in amber,
- * the one spot of colour on the site. Reduced motion stops the auto-spin but
- * keeps the drag.
+ * toward the pointer, and lights up under it. Reduced motion stops the
+ * auto-spin but keeps the drag.
  */
 const FONT = '11.5px "IBM Plex Mono", ui-monospace, monospace';
 const FONT_SMALL = '8.5px "IBM Plex Mono", ui-monospace, monospace';
@@ -17,7 +16,6 @@ const AUTO_SPIN = 0.00026; // radians per ms
 const FAN_SPIN = 0.0075; // radians per ms
 const DRAG_GAIN = 0.006; // radians per pixel
 const GLOW_RADIUS = 140; // px
-const ACCENT = '255, 184, 92';
 
 export default function AsciiGpu({ className = '' }) {
   const ref = useRef(null);
@@ -93,20 +91,6 @@ export default function AsciiGpu({ className = '' }) {
           ctx.fillStyle = `rgba(245, 244, 240, ${a})`;
           ctx.fillText(style[0], x, y);
         }
-      }
-
-      // power LED
-      const L = project(LED, view);
-      if (L.z > 0.05) {
-        const a = Math.min(1, L.z / 0.4) * (0.55 + 0.45 * (0.5 + 0.5 * Math.sin(now / 900)));
-        ctx.beginPath();
-        ctx.arc(L.x, L.y, 10, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${ACCENT}, ${a * 0.16})`;
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(L.x, L.y, 3.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${ACCENT}, ${a})`;
-        ctx.fill();
       }
     };
 

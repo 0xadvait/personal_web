@@ -10,7 +10,6 @@
  * sparse ones, which is what makes the object legible.
  */
 export const M = { SHROUD: 1, FAN: 2, PCB: 3, FINGERS: 4, BRACKET: 5, POWER: 6, BACK: 7 };
-export const LED = { x: 0.7, y: 0.53, z: 0.2 };
 const RAMP = ' .:-=+*#%@';
 const LIGHT = [-0.36, 0.55, 0.75];
 const AMBIENT = 0.1;
