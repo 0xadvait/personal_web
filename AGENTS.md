@@ -18,6 +18,9 @@ and which files to never touch. The reference sections after them are backup det
 | I want to change… | Edit this | Notes |
 |---|---|---|
 | Homepage look, layout, animation, colors | `src/components/*.js` (Hero, Nav, etc.) + `src/app/globals.css` | Free to redesign. Keep the `.prose-research` block in globals.css. |
+| A shared primitive (section wrapper, section heading, kicker label, card) | `src/components/ui.js` | The whole page is built from these four. Change one, every section follows. |
+| The short first-person bio under the hero | `src/components/About.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
+| The "cited in" strip under the hero | `src/components/CitedBy.js` | Verify each venue link is live before changing it. |
 | Homepage copy (hero text, headings, blurbs) | the relevant `src/components/*.js` | Keep stated facts true. |
 | Roles / job history | `src/components/Experience.js` | |
 | Talks / speaking | `src/components/Speaking.js` | |
@@ -26,7 +29,7 @@ and which files to never touch. The reference sections after them are backup det
 | Contact section / socials shown on page | `src/components/Contact.js` (display) | The link **values** come from `site.js` (next row). |
 | A social / profile link (X, GitHub, Scholar, SSRN…) | `src/lib/site.js` → `socialLinks` | One source of truth. Flows into `Person.sameAs` and every cite link. Change the **ID** only if the profile truly moved. |
 | Site name, URL, or tagline | `src/lib/site.js` | `siteUrl` flows into canonicals, sitemap, JSON-LD everywhere. |
-| **Education / credentials** | BOTH `src/components/StructuredData.js` (`alumniOf` + `hasCredential`) AND `src/components/research/ArticleShell.js` (`AuthorCard` bio) | **Two places — keep them factually identical.** |
+| **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/About.js` | **Three places now. Keep them factually identical.** |
 | The author bio shown on research pages | `src/components/research/ArticleShell.js` → `AuthorCard` | Mirror any fact change into `StructuredData.js`. |
 | A research page's **body text** | `src/app/research/<slug>/page.js` (the JSX children) | |
 | A research page's **title / description / keywords / dates** | `src/lib/research.js` (that page's registry entry) | NOT the component — the component reads these from the registry. |
@@ -78,7 +81,22 @@ and which files to never touch. The reference sections after them are backup det
 - Next.js (App Router), **fully static export** — every route prerenders to `○ (Static)`.
 - **Vercel auto-deploys on push to `main`** → https://www.advait.tech. No preview branch
   needed; the GitHub↔Vercel link lives in Vercel's dashboard (no `.vercel/` in the repo).
-- Tailwind v4 (`@theme` in `globals.css`), Geist fonts, Vercel Analytics + Speed Insights.
+- Tailwind v4 (`@theme` in `globals.css`), Vercel Analytics + Speed Insights.
+- **Fonts: Figtree (sans/display), IBM Plex Mono (kicker labels), Newsreader (wordmark + long-form
+  article body), all via `next/font/google` in `layout.js`.** They are wired to Tailwind through
+  `--font-sans` / `--font-mono` / `--font-serif` in the `@theme` block. Geist is gone.
+- **No animation library.** `motion` and `geist` were removed from `package.json`. The only
+  entrance animation is the CSS `.rise` class on the hero, so content is never hidden behind
+  hydration. Do not reintroduce JS scroll-reveals: the old ones left every section at
+  `opacity: 0` until React hydrated, which broke the page for crawlers and slow clients.
+
+### Design system, in one breath
+
+Warm paper (`--color-bg #f5f4f0`) and warm ink (`--color-fg #1a1815`), **monochrome** (the
+`--color-accent-*` tokens are deep-ink greys, not a hue). One container width (`max-w-[1060px]`),
+one heading treatment (`SectionHeading`: statement in ink, trailing clause in `.tone-soft` grey),
+one label style (`.kicker`), one card (`rounded-[14px]` hairline on `--color-surface`), one button
+(ink pill, `rounded-[10px]`). Links are ink with a receding underline (`.link`), never coloured.
 
 ### Build & dev — there's a trap
 
@@ -90,6 +108,11 @@ PATH="$HOME/.hermes/node/bin:$PATH" ~/.hermes/node/bin/npm run build
 # DEV — port 3000 is sometimes held by the local WhatsApp bridge; use another port:
 PATH="$HOME/.hermes/node/bin:$PATH" ~/.hermes/node/bin/npm run dev -- -p 3100
 ```
+
+- **Turbopack stale-cache trap.** After editing `globals.css` (especially the `@theme` block),
+  `next dev` can keep serving the previously compiled CSS, so new tokens/fonts silently do not
+  apply and the page falls back to Times. Symptom: `getComputedStyle(document.documentElement)
+  .getPropertyValue('--font-sans')` is empty. Fix: stop the dev server, move `.next` aside, restart.
 
 - **Live repo:** `~/random/personal_web` (GitHub `0xadvait/personal_web`, `main`).
 - **Stale clone — do NOT edit:** `~/WebstormProjects/personal_web`.

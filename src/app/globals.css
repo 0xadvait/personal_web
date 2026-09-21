@@ -3,55 +3,39 @@
 @theme {
   --breakpoint-xs: 420px;
 
-  /* Quiet editorial palette with technical accents */
-  --color-bg: #f7f7f2;
-  --color-surface: #ffffff;
-  --color-surface-soft: #eef2ee;
+  /* Warm paper surfaces */
+  --color-bg: #f5f4f0;
+  --color-surface: #fbfaf8;
+  --color-surface-soft: #efeee9;
 
-  /* Ink scale — no pure black */
-  --color-fg: #1d2528;
-  --color-fg-muted: #4d5b60;
-  --color-fg-dim: #8c9895;
-  --color-fg-faint: #c5cbc2;
+  /* Warm ink scale: no pure black, no chroma */
+  --color-fg: #1a1815;
+  --color-fg-muted: #6a665e;
+  --color-fg-dim: #97928a;
+  --color-fg-faint: #bdb9b0;
 
-  /* Hairline borders */
-  --color-border: #dde2da;
-  --color-border-soft: #ebeee8;
+  /* Hairlines */
+  --color-border: #e3e1d9;
+  --color-border-soft: #edece6;
 
-  --color-accent: #2446c7;
-  --color-accent-deep: #162f84;
-  --color-accent-soft: #edf3ff;
-  --color-accent-alt: #0f766e;
-  --color-accent-warm: #9a3412;
+  /* "Accent" is deep ink: links and buttons read as emphasis, not colour */
+  --color-accent: #33302a;
+  --color-accent-deep: #1a1815;
+  --color-accent-soft: #eceae3;
+  --color-accent-alt: #97928a;
+  --color-accent-warm: #6a665e;
 
-  --color-success: #2f8f5b;
+  --color-success: #4c7a5c;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  /* System serif stack — Iowan Old Style on Mac, Palatino fallback */
-  --font-serif: "Iowan Old Style", "Palatino", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-sans: var(--font-figtree);
+  --font-mono: var(--font-plex-mono);
+  --font-serif: var(--font-newsreader);
 }
-
-/* Technical-diagram styles — adopted from bps-2024-visual .diag */
-.diag .stroke   { stroke: #2446c7; fill: none; stroke-width: 1.2; }
-.diag .stroke-2 { stroke: #2446c7; fill: none; stroke-width: 1.8; }
-.diag .stroke-soft { stroke: #6f87df; fill: none; stroke-width: 1; }
-.diag .dashed   { stroke: #2446c7; fill: none; stroke-width: 0.8; stroke-dasharray: 3 3; }
-.diag .fill     { fill: #2446c7; }
-.diag .fill-soft { fill: #edf3ff; }
-.diag .fill-mid  { fill: #c6d4f5; }
-.diag .fill-paper { fill: #ffffff; }
-.diag .fill-bg    { fill: #f7f7f2; }
-.diag .grid       { stroke: #d7dfef; fill: none; stroke-width: 0.4; }
-.diag .lbl        { font-family: var(--font-mono), ui-monospace, monospace; font-size: 11.5px; fill: #2446c7; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-.diag .lbl-soft   { font-family: var(--font-mono), ui-monospace, monospace; font-size: 10.5px; fill: #6b7280; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
-.diag .lbl-big    { font-family: var(--font-mono), ui-monospace, monospace; font-size: 13.5px; fill: #2446c7; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
-.diag .lbl-body   { font-family: var(--font-serif), serif; font-size: 12px; fill: #1d2528; }
 
 :root { color-scheme: light; }
 
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6rem;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,13 +46,11 @@ html, body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  font-feature-settings: 'ss01', 'cv11', 'kern', 'liga';
+  font-feature-settings: 'kern', 'liga';
   overflow-x: hidden;
 }
 
-body {
-  min-height: 100vh;
-}
+body { min-height: 100vh; }
 
 button, a, input, select, textarea {
   touch-action: manipulation;
@@ -76,63 +58,84 @@ button, a, input, select, textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-fg);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 :focus:not(:focus-visible) { outline: none; }
 
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-accent-deep);
+  background: #e0ddd2;
+  color: var(--color-fg);
 }
 
-section[id] {
-  scroll-margin-top: 0;
+.font-serif { font-family: var(--font-serif); }
+
+/* Headline halves: the trailing clause recedes */
+.tone-soft { color: var(--color-fg-dim); }
+
+/* Small technical label, used for every section kicker */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
 }
 
-.font-serif {
-  font-family: var(--font-serif);
-  font-feature-settings: 'kern' 1, 'liga' 1;
+/* Inline text link: ink with a receding underline */
+.link {
+  color: var(--color-fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-fg-faint);
+  transition: text-decoration-color 0.18s ease;
 }
+.link:hover { text-decoration-color: var(--color-fg); }
 
 /* Long-form research article typography */
 .prose-research {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.72;
   color: var(--color-fg);
 }
 .prose-research > * + * { margin-top: 1.25em; }
 .prose-research h2 {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  line-height: 1.28;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 1.24;
+  letter-spacing: -0.015em;
   margin-top: 2.4em;
   color: var(--color-fg);
 }
 .prose-research h3 {
-  font-family: var(--font-serif);
-  font-size: 20px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 19px;
   line-height: 1.3;
+  letter-spacing: -0.01em;
   margin-top: 1.9em;
   color: var(--color-fg);
 }
 .prose-research a {
-  color: var(--color-accent);
+  color: var(--color-fg);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(36, 70, 199, 0.35);
+  text-decoration-color: var(--color-fg-faint);
 }
-.prose-research a:hover { text-decoration-color: var(--color-accent); }
+.prose-research a:hover { text-decoration-color: var(--color-fg); }
 .prose-research strong { font-weight: 600; }
 .prose-research ul, .prose-research ol { padding-left: 1.35em; }
 .prose-research ul { list-style: disc; }
 .prose-research ol { list-style: decimal; }
 .prose-research li + li { margin-top: 0.45em; }
 .prose-research blockquote {
-  border-left: 2px solid rgba(36, 70, 199, 0.4);
+  border-left: 2px solid var(--color-border);
   padding-left: 1.1em;
   font-style: italic;
   color: var(--color-fg-muted);
@@ -140,15 +143,16 @@ section[id] {
 .prose-research table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  line-height: 1.5;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
 }
 .prose-research th {
   text-align: left;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-size: 10.5px;
   color: var(--color-fg-dim);
   border-bottom: 1px solid var(--color-border);
@@ -156,7 +160,7 @@ section[id] {
 }
 .prose-research td {
   border-bottom: 1px solid var(--color-border-soft);
-  padding: 0.65em 0.9em 0.65em 0;
+  padding: 0.7em 0.9em 0.7em 0;
   vertical-align: top;
 }
 .prose-research .table-wrap { overflow-x: auto; }
@@ -166,71 +170,28 @@ section[id] {
   margin-top: 2.4em;
 }
 .prose-research .aside-note {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.62;
   color: var(--color-fg-muted);
-  background: var(--color-surface-soft);
-  border: 1px solid var(--color-border-soft);
-  border-radius: 3px;
-  padding: 0.9em 1.1em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.1em 1.25em;
 }
 
-/* Subtle dotted backdrop behind hero */
-.dot-field {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(rgba(36, 70, 199, 0.13) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 118, 110, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px, 112px 112px;
-  -webkit-mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
-          mask-image: linear-gradient(to bottom, black 18%, transparent 86%);
+/* Hero entrance. Pure CSS, so content never depends on JS to become visible. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
 }
-
-/* Paper grain — a whisper of print texture over everything */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-}
-
-/* Slow drift on the hero figure's dashed orbit */
-.diag .diag-orbit {
-  animation: diag-orbit-drift 90s linear infinite;
-}
-@keyframes diag-orbit-drift {
-  to {
-    stroke-dashoffset: -600;
-  }
-}
-
-.section-band {
-  background:
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.34), transparent 18rem),
-    var(--color-bg);
-}
-
-.hero-name-break {
-  display: block;
-}
-
-@media (min-width: 640px) {
-  .hero-name-break {
-    display: inline;
-  }
+.rise {
+  animation: rise-in 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+
   html { scroll-behavior: auto; }
 
   *, *::before, *::after {

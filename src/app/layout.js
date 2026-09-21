@@ -1,9 +1,30 @@
 import './globals.css';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Figtree, IBM_Plex_Mono, Newsreader } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteDescription, siteName, siteUrl } from '@/lib/site';
+
+const figtree = Figtree({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-figtree',
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500'],
+  variable: '--font-plex-mono',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500'],
+  style: ['normal', 'italic'],
+  variable: '--font-newsreader',
+});
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -69,7 +90,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: '#f7f7f2',
+  themeColor: '#f5f4f0',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -78,11 +99,14 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${figtree.variable} ${plexMono.variable} ${newsreader.variable}`}
+    >
       <body className="bg-bg text-fg font-sans antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only fixed left-4 top-4 z-[100] rounded-[3px] border border-accent bg-surface px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-accent shadow-sm"
+          className="sr-only focus:not-sr-only fixed left-4 top-4 z-[100] rounded-full bg-fg px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-bg shadow-sm"
         >
           Skip to content
         </a>

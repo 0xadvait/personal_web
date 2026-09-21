@@ -1,10 +1,59 @@
-import Reveal from './Reveal';
-import SectionHeader from './SectionHeader';
+import { Card, Section, SectionHeading } from './ui';
 
-const datedPredictions = [
+const works = [
   {
-    made: '14 Oct 2024',
+    year: '2023',
+    type: 'Solo paper · SSRN',
+    title: 'The Economics of Wash Trading',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
+    overview: '/research/the-economics-of-wash-trading',
+    desc:
+      'An 85-page study of wash trading in NFT markets: who does it, what it moves, and why token incentives rather than price manipulation explain most of it.',
+    citations: [
+      {
+        label: 'Journal of Banking & Finance',
+        href: 'https://www.sciencedirect.com/science/article/abs/pii/S0378426625001499',
+      },
+      {
+        label: 'European Journal of Finance',
+        href: 'https://doi.org/10.1080/1351847X.2026.2624485',
+      },
+      { label: 'NBER', href: 'https://www.nber.org/papers/w34837' },
+    ],
+  },
+  {
+    year: '2023',
+    type: 'Solo paper · SSRN',
+    title: 'Beyond IPOs: The Cyclical Journey from Private to Public and Back Again',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610086',
+    overview: '/research/beyond-ipos',
+    desc:
+      'Why companies move between private and public ownership, and what each leg of that cycle costs them.',
+  },
+  {
     year: '2024',
+    type: 'Report',
+    title: 'The State of Edge AI',
+    href: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
+    overview: '/research/the-state-of-edge-ai',
+    desc:
+      'Where inference actually runs, and why latency, privacy, and bandwidth push useful intelligence closer to the user.',
+  },
+  {
+    year: '2025',
+    type: 'Report',
+    title: 'The AiFi Thesis',
+    href: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
+    overview: '/research/the-aifi-thesis',
+    desc:
+      'AI compute as a financeable asset, and the payment rails agents need once they start transacting with each other.',
+  },
+];
+
+const calls = [
+  {
+    year: '2024',
+    made: '14 Oct 2024',
     source: 'The State of Edge AI',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_State_of_Edge_AI.pdf',
     prediction:
@@ -20,8 +69,8 @@ const datedPredictions = [
     ],
   },
   {
-    made: '28 Feb 2025',
     year: '2025',
+    made: '28 Feb 2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     prediction:
@@ -41,8 +90,8 @@ const datedPredictions = [
     ],
   },
   {
-    made: '28 Feb 2025',
     year: '2025',
+    made: '28 Feb 2025',
     source: 'The AiFi Thesis',
     sourceHref: 'https://peri-labs.github.io/docs/assets/files/The_AiFi_Thesis.pdf',
     prediction:
@@ -59,215 +108,129 @@ const datedPredictions = [
   },
 ];
 
-const soloPaper = {
-  year: '2023',
-  title: 'The Economics of Wash Trading',
-  href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4610162',
-  desc:
-    'Solo-authored SSRN paper on NFT wash trading: token incentives, fake volume, and whether any of it translated into real trading.',
-  citations: [
-    {
-      label: 'Journal of Banking & Finance',
-      href: 'https://www.sciencedirect.com/science/article/abs/pii/S0378426625001499',
-    },
-    {
-      label: 'European Journal of Finance',
-      href: 'https://doi.org/10.1080/1351847X.2026.2624485',
-    },
-    {
-      label: 'NBER',
-      href: 'https://www.nber.org/papers/w34837',
-    },
-    {
-      label: 'Scholar citations',
-      href: 'https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2223007016064564882&as_sdt=5',
-    },
-  ],
-};
-
 export default function Thesis() {
   return (
-    <section id="thesis" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeader
-          index="01"
-          title="Early research"
-          lede={
-            <>
-              Before OpenGradient, I wrote two SSRN papers, on{' '}
-              <a
-                href="/research/the-economics-of-wash-trading"
-                className="text-accent hover:underline underline-offset-[3px]"
-              >
-                NFT wash trading
-              </a>{' '}
-              and the{' '}
-              <a
-                href="/research/beyond-ipos"
-                className="text-accent hover:underline underline-offset-[3px]"
-              >
-                private-to-public-to-private cycle
-              </a>
-              , plus reports on{' '}
-              <a
-                href="/research/the-state-of-edge-ai"
-                className="text-accent hover:underline underline-offset-[3px]"
-              >
-                edge AI
-              </a>{' '}
-              and{' '}
-              <a
-                href="/research/the-aifi-thesis"
-                className="text-accent hover:underline underline-offset-[3px]"
-              >
-                AI x DeFi
-              </a>
-              .
-            </>
-          }
-        />
+    <Section id="thesis">
+      <SectionHeading
+        index="01"
+        label="Research"
+        title="Two SSRN papers, two reports,"
+        tail="and a few calls that aged well."
+        lede="Everything here is public. Each entry links to the original document and to a plain-language overview."
+      />
 
-        <Reveal>
-          <div className="border-y border-border py-2 sm:py-4">
-            <article className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
-                {soloPaper.year}
-              </div>
+      <ul className="border-t border-border">
+        {works.map((w) => (
+          <li key={w.title} className="grid gap-4 border-b border-border py-9 sm:grid-cols-[5.5rem_minmax(0,1fr)] sm:gap-8">
+              <div className="kicker sm:pt-2">{w.year}</div>
               <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                  <a
-                    href={soloPaper.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent hover:underline underline-offset-[3px]"
-                  >
-                    Solo paper · SSRN
-                  </a>
-                  <span aria-hidden className="hidden h-px w-7 bg-accent/30 sm:inline-block" />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
-                    Market structure
-                  </span>
-                  <a
-                    href="/research/the-economics-of-wash-trading"
-                    className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt hover:underline underline-offset-[3px]"
-                  >
-                    Overview + findings →
-                  </a>
-                </div>
-                <h3 className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
-                  <a
-                    href={soloPaper.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-accent hover:underline underline-offset-[4px]"
-                  >
-                    {soloPaper.title}
+                <div className="kicker">{w.type}</div>
+                <h3 className="mt-3 max-w-[46ch] text-[21px] font-normal leading-[1.25] tracking-[-0.015em] text-fg sm:text-[24px]">
+                  <a href={w.href} target="_blank" rel="noopener noreferrer" className="link">
+                    {w.title}
                   </a>
                 </h3>
-                <p className="mt-3 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
-                  {soloPaper.desc}
+                <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.62] text-fg-muted">
+                  {w.desc}
                 </p>
-                <div className="mt-4 border-l border-accent/30 pl-4">
-                  <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
-                    Cited by
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px]">
+                  <a href={w.overview} className="link">
+                    Overview and findings →
+                  </a>
+                  <a
+                    href={w.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-fg-dim transition-colors hover:text-fg"
+                  >
+                    Original document ↗
+                  </a>
+                </div>
+                {w.citations ? (
+                  <div className="mt-6 rounded-[12px] border border-border-soft bg-surface px-5 py-4">
+                    <div className="kicker">Cited in</div>
+                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
+                      {w.citations.map((c) => (
+                        <a
+                          key={c.label}
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link"
+                        >
+                          {c.label} ↗
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-                    {soloPaper.citations.map((link) => (
+                ) : null}
+              </div>
+            </li>
+        ))}
+      </ul>
+
+      <h3 className="mt-20 text-[26px] font-normal leading-[1.14] tracking-[-0.02em] text-fg sm:text-[32px]">
+        Three calls from those reports,{' '}
+        <span className="tone-soft block">and what happened next.</span>
+      </h3>
+      <div className="mt-10 space-y-4">
+        {calls.map((c) => (
+          <Card key={c.prediction} as="article" className="p-6 sm:p-8">
+              <div className="grid gap-7 lg:grid-cols-2 lg:gap-12">
+                <div>
+                  <div className="kicker">
+                    <a
+                      href={c.sourceHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-fg"
+                    >
+                      {c.source}
+                    </a>
+                    <span className="mx-2 text-fg-faint" aria-hidden>
+                      ·
+                    </span>
+                    {c.made}
+                  </div>
+                  <p className="mt-4 text-[19px] leading-[1.35] tracking-[-0.012em] text-fg sm:text-[21px]">
+                    {c.prediction}
+                  </p>
+                </div>
+                <div className="border-t border-border-soft pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+                  <div className="kicker">What happened · {c.after}</div>
+                  <p className="mt-4 text-[16px] leading-[1.62] text-fg-muted">{c.happened}</p>
+                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
+                    {c.evidenceLinks.map((l) => (
                       <a
-                        key={link.label}
-                        href={link.href}
+                        key={l.label}
+                        href={l.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
+                        className="link"
                       >
-                        {link.label} ↗
+                        {l.label} ↗
                       </a>
                     ))}
                   </div>
                 </div>
               </div>
-            </article>
-
-            <ol className="divide-y divide-border-soft border-t border-border">
-              {datedPredictions.map((item, index) => (
-                <li
-                  key={`${item.source}-${item.evidence ?? item.evidenceLinks?.[0]?.label}`}
-                  className="grid gap-4 py-7 sm:grid-cols-[4.25rem_1fr] sm:gap-5 sm:px-3"
-                >
-                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1">
-                    {item.year}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                        Prediction {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span aria-hidden className="hidden h-px w-7 bg-accent/30 sm:inline-block" />
-                      <a
-                        href={item.sourceHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-[10px] uppercase tracking-[0.16em] text-fg-dim hover:text-accent hover:underline underline-offset-[3px]"
-                      >
-                        {item.made}
-                      </a>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-fg-dim sm:text-[10px]">
-                        {item.source}
-                      </span>
-                    </div>
-                    <p className="mt-3 max-w-3xl font-serif text-[21px] leading-[1.25] text-fg sm:text-[27px]">
-                      {item.prediction}
-                    </p>
-                    <div className="mt-4 border-l border-accent/30 pl-4">
-                      <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-fg-dim sm:text-[10px]">
-                        What happened · {item.after}
-                      </div>
-                      <p className="mt-2 max-w-2xl font-serif text-[15px] leading-[1.55] text-fg-muted sm:text-[16px]">
-                        {item.happened}
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-                        {(item.evidenceLinks ?? [
-                          { label: item.evidence, href: item.evidenceHref },
-                        ]).map((link) => (
-                          <a
-                            key={link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex font-mono text-[10px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
-                          >
-                            {link.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.05}>
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
-            <a
-              href="/research"
-              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:underline underline-offset-[3px]"
-            >
-              All research and publications <span aria-hidden>→</span>
-            </a>
-            <span aria-hidden className="hidden h-px w-8 bg-accent/30 sm:inline-block" />
-            <a
-              href="https://scholar.google.com/citations?user=tGFdvmgAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[11px] uppercase tracking-[0.14em] text-fg-dim hover:text-accent transition-colors"
-            >
-              Google Scholar ↗
-            </a>
-          </div>
-        </Reveal>
+            </Card>
+        ))}
       </div>
-    </section>
+
+        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-[14.5px]">
+          <a href="/research" className="link">
+            All research and publications →
+          </a>
+          <a
+            href="https://scholar.google.com/citations?user=tGFdvmgAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-fg-dim transition-colors hover:text-fg"
+          >
+            Google Scholar ↗
+          </a>
+        </div>
+    </Section>
   );
 }

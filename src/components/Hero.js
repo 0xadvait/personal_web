@@ -1,172 +1,90 @@
-'use client';
+import Image from 'next/image';
+import { Kicker } from './ui';
 
-import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+const rise = (delay) => ({ animationDelay: `${delay}s` });
 
 export default function Hero() {
-  const shouldReduceMotion = useReducedMotion();
-  const fadeUp = (y = 18, delay = 0, duration = 0.9) =>
-    shouldReduceMotion
-      ? {
-          initial: false,
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0 },
-        }
-      : {
-          initial: { opacity: 0, y },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration, delay, ease: [0.22, 1, 0.36, 1] },
-        };
-
   return (
-    <section id="top" className="relative isolate overflow-hidden">
-      <div className="dot-field" aria-hidden />
+    <section id="top" className="relative">
+      <div className="mx-auto w-full max-w-[1060px] px-5 pb-20 pt-32 sm:px-8 sm:pb-24 sm:pt-40 lg:pb-28 lg:pt-44">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:gap-16">
+          <div className="min-w-0">
+            <div className="rise" style={rise(0)}>
+              <Kicker>London · AI infrastructure and market structure</Kicker>
+            </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="flex min-h-[calc(100svh-4rem)] items-center pb-10 pt-20 sm:pb-12 sm:pt-24 lg:pt-18">
-          <div className="max-w-[820px] min-w-0">
-            <motion.div
-              {...fadeUp(10, 0, 0.75)}
-              aria-label="Current context"
-              className="mb-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-1 border-y border-border py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-muted sm:mb-7 sm:grid-cols-3 sm:text-[10.5px]"
+            <h1
+              className="rise mt-7 max-w-[15ch] text-[40px] font-normal leading-[1.04] tracking-[-0.03em] text-fg text-balance sm:text-[54px] lg:text-[62px]"
+              style={rise(0.07)}
             >
-              <span className="text-accent">London</span>
-              <span className="sm:text-center">AI + crypto</span>
-              <span className="col-span-2 text-fg-dim sm:col-span-1 sm:text-right">
-                <LondonTime />
-              </span>
-            </motion.div>
+              Research, product, and film{' '}
+              <span className="tone-soft">at the edge of AI and crypto.</span>
+            </h1>
 
-            <motion.h1
-              {...fadeUp()}
-              className="font-serif text-[52px] leading-[0.98] text-fg text-balance xs:text-[62px] sm:text-[78px] md:text-[88px] lg:text-[96px] xl:text-[108px]"
+            <p
+              className="rise mt-7 max-w-[54ch] text-[17px] leading-[1.62] text-fg-muted sm:text-[17.5px]"
+              style={rise(0.14)}
             >
-              Advait <span className="hero-name-break italic text-accent">Jayant</span>
-            </motion.h1>
-
-            <motion.div
-              {...fadeUp(18, 0.18)}
-              className="mt-7 max-w-2xl space-y-3 font-serif text-[17px] leading-[1.5] text-fg sm:mt-8 sm:text-[18px] md:text-[20px] lg:text-[20.5px] xl:text-[21px]"
-            >
-              <p>
-                CSO at{' '}
-                <a
-                  href="https://opengradient.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="OpenGradient website (opens in a new tab)"
-                  className="text-accent hover:underline underline-offset-[3px]"
-                >
-                  OpenGradient
-                </a>
-                . Previously founded SuperSight / Peri Labs.
-              </p>
-              <p>
-                I write research and make films about AI infrastructure, compute markets, and
-                crypto rails.
-              </p>
-            </motion.div>
-
-            <motion.div
-              {...fadeUp(12, 0.28, 0.8)}
-              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.12em] sm:mt-10 sm:gap-x-7 sm:text-[12px] lg:mt-9"
-            >
-              <a href="#thesis" className="text-fg-muted hover:text-accent transition-colors inline-flex items-center gap-1.5 border-b border-transparent hover:border-accent">
-                Research <span aria-hidden>↓</span>
+              I am Advait Jayant, Chief Strategy Officer at{' '}
+              <a
+                href="https://opengradient.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                OpenGradient
               </a>
-              <span aria-hidden className="hidden text-fg-faint sm:inline">·</span>
-              <a href="#impact" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Track record</a>
-              <span aria-hidden className="hidden text-fg-faint sm:inline">·</span>
-              <a href="#work" className="text-fg-muted hover:text-accent transition-colors border-b border-transparent hover:border-accent">Work</a>
-            </motion.div>
+              . Before that I founded SuperSight, later Peri Labs. I write research on AI
+              infrastructure, compute markets, and crypto rails, and make the films that go with it.
+            </p>
+
+            <div className="rise mt-9 flex flex-wrap items-center gap-3" style={rise(0.21)}>
+              <a
+                href="#thesis"
+                className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-fg px-[18px] py-[11px] text-[14.5px] leading-none text-bg shadow-[0_1px_2px_rgba(26,24,21,0.16),0_10px_22px_-14px_rgba(26,24,21,0.7)] transition-colors hover:bg-[#000]"
+              >
+                Read the research
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-surface px-[18px] py-[11px] text-[14.5px] leading-none text-fg transition-colors hover:border-fg-faint hover:bg-white"
+              >
+                Get in touch
+              </a>
+            </div>
+          </div>
+
+          <div className="rise min-w-0" style={rise(0.28)}>
+            <HeroVisual />
           </div>
         </div>
-
-        <motion.div
-          {...fadeUp(10, 0.55, 1.1)}
-          aria-hidden
-          className="diag pointer-events-none absolute right-0 top-1/2 z-0 hidden w-[300px] -translate-y-[62%] select-none xl:block"
-        >
-          <HeroFigure />
-        </motion.div>
       </div>
     </section>
   );
 }
 
-function HeroFigure() {
+function HeroVisual() {
   return (
-    <svg viewBox="0 0 320 300" className="w-full opacity-90">
-      <defs>
-        <marker
-          id="hero-arrow"
-          markerWidth="7"
-          markerHeight="7"
-          refX="5"
-          refY="3.5"
-          orient="auto"
-        >
-          <path d="M0,0 L7,3.5 L0,7 Z" fill="#2446c7" />
-        </marker>
-      </defs>
-
-      {/* orbit guide */}
-      <circle cx="160" cy="150" r="96" className="dashed diag-orbit" />
-
-      {/* centre mark */}
-      <line x1="154" y1="150" x2="166" y2="150" className="stroke-soft" />
-      <line x1="160" y1="144" x2="160" y2="156" className="stroke-soft" />
-      <text x="160" y="130" textAnchor="middle" className="lbl-soft">
-        FIG. 01
-      </text>
-
-      {/* flow arcs, clockwise */}
-      <path d="M192.8,59.8 A96,96 0 0 1 255.1,163.4" className="stroke" markerEnd="url(#hero-arrow)" />
-      <path d="M219.1,225.7 A96,96 0 0 1 100.9,225.7" className="stroke" markerEnd="url(#hero-arrow)" />
-      <path d="M64.9,163.4 A96,96 0 0 1 124.0,61.0" className="stroke" markerEnd="url(#hero-arrow)" />
-
-      {/* nodes */}
-      <g>
-        <rect x="112" y="41" width="96" height="26" rx="1.5" className="stroke fill-paper" />
-        <text x="160" y="58" textAnchor="middle" className="lbl">
-          Research
-        </text>
-      </g>
-      <g>
-        <rect x="200" y="185" width="86" height="26" rx="1.5" className="stroke fill-paper" />
-        <text x="243" y="202" textAnchor="middle" className="lbl">
-          Product
-        </text>
-      </g>
-      <g>
-        <rect x="45" y="185" width="64" height="26" rx="1.5" className="stroke fill-paper" />
-        <text x="77" y="202" textAnchor="middle" className="lbl">
-          Film
-        </text>
-      </g>
-    </svg>
+    <figure className="relative overflow-hidden rounded-[16px] border border-border bg-fg shadow-[0_2px_4px_rgba(26,24,21,0.04),0_28px_60px_-40px_rgba(26,24,21,0.55)]">
+      <div className="relative aspect-[4/3] w-full sm:aspect-[5/4] lg:aspect-[4/3]">
+        <Image
+          src="/images/ascii-animation.gif"
+          alt=""
+          fill
+          unoptimized
+          priority
+          sizes="(min-width: 1024px) 460px, 100vw"
+          className="object-cover opacity-[0.88]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(150deg,rgba(12,11,10,0.55)_0%,rgba(12,11,10,0.1)_55%,rgba(12,11,10,0.45)_100%)]"
+        />
+      </div>
+      <figcaption className="flex items-center justify-between gap-4 border-t border-white/10 bg-[#141311] px-5 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/55">
+        <span>Open intelligence films</span>
+        <span className="text-white/35">OpenGradient</span>
+      </figcaption>
+    </figure>
   );
-}
-
-function LondonTime() {
-  const [time, setTime] = useState('Local time');
-
-  useEffect(() => {
-    const update = () => {
-      const formatted = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      }).format(new Date());
-
-      setTime(`${formatted} local`);
-    };
-
-    update();
-    const id = window.setInterval(update, 60_000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  return time;
 }

@@ -1,5 +1,4 @@
-import Reveal from './Reveal';
-import SectionHeader from './SectionHeader';
+import { Section, SectionHeading } from './ui';
 
 const entries = [
   {
@@ -17,7 +16,7 @@ const entries = [
   {
     year: '2025',
     arena: 'Marketing',
-    result: 'Within a year of running marketing at OpenGradient, we crossed 50M+ views.',
+    result: 'Crossed 50M+ views within a year of taking over marketing at OpenGradient.',
     role: 'Brand, films, launches',
   },
   {
@@ -36,49 +35,31 @@ const entries = [
 
 export default function ImpactLedger() {
   return (
-    <section
-      id="impact"
-      className="relative border-t border-border bg-surface/35 py-14 sm:py-20 md:py-28 lg:py-32"
-    >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeader
-          index="02"
-          title="Track record"
-        />
+    <Section id="impact" tone="soft">
+      <SectionHeading
+        index="02"
+        label="Track record"
+        title="What actually shipped,"
+        tail="with the numbers attached."
+      />
 
-        <div className="max-w-5xl">
-          {entries.map((entry, index) => (
-            <Reveal key={`${entry.year}-${entry.arena}`} delay={index * 0.04}>
-              <article
-                className={`group grid gap-3 py-8 sm:grid-cols-[5rem_1fr] sm:gap-7 ${
-                  index === 0 ? 'pt-0' : 'border-t border-border'
-                } ${index === entries.length - 1 ? 'pb-0' : ''}`}
-              >
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent-alt sm:pt-1.5">
-                  {entry.year}
-                </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                    <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-                      {entry.arena}
-                    </h3>
-                    <span
-                      aria-hidden
-                      className="hidden h-px w-8 bg-accent/35 sm:inline-block"
-                    />
-                    <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-fg-dim sm:text-[10px] sm:tracking-[0.14em]">
-                      {entry.role}
-                    </p>
-                  </div>
-                  <p className="mt-3 max-w-3xl font-serif text-[23px] leading-[1.17] text-fg transition-colors group-hover:text-accent sm:text-[30px] sm:leading-[1.2]">
-                    {entry.result}
-                  </p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+      <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-14">
+        {entries.map((entry) => (
+          <article key={`${entry.year}-${entry.arena}`} className="max-w-[40ch]">
+              <div className="kicker">
+                {entry.year}
+                <span className="mx-2 text-fg-faint" aria-hidden>
+                  ·
+                </span>
+                {entry.arena}
+              </div>
+              <p className="mt-4 text-[19px] leading-[1.3] tracking-[-0.015em] text-fg sm:text-[20px]">
+                {entry.result}
+              </p>
+              <p className="mt-3 text-[14.5px] leading-[1.5] text-fg-dim">{entry.role}</p>
+            </article>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

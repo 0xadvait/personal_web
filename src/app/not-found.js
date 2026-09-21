@@ -10,29 +10,30 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main
-      id="main-content"
-      className="min-h-screen bg-bg text-fg flex items-center border-y border-border"
-    >
-      <section className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent flex items-center gap-3">
-          <span>404</span>
-          <span className="h-px w-10 bg-accent/40" />
-          <span className="text-fg-dim">Not found</span>
-        </div>
-        <h1 className="mt-8 max-w-3xl font-serif text-5xl leading-[1.02] text-fg sm:text-6xl md:text-7xl">
+    <main id="main-content" className="flex min-h-screen items-center bg-bg text-fg">
+      <section className="mx-auto w-full max-w-[1060px] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="kicker">404 &middot; Not found</div>
+        <h1 className="mt-7 max-w-[18ch] text-[36px] font-normal leading-[1.06] tracking-[-0.03em] text-fg text-balance sm:text-[52px] lg:text-[58px]">
           This page drifted off the graph.
         </h1>
-        <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed text-fg-muted sm:text-xl">
+        <p className="mt-6 max-w-[52ch] text-[17px] leading-[1.62] text-fg-muted">
           The link may be old, or the page may have moved. The homepage has the current writing,
           talks, and contact links.
         </p>
-        <Link
-          href="/"
-          className="mt-10 inline-flex min-h-[44px] items-center gap-2 rounded-[3px] border border-accent bg-accent px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent-deep"
-        >
-          Return home <span aria-hidden>→</span>
-        </Link>
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-fg px-[18px] py-[11px] text-[14.5px] leading-none text-bg shadow-[0_1px_2px_rgba(26,24,21,0.16),0_10px_22px_-14px_rgba(26,24,21,0.7)] transition-colors hover:bg-[#000]"
+          >
+            Return home
+          </Link>
+          <Link
+            href="/research"
+            className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-surface px-[18px] py-[11px] text-[14.5px] leading-none text-fg transition-colors hover:border-fg-faint hover:bg-white"
+          >
+            Research
+          </Link>
+        </div>
       </section>
     </main>
   );

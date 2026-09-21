@@ -1,14 +1,13 @@
-import Reveal from './Reveal';
-import SectionHeader from './SectionHeader';
+import { Section, SectionHeading } from './ui';
 
-function AdvisorLink({ href, children }) {
+function Cite({ href, children }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${children} (opens in a new tab)`}
-      className="text-fg underline decoration-fg-faint underline-offset-[3px] hover:decoration-accent hover:text-accent transition-colors"
+      className="link"
     >
       {children}
     </a>
@@ -17,42 +16,42 @@ function AdvisorLink({ href, children }) {
 
 const roles = [
   {
-    period: '2025 — Now',
+    period: '2025 – Now',
     org: 'OpenGradient',
     href: 'https://opengradient.ai',
     title: 'Chief Strategy Officer',
     body: (
       <>
         I lead product strategy, customer work, and partnerships.{' '}
-        <AdvisorLink href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
+        <Cite href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
-        </AdvisorLink>
+        </Cite>
         .
       </>
     ),
   },
   {
-    period: '2022 — 2025',
+    period: '2022 – 2025',
     org: 'Peri Labs',
     href: 'https://perilabs.net/',
     title: 'Founder & CEO',
     body: (
       <>
-        Founded SuperSight (later Peri Labs).{' '}
-        <AdvisorLink href="https://www.finsmes.com/2023/07/supersight-raises-1m-in-pre-seed-funding.html">
+        Founded SuperSight, later Peri Labs.{' '}
+        <Cite href="https://www.finsmes.com/2023/07/supersight-raises-1m-in-pre-seed-funding.html">
           Raised $1.5M pre-seed at $30M
-        </AdvisorLink>{' '}
+        </Cite>{' '}
         from Animoca Brands, Blockchain Founders Fund, and Vayner Fund. Selected through the NEAR
         Incubator for the{' '}
-        <AdvisorLink href="https://x.com/delphi_labs/status/1884256227355492775">
+        <Cite href="https://x.com/delphi_labs/status/1884256227355492775">
           Delphi Labs AI Accelerator
-        </AdvisorLink>
+        </Cite>
         , plus UT Austin&rsquo;s incubator. IP acquired.
       </>
     ),
   },
   {
-    period: '2019 — 2022',
+    period: '2019 – 2022',
     org: 'Technics Publications',
     href: null,
     title: 'Technical Author',
@@ -62,50 +61,44 @@ const roles = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative border-t border-border py-14 sm:py-20 md:py-28 lg:py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeader
-          index="03"
-          title="Experience"
-        />
+    <Section id="experience">
+      <SectionHeading
+        index="03"
+        label="Experience"
+        title="Where I have worked,"
+        tail="and what I did there."
+      />
 
-        <ol>
-          {roles.map((r, i) => (
-            <Reveal key={r.org} delay={i * 0.05}>
-              <li className="group grid gap-4 md:grid-cols-12 md:gap-10 py-8 sm:py-10 md:py-12 border-t border-border first:border-t-0 transition-colors hover:bg-surface/45 -mx-4 px-4 sm:-mx-6 sm:px-6">
-                <div className="md:col-span-3 font-mono text-[11px] uppercase tracking-[0.12em] text-accent md:pt-1.5">
-                  {r.period}
+      <ol className="border-t border-border">
+        {roles.map((r) => (
+          <li key={r.org} className="grid gap-4 border-b border-border py-9 sm:py-11 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-12">
+              <div className="kicker md:pt-2.5">{r.period}</div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="text-[24px] font-normal leading-[1.15] tracking-[-0.02em] text-fg sm:text-[28px]">
+                    {r.href ? (
+                      <a
+                        href={r.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${r.org} website (opens in a new tab)`}
+                        className="link"
+                      >
+                        {r.org}
+                      </a>
+                    ) : (
+                      r.org
+                    )}
+                  </h3>
+                  <span className="text-[16px] text-fg-dim">{r.title}</span>
                 </div>
-                <div className="md:col-span-9">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl md:text-[36px] text-fg leading-[1.1]">
-                      {r.href ? (
-                        <a
-                          href={r.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${r.org} website (opens in a new tab)`}
-                          className="transition-colors group-hover:text-accent hover:underline underline-offset-[4px]"
-                        >
-                          {r.org}
-                        </a>
-                      ) : (
-                        r.org
-                      )}
-                    </h3>
-                    <span className="font-serif italic text-fg-muted text-base sm:text-lg">
-                      — {r.title}
-                    </span>
-                  </div>
-                  <p className="mt-3 sm:mt-4 max-w-2xl font-serif text-[15px] sm:text-base leading-[1.65] text-fg-muted">
-                    {r.body}
-                  </p>
-                </div>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
-    </section>
+                <p className="mt-4 max-w-[74ch] text-[16px] leading-[1.65] text-fg-muted">
+                  {r.body}
+                </p>
+              </div>
+            </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

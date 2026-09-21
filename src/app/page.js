@@ -1,5 +1,7 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
+import CitedBy from '@/components/CitedBy';
+import About from '@/components/About';
 import Thesis from '@/components/Thesis';
 import ImpactLedger from '@/components/ImpactLedger';
 import Experience from '@/components/Experience';
@@ -16,6 +18,8 @@ export default function Home() {
       <Nav />
       <main id="main-content" className="relative">
         <Hero />
+        <CitedBy />
+        <About />
         <Thesis />
         <ImpactLedger />
         <Experience />
