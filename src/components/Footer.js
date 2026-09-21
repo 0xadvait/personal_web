@@ -1,11 +1,13 @@
-import Link from 'next/link';
 import { socialLinks } from '@/lib/site';
 
-const links = [
-  { label: 'Home', href: '/' },
-  { label: 'Research', href: '/research' },
-  { label: 'Google Scholar', href: socialLinks.scholar, external: true },
-  { label: 'SSRN', href: socialLinks.ssrn, external: true },
+const email = 'advait@opengradient.ai';
+
+const channels = [
+  { label: 'GitHub', href: socialLinks.github },
+  { label: 'X', href: socialLinks.x },
+  { label: 'LinkedIn', href: socialLinks.linkedin },
+  { label: 'Google Scholar', href: socialLinks.scholar },
+  { label: 'SSRN', href: socialLinks.ssrn },
 ];
 
 export default function Footer() {
@@ -14,29 +16,30 @@ export default function Footer() {
   const updated = now.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 
   return (
-    <footer className="mx-auto w-full max-w-[720px] px-5 pb-12 pt-20 sm:px-8 sm:pb-16 sm:pt-24">
-      <div className="border-t border-border-soft pt-6">
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[14.5px]">
-          {links.map((l) => (
-            <li key={l.label}>
-              {l.external ? (
-                <a
-                  href={l.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-fg-dim transition-colors hover:text-fg"
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link href={l.href} className="text-fg-dim transition-colors hover:text-fg">
-                  {l.label}
-                </Link>
-              )}
+    <footer id="contact" className="mx-auto w-full max-w-[1000px] px-5 pb-10 pt-16 sm:px-8 sm:pb-12 sm:pt-20">
+      <div className="border-t border-border-soft pt-7">
+        <p className="text-[15.5px] leading-[1.6] text-fg-muted">
+          Email is easiest:{' '}
+          <a href={`mailto:${email}`} className="link">
+            {email}
+          </a>
+        </p>
+        <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[14.5px]">
+          {channels.map((c) => (
+            <li key={c.label}>
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${c.label} (opens in a new tab)`}
+                className="text-fg-dim transition-colors hover:text-fg"
+              >
+                {c.label}
+              </a>
             </li>
           ))}
         </ul>
-        <div className="kicker mt-6 flex flex-wrap justify-between gap-x-6 gap-y-2">
+        <div className="kicker mt-8 flex flex-wrap justify-between gap-x-6 gap-y-2">
           <span>&copy; {year} Advait Jayant</span>
           <span>Last updated {updated}</span>
         </div>

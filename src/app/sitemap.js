@@ -15,6 +15,12 @@ export default function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    ...['about', 'experience', 'talks'].map((slug) => ({
+      url: `${siteUrl}/${slug}`,
+      lastModified: new Date('2026-09-21'),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    })),
     ...articles.map((a) => ({
       url: `${siteUrl}/research/${a.slug}`,
       lastModified: new Date(a.dateModified),

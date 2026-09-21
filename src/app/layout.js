@@ -30,7 +30,7 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: `${siteName} | Research, Product, and Film`,
+    default: `${siteName} | Marketing, BD, and Research`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -48,7 +48,7 @@ export const metadata = {
     'Advait Jayant',
     'OpenGradient',
     'early technical markets',
-    'technical film',
+    'crypto marketing',
     'AI research',
     'crypto market structure',
     'wash trading',
@@ -56,7 +56,7 @@ export const metadata = {
     'The Economics of Wash Trading',
   ],
   openGraph: {
-    title: `${siteName} | Research, Product, and Film`,
+    title: `${siteName} | Marketing, BD, and Research`,
     description: siteDescription,
     url: siteUrl,
     siteName,
@@ -66,7 +66,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@advait_jayant',
-    title: `${siteName} | Research, Product, and Film`,
+    title: `${siteName} | Marketing, BD, and Research`,
     description: siteDescription,
   },
   verification: {

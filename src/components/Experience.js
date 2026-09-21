@@ -1,5 +1,3 @@
-import { Section } from './ui';
-
 function Cite({ href, children }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="link">
@@ -16,9 +14,9 @@ const roles = [
     period: '2025 to now',
     body: (
       <>
-        I lead product strategy, customer work, and partnerships. Helped take the product from zero
-        to 7-figure revenue, crossed 50M+ views within a year of running marketing, and ran a Korea
-        launch week with 1,000+ attendees.{' '}
+        I run marketing and business development: brand, launches, films, customer work, and
+        partnerships. Crossed 50M+ views within a year of taking over marketing, helped take the
+        product from zero to 7-figure revenue, and ran a Korea launch week with 1,000+ attendees.{' '}
         <Cite href="https://www.finsmes.com/2026/04/opengradient-raises-9-5m-in-total-funding.html">
           $9.5M seed led by a16z crypto
         </Cite>
@@ -57,28 +55,26 @@ const roles = [
 
 export default function Experience() {
   return (
-    <Section id="experience" label="Experience">
-      <ul className="space-y-8">
-        {roles.map((r) => (
-          <li key={r.org}>
-            <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <h3 className="text-[18px] font-normal leading-[1.35] tracking-[-0.012em] text-fg">
-                {r.href ? (
-                  <a href={r.href} target="_blank" rel="noopener noreferrer" className="link">
-                    {r.org}
-                  </a>
-                ) : (
-                  r.org
-                )}
-              </h3>
-              <span className="text-[14.5px] text-fg-dim">
-                {r.title}, {r.period}
-              </span>
-            </div>
-            <p className="mt-2 text-[15.5px] leading-[1.62] text-fg-muted">{r.body}</p>
-          </li>
-        ))}
-      </ul>
-    </Section>
+    <ul className="space-y-9">
+      {roles.map((r) => (
+        <li key={r.org}>
+          <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+            <h2 className="text-[19px] font-normal leading-[1.35] tracking-[-0.012em] text-fg">
+              {r.href ? (
+                <a href={r.href} target="_blank" rel="noopener noreferrer" className="link">
+                  {r.org}
+                </a>
+              ) : (
+                r.org
+              )}
+            </h2>
+            <span className="text-[14.5px] text-fg-dim">
+              {r.title}, {r.period}
+            </span>
+          </div>
+          <p className="mt-2 text-[16px] leading-[1.65] text-fg-muted">{r.body}</p>
+        </li>
+      ))}
+    </ul>
   );
 }

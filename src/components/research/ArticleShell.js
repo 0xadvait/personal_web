@@ -6,10 +6,10 @@ import { buildArticleGraph, paper, relatedArticles } from '@/lib/research';
 export function ResearchHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border-soft bg-bg/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between gap-6 px-5 sm:h-[74px] sm:px-8">
+      <div className="mx-auto flex h-16 max-w-[1000px] items-center justify-between gap-6 px-5 sm:h-20 sm:px-8">
         <Link
           href="/"
-          className="font-serif text-[21px] leading-none text-fg transition-opacity hover:opacity-70 sm:text-[23px]"
+          className="text-[17px] font-medium leading-none tracking-[-0.01em] text-fg transition-opacity hover:opacity-70"
         >
           Advait Jayant
         </Link>

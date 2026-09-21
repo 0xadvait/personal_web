@@ -19,16 +19,20 @@ and which files to never touch. The reference sections after them are backup det
 |---|---|---|
 | Homepage look, layout, animation, colors | `src/components/*.js` (Hero, Nav, etc.) + `src/app/globals.css` | Free to redesign. Keep the `.prose-research` block in globals.css. |
 | The section wrapper + label used by every homepage section | `src/components/ui.js` (`Section`) | One component. The label is the `.kicker` class in `globals.css`. |
-| The headline + first-person bio at the top | `src/components/Hero.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
+| The dark hero card (headline, one-line sub, the three-up proof row) | `src/components/Hero.js` | The proof row's numbers must match `Experience.js` and `Research.js`. |
+| The live ASCII globe inside the hero card | `src/components/AsciiGlobe.js` | Canvas, client-only, ~30fps, single frame under reduced motion. It is the one moving thing on the page; do not add a second. |
+| The first-person bio (rendered at `/about`) | `src/components/About.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
+| The frame shared by `/about`, `/experience`, `/talks` (nav, h1, column, footer) | `src/components/PageShell.js` | The pages themselves are one-liners in `src/app/<page>/page.js` that set `metadata` + `current`. |
+| The nav tabs and which one is active | `src/components/Nav.js` (`tabs`, `current` prop) | Server component; no client JS. |
+| Contact line + socials (footer on every page) | `src/components/Footer.js` | The link values come from `site.js`. |
 | Homepage copy (hero text, headings, blurbs) | the relevant `src/components/*.js` | Keep stated facts true. |
-| Roles / job history, and the track-record numbers (revenue, views, users) | `src/components/Experience.js` | The numbers live inside each role's paragraph now; there is no separate track-record section. |
-| Talks / speaking | `src/components/Speaking.js` | |
-| The three OpenGradient films | `src/components/Films.js` | One paragraph, three links. |
-| The "Research" homepage section (the four works) | `src/components/Research.js` | Layout/copy is yours; keep its links to `/research/*`, SSRN, and Scholar valid. |
+| Roles / job history, and the track-record numbers (revenue, views, users), rendered at `/experience` | `src/components/Experience.js` | The same numbers appear in the hero proof row (`Hero.js`); keep them in sync. |
+| Talks / speaking, rendered at `/talks` | `src/components/Speaking.js` | |
+| The three OpenGradient launch films (bottom of `/experience`) | `src/components/Films.js` | One paragraph, three links. Framed as marketing work, not a film credit. |
 | Contact section / socials shown on page | `src/components/Contact.js` (display), `src/components/Footer.js` (footer row) | The link **values** come from `site.js` (next row). |
 | A social / profile link (X, GitHub, Scholar, SSRN…) | `src/lib/site.js` → `socialLinks` | One source of truth. Flows into `Person.sameAs` and every cite link. Change the **ID** only if the profile truly moved. |
 | Site name, URL, or tagline | `src/lib/site.js` | `siteUrl` flows into canonicals, sitemap, JSON-LD everywhere. |
-| **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/Hero.js` (second paragraph) | **Three places. Keep them factually identical.** |
+| **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/About.js` (second paragraph) | **Three places. Keep them factually identical.** |
 | The author bio shown on research pages | `src/components/research/ArticleShell.js` → `AuthorCard` | Mirror any fact change into `StructuredData.js`. |
 | A research page's **body text** | `src/app/research/<slug>/page.js` (the JSX children) | |
 | A research page's **title / description / keywords / dates** | `src/lib/research.js` (that page's registry entry) | NOT the component — the component reads these from the registry. |
@@ -39,7 +43,7 @@ and which files to never touch. The reference sections after them are backup det
 | The JSON-LD on the homepage | `src/components/StructuredData.js` | Structured data — edit deliberately. |
 | The JSON-LD on research pages | `src/lib/research.js` → `buildArticleGraph()` / node builders | Structured data — edit deliberately. |
 | **Add a brand-new research page** | register in `src/lib/research.js` + create `src/app/research/<slug>/page.js` + add to `public/llms.txt` | Only for a genuinely distinct search intent. Full steps below. |
-| The sitemap | **nothing** — `src/app/sitemap.js` auto-builds from the registry | New pages appear once registered. |
+| The sitemap | `src/app/sitemap.js` auto-builds research URLs from the registry; the three static pages (`about`, `experience`, `talks`) are a small literal list at the top | A new research page appears once registered; a new static page must be added to that list. |
 | The RSS feed | **nothing** — `src/app/research/feed.xml/route.js` auto-builds from the registry | |
 | robots directives | `src/app/robots.js` (generated) or `layout.js` `robots` | |
 
@@ -81,8 +85,9 @@ and which files to never touch. The reference sections after them are backup det
 - **Vercel auto-deploys on push to `main`** → https://www.advait.tech. No preview branch
   needed; the GitHub↔Vercel link lives in Vercel's dashboard (no `.vercel/` in the repo).
 - Tailwind v4 (`@theme` in `globals.css`), Vercel Analytics + Speed Insights.
-- **Fonts: Figtree (sans/display), IBM Plex Mono (kicker labels), Newsreader (wordmark + long-form
-  article body), all via `next/font/google` in `layout.js`.** They are wired to Tailwind through
+- **Fonts: Figtree (everything on the homepage, including the wordmark), IBM Plex Mono (kicker
+  labels + the ASCII globe), Newsreader (long-form article body only), all via `next/font/google`
+  in `layout.js`.** They are wired to Tailwind through
   `--font-sans` / `--font-mono` / `--font-serif` in the `@theme` block. Geist is gone.
 - **No animation library.** `motion` and `geist` were removed from `package.json`. The only
   entrance animation is the CSS `.rise` class on the hero, so content is never hidden behind
@@ -92,13 +97,14 @@ and which files to never touch. The reference sections after them are backup det
 ### Design system, in one breath
 
 Warm paper (`--color-bg #f5f4f0`) and warm ink (`--color-fg #1a1815`), **monochrome** (the
-`--color-accent-*` tokens are deep-ink greys, not a hue). The homepage is **one column**
-(`max-w-[720px]`, set in `page.js`, `Nav.js`, `Footer.js`): headline + bio, then Research,
-Experience, Films, Talks, Contact, each introduced by a small `.kicker` label and nothing else.
-No cards, no hero image, no section numbers, no taglines. The one two-tone moment is the
-headline (statement in ink, trailing clause in `.tone-soft` grey); the one button is the ink pill
-in the nav. Links are ink with a receding underline (`.link`), never coloured. When in doubt,
-remove: the page was cut from 8,700px to 3,000px on purpose, so a new section needs a reason.
+`--color-accent-*` tokens are deep-ink greys, not a hue). **The homepage is one screen**:
+nav, a dark rounded card holding the two-tone headline and a live, draggable ASCII globe, a
+three-up proof row (Marketing / BD / Research), and the footer. Everything else lives on its
+own page behind a nav tab: `/about`, `/research` (the SEO hub), `/experience`, `/talks`. Those
+pages share `PageShell.js`: nav, an h1, one 720px reading column, footer. No other cards or
+images, no section numbers, no taglines. The one button is the ink pill in the nav. Links are
+ink with a receding underline (`.link`), never coloured. Positioning is marketer first, BD
+second, research as the credibility layer; do not drift back to "film" as a pillar.
 
 ### Build & dev — there's a trap
 

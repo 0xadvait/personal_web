@@ -1,7 +1,7 @@
 export const siteUrl = 'https://www.advait.tech';
 export const siteName = 'Advait Jayant';
 export const siteDescription =
-  'Advait Jayant works across AI infrastructure, compute markets, crypto, research, and film.';
+  'Advait Jayant runs marketing and business development at OpenGradient, and writes research on AI infrastructure, compute markets, and crypto market structure.';
 
 export const socialLinks = {
   github: 'https://github.com/0xadvait',
