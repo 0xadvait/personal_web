@@ -1,5 +1,5 @@
 import './globals.css';
-import { Figtree, IBM_Plex_Mono, Newsreader } from 'next/font/google';
+import { Figtree, IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { siteDescription, siteName, siteUrl } from '@/lib/site';
@@ -18,13 +18,6 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 });
 
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['300', '400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-newsreader',
-});
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -101,7 +94,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${plexMono.variable} ${newsreader.variable}`}
+      className={`${figtree.variable} ${plexMono.variable}`}
     >
       <body className="bg-bg text-fg font-sans antialiased">
         <a

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { loadGoogleFont } from '@/lib/ogFonts';
 
 export const alt = 'Wash trading and NFT markets research by Advait Jayant';
 export const size = {
@@ -7,7 +8,12 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-export default function Image() {
+export default async function Image() {
+  const [sans, mono] = await Promise.all([loadGoogleFont('Figtree', 400), loadGoogleFont('IBM Plex Mono', 400)]);
+  const fonts = [];
+  if (sans) fonts.push({ name: 'Figtree', data: sans, weight: 400, style: 'normal' });
+  if (mono) fonts.push({ name: 'IBM Plex Mono', data: mono, weight: 400, style: 'normal' });
+
   return new ImageResponse(
     (
       <div
@@ -17,11 +23,10 @@ export default function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#f7f7f2',
-          color: '#1d2528',
+          background: '#f5f4f0',
+          color: '#1a1815',
           padding: '72px',
-          border: '1px solid #dde2da',
-          fontFamily: 'Georgia, serif',
+          fontFamily: 'Figtree',
         }}
       >
         <div
@@ -29,25 +34,28 @@ export default function Image() {
             display: 'flex',
             alignItems: 'center',
             gap: '18px',
-            color: '#2446c7',
-            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-            fontSize: 24,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
+            fontFamily: 'IBM Plex Mono',
+            fontSize: 19,
+            letterSpacing: '0.14em',
+            color: '#97928a',
           }}
         >
-          <span>Research</span>
-          <span style={{ width: 96, height: 2, background: '#2446c7', opacity: 0.4 }} />
-          <span style={{ color: '#8c9895' }}>advait.tech/research</span>
+          <span>RESEARCH</span>
+          <span style={{ width: 40, height: 1, background: '#bdb9b0' }} />
+          <span>ADVAIT.TECH/RESEARCH</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-          <div style={{ fontSize: 88, lineHeight: 1.02, maxWidth: 1000 }}>
-            Wash trading and NFT markets.
-          </div>
-          <div style={{ display: 'flex', gap: 12 }}>
-            <div style={{ width: 128, height: 6, background: '#2446c7' }} />
-            <div style={{ width: 56, height: 6, background: '#0f766e' }} />
-          </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            fontSize: 84,
+            lineHeight: 1.04,
+            letterSpacing: '-0.03em',
+            maxWidth: 1000,
+          }}
+        >
+          <div style={{ display: 'flex' }}>Wash trading</div>
+          <div style={{ display: 'flex', color: '#97928a' }}>and NFT markets.</div>
         </div>
         <div
           style={{
@@ -57,24 +65,14 @@ export default function Image() {
             width: '100%',
           }}
         >
-          <div style={{ maxWidth: 760, color: '#4d5b60', fontSize: 32, lineHeight: 1.35 }}>
+          <div style={{ display: 'flex', maxWidth: 760, color: '#6a665e', fontSize: 30, lineHeight: 1.35 }}>
             The Economics of Wash Trading, plus explainers on detection, legality, and token
             incentives.
           </div>
-          <div
-            style={{
-              color: '#2446c7',
-              fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-              fontSize: 22,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Advait Jayant
-          </div>
+          <div style={{ display: 'flex', fontSize: 26, color: '#1a1815' }}>Advait Jayant</div>
         </div>
       </div>
     ),
-    size
+    { ...size, ...(fonts.length ? { fonts } : {}) }
   );
 }

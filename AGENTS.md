@@ -19,8 +19,8 @@ and which files to never touch. The reference sections after them are backup det
 |---|---|---|
 | Homepage look, layout, animation, colors | `src/components/*.js` (Hero, Nav, etc.) + `src/app/globals.css` | Free to redesign. Keep the `.prose-research` block in globals.css. |
 | The section wrapper + label used by every homepage section | `src/components/ui.js` (`Section`) | One component. The label is the `.kicker` class in `globals.css`. |
-| The dark hero card (headline, one-line sub, the three-up proof row) | `src/components/Hero.js` | The proof row's numbers must match `Experience.js` and `Research.js`. |
-| The live ASCII globe inside the hero card | `src/components/AsciiGlobe.js` | Canvas, client-only, ~30fps, single frame under reduced motion. It is the one moving thing on the page; do not add a second. |
+| The homepage stage (the Earth, one line of role text, the email) | `src/components/Hero.js` | There is deliberately no headline and no bio here. Keep it to those three things. |
+| The live ASCII Earth | `src/components/AsciiGlobe.js` (canvas) + `src/lib/asciiEarth.js` (projection) + `src/lib/landMask.js` (Natural Earth bitmap) | Client-only. It is the one moving thing on the page; do not add a second. The London marker is the only colour on the site. |
 | The first-person bio (rendered at `/about`) | `src/components/About.js` | Keep its facts identical to `StructuredData.js` + the `AuthorCard` (see the education row). |
 | The frame shared by `/about`, `/experience`, `/talks` (nav, h1, column, footer) | `src/components/PageShell.js` | The pages themselves are one-liners in `src/app/<page>/page.js` that set `metadata` + `current`. |
 | The nav tabs and which one is active | `src/components/Nav.js` (`tabs`, `current` prop) | Server component; no client JS. |
@@ -33,13 +33,13 @@ and which files to never touch. The reference sections after them are backup det
 | A social / profile link (X, GitHub, Scholar, SSRN…) | `src/lib/site.js` → `socialLinks` | One source of truth. Flows into `Person.sameAs` and every cite link. Change the **ID** only if the profile truly moved. |
 | Site name, URL, or tagline | `src/lib/site.js` | `siteUrl` flows into canonicals, sitemap, JSON-LD everywhere. |
 | **Education / credentials** | ALL THREE of `src/components/StructuredData.js` (`alumniOf` + `hasCredential`), `src/components/research/ArticleShell.js` (`AuthorCard` bio), and `src/components/About.js` (second paragraph) | **Three places. Keep them factually identical.** |
-| The author bio shown on research pages | `src/components/research/ArticleShell.js` → `AuthorCard` | Mirror any fact change into `StructuredData.js`. |
+| The author bio shown on research pages | `src/components/research/ArticleShell.js` → `AuthorCard` | Mirror any fact change into `StructuredData.js`. The shell's presentation matches `PageShell.js` (same nav, 720px column, h1 size, kicker-headed sections, no cards). |
 | A research page's **body text** | `src/app/research/<slug>/page.js` (the JSX children) | |
 | A research page's **title / description / keywords / dates** | `src/lib/research.js` (that page's registry entry) | NOT the component — the component reads these from the registry. |
 | A research page's **FAQ** | the local `faqs` array in that `src/app/research/<slug>/page.js` | Feeds the FAQPage JSON-LD. |
 | The paper's "cited by" / suggested citation | `src/lib/research.js` → `paper` | Verify every citation link is live first. |
 | The book / bibliography list | `src/lib/research.js` → `publications[]` | Books stay here only — no individual book pages (see Rules). |
-| Homepage `<title>` / meta keywords / OG tags | `src/app/layout.js` → `metadata` | |
+| Homepage `<title>` / meta keywords / OG tags | `src/app/layout.js` → `metadata` | The OG *image* is `src/app/opengraph-image.js` (dark, same headline, ASCII Earth). |
 | The JSON-LD on the homepage | `src/components/StructuredData.js` | Structured data — edit deliberately. |
 | The JSON-LD on research pages | `src/lib/research.js` → `buildArticleGraph()` / node builders | Structured data — edit deliberately. |
 | **Add a brand-new research page** | register in `src/lib/research.js` + create `src/app/research/<slug>/page.js` + add to `public/llms.txt` | Only for a genuinely distinct search intent. Full steps below. |
@@ -85,9 +85,11 @@ and which files to never touch. The reference sections after them are backup det
 - **Vercel auto-deploys on push to `main`** → https://www.advait.tech. No preview branch
   needed; the GitHub↔Vercel link lives in Vercel's dashboard (no `.vercel/` in the repo).
 - Tailwind v4 (`@theme` in `globals.css`), Vercel Analytics + Speed Insights.
-- **Fonts: Figtree (everything on the homepage, including the wordmark), IBM Plex Mono (kicker
-  labels + the ASCII globe), Newsreader (long-form article body only), all via `next/font/google`
-  in `layout.js`.** They are wired to Tailwind through
+- **Fonts: Figtree (everything, including the research article body) and IBM Plex Mono (kicker
+  labels + the ASCII globe), via `next/font/google` in `layout.js`.** The link-preview images
+  (`src/app/opengraph-image.js`, `src/app/research/opengraph-image.js`) fetch the same two fonts
+  at build time through `src/lib/ogFonts.js`; if that fetch fails they fall back to Satori's
+  default font and the homepage card drops its ASCII globe rather than misaligning it. They are wired to Tailwind through
   `--font-sans` / `--font-mono` / `--font-serif` in the `@theme` block. Geist is gone.
 - **No animation library.** `motion` and `geist` were removed from `package.json`. The only
   entrance animation is the CSS `.rise` class on the hero, so content is never hidden behind
@@ -97,9 +99,11 @@ and which files to never touch. The reference sections after them are backup det
 ### Design system, in one breath
 
 Warm paper (`--color-bg #f5f4f0`) and warm ink (`--color-fg #1a1815`), **monochrome** (the
-`--color-accent-*` tokens are deep-ink greys, not a hue). **The homepage is one screen**:
-nav, a dark rounded card holding the two-tone headline and a live, draggable ASCII globe, a
-three-up proof row (Marketing / BD / Research), and the footer. Everything else lives on its
+`--color-accent-*` tokens are deep-ink greys, not a hue). **The homepage is one dark screen**:
+nav, a live draggable ASCII Earth (`AsciiGlobe.js`, projection shared
+with the link-preview card in `src/lib/asciiEarth.js`, land mask in `src/lib/landMask.js`),
+and one line with the email. The Earth carries a pulsing London marker with the live local time,
+the only spot of colour on the site. No stats strip, no bio on the homepage. Everything else lives on its
 own page behind a nav tab: `/about`, `/research` (the SEO hub), `/experience`, `/talks`. Those
 pages share `PageShell.js`: nav, an h1, one 720px reading column, footer. No other cards or
 images, no section numbers, no taglines. The one button is the ink pill in the nav. Links are
